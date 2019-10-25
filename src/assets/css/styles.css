@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+}
+
+button {
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none !important;
+}
+
+ul {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+    color: #4B4B4B;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 20px !important;
+    line-height: 18px;
+    letter-spacing: -0.165px;
+    font-family: 'Rubik', sans-serif !important;
+}
+
+h2 {
+    font-weight: 500;
+    font-size: 16px !important;
+    line-height: 16px;
+    letter-spacing: -0.16px;
+    font-family: 'Rubik', sans-serif !important;
+}
+
+.page .page__background {
+    background-color: white;
+}
+
+
+.page .page__content::-webkit-scrollbar {
+    display: none;
+}
+
+.page .page__content {
+    scrollbar-width: none;
+}
