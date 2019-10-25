@@ -1,7 +1,7 @@
 <template>
     <form class="restore-form" @submit.prevent="onSubmit">
-      <label class="form-item">
-        <input class="form-item-input" type="email" placeholder="Укажите Ваш e-mail" v-model="email.inputText" :class="{error: bError}">
+      <label class="form-item ">
+        <input class="form-item-input need-keyboard" type="email" placeholder="Укажите Ваш e-mail" v-model="email.inputText" :class="{error: bError}">
         <span class="form-item-name">
             E-MAIL
         </span>

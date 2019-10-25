@@ -8,6 +8,7 @@
                         ref="searchInput"
                        autocorrect="off"
                        autocapitalize="off"
+                       class="need-keyboard"
                 >
                 <span class="search-icon" v-if="bEmpty">
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,8 +40,8 @@
         },
         methods: {
             setEmpty () {
+                Keyboard.hide()
                 this.$emit('update:query', '')
-                this.$refs.searchInput.blur()
             },
             onChangeQuery (e) {
                 this.$emit('update:query', e.target.value)

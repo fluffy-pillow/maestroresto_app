@@ -61,8 +61,7 @@ new Vue({
       },
       onClick ( e ) {
           console.log( 'clicked' )
-          console.log( e.target.tagName )
-          if ( e.target.tagName !== 'INPUT' ) {
+          if (!e.target.classList.contains('need-keyboard')) {
               Keyboard.hide()
           }
       }

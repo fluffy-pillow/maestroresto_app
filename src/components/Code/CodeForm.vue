@@ -1,7 +1,7 @@
 <template>
   <form class="code-form" @submit.prevent="onSubmit">
     <label class="form-item">
-      <input class="form-item-input"
+      <input class="form-item-input need-keyboard"
              type="number"
              placeholder="Код из 4-х цифр"
               v-model="code.inputText"

@@ -1,7 +1,7 @@
 <template>
     <form class="auth-form" @submit.prevent="onSubmit">
       <label class="form-item">
-        <input class="form-item-input"
+        <input class="form-item-input need-keyboard"
                   type="email"
                   placeholder="Укажите Ваш e-mail"
                   v-model="email.inputText"

@@ -1,7 +1,7 @@
 <template>
   <form class="new-password-form">
     <label class="form-item">
-      <input class="form-item-input"
+      <input class="form-item-input need-keyboard"
                 v-model="password.inputText"
                 :type="password.inputType"
                 placeholder="Введите пароль"
