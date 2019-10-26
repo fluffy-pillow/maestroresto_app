@@ -59,10 +59,15 @@ new Vue({
           Keyboard.disableScrollingInShrinkView(true);
           document.addEventListener( 'touchstart', this.onClick, false )
       },
+      removeFocusFromAllInputs () {
+          let el = document.querySelector('input:focus')
+          if (el && Keyboard.isVisible)
+              el.blur()
+      },
       onClick ( e ) {
           if (!e.target.classList.contains('need-keyboard')) {
               Keyboard.hide()
-              if (document.querySelector('input:focus')) document.querySelector('input:focus').blur()
+              this.removeFocusFromAllInputs()
           }
       }
   }
