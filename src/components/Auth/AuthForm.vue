@@ -22,7 +22,7 @@
         <span class="form-item-name">
             Пароль
         </span>
-        <span class="switch-input-type-button" @click.prevent="togglePasswordInputType">
+        <span class="switch-input-type-button" @click="togglePasswordInputType">
           <span v-if="password.inputType === 'password'">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99999 4C5.47333 4 3.22 5.42 2.12 7.66667C3.22 9.91333 5.47333 11.3333 7.99999 11.3333C10.5267 11.3333 12.78 9.91333 13.88 7.66667C12.78 5.42 10.5267 4 7.99999 4ZM7.99999 10.6667C6.34666 10.6667 4.99999 9.32 4.99999 7.66667C4.99999 6.01333 6.34666 4.66667 7.99999 4.66667C9.65333 4.66667 11 6.01333 11 7.66667C11 9.32 9.65333 10.6667 7.99999 10.6667Z" fill="#3DD498" fill-opacity="0.2"/>
@@ -76,7 +76,6 @@
           return (this.email.inputText === this.email.desiredText && this.password.inputText === this.password.desiredText)
         },
         togglePasswordInputType (e) {
-          this.$refs.passwordInput.focus()
           this.password.inputType = (this.password.inputType === 'password') ? 'text' : 'password'
         },
         onSubmit (e) {

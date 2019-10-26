@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer" :class="{iphonex: $ons.platform.isIPhoneX(), fade: bFade}">
+    <footer class="footer" :class="{iphonex: $ons.platform.isIPhoneX(), fade: !bShow}">
         <ul>
             <li
                 v-for="(link, key) of links"
@@ -25,6 +25,8 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
+
     export default {
         name: "Footer",
         data () {
@@ -60,11 +62,10 @@
                 this.activeLink = newLinkID
             }
         },
-        created () {
-          let that = this
-          this.$eventBus.$on('on-search-dropdown-toggle', function (e) {
-            that.bFade = e
-          })
+        computed: {
+            ...mapGetters({
+                bShow: 'footer/isShow'
+            })
         }
     }
 </script>

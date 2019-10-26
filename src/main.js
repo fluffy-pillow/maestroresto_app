@@ -60,9 +60,9 @@ new Vue({
           document.addEventListener( 'touchstart', this.onClick, false )
       },
       onClick ( e ) {
-          console.log( 'clicked' )
           if (!e.target.classList.contains('need-keyboard')) {
               Keyboard.hide()
+              if (document.querySelector('input:focus')) document.querySelector('input:focus').blur()
           }
       }
   }

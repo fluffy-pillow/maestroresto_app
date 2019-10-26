@@ -3,7 +3,7 @@
     <v-ons-page class="main-page">
       <SystemMessage></SystemMessage>
       <Navigation class="navigation" :class="{iphonex: $ons.platform.isIPhoneX()}"></Navigation>
-      <Footer v-show="bAuthorized"></Footer>
+      <Footer v-show="bAuthorized && bFooterIsShow"></Footer>
     </v-ons-page>
   </div>
 </template>
@@ -17,7 +17,8 @@ export default {
   components: {SystemMessage, Footer},
   computed: {
     ...mapGetters({
-      bAuthorized: 'user/isAuthorized'
+      bAuthorized: 'user/isAuthorized',
+      bFooterIsShow: 'footer/isShow'
     })
   }
 }
@@ -71,6 +72,7 @@ body {
 }
 
 .back-button__label {
+  display: block !important;
   font-weight: 300 !important;
   font-size: 18px !important;
   line-height: 22px !important;
@@ -107,6 +109,7 @@ ul {
 h1, h2, h3, h4 {
   margin: 0;
   color: #4B4B4B;
+  white-space: initial;
 }
 
 h1 {

@@ -51,10 +51,12 @@
 .system-message-wrapper {
   display: flex;
   position: absolute;
-  z-index: 10;
+  z-index: 99999999;
   width: 100%;
-  top: -30%;
-  transition: top 0.2s ease-in-out;
+  transform: translateY(-30vh);
+  margin-top: constant(safe-area-inset-top);
+  margin-top: env(safe-area-inset-top);
+  transition: transform 0.2s ease-in-out;
 }
 .system-message {
   border-radius: 16px;
@@ -83,8 +85,6 @@
 }
 
 .system-message-wrapper.show {
-  top: calc(8px + constant(safe-area-inset-top));
-  top: calc(8px + env(safe-area-inset-top));
-
+    transform: translateY(8px);
 }
 </style>

@@ -1,11 +1,13 @@
 <template>
     <div class="search-input-outer">
         <div class="search-input-inner">
-            <label class="search-input-label">
+            <div class="search-input-label">
                 <input type="text" placeholder="Поиск по материалам"
                        :value="query"
                        @input="onChangeQuery"
-                        ref="searchInput"
+                       ref="searchInput"
+                       @focus="handleFocus"
+                       @blur="handleBlur"
                        autocorrect="off"
                        autocapitalize="off"
                        class="need-keyboard"
@@ -22,12 +24,14 @@
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M11.25 1.8075L10.1925 0.75L6 4.9425L1.8075 0.75L0.75 1.8075L4.9425 6L0.75 10.1925L1.8075 11.25L6 7.0575L10.1925 11.25L11.25 10.1925L7.0575 6L11.25 1.8075Z" fill="#4B4B4B"/>
                     </svg>
                 </button>
-            </label>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
+
     export default {
         name: "SearchInput",
         props: {
@@ -39,13 +43,24 @@
             }
         },
         methods: {
+            handleFocus () {
+                this.hideFooter()
+            },
+            handleBlur () {
+                if (this.query.length === 0) this.showFooter()
+            },
             setEmpty () {
-                Keyboard.hide()
+                this.$refs.searchInput.blur()
                 this.$emit('update:query', '')
+                this.showFooter()
             },
             onChangeQuery (e) {
                 this.$emit('update:query', e.target.value)
-            }
+            },
+            ...mapActions({
+                hideFooter: 'footer/hide',
+                showFooter: 'footer/show'
+            })
         },
         watch: {
             query: function (newValue) {

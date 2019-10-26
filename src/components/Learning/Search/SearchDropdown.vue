@@ -1,18 +1,22 @@
 <template>
-    <v-ons-page class="search-dropdown" :class="{show: bShow}"  v-if="bShow">
-      <v-ons-toolbar class="segment-container">
-        <v-ons-segment class="segment" tabbar-id="tabbar" :index.sync="segmentIndex">
-          <button>Меню</button>
-          <button>Обучение</button>
-        </v-ons-segment>
-      </v-ons-toolbar>
-      <v-ons-tabbar id="tabbar"
-                    :tabs="tabs"
-                    :index.sync="tabbarIndex"
-      >
+    <div class="search-dropdown-outer" :class="{show: bShow}"  v-if="bShow">
+      <div class="search-dropdown-middle">
+        <v-ons-page class="search-dropdown-inner">
+          <v-ons-toolbar class="segment-container">
+            <v-ons-segment class="segment" tabbar-id="tabbar" :index.sync="segmentIndex">
+              <button>Меню</button>
+              <button>Обучение</button>
+            </v-ons-segment>
+          </v-ons-toolbar>
+          <v-ons-tabbar id="tabbar"
+                        :tabs="tabs"
+                        :index.sync="tabbarIndex"
+          >
 
-      </v-ons-tabbar>
-    </v-ons-page>
+          </v-ons-tabbar>
+        </v-ons-page>
+      </div>
+    </div>
 </template>
 
 <script>
@@ -44,10 +48,8 @@
         watch: {
             query: function (newValue) {
                 if (newValue.length > 0) {
-                    this.$eventBus.$emit('on-search-dropdown-toggle', true)
                     this.bShow = true
                 } else {
-                    this.$eventBus.$emit('on-search-dropdown-toggle', false)
                     this.bShow = false
                 }
 
@@ -57,20 +59,25 @@
 </script>
 
 <style scoped>
-.search-dropdown {
+.search-dropdown-middle {
+  position: relative;
+  height: 100%;
+}
+
+.search-dropdown-outer {
     visibility: hidden;
     height: 100vh;
     position: absolute;
     width: 100%;
-    top: calc(60px + constant(safe-area-inset-top));
-    top: calc(60px + env(safe-area-inset-top));
+    margin-top: 8px;
     transform-origin: top;
     opacity: 0;
     transform: scaleY(0);
     transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
+    right: 0;
 }
 
-.search-dropdown.show {
+.search-dropdown-outer.show {
     opacity: 1;
     visibility: visible;
     transform: scaleY(1);
@@ -91,6 +98,7 @@
   padding-right: 16px;
   background-image: none;
   background-color: transparent;
+  box-shadow: none;
 }
 
 
