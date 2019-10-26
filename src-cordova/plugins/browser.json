@@ -12,9 +12,6 @@
     },
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "com.vue.example.app"
-    },
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.vue.example.app"
     }
   },
   "dependent_plugins": {}
