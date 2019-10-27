@@ -1,5 +1,5 @@
 {
-  "name": "com.maestroresto.app",
+  "name": "com.kaerus.maestroresto",
   "displayName": "MaestroResto",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
