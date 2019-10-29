@@ -1,5 +1,7 @@
 <template>
     <v-ons-page class="certification">
+        <div></div>
+
     </v-ons-page>
 </template>
 

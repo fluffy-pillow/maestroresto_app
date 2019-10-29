@@ -8,6 +8,7 @@ import Auth from "@/pages/Auth"
 import Restore from "@/pages/Restore"
 import Code from "@/pages/Code"
 import NewPassword from "@/pages/NewPassword"
+import Course from "@/pages/Course"
 
 
 Vue.prototype.$eventBus = new Vue()
@@ -44,17 +45,22 @@ const router = [
     {
         name: 'NewPassword',
         component: NewPassword
+    },
+    {
+        name: 'Course',
+        component: Course
     }
 ]
 
 const navigationMixin = {
   methods: {
-    redir (pageName, options = {animation: 'none', animationOptions: {duration: 0}}, removePrevPage = true) {
+    redir (pageName, options = {animation: 'none', animationOptions: {duration: 0}}, removePrevPage = true, fromFooter = false) {
       this.$eventBus.$emit('change-page',
         {
           extends: router.filter(item => item.name === pageName)[0].component,
           onsNavigatorOptions: options,
-          removePrevPage: removePrevPage
+          removePrevPage: removePrevPage,
+          fromFooter: fromFooter
         }
       )
     },
@@ -118,6 +124,9 @@ const navigation = {
     },
     methods: {
         onChangePage (e) {
+            if (e.fromFooter) {
+                if (this.pageStack.length > 1) this.pageStack.shift()
+            }
             if (e.removePrevPage || typeof e.removePrevPage === 'undefined') {
               this.pageStack.pop()
             }

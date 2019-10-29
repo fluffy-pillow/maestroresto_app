@@ -27,4 +27,8 @@
   left: -75px;
   z-index: -1;
 }
+
+.learning {
+    background-color: #ffffff !important
+}
 </style>

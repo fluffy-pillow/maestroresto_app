@@ -1,6 +1,13 @@
 <template>
     <li class="course-item" :style="{background: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),' +
-    'url(' + require('@/assets/uploads/' + data.background) + ') no-repeat scroll 50% 0'}">
+    'url(' + require('@/assets/uploads/' + data.background) + ') no-repeat scroll 50% 0'}"
+        @click="redir('Course', {
+                animation: 'slide',
+                animationOptions: {duration: 0.5},
+            },
+            false
+        )"
+    >
         <div class="container">
             <div class="head">
                 <svg class="chart--svg" width="100%" height="100%" viewBox="0 0 34 34">

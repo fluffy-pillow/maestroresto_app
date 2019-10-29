@@ -1,20 +1,24 @@
 <template>
     <v-ons-page>
-      <SearchResultsBlock
-        v-for="(item, key) of items"
-        :key="key"
-        :category="item.category"
-      >
-        <SearchResultsList>
-          <SearchResultsItem
-            v-for="(item1, key1) of item.response"
-            :key="key1"
-            :data="item1"
+      <div v-if="filteredItems.length > 0">
+          <SearchResultsBlock
+            v-for="(item, key) of filteredItems"
+            :key="key"
+            :category="item.category"
           >
-          </SearchResultsItem>
-        </SearchResultsList>
-      </SearchResultsBlock>
-
+            <SearchResultsList>
+              <SearchResultsItem
+                v-for="(item1, key1) of item.response"
+                :key="key1"
+                :data="item1"
+              >
+              </SearchResultsItem>
+            </SearchResultsList>
+          </SearchResultsBlock>
+      </div>
+      <div v-else>
+          <SearchNotFound></SearchNotFound>
+       </div>
     </v-ons-page>
 </template>
 
@@ -22,11 +26,13 @@
     import SearchResultsBlock from "@/components/Learning/Search/SearchResultsBlock";
     import SearchResultsList from "@/components/Learning/Search/SearchResultsList";
     import SearchResultsItem from "@/components/Learning/Search/Learning/SearchResultsItem";
+    import SearchNotFound from "@/components/Learning/Search/SearchNotFound";
 
+    import {mapGetters} from 'vuex'
 
     export default {
       name: "Learning",
-      components: {SearchResultsItem, SearchResultsList, SearchResultsBlock},
+      components: {SearchNotFound, SearchResultsItem, SearchResultsList, SearchResultsBlock},
       data ()  {
         return {
           items: [
@@ -38,11 +44,26 @@
                   name: 'Алкогольные напитки на основе винограда (коньяк, бренди, арманьяк...)',
                   exercises: 14,
                   time: 15,
-                  image: 'dish.png'
+                  image: 'dish.png',
+                  keyword: 'вино'
+
                 }
               ],
             }
           ]
+        }
+      },
+      computed: {
+        ...mapGetters({
+            query: 'search/getQuery'
+        }),
+        filteredItems: function () {
+          let that = this
+          return this.items.filter(function (element) {
+              return element.response.some( function (subElement) {
+                  return subElement.keyword.includes(that.query)
+              })
+          })
         }
       }
     }

@@ -1,5 +1,12 @@
 <template>
-    <li class="structure-item" :style="{background: bg}">
+    <li class="structure-item" :style="{background: bg}"
+        @click="redir('Course', {
+                animation: 'slide',
+                animationOptions: {duration: 0.5},
+            },
+            false
+        )"
+    >
         <div class="pic" v-if="data.image && this.data.progress === 100">
             <img :src="require(`@/assets/uploads/${this.data.image}`)">
         </div>

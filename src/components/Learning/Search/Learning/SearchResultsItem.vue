@@ -1,5 +1,7 @@
 <template>
-    <li class="search-results-item">
+    <li class="search-results-item"
+        @click="openCourse"
+    >
       <span class="left">
         <span class="image">
           <img :src="require('@/assets/uploads/' + data.image)">
@@ -25,10 +27,26 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
+
     export default {
         name: "SearchResultsItem",
         props: {
           data: Object
+        },
+        methods: {
+            openCourse () {
+                this.redir('Course', {
+                        animation: 'slide',
+                        animationOptions: {duration: 0.5},
+                    },
+                    false
+                )
+                this.showFooter()
+            },
+            ...mapActions({
+                showFooter: 'footer/show',
+            })
         }
     }
 </script>

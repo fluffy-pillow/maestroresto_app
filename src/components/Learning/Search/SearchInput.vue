@@ -30,13 +30,10 @@
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
+    import {mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "SearchInput",
-        props: {
-            query: String
-        },
         data () {
             return {
                 bEmpty: true
@@ -51,15 +48,21 @@
             },
             setEmpty () {
                 this.$refs.searchInput.blur()
-                this.$emit('update:query', '')
+                this.updateQuery('')
                 this.showFooter()
             },
             onChangeQuery (e) {
-                this.$emit('update:query', e.target.value)
+                this.updateQuery(e.target.value)
             },
             ...mapActions({
                 hideFooter: 'footer/hide',
-                showFooter: 'footer/show'
+                showFooter: 'footer/show',
+                updateQuery: 'search/updateQuery'
+            })
+        },
+        computed: {
+            ...mapGetters({
+                query: 'search/getQuery'
             })
         },
         watch: {

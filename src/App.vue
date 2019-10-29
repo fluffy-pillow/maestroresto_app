@@ -51,23 +51,39 @@ export default {
 }
 
 .segment__item input[type=radio]:checked + .segment__button {
-  background-color: #ffffff !important;
-  border-radius: 6.93px;
-  border: 0.5px solid rgba(0, 0, 0, 0.04);
+  color: #4B4B4B;
+  border-color: #3DD498 !important;
+}
+
+.search-dropdown-outer .segment__button {
+  line-height: 45px;
+  height: 45px;
+}
+
+.main-course .segment__button {
+  line-height: 49px;
+  height: 49px;
+}
+
+.segment__item  .segment__button {
+  width: min-content !important;
+  margin: 0 auto;
+  background: none !important;
+  color: #61707D;
+  font-size: 16px;
+  border-bottom: 3px solid transparent !important;
+  border-left-width: 0px !important;
+  border-top-width: 0px !important;
+  border-right-width: 0px !important;
+  border-radius: 0px !important;
 }
 
 .segment__item input[type=radio]:not(:checked) + .segment__button {
-  background-color: transparent !important;
-  border: 0.5px solid transparent;
+
 }
 
-
 .segment__button, .segment__item input[type=radio]:active + .segment__button {
-  letter-spacing: -0.084px;
-  color: #171725 !important;
-  font-size: 14px;
-  border: 0.5px solid transparent;
-  transition: none;
+  font-size: 16px;
 }
 
 
@@ -91,6 +107,10 @@ body {
   height: 100vh;
 }
 
+.materials .page__content, .review .page__content {
+  padding-top: env(safe-area-inset-top) !important;
+  padding-top: const(safe-area-inset-top) !important;
+}
 
 .back-button__icon {
   display: none !important;
@@ -113,6 +133,7 @@ body {
 .back-button:active {
   opacity: 1;
 }
+
 
 button {
   border: none;
@@ -142,6 +163,13 @@ h1 {
   font-weight: 300 !important;
   font-size: 32px !important;
   line-height: 38px;
+}
+
+h4 {
+  font-family: 'Rubik', sans-serif !important;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 22px;
 }
 
 h2 {

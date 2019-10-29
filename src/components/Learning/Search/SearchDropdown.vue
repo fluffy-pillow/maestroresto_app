@@ -12,7 +12,6 @@
                         :tabs="tabs"
                         :index.sync="tabbarIndex"
           >
-
           </v-ons-tabbar>
         </v-ons-page>
       </div>
@@ -22,12 +21,10 @@
 <script>
     import Learning from '@/pages/Learning/Search/Learning'
     import Menu from '@/pages/Learning/Search/Menu'
+    import {mapGetters} from 'vuex'
 
     export default {
         name: "SearchDropdown",
-        props: {
-            query: String
-        },
         data () {
             return {
                 bShow: false,
@@ -44,6 +41,11 @@
                   }
                 ]
             }
+        },
+        computed: {
+            ...mapGetters({
+                query: 'search/getQuery'
+            })
         },
         watch: {
             query: function (newValue) {
@@ -87,18 +89,15 @@
   min-width: 100%;
   display: flex;
   box-shadow: none;
-  background: rgba(118, 118, 128, 0.12);
-  border-radius: 8.91px;
-  border: 2px solid rgba(118, 118, 128, 0);
-  height: 28px;
+  min-height: 45px;
+  border-bottom: 1px solid #EFF1F2 !important;
 }
 
 .segment-container {
-  padding-left: 16px;
-  padding-right: 16px;
   background-image: none;
   background-color: transparent;
   box-shadow: none;
+  height: 46px !important;
 }
 
 

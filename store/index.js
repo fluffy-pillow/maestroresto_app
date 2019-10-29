@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import user from './user'
 import systemMessage from './systemMessage'
 import footer from './footer'
+import search from './search'
 
 Vue.use(Vuex)
 
@@ -11,7 +12,8 @@ const createStore = () => {
     modules: {
       user: user,
       systemMessage: systemMessage,
-      footer: footer
+      footer: footer,
+      search: search
     }
   })
 }

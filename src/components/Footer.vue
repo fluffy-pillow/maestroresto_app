@@ -7,8 +7,8 @@
                 :class="[link.class, {active: activeLink === key}]"
                 @click="changeActiveLink(key)"
                 >
-                    <NavigationButton
-                        :to="link.to"
+                    <button
+                        @click="to(link.to)"
 
                     >
                         <span class="button-inner-wrapper">
@@ -18,7 +18,7 @@
                                 {{link.label}}
                             </span>
                         </span>
-                    </NavigationButton>
+                    </button>
             </li>
         </ul>
     </footer>
@@ -60,6 +60,15 @@
         methods: {
             changeActiveLink(newLinkID) {
                 this.activeLink = newLinkID
+            },
+            to (pageName) {
+                this.redir(pageName, {
+                        animation: 'none',
+                        animationOptions: {duration: 0.5},
+                    },
+                    true,
+                    true
+                )
             }
         },
         computed: {

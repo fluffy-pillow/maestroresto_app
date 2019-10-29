@@ -4,8 +4,8 @@
     >
         <div class="center">
           <div class="content">
-            <SearchInput :query.sync="query"></SearchInput>
-            <SearchDropdown :query.sync="query"></SearchDropdown>
+            <SearchInput></SearchInput>
+            <SearchDropdown></SearchDropdown>
           </div>
         </div>
     </v-ons-toolbar>
@@ -14,12 +14,13 @@
 <script>
     import SearchInput from "./SearchInput";
     import SearchDropdown from "./SearchDropdown";
+    import {mapGetters} from 'vuex'
+
     export default {
         name: "Search",
         components: {SearchDropdown, SearchInput},
         data () {
             return {
-                query: '',
                 bTransformed: false,
                 page: null,
                 pageContent: null
@@ -36,6 +37,11 @@
               }
             }
           },
+        },
+        computed: {
+            ...mapGetters({
+                query: 'search/getQuery'
+            })
         },
         mounted () {
            this.page = document.querySelector('.learning.page')
@@ -54,14 +60,13 @@
   height: calc(52px + constant(safe-area-inset-top));
   height: calc(52px + env(safe-area-inset-top));
   background-image: none;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: transparent;
   box-shadow: none;
-  transition: height 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
 
 .search.notEmpty {
   height: 100%;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: #ffffff;
 }
 
 .center {

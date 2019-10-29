@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import store from '../store'
+import Vue2TouchEvents from 'vue2-touch-events'
 import VueOnsen from 'vue-onsenui/esm';
 import VOnsPage from 'vue-onsenui/esm/components/VOnsPage';
 import VOnsNavigator from 'vue-onsenui/esm/components/VOnsNavigator';
@@ -26,6 +27,7 @@ import 'onsenui/css/onsen-css-components.css'
 Vue.config.productionTip = false
 
 Vue.use(VueOnsen)
+Vue.use(Vue2TouchEvents)
 Vue.mixin(navigationMixin)
 Vue.component(VOnsPage.name, VOnsPage);
 Vue.component(VOnsNavigator.name, VOnsNavigator);
