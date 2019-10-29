@@ -44,6 +44,8 @@
         height: calc(50px + env(safe-area-inset-top)) !important;
         flex-direction: column !important;
         background-color: #ffffff !important;
+        display: flex;
+        justify-content: flex-end;
         background-image: unset !important;
     }
 
