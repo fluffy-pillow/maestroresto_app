@@ -1,7 +1,7 @@
 <template>
     <li class="structure-item" :style="{background: bg}"
         @click="redir('Course', {
-                animation: 'slide',
+                animation: 'none',
                 animationOptions: {duration: 0.5},
             },
             false
