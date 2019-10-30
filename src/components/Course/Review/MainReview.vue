@@ -65,14 +65,19 @@
 
 <style scoped>
 .main-review {
-    padding-bottom: calc(225px + constant(safe-area-inset-top));
-    padding-bottom: calc(225px + env(safe-area-inset-top));
     padding-left: 16px;
     padding-right: 16px;
-    margin-top: 396px;
+    transform: translateY(440px);
     background: #ffffff;
     position: sticky;
     top: 0;
+    transition: transform 0.2s ease-in-out;
+    padding-bottom: 200px;
+    padding-top: env(safe-area-inset-top);
+}
+
+.main-review.transform {
+    transform: translateY(52px);
 }
 
 </style>

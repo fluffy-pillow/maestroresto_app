@@ -2,7 +2,7 @@
     <div class="head">
         <div class="container">
             <div class="top">
-                <v-ons-back-button on-device-backbutton="doSomething()">
+                <v-ons-back-button>
 
                 </v-ons-back-button>
                 <button class="heart">
@@ -44,22 +44,47 @@
 
 <style scoped>
     .head {
-        padding-top: 16px;
-        padding-top: 16px;
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../../assets/images/courses-bg.jpg) !important;
         background-size: cover !important;
         background-position: center center !important;
-        padding-bottom: 28px;
         position: fixed;
-        z-index: -1;
         width: 100%;
         transform: translate3d(0,0,0);
+        height: calc(399px + env(safe-area-inset-top));
+        transition: height 0.2s ease-in-out, max-height 0.2s ease-in-out;
+        overflow: hidden;
+        z-index: 4;
+        max-height: calc(399px + env(safe-area-inset-top));
+    }
+
+    .head.transform {
+        height: calc(52px + env(safe-area-inset-top));
+        max-height: calc(52px + env(safe-area-inset-top));
+    }
+
+    .head.transform .heart svg path {
+        fill: #F2F4F5;
+    }
+
+    .head.transform .heart {
+        width: 30px;
+        height: 30px;
+    }
+
+    .head.transform .back-button {
+        background-color: #F2F4F5;
+    }
+
+    .head.transform .container{
+        background: #ffffff;
     }
 
     .container {
         padding-left: 16px;
         padding-right: 16px;
-
+        padding-bottom: 28px;
+        background: transparent;
+        transition: background 0.2s ease-in-out;
     }
 
     .back-button {
@@ -71,17 +96,31 @@
         background-repeat: no-repeat;
         background-position: center center;
         border-radius: 50%;
+        transition: background 0.2s ease-in-out;
     }
 
     .top {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 50px;
+        padding-top: env(safe-area-inset-top);
     }
 
     .heart {
         width: 24px;
         height: 24px;
+        transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+    }
+
+    .heart svg {
+        width: 100%;
+        height: auto;
+    }
+
+    .heart svg path {
+        fill: #ffffff;
+        transition: fill 0.2s ease-in-out;
     }
 
     .middle {

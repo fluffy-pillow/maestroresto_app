@@ -107,9 +107,9 @@ body {
   height: 100vh;
 }
 
-.materials .page__content, .review .page__content {
-  padding-top: env(safe-area-inset-top) !important;
-  padding-top: const(safe-area-inset-top) !important;
+
+.main-course .page__content {
+  top: 0 !important;
 }
 
 .back-button__icon {
