@@ -12,25 +12,27 @@
                     </svg>
                 </button>
             </div>
-            <div class="middle">
-                <div class="middle-left">
-                    Персонал ресторана и его функциональные обязанности
-                </div>
-                <div class="middle-right">
-                    <svg class="chart--svg" width="100%" height="100%" viewBox="0 0 34 34">
-                        <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" opacity="0.1"></circle>
+            <div class="bottom">
+                <div class="bottom-top">
+                    <div class="middle-left">
+                        Персонал ресторана и его функциональные обязанности
+                    </div>
+                    <div class="middle-right">
+                        <svg class="chart--svg" width="100%" height="100%" viewBox="0 0 34 34">
+                            <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" opacity="0.1"></circle>
 
-                        <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" :stroke-dasharray="57" stroke-dashoffset="25"></circle>
-                    </svg>
-                    <div class="chart--text">
-                        57%
+                            <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" :stroke-dasharray="57" stroke-dashoffset="25"></circle>
+                        </svg>
+                        <div class="chart--text">
+                            57%
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="bottom">
-                <button class="learning-button">
-                    Начать обучение
-                </button>
+                <div class="bottom-bottom">
+                    <button class="learning-button">
+                        Начать обучение
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -82,9 +84,12 @@
     .container {
         padding-left: 16px;
         padding-right: 16px;
-        padding-bottom: 28px;
         background: transparent;
         transition: background 0.2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
     }
 
     .back-button {
@@ -103,7 +108,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: 50px;
+        min-height: 52px;
         padding-top: env(safe-area-inset-top);
     }
 
@@ -123,11 +128,20 @@
         transition: fill 0.2s ease-in-out;
     }
 
-    .middle {
-        margin-top: 157px;
+    .bottom {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bottom-top {
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    .bottom-bottom {
+        margin-top: 24px;
+        padding-bottom: 28px;
     }
 
     .middle-left {
