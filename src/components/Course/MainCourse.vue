@@ -71,20 +71,16 @@
 <script>
     import Review from '@/pages/Course/Review'
     import Materials from '@/pages/Course/Materials'
-    import Head from "./Head";
     import AdditionalHead from "./AdditionalHead";
 
     export default {
         name: "MainCourse",
-        components: {Materials, Review, AdditionalHead, Head},
+        components: {Materials, Review, AdditionalHead},
         data () {
             return {
                 activeTab: 0,
                 animationType: 'scrolLeft',
-                segmentIndex: 0,
-                tabbarIndex: 0,
                 bShowAdditionalHeader: false,
-                positionY: 0,
                 bShowPreloadScreen: true,
                 tabs: [
                     {
@@ -99,7 +95,6 @@
         methods: {
             handleScroll () {
                 this.bShowAdditionalHeader = (this.$refs.pageContent.scrollTop > 400)
-                console.log(this.bShowAdditionalHeader)
             },
             changeActiveTab (newValue) {
                 this.activeTab = newValue
@@ -108,27 +103,10 @@
                 this.bShowPreloadScreen = false
             }
         },
-        mounted () {
-            let that = this
-            this.$eventBus.$on('change-position-y', function (e) {
-                that.positionY = e
-            })
-        },
         watch: {
             activeTab (newValue) {
                 this.animationType = (newValue === 1) ?'scrollRight' : 'scrollLeft'
-            },
-            tabbarIndex: function () {
-                this.$eventBus.$emit('fix-position-y', this.positionY)
-            },
-            positionY: function () {
-                this.bShowAdditionalHeader = (this.positionY > 200)
             }
-        },
-        updated: function () {
-            this.$nextTick(function () {
-                console.log(1111)
-            })
         }
     }
 </script>
@@ -146,6 +124,7 @@
 
     .tab {
         width: 50%;
+        height: 48px;
         font-size: 16px;
         line-height: 22px;
         color: #4B4B4B;
