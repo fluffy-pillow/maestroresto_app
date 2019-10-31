@@ -85,7 +85,7 @@
                 tabbarIndex: 0,
                 bShowAdditionalHeader: false,
                 positionY: 0,
-                bShowPreloadScreen: false,
+                bShowPreloadScreen: true,
                 tabs: [
                     {
                         name: 'Обзор курса'
