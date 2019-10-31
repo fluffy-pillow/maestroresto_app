@@ -79,7 +79,7 @@
         data () {
             return {
                 activeTab: 0,
-                animationType: 'scrolLeft',
+                animationType: 'scrollLeft',
                 bShowAdditionalHeader: false,
                 bShowPreloadScreen: true,
                 tabs: [
@@ -130,13 +130,16 @@
         color: #4B4B4B;
         display: flex;
         justify-content: center;
+    }
+
+    .tab-text {
         border-bottom: 3px solid transparent;
+        height: 48px;
+        line-height: 48px
     }
 
     .tab.active .tab-text {
-        height: 48px;
-        line-height: 48px;
-        border-bottom: 3px solid #3DD498;
+        border-bottom: 3px solid #3DD498 !important;
     }
 
 
@@ -192,7 +195,7 @@
         transform: translate3d(0,0,0);
         overflow: hidden;
         z-index: 4;
-        top: calc(0px - env(safe-area-inset-top) * 3);
+        padding-top: env(safe-area-inset-top);
     }
 
 
@@ -320,6 +323,17 @@
     .pages-inner.scrollRight {
         transform: translateX(-100vw);
     }
+
+    .pages-inner.scrollLeft .materials {
+        height: 0px;
+        overflow: hidden;
+    }
+    .pages-inner.scrollRight .review {
+        height: 0px;
+        overflow: hidden;
+    }
+
+
     .pages-inner.scrollLeft {
         transform: translateX(0vw);
     }

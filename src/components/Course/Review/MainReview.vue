@@ -70,6 +70,7 @@
     background: #ffffff;
     position: sticky;
     top: 0;
+    padding-bottom: 250px;
 }
 
 </style>
