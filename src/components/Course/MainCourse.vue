@@ -1,7 +1,10 @@
 <template>
     <v-ons-page class="main-course">
-        <Head :class="{transform: bTransform}"></Head>
-        <v-ons-toolbar static class="segment-container" :class="{transform: bTransform}">
+        <AdditionalHead v-show="bShowAdditionalHeader"></AdditionalHead>
+        <Head :style="{transform: 'translateY(' + (0 - positionY) + 'px)'}"></Head>
+        <v-ons-toolbar static class="segment-container"
+           :style="{transform: 'translateY(' + (399 - positionY) + 'px)'}"
+        >
             <v-ons-segment class="segment"
                            tabbar-id="course"
                            :index.sync="segmentIndex"
@@ -22,15 +25,17 @@
     import Review from '@/pages/Course/Review'
     import Materials from '@/pages/Course/Materials'
     import Head from "./Head";
+    import AdditionalHead from "./AdditionalHead";
 
     export default {
         name: "MainCourse",
-        components: {Head},
+        components: {AdditionalHead, Head},
         data () {
             return {
                 segmentIndex: 0,
                 tabbarIndex: 0,
-                bTransform: false,
+                bShowAdditionalHeader: false,
+                positionY: 0,
                 tabs: [
                     {
                         page: Review,
@@ -43,29 +48,36 @@
                 ]
             }
         },
-        created () {
+        mounted () {
             let that = this
-            this.$eventBus.$on('transform-course-header', function (e) {
-                that.bTransform = e
+            this.$eventBus.$on('change-position-y', function (e) {
+                that.positionY = e
             })
-        }
+        },
+        watch: {
+            tabbarIndex: function () {
+                this.$eventBus.$emit('fix-position-y', this.positionY)
+            },
+            positionY: function () {
+                this.bShowAdditionalHeader = (this.positionY > 450)
+            }
+        },
     }
 </script>
 
 <style scoped>
-    .toolbar {
+    .segment-container {
         height: 50px !important;
         flex-direction: column !important;
         background-color: transparent !important;
         display: flex;
         justify-content: flex-end;
         background-image: unset !important;
-        transform: translateY(399px);
         opacity: 1;
         visibility: visible;
-        transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
         top: env(safe-area-inset-top) !important;
         box-shadow: none !important;
+        transition: transform 0.01s ease-in-out;
     }
 
     .toolbar.transform {

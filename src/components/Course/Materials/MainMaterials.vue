@@ -2,9 +2,9 @@
     <main class="main-materials">
         <MaterialsList>
             <MaterialItem
-                v-for="(item, key) of items"
-                :key="key"
-                :data="item"
+                    v-for="(item, key) of items"
+                    :key="key"
+                    :data="item"
             >
             </MaterialItem>
             <FinalMaterialItem></FinalMaterialItem>
@@ -68,17 +68,11 @@
 .main-materials {
     padding-left: 16px;
     padding-right: 16px;
-    transform: translateY(440px);
     background: #ffffff;
     position: sticky;
     top: 0;
-    transition: transform 0.2s ease-in-out;
     padding-bottom: 200px;
-    padding-top: env(safe-area-inset-top);
-}
-
-.main-materials.transform {
-    transform: translateY(52px);
+    padding-top: calc(440px + env(safe-area-inset-top)) !important;
 }
 
 </style>

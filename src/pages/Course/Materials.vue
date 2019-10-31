@@ -1,12 +1,13 @@
 <template>
     <v-ons-page class="materials">
         <div class="page__content"
-             @scroll="onScroll"
+             v-on:scroll.passive="onScroll"
         >
-            <MainMaterials :class="{transform: bTransform}"></MainMaterials>
+            <MainMaterials></MainMaterials>
         </div>
     </v-ons-page>
 </template>
+
 
 <script>
     import MainMaterials from "@/components/Course/Materials/MainMaterials";
@@ -15,19 +16,24 @@
         components: {MainMaterials},
         data () {
             return {
-                bTransform: false
+                positionY: 0
             }
         },
         methods: {
             onScroll (e) {
-                this.bTransform = (e.target.scrollTop > 0)
+                this.positionY = e.target.scrollTop
             }
         },
         watch: {
-            bTransform: function () {
-                this.$eventBus.$emit('transform-course-header', this.bTransform)
+            positionY: function () {
+                this.$eventBus.$emit('change-position-y', this.positionY)
             }
-        }
+        },
+        mounted () {
+            this.$eventBus.$on('fix-position-y', function (e) {
+                document.querySelector('.materials .page__content').scrollTop = e
+            })
+        },
     }
 </script>
 

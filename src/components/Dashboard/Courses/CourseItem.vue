@@ -2,7 +2,7 @@
     <li class="course-item" :style="{background: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),' +
     'url(' + require('@/assets/uploads/' + data.background) + ') no-repeat scroll 50% 0'}"
         @click="redir('Course', {
-                animation: 'none',
+                animation: 'slide',
                 animationOptions: {duration: 0.5},
             },
             false

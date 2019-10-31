@@ -9,9 +9,9 @@
         <ReviewDesc :title="'Что тебя ждет?'">
             <ReviewParamsList>
                 <ReviewParamsItem
-                    v-for="(item, key) of items"
-                    :key="key"
-                    :data="item"
+                        v-for="(item, key) of items"
+                        :key="key"
+                        :data="item"
                 >
                 </ReviewParamsItem>
             </ReviewParamsList>
@@ -67,17 +67,11 @@
 .main-review {
     padding-left: 16px;
     padding-right: 16px;
-    transform: translateY(440px);
     background: #ffffff;
     position: sticky;
     top: 0;
-    transition: transform 0.2s ease-in-out;
-    padding-bottom: 200px;
-    padding-top: env(safe-area-inset-top);
-}
-
-.main-review.transform {
-    transform: translateY(52px);
+    padding-bottom: 250px;
+    padding-top: calc(440px + env(safe-area-inset-top)) !important;
 }
 
 </style>

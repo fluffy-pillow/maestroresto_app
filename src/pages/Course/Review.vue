@@ -1,9 +1,9 @@
 <template>
     <v-ons-page class="review">
         <div class="page__content"
-             @scroll="onScroll"
+             v-on:scroll.passive="onScroll"
         >
-            <MainReview :class="{transform: bTransform}"></MainReview>
+            <MainReview></MainReview>
         </div>
     </v-ons-page>
 </template>
@@ -15,18 +15,24 @@
         components: {MainReview},
         data () {
             return {
-                bTransform: false
+                positionY: 0
             }
         },
         methods: {
             onScroll (e) {
-                this.bTransform = (e.target.scrollTop > 0)
+                this.positionY = e.target.scrollTop
             }
         },
         watch: {
-            bTransform: function () {
-                this.$eventBus.$emit('transform-course-header', this.bTransform)
+            positionY: function () {
+                this.$eventBus.$emit('change-position-y', this.positionY)
             }
+        },
+        mounted () {
+            this.$eventBus.$on('fix-position-y', function (e) {
+                console.log(e)
+                document.querySelector('.review .page__content').scrollTop = e
+            })
         }
     }
 </script>

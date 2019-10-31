@@ -52,11 +52,14 @@
         position: fixed;
         width: 100%;
         transform: translate3d(0,0,0);
-        height: calc(399px + env(safe-area-inset-top));
-        transition: height 0.2s ease-in-out, max-height 0.2s ease-in-out;
+        height: calc(399px + env(safe-area-inset-top) * 4) !important;
+        transition: transform 0.01s ease-in-out;
         overflow: hidden;
         z-index: 4;
-        max-height: calc(399px + env(safe-area-inset-top));
+        top: calc(0px - env(safe-area-inset-top) * 3);
+        max-height: calc(399px + env(safe-area-inset-top) * 4) !important;
+        display: flex;
+        align-items: flex-end;
     }
 
     .head.transform {
@@ -89,7 +92,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 100%;
+        height: calc(100% - env(safe-area-inset-top) * 4);
     }
 
     .back-button {
@@ -109,7 +112,6 @@
         justify-content: space-between;
         align-items: center;
         min-height: 52px;
-        padding-top: env(safe-area-inset-top);
     }
 
     .heart {
@@ -129,6 +131,7 @@
     }
 
     .bottom {
+        margin-top: 157px;
         display: flex;
         flex-direction: column;
     }
@@ -179,10 +182,6 @@
 
     .chart--svg {
         display: block !important;
-    }
-
-    .bottom {
-        margin-top: 24px;
     }
 
     .learning-button {
