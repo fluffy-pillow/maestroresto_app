@@ -2,12 +2,12 @@
     <v-ons-page class="main-course" @show="onShowPage">
         <AdditionalHead v-if="bShowAdditionalHeader"></AdditionalHead>
         <div class="page__content" @scroll="handleScroll" ref="pageContent">
-            <div v-if="bShowPreloadScreen">
+            <div :class="{show: bShowPreloadScreen}" class="preload-screen">
                 <div class="preload-image-wrapper">
                     <img :src="require('@/assets/images/course-preload-screen.png')">
                 </div>
             </div>
-            <div v-else>
+            <div :class="{show: !bShowPreloadScreen}" class="default-screen">
                 <div class="head">
                     <div class="container">
                         <div class="top">
@@ -124,9 +124,8 @@
 
     .tab {
         width: 50%;
-        height: 48px;
+        height: 51px;
         font-size: 16px;
-        line-height: 22px;
         color: #4B4B4B;
         display: flex;
         justify-content: center;
@@ -154,13 +153,6 @@
         visibility: visible;
         top: env(safe-area-inset-top) !important;
         box-shadow: none !important;
-        transition: transform 0.01s ease-in-out;
-    }
-
-    .toolbar.transform {
-        transform: translateY(0px);
-        opacity: 0;
-        visibility: hidden;
     }
 
     .segment {
@@ -203,7 +195,6 @@
         padding-left: 16px;
         padding-right: 16px;
         background: transparent;
-        transition: background 0.2s ease-in-out;
         display: flex;
         flex-direction: column;
     }
@@ -217,7 +208,7 @@
         background-repeat: no-repeat;
         background-position: center center;
         border-radius: 50%;
-        transition: background 0.2s ease-in-out;
+
     }
 
     .top {
@@ -230,7 +221,6 @@
     .heart {
         width: 24px;
         height: 24px;
-        transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
     }
 
     .heart svg {
@@ -240,7 +230,6 @@
 
     .heart svg path {
         fill: #ffffff;
-        transition: fill 0.2s ease-in-out;
     }
 
     .bottom {
@@ -333,6 +322,25 @@
         overflow: hidden;
     }
 
+    .preload-screen {
+        position: absolute;
+        background: #ffffff;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .preload-screen.show {
+        opacity: 1;
+    }
+
+    .default-screen {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .default-screen.show {
+        opacity: 1;
+    }
 
     .pages-inner.scrollLeft {
         transform: translateX(0vw);
