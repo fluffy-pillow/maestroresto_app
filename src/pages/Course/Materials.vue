@@ -1,11 +1,7 @@
 <template>
-    <v-ons-page class="materials">
-        <div class="page__content"
-             v-on:scroll.passive="onScroll"
-        >
-            <MainMaterials></MainMaterials>
-        </div>
-    </v-ons-page>
+    <div class="materials">
+        <MainMaterials></MainMaterials>
+    </div>
 </template>
 
 
@@ -38,7 +34,9 @@
 </script>
 
 <style scoped>
-.page__content {
+.materials {
+    width: 100vw;
     -webkit-overflow-scrolling: touch !important;
+    min-width: 100vw;
 }
 </style>

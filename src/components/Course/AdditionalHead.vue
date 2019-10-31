@@ -29,6 +29,7 @@
     align-items: flex-end;
     background: #ffffff !important;
     z-index: 999999;
+    box-shadow: none !important;
 }
 .center {
     width: 100%;

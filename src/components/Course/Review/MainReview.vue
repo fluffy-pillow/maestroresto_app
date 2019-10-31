@@ -70,8 +70,6 @@
     background: #ffffff;
     position: sticky;
     top: 0;
-    padding-bottom: 250px;
-    padding-top: calc(440px + env(safe-area-inset-top)) !important;
 }
 
 </style>

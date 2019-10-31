@@ -1,11 +1,7 @@
 <template>
-    <v-ons-page class="review">
-        <div class="page__content"
-             v-on:scroll.passive="onScroll"
-        >
-            <MainReview></MainReview>
-        </div>
-    </v-ons-page>
+    <div class="review">
+        <MainReview></MainReview>
+    </div>
 </template>
 
 <script>
@@ -38,7 +34,9 @@
 </script>
 
 <style scoped>
-.page__content {
+.review {
+    width: 100vw;
     -webkit-overflow-scrolling: touch !important;
+    min-width: 100vw;
 }
 </style>
