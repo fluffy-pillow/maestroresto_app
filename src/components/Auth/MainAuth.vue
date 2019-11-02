@@ -5,16 +5,9 @@
         Войдите в систему с помощью e-mail и пароль, выданных вам администратором.
       </p>
       <AuthForm></AuthForm>
-      <NavigationButton class="forgot-password-button"
-            :to="'Restore'"
-            :options="{
-                animation: 'slide',
-                animationOptions: {duration: 0.5},
-              }"
-            :remove-prev-page="false"
-        >
+      <button class="forgot-password-button" @click="openRestorePage">
         Я забыл пароль
-      </NavigationButton>
+      </button>
     </main>
 </template>
 
@@ -22,7 +15,18 @@
     import AuthForm from "./AuthForm";
     export default {
       name: "MainAuth",
-      components: {AuthForm}
+      components: {AuthForm},
+      methods: {
+          openRestorePage () {
+              this.redir('Restore', {
+                      animation: 'slide',
+                      animationOptions: {duration: 0.5},
+                  },
+                  true,
+                  false
+              )
+          }
+      }
     }
 </script>
 

@@ -50,7 +50,8 @@
           this.redir('NewPassword', {
               animation: 'slide',
               animationOptions: {duration: 0.5},
-            }
+            },
+            true
           )
         } else {
           this.showSystemMessage()
