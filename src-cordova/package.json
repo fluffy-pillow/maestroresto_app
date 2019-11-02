@@ -17,6 +17,7 @@
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.0.1",
     "cordova-plugin-console": "^1.1.0",
+    "cordova-plugin-globalization": "^1.11.0",
     "cordova-plugin-keyboard": "^1.2.0"
   },
   "devDependencies": {
@@ -29,7 +30,8 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-keyboard": {},
       "cordova-plugin-wkwebview-engine": {},
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-globalization": {}
     },
     "platforms": [
       "android",

@@ -1,6 +1,6 @@
 <template>
     <main class="main-auth">
-      <h1 class="title">Авторизуйтесь</h1>
+      <h1 class="title">{{$t("auth.title")}}</h1>
       <p class="desc">
         Войдите в систему с помощью e-mail и пароль, выданных вам администратором.
       </p>

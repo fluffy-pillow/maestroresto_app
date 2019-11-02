@@ -12,6 +12,9 @@
     },
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "com.vue.example.app"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.maestroresto.app"
     }
   },
   "dependent_plugins": {}

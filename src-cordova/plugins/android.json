@@ -16,8 +16,11 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.vue.example.app"
     },
-     "cordova-plugin-wkwebview-engine": {
+    "cordova-plugin-wkwebview-engine": {
       "PACKAGE_NAME": "com.vue.example.app"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
     }
   },
   "dependent_plugins": {}

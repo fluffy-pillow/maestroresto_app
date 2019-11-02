@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import store from '../store'
+import i18n from './i18n'
 import Vue2TouchEvents from 'vue2-touch-events'
 import VueOnsen from 'vue-onsenui/esm';
 import VOnsPage from 'vue-onsenui/esm/components/VOnsPage';
@@ -49,6 +50,7 @@ Vue.prototype.$eventBus = new Vue();
 
 new Vue({
   store,
+  i18n,
   render: h => h(App),
   mounted () {
       console.log( 'mounted' )
@@ -56,10 +58,17 @@ new Vue({
   },
   methods : {
       onDeviceReady () {
+          let that = this
           Keyboard.shrinkView(false);
           Keyboard.hideFormAccessoryBar(true);
           Keyboard.disableScrollingInShrinkView(true);
           document.addEventListener( 'touchstart', this.onClick, false )
+          navigator.globalization.getPreferredLanguage(
+              function (language) {
+                  that.$i18n.locale = language.value
+              },
+              function () {alert('Error getting language\n');}
+          );
       },
       removeFocusFromAllInputs () {
           let el = document.querySelector('input:focus')
