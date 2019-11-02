@@ -2,11 +2,11 @@
     <main class="main-auth">
       <h1 class="title">{{$t("auth.title")}}</h1>
       <p class="desc">
-        Войдите в систему с помощью e-mail и пароль, выданных вам администратором.
+          {{$t("auth.desc")}}
       </p>
       <AuthForm></AuthForm>
       <button class="forgot-password-button" @click="openRestorePage">
-        Я забыл пароль
+          {{$t("auth.forgot_password_button")}}
       </button>
     </main>
 </template>

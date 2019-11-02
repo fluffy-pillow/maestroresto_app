@@ -65,7 +65,7 @@ new Vue({
           document.addEventListener( 'touchstart', this.onClick, false )
           navigator.globalization.getPreferredLanguage(
               function (language) {
-                  that.$i18n.locale = language.value
+                  that.$i18n.locale = language.value.split('-')[0]
               },
               function () {alert('Error getting language\n');}
           );

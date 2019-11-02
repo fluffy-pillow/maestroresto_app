@@ -1,5 +1,12 @@
 {
   "auth": {
-    "title": "Авторизуйтесь"
+    "title": "Авторизуйтесь",
+    "desc": "Войдите в систему с помощью e-mail и пароль, выданных вам администратором.",
+    "forgot_password_button": "Я забыл пароль",
+    "email_input_placeholder": "Укажите Ваш e-mail",
+    "password_input_placeholder": "Укажите пароль",
+    "password_input_name": "Пароль",
+    "wrong_password_message": "Вы ввели неправильный e-mail или пароль",
+    "enter_button": "Войти"
   }
 }

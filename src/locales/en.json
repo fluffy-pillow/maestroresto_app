@@ -1,5 +1,12 @@
 {
   "auth": {
-    "title": "Log in"
+    "title": "Log in",
+    "desc": "Log in using the email and password that the administrator gave you.",
+    "forgot_password_button": "I forgot password",
+    "email_input_placeholder": "Enter your e-mail",
+    "password_input_placeholder": "Enter password",
+    "password_input_name": "password",
+    "wrong_password_message": "You have entered the wrong e-mail or password",
+    "enter_button": "Enter"
   }
 }

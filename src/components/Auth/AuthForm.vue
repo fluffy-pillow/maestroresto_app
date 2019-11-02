@@ -3,7 +3,7 @@
       <label class="form-item">
         <input class="form-item-input need-keyboard"
                   type="email"
-                  placeholder="Укажите Ваш e-mail"
+                  :placeholder="$t('auth.email_input_placeholder')"
                   v-model="email.inputText"
                   :class="{error: bError}">
         <span class="form-item-name">
@@ -15,12 +15,12 @@
         <input class="form-item-input"
                   v-model="password.inputText"
                   :type="password.inputType"
-                  placeholder="Введите пароль"
+                  :placeholder="$t('auth.password_input_placeholder')"
                   :class="{error: bError}"
                   ref="passwordInput"
         >
         <span class="form-item-name">
-            Пароль
+            {{$t("auth.password_input_name")}}
         </span>
         <span class="switch-input-type-button" @click="togglePasswordInputType">
           <span v-if="password.inputType === 'password'">
@@ -86,7 +86,7 @@
             this.to = 'Dashboard'
           } else {
             this.showSystemMessage()
-            this.setTextSystemMessage('Вы ввели неправильный e-mail или пароль')
+            this.setTextSystemMessage(this.$t("auth.wrong_password_message"))
             this.setTypeSystemMessage('error')
             this.bError = true
           }
