@@ -1,5 +1,5 @@
 <template>
-    <li class="material-item" :class="{locked: data.locked}">
+    <li class="material-item" :class="{locked: data.locked}" @click="openMaterial">
         <span class="head">
             <span class="icon-wrapper" :class="{empty: !data.icon}">
                 <span class="icon">
@@ -69,6 +69,18 @@
         name: "MaterialItem",
         props: {
             data: Object
+        },
+        methods: {
+            openMaterial () {
+                if (!this.data.locked) {
+                    this.redir('Material', {
+                            animation: 'slide',
+                            animationOptions: {duration: 0.5},
+                        },
+                        false
+                    )
+                }
+            }
         }
     }
 </script>

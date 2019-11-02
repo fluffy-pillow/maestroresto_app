@@ -9,6 +9,7 @@ import Restore from "@/pages/Restore"
 import Code from "@/pages/Code"
 import NewPassword from "@/pages/NewPassword"
 import Course from "@/pages/Course"
+import Material from "@/pages/Course/Materials/Material"
 
 
 Vue.prototype.$eventBus = new Vue()
@@ -49,6 +50,10 @@ const router = [
     {
         name: 'Course',
         component: Course
+    },
+    {
+        name: 'Material',
+        component: Material
     }
 ]
 

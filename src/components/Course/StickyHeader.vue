@@ -1,5 +1,5 @@
 <template>
-    <v-ons-toolbar static class="additional-head">
+    <v-ons-toolbar static class="sticky-header">
         <div class="center">
             <div class="container">
                 <v-ons-back-button>
@@ -18,12 +18,12 @@
 
 <script>
     export default {
-        name: "AdditionalHead"
+        name: "StickyHeader"
     }
 </script>
 
 <style scoped>
-.additional-head {
+.sticky-header {
     height: calc(44px + env(safe-area-inset-top)) !important;
     display: flex;
     align-items: flex-end;
