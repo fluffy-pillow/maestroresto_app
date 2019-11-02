@@ -59,13 +59,14 @@ const router = [
 
 const navigationMixin = {
   methods: {
-    redir (pageName, options = {animation: 'none', animationOptions: {duration: 0}}, removePrevPage = true, fromFooter = false) {
+    redir (pageName, options = {animation: 'none', animationOptions: {duration: 0}}, swipeable = false, removePrevPage = true, fromFooter = false) {
       this.$eventBus.$emit('change-page',
         {
           extends: router.filter(item => item.name === pageName)[0].component,
           onsNavigatorOptions: options,
           removePrevPage: removePrevPage,
-          fromFooter: fromFooter
+          fromFooter: fromFooter,
+          swipeable: swipeable
         }
       )
     },
@@ -121,14 +122,17 @@ const navigation = {
     template: `<v-ons-navigator
          animation="none"
          :page-stack="pageStack"
+         :swipeable="swipeable"
     ></v-ons-navigator>`,
     data () {
         return {
-            pageStack: [router[0].component]
+            pageStack: [router[0].component],
+            swipeable: false
         }
     },
     methods: {
         onChangePage (e) {
+            this.swipeable = e.swipeable
             if (e.fromFooter) {
                 if (this.pageStack.length > 1) this.pageStack.shift()
             }

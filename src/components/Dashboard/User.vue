@@ -106,7 +106,7 @@
     min-width: 32px;
     overflow: hidden;
     border-radius: 50%;
-    box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.36);
+    box-shadow: 0px -1px 13px rgba(0, 0, 0, 0.4);
 }
 
 

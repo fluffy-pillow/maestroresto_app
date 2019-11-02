@@ -5,6 +5,7 @@
                 animation: 'slide',
                 animationOptions: {duration: 0.5},
             },
+            true,
             false
         )"
     >

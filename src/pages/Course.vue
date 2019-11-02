@@ -24,7 +24,7 @@
         },
         methods: {
             handleScroll () {
-                this.bShowStickyHeader = (this.$refs.pageContent.scrollTop > 400)
+                this.bShowStickyHeader = (this.$refs.pageContent.scrollTop > 0)
             },
             onShowPage () {
                 this.bShowPreloadScreen = false
@@ -37,7 +37,6 @@
 .course {
     -webkit-overflow-scrolling: touch
 }
-
 
 
 </style>

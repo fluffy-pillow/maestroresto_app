@@ -22,5 +22,6 @@
 <style scoped>
 .main-dashboard {
     padding-bottom: 64px;
+    padding-top: calc(44px - env(safe-area-inset-top));
 }
 </style>

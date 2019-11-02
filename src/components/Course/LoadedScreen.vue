@@ -152,6 +152,10 @@
         overflow: hidden;
         z-index: 4;
         padding-top: env(safe-area-inset-top);
+        height: calc(446px + env(safe-area-inset-top) * 7) !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
     }
 
 

@@ -66,6 +66,7 @@
                         animation: 'none',
                         animationOptions: {duration: 0.5},
                     },
+                    false,
                     true,
                     true
                 )

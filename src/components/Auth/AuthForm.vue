@@ -59,11 +59,11 @@
       data () {
         return {
           email: {
-            inputText: '',
+            inputText: 'test@test.test',
             desiredText: 'test@test.test',
           },
           password: {
-            inputText: '',
+            inputText: 'test',
             desiredText: 'test',
             inputType: 'password',
           },

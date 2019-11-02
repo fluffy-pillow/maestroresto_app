@@ -50,6 +50,10 @@ export default {
   src: url('fonts/Rubik-Light.ttf') format('truetype');
 }
 
+.course .page__content {
+  top: calc(0px - env(safe-area-inset-top) * 7) !important;
+}
+
 .segment__item input[type=radio]:checked + .segment__button {
   color: #4B4B4B;
   border-color: #3DD498 !important;
@@ -86,6 +90,9 @@ export default {
   font-size: 16px;
 }
 
+.dashboard > .page__content, .learning > .page__content {
+  top: 0 !important;
+}
 
 .navigation.iphonex > .dashboard > .page__content, .navigation.iphonex > .learning > .page__content {
   padding-top: calc(constant(safe-area-inset-top)*2) !important;

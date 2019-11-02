@@ -77,6 +77,7 @@
                             animation: 'slide',
                             animationOptions: {duration: 0.5},
                         },
+                        false,
                         false
                     )
                 }
