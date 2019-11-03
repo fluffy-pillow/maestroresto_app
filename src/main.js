@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import store from '../store'
 import i18n from './i18n'
+import Axios from 'axios'
+import { nSQL } from 'nano-sql'
 import Vue2TouchEvents from 'vue2-touch-events'
 import VueOnsen from 'vue-onsenui/esm';
 import VOnsPage from 'vue-onsenui/esm/components/VOnsPage';
@@ -46,7 +48,25 @@ Vue.component(navigationButton.name, navigationButton);
 Vue.component(navigation.name, navigation);
 
 Vue.prototype.$eventBus = new Vue();
-/* eslint-disable no-new */
+
+Vue.prototype.$http = Axios;
+
+const token = localStorage.getItem('user-token')
+if (token) {
+    Vue.prototype.$http.defaults.headers.common['Authorization'] = token
+}
+
+document.addEventListener(typeof cordova !== "undefined" ? "deviceready" : "DOMContentLoaded", () => {
+    nSQL("user")
+        .model([
+            { key: 'id', type: 'int', props: ['pk', 'ai'] },
+            { key: 'token', type: 'string' },
+            { key: 'user', type: 'string' }
+        ])
+        .config({
+            mode: window.nSQLite.getMode() // required
+        }).connect()
+});
 
 new Vue({
   store,

@@ -3,13 +3,13 @@
     <v-ons-page class="main-page">
       <SystemMessage></SystemMessage>
       <Navigation class="navigation" :class="{iphonex: $ons.platform.isIPhoneX()}"></Navigation>
-      <Footer v-show="bAuthorized && bFooterIsShow"></Footer>
+      <Footer v-show="bLoggedIn && bFooterIsShow"></Footer>
     </v-ons-page>
   </div>
 </template>
 <script>
 
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import Footer from "./components/Footer";
 import SystemMessage from "./components/SystemMessage";
 export default {
@@ -17,9 +17,24 @@ export default {
   components: {SystemMessage, Footer},
   computed: {
     ...mapGetters({
-      bAuthorized: 'user/isAuthorized',
-      bFooterIsShow: 'footer/isShow'
+      bFooterIsShow: 'footer/isShow',
+      bLoggedIn: 'auth/isLoggedIn'
     })
+  },
+  methods: {
+      ...mapActions({
+          generateTimezoneOffset: 'helpers/generateTimezoneOffset',
+      })
+  },
+  watch: {
+      bLoggedIn: function (newValue) {
+          if (newValue === false) {
+              this.redir('Auth')
+          }
+      }
+  },
+  mounted () {
+      this.redir('Dashboard')
   }
 }
 </script>

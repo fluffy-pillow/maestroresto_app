@@ -38,16 +38,9 @@
         </span>
       </label>
 
-      <NavigationButton class="form-submit"
-              :disabled="!bComplete"
-              :options="{
-                animation: 'lift',
-                animationOptions: {duration: 0.5},
-              }"
-              :to="to"
-      >
+      <button class="form-submit" :disabled="!bComplete">
         Войти
-      </NavigationButton>
+      </button>
     </form>
 </template>
 
@@ -72,31 +65,42 @@
         }
       },
       methods: {
-        isValid () {
+/*        isValid () {
           return (this.email.inputText === this.email.desiredText && this.password.inputText === this.password.desiredText)
-        },
+        },*/
         togglePasswordInputType (e) {
           this.password.inputType = (this.password.inputType === 'password') ? 'text' : 'password'
         },
         onSubmit (e) {
-          if (this.isValid()) {
-            this.bError = false
-            this.hideSystemMessage()
-            this.signIn()
-            this.to = 'Dashboard'
-          } else {
-            this.showSystemMessage()
-            this.setTextSystemMessage(this.$t("auth.wrong_password_message"))
-            this.setTypeSystemMessage('error')
-            this.bError = true
-          }
+            let email = this.email.inputText
+            let password = this.password.inputText
+            let timezoneOffset = this.timezoneOffset
+            this.login({email: email, password: password, timezoneOffset: timezoneOffset, language: this.$i18n.locale})
+              .then((response) => {
+                  if (response.error) {
+                      this.showSystemMessage()
+                      this.setTextSystemMessage(response.error.message)
+                      this.setTypeSystemMessage('error')
+                      this.bError = true
+                  } else {
+                      this.redir('Dashboard', {
+                              animation: 'lift',
+                              animationOptions: {duration: 0.5},
+                          },
+                      )
+                  }
+              })
+              .catch(error => {
+                  console.log(error)
+              })
         },
         ...mapActions({
           signIn: 'user/signIn',
           showSystemMessage: 'systemMessage/show',
           hideSystemMessage: 'systemMessage/hide',
           setTextSystemMessage: 'systemMessage/setText',
-          setTypeSystemMessage: 'systemMessage/setType'
+          setTypeSystemMessage: 'systemMessage/setType',
+          login: 'auth/login'
         })
       },
       computed: {
@@ -104,7 +108,8 @@
           return (this.email.inputText.length > 0) && (this.password.inputText.length > 0)
         },
         ...mapGetters({
-          bShowSystemMessage: 'systemMessage/isShow'
+          bShowSystemMessage: 'systemMessage/isShow',
+          timezoneOffset: 'helpers/getTimezoneOffset'
         })
       },
       watch: {
