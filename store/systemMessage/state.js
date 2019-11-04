@@ -1,5 +1,6 @@
 export default () => ({
   bShow: false,
-  text: 'system_message',
-  type: ''
+  message: 'system_message',
+  type: '',
+  duration: 0
 })

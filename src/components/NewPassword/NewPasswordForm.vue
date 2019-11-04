@@ -7,6 +7,7 @@
                 placeholder="Введите пароль"
                 :class="{error: bError}"
                 ref="passwordInput"
+                @click.prevent="onClickInput"
       >
 
       <span class="form-item-name">
@@ -49,6 +50,9 @@
       }
     },
     methods: {
+      onClickInput () {
+          if (this.bError) this.bError = false
+      },
       isValid () {
         return (this.password.inputText.length >= 8)
       },
@@ -57,33 +61,27 @@
       },
       onSubmit (e) {
         if (this.isValid()) {
+          this.hideSystemMessage()
           this.bError = false
           this.returnToRootPage()
         } else {
+
           e.preventDefault()
-          this.showSystemMessage()
-          this.setTextSystemMessage('Пароль должен содержать минимум \n' +
-            '8 символов')
-          this.setTypeSystemMessage('error')
+          this.systemMessage(
+            {
+              type: 'error',
+              message: 'Пароль должен содержать минимум 8 символов',
+              duration: 5000
+            }
+          )
+
           this.bError = true
         }
       },
       ...mapActions({
-        showSystemMessage: 'systemMessage/show',
         hideSystemMessage: 'systemMessage/hide',
-        setTextSystemMessage: 'systemMessage/setText',
-        setTypeSystemMessage: 'systemMessage/setType'
+        systemMessage: 'systemMessage/systemMessage',
       })
-    },
-    computed: {
-      ...mapGetters({
-        bShowSystemMessage: 'systemMessage/isShow'
-      })
-    },
-    watch: {
-      bShowSystemMessage: function (newValue) {
-        if (newValue === false) this.bError = false
-      }
     }
   }
 </script>

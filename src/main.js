@@ -5,7 +5,6 @@ import App from './App'
 import store from '../store'
 import i18n from './i18n'
 import Axios from 'axios'
-import { nSQL } from 'nano-sql'
 import Vue2TouchEvents from 'vue2-touch-events'
 import VueOnsen from 'vue-onsenui/esm';
 import VOnsPage from 'vue-onsenui/esm/components/VOnsPage';
@@ -20,11 +19,14 @@ import VOnsPullHook from 'vue-onsenui/esm/components/VOnsPullHook';
 import VOnsProgressCircular from 'vue-onsenui/esm/components/VOnsProgressCircular';
 import VOnsSegment from 'vue-onsenui/esm/components/VOnsSegment';
 import VOnsBackButton from 'vue-onsenui/esm/components/VOnsBackButton';
+import DotLoader from 'vue-spinner/src/DotLoader.vue';
 
-import {navigation, navigationButton, navigationMixin} from "./navigation";
+import {navigation, navigationMixin} from "./navigation";
 
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css'
+
+import userDB from './db/userDB'
 
 
 Vue.config.productionTip = false
@@ -44,7 +46,7 @@ Vue.component(VOnsPullHook.name, VOnsPullHook);
 Vue.component(VOnsProgressCircular.name, VOnsProgressCircular);
 Vue.component(VOnsSegment.name, VOnsSegment);
 Vue.component(VOnsBackButton.name, VOnsBackButton);
-Vue.component(navigationButton.name, navigationButton);
+Vue.component(DotLoader.name, DotLoader);
 Vue.component(navigation.name, navigation);
 
 Vue.prototype.$eventBus = new Vue();
@@ -57,15 +59,7 @@ if (token) {
 }
 
 document.addEventListener(typeof cordova !== "undefined" ? "deviceready" : "DOMContentLoaded", () => {
-    nSQL("user")
-        .model([
-            { key: 'id', type: 'int', props: ['pk', 'ai'] },
-            { key: 'token', type: 'string' },
-            { key: 'user', type: 'string' }
-        ])
-        .config({
-            mode: window.nSQLite.getMode() // required
-        }).connect()
+    userDB.init()
 });
 
 new Vue({

@@ -8,6 +8,7 @@
               :class="{error: bError}"
              pattern="[0-9]*" number
              @keydown="handleKeydown"
+             @click.prevent="onClickInput"
       >
       <span class="form-item-name">
           КОД ПОДТВЕРЖДЕНИЯ
@@ -19,7 +20,7 @@
 </template>
 
 <script>
-  import {mapActions, mapGetters} from 'vuex'
+  import {mapActions} from 'vuex'
 
   export default {
     name: "CodeForm",
@@ -41,6 +42,9 @@
           }
         }
       },
+      onClickInput () {
+        if (this.bError) this.bError = false
+      },
       isValid () {
         return (this.code.inputText === this.code.desiredText)
       },
@@ -54,29 +58,23 @@
             true
           )
         } else {
-          this.showSystemMessage()
-          this.setTextSystemMessage('Неверный код!')
-          this.setTypeSystemMessage('error')
+          this.systemMessage(
+              {
+                  type: 'error',
+                  message: 'Неверный код!',
+                  duration: 5000
+              }
+          )
           this.bError = true
         }
       },
       ...mapActions({
-        showSystemMessage: 'systemMessage/show',
-        setTextSystemMessage: 'systemMessage/setText',
-        setTypeSystemMessage: 'systemMessage/setType'
+        systemMessage: 'systemMessage/systemMessage'
       })
     },
     computed: {
       bComplete () {
         return (this.code.inputText.length === 4)
-      },
-      ...mapGetters({
-        bShowSystemMessage: 'systemMessage/isShow'
-      })
-    },
-    watch: {
-      bShowSystemMessage: function (newValue) {
-        if (newValue === false) this.bError = false
       }
     }
   }

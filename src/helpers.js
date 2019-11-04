@@ -1,3 +1,20 @@
+function pad (number, length) {
+    let str = "" + number
+    while (str.length < length) {
+        str = '0'+str
+    }
+    return str
+}
+
+const timezoneOffset = () =>  {
+    let offset = new Date().getTimezoneOffset()
+    offset = ((offset < 0 ? '+' : '-') +
+        pad(parseInt(Math.abs(offset / 60)), 2) + ":" +
+        pad(Math.abs(offset % 60), 2))
+    return offset
+}
+
+
 const isset = (obj, path) => {
     let stone;
 
@@ -26,4 +43,4 @@ const isset = (obj, path) => {
     return true;
 }
 
-export {isset}
+export {isset, timezoneOffset}

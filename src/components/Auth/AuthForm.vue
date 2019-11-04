@@ -5,7 +5,9 @@
                   type="email"
                   :placeholder="$t('auth.email_input_placeholder')"
                   v-model="email.inputText"
-                  :class="{error: bError}">
+                  :class="{error: bError}"
+                  @click.prevent="onClickInput"
+        >
         <span class="form-item-name">
             E-MAIL
         </span>
@@ -18,6 +20,7 @@
                   :placeholder="$t('auth.password_input_placeholder')"
                   :class="{error: bError}"
                   ref="passwordInput"
+                  @click.prevent="onClickInput"
         >
         <span class="form-item-name">
             {{$t("auth.password_input_name")}}
@@ -45,7 +48,9 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex'
+    import {mapActions} from 'vuex'
+    import AuthService from '@/services/AuthService'
+    import userBD from '@/db/userDB'
 
     export default {
       name: "AuthForm",
@@ -70,43 +75,44 @@
         togglePasswordInputType (e) {
           this.password.inputType = (this.password.inputType === 'password') ? 'text' : 'password'
         },
+        onClickInput () {
+            if (this.bError) this.bError = false
+        },
         onSubmit (e) {
+            this.showGlobalPreloader()
             let data = {email: this.email.inputText, password: this.password.inputText}
-            this.login(data)
+            AuthService.login(data, response => {
+                if (response.error) {
+                  this.systemMessage(
+                      {
+                          type: 'error',
+                          message: response.error.message,
+                          duration: 5000
+                      }
+                  )
+                  this.showGlobalPreloader()
+                  this.bError = true
+                } else {
+                    userBD.insertData(response)
+                    this.redir('Dashboard', {
+                        animation: 'lift',
+                        animationOptions: {duration: 0.5},
+                    })
+                }
+                this.hideGlobalPreloader()
+            })
         },
         ...mapActions({
-          showSystemMessage: 'systemMessage/show',
-          hideSystemMessage: 'systemMessage/hide',
-          setTextSystemMessage: 'systemMessage/setText',
-          setTypeSystemMessage: 'systemMessage/setType',
-          login: 'auth/login',
+          systemMessage: 'systemMessage/systemMessage',
+          showGlobalPreloader: 'globalPreloader/show',
+          hideGlobalPreloader: 'globalPreloader/hide',
         })
       },
       computed: {
         bComplete () {
           return (this.email.inputText.length > 0) && (this.password.inputText.length > 0)
-        },
-        ...mapGetters({
-          bShowSystemMessage: 'systemMessage/isShow',
-          bAuthError: 'auth/isError',
-          errorMessage: 'auth/getErrorMessage'
-        })
-      },
-      watch: {
-        bAuthError: function (newValue) {
-            if (newValue) {
-                this.showSystemMessage()
-                this.setTextSystemMessage(this.errorMessage)
-                this.setTypeSystemMessage('error')
-                this.bError = true
-            } else {
-                this.hideSystemMessage()
-            }
-        },
-        bShowSystemMessage: function (newValue) {
-          if (newValue === false) this.bError = false
         }
-      }
+      },
     }
 </script>
 

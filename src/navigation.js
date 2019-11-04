@@ -16,12 +16,12 @@ Vue.prototype.$eventBus = new Vue()
 
 const router = [
     {
-      name: 'Auth',
-      component: Auth
-    },
-    {
         name: 'Dashboard',
         component: Dashboard
+    },
+    {
+      name: 'Auth',
+      component: Auth
     },
     {
         name: 'Learning',
@@ -76,47 +76,6 @@ const navigationMixin = {
   }
 }
 
-const navigationButton = {
-    name: 'NavigationButton',
-    template: `
-        <button @click="changePage(to)">
-        <slot></slot>
-        </button>
-    `,
-    methods: {
-        changePage (pageName) {
-            if (pageName.length > 0) {
-              this.$eventBus.$emit('change-page',
-                {
-                  extends: router.filter(item => item.name === pageName)[0].component,
-                  onsNavigatorOptions: this.options,
-                  removePrevPage: this.removePrevPage
-                }
-              )
-            }
-        }
-    },
-    props: {
-        to: String,
-        options: {
-          type: Object,
-          default: () => ({
-            animation: 'none',
-            animationOptions: {duration: 0},
-          })
-        },
-        removePrevPage: {
-          type: Boolean,
-          default: true
-        }
-    },
-    watch: {
-      to: function (newValue) {
-        this.changePage(newValue)
-      }
-    }
-}
-
 const navigation = {
     name: 'Navigation',
     template: `<v-ons-navigator
@@ -156,4 +115,4 @@ const navigation = {
 }
 
 
-export {navigationButton, navigation, navigationMixin}
+export {navigation, navigationMixin}

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <v-ons-page class="main-page">
+      <GlobalPreloader></GlobalPreloader>
       <SystemMessage></SystemMessage>
       <Navigation class="navigation" :class="{iphonex: $ons.platform.isIPhoneX()}"></Navigation>
       <Footer v-show="bLoggedIn && bFooterIsShow"></Footer>
@@ -12,15 +13,32 @@
 import {mapGetters} from 'vuex'
 import Footer from "./components/Footer";
 import SystemMessage from "./components/SystemMessage";
+import userBD from '@/db/userDB'
+import GlobalPreloader from "./components/GlobalPreloader";
+
 export default {
   name: 'app',
-  components: {SystemMessage, Footer},
+  components: {GlobalPreloader, SystemMessage, Footer},
   computed: {
     ...mapGetters({
       bFooterIsShow: 'footer/isShow',
-      bLoggedIn: 'auth/isLoggedIn'
     })
-  }
+  },
+  data () {
+      return {
+          bLoggedIn: false
+      }
+  },
+  mounted () {
+      userBD.getToken().then(response => {
+          this.bLoggedIn = !!response[0]
+         if (this.bLoggedIn) {
+              this.redir('Dashboard')
+          } else {
+              this.redir('Auth')
+          }
+      })
+  },
 }
 </script>
 

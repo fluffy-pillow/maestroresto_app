@@ -2,7 +2,7 @@
     <div class="system-message-wrapper" :class="{show: bShow}">
       <div class="system-message" @click="close" :class="type">
         <div class="text">
-          {{text}}
+          {{message}}
         </div>
       </div>
     </div>
@@ -30,16 +30,18 @@
       computed: {
         ...mapGetters({
           bShow: 'systemMessage/isShow',
-          text: 'systemMessage/getText',
+          message: 'systemMessage/getMessage',
           type: 'systemMessage/getType',
+          duration: 'systemMessage/getDuration',
         })
       },
       watch: {
         bShow: function (newValue) {
           if (newValue === true) {
+            if (this.timerId) clearTimeout(this.timerId)
             this.timerId = setTimeout(() => {
               this.close()
-            }, 5000)
+            }, this.duration)
           }
         }
       }

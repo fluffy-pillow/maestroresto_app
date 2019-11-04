@@ -1,7 +1,13 @@
 <template>
     <form class="restore-form" @submit.prevent="onSubmit">
       <label class="form-item ">
-        <input class="form-item-input need-keyboard" type="email" placeholder="Укажите Ваш e-mail" v-model="email.inputText" :class="{error: bError}">
+        <input class="form-item-input need-keyboard"
+               type="email"
+               placeholder="Укажите Ваш e-mail"
+               v-model="email.inputText"
+               :class="{error: bError}"
+               @click.prevent="onClickInput"
+        >
         <span class="form-item-name">
             E-MAIL
         </span>
@@ -12,7 +18,7 @@
 </template>
 
 <script>
-    import {mapActions, mapGetters} from 'vuex'
+    import {mapActions} from 'vuex'
 
     export default {
       name: "RestoreForm",
@@ -29,12 +35,21 @@
         isValid () {
           return (this.email.inputText === this.email.desiredText)
         },
+        onClickInput () {
+          if (this.bError) this.bError = false
+        },
         onSubmit (e) {
           if (this.isValid()) {
-            this.showSystemMessage()
-            this.setTextSystemMessage('Письмо с кодом восстановления успешно отправлено')
-            this.setTypeSystemMessage('success')
             this.bError = false
+
+            this.systemMessage(
+              {
+                type: 'success',
+                message: 'Письмо с кодом восстановления успешно отправлено',
+                duration: 5000
+              }
+            )
+
             this.redir('Code', {
                 animation: 'slide',
                 animationOptions: {duration: 0.5},
@@ -42,31 +57,25 @@
               false,
               false
             )
+
           } else {
-            this.showSystemMessage()
-            this.setTextSystemMessage('Такой e-mail не зарегистрирован в системе!')
-            this.setTypeSystemMessage('error')
+            this.systemMessage(
+              {
+                type: 'error',
+                message: 'Такой e-mail не зарегистрирован в системе!',
+                duration: 5000
+              }
+            )
             this.bError = true
           }
         },
         ...mapActions({
-          signIn: 'user/signIn',
-          showSystemMessage: 'systemMessage/show',
-          setTextSystemMessage: 'systemMessage/setText',
-          setTypeSystemMessage: 'systemMessage/setType'
+          systemMessage: 'systemMessage/systemMessage'
         })
       },
       computed: {
         bComplete () {
           return (this.email.inputText.length > 0)
-        },
-        ...mapGetters({
-          bShowSystemMessage: 'systemMessage/isShow'
-        })
-      },
-      watch: {
-        bShowSystemMessage: function (newValue) {
-          if (newValue === false) this.bError = false
         }
       }
     }

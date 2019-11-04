@@ -4,7 +4,7 @@ import systemMessage from './systemMessage'
 import footer from './footer'
 import search from './search'
 import auth from './auth'
-import helpers from './helpers'
+import globalPreloader from './globalPreloader'
 
 Vue.use(Vuex)
 
@@ -15,7 +15,7 @@ const createStore = () => {
       footer: footer,
       search: search,
       auth: auth,
-      helpers: helpers
+      globalPreloader: globalPreloader
     }
   })
 }
