@@ -24,8 +24,19 @@ const userDB = {
             })
         })
     },
-    getToken: () => {
-        return nSQL("user").query("select", ["token"]).exec()
+    getToken: async () => {
+        return await new Promise((resolve, reject) => {
+             nSQL("user").query("select", ["token"]).exec().then(response => {
+                resolve(response[0].token)
+            })
+        })
+    },
+    getUserData: async () => {
+        return await new Promise((resolve, reject) => {
+             nSQL("user").query("select", ["user"]).exec().then(response => {
+                resolve(response[0].user)
+            })
+        })
     }
 }
 

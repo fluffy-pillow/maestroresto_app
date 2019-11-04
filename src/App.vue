@@ -13,7 +13,7 @@
 import {mapGetters} from 'vuex'
 import Footer from "./components/Footer";
 import SystemMessage from "./components/SystemMessage";
-import userBD from '@/db/userDB'
+import userDB from '@/db/userDB'
 import GlobalPreloader from "./components/GlobalPreloader";
 
 export default {
@@ -30,7 +30,8 @@ export default {
       }
   },
   mounted () {
-      userBD.getToken().then(response => {
+      this.redir('Dashboard')
+      userDB.getToken().then(response => {
           this.bLoggedIn = !!response[0]
          if (this.bLoggedIn) {
               this.redir('Dashboard')

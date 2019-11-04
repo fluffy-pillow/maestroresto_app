@@ -16,12 +16,12 @@ Vue.prototype.$eventBus = new Vue()
 
 const router = [
     {
-        name: 'Dashboard',
-        component: Dashboard
+        name: 'Auth',
+        component: Auth
     },
     {
-      name: 'Auth',
-      component: Auth
+        name: 'Dashboard',
+        component: Dashboard
     },
     {
         name: 'Learning',
@@ -91,14 +91,16 @@ const navigation = {
     },
     methods: {
         onChangePage (e) {
-            this.swipeable = e.swipeable
-            if (e.fromFooter) {
-                if (this.pageStack.length > 1) this.pageStack.shift()
+            if (!this.pageStack.some(item => item.extends === e.extends)) {
+                this.swipeable = e.swipeable
+                if (e.fromFooter) {
+                    if (this.pageStack.length > 1) this.pageStack.shift()
+                }
+                if (e.removePrevPage || typeof e.removePrevPage === 'undefined') {
+                    this.pageStack.pop()
+                }
+                this.pageStack.push(e)
             }
-            if (e.removePrevPage || typeof e.removePrevPage === 'undefined') {
-              this.pageStack.pop()
-            }
-            this.pageStack.push(e)
         },
       onReturnRootPage () {
           this.pageStack.splice(1)

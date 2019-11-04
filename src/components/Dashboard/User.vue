@@ -6,10 +6,7 @@
             </div>
             <div class="user-info">
                 <div class="user-name">
-                    Константин
-                </div>
-                <div class="user-status">
-                    Вы новичок
+                    {{firstName}}
                 </div>
             </div>
         </div>
@@ -27,13 +24,18 @@
 </template>
 
 <script>
+    import UserService from '@/services/UserService'
+    import userDB from '@/db/userDB'
+    import {mapActions} from 'vuex'
+
     export default {
         name: "User",
         data () {
             return {
                 bTransformed: false,
                 page: null,
-                pageContent: null
+                pageContent: null,
+                firstName: ''
             }
         },
         methods: {
@@ -47,8 +49,29 @@
                 }
               }
             },
+            ...mapActions({
+                systemMessage: 'systemMessage/systemMessage'
+            })
         },
         mounted () {
+            userDB.getToken().then(token => {
+                UserService.getUserData(token, response => {
+                    if (response.error) {
+                        this.systemMessage(
+                            {
+                                type: 'error',
+                                message: response.error.message,
+                                duration: 5000
+                            }
+                        )
+                        this.redir('Auth')
+                    } else {
+                        this.firstName = response.firstName
+                    }
+                })
+            })
+
+
             this.page = document.querySelector('.dashboard.page')
             this.pageContent = this.page.querySelector('.page__content')
 
@@ -131,14 +154,6 @@
     font-weight: 400;
 }
 
-.user-status {
-    letter-spacing: -0.165px;
-    font-size: 12px;
-    line-height: 18px;
-    color: #4B4B4B;
-    font-weight: 400;
-    display: none;
-}
 
 .notifications {
     margin-right: 16px;

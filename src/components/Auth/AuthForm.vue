@@ -50,7 +50,7 @@
 <script>
     import {mapActions} from 'vuex'
     import AuthService from '@/services/AuthService'
-    import userBD from '@/db/userDB'
+    import userDB from '@/db/userDB'
 
     export default {
       name: "AuthForm",
@@ -93,7 +93,7 @@
                   this.showGlobalPreloader()
                   this.bError = true
                 } else {
-                    userBD.insertData(response)
+                    userDB.insertData(response)
                     this.redir('Dashboard', {
                         animation: 'lift',
                         animationOptions: {duration: 0.5},
