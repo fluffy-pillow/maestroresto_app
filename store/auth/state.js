@@ -1,4 +1,7 @@
 export default () => ({
-    status: 'init',
-    bLoggedIn: false
+    bLoggedIn: false,
+    bError: false,
+    token: '',
+    errorMessage: ''
+
 })

@@ -60,8 +60,7 @@
             desiredText: 'test',
             inputType: 'password',
           },
-          bError: false,
-          to: ''
+          bError: false
         }
       },
       methods: {
@@ -72,35 +71,15 @@
           this.password.inputType = (this.password.inputType === 'password') ? 'text' : 'password'
         },
         onSubmit (e) {
-            let email = this.email.inputText
-            let password = this.password.inputText
-            let timezoneOffset = this.timezoneOffset
-            this.login({email: email, password: password, timezoneOffset: timezoneOffset, language: this.$i18n.locale})
-              .then((response) => {
-                  if (response.error) {
-                      this.showSystemMessage()
-                      this.setTextSystemMessage(response.error.message)
-                      this.setTypeSystemMessage('error')
-                      this.bError = true
-                  } else {
-                      this.redir('Dashboard', {
-                              animation: 'lift',
-                              animationOptions: {duration: 0.5},
-                          },
-                      )
-                  }
-              })
-              .catch(error => {
-                  console.log(error)
-              })
+            let data = {email: this.email.inputText, password: this.password.inputText}
+            this.login(data)
         },
         ...mapActions({
-          signIn: 'user/signIn',
           showSystemMessage: 'systemMessage/show',
           hideSystemMessage: 'systemMessage/hide',
           setTextSystemMessage: 'systemMessage/setText',
           setTypeSystemMessage: 'systemMessage/setType',
-          login: 'auth/login'
+          login: 'auth/login',
         })
       },
       computed: {
@@ -109,10 +88,21 @@
         },
         ...mapGetters({
           bShowSystemMessage: 'systemMessage/isShow',
-          timezoneOffset: 'helpers/getTimezoneOffset'
+          bAuthError: 'auth/isError',
+          errorMessage: 'auth/getErrorMessage'
         })
       },
       watch: {
+        bAuthError: function (newValue) {
+            if (newValue) {
+                this.showSystemMessage()
+                this.setTextSystemMessage(this.errorMessage)
+                this.setTypeSystemMessage('error')
+                this.bError = true
+            } else {
+                this.hideSystemMessage()
+            }
+        },
         bShowSystemMessage: function (newValue) {
           if (newValue === false) this.bError = false
         }
