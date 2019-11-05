@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueRouter from 'vue-router'
+import router from './router'
 import store from '../store'
 import i18n from './i18n'
 import Axios from 'axios'
@@ -21,8 +23,6 @@ import VOnsSegment from 'vue-onsenui/esm/components/VOnsSegment';
 import VOnsBackButton from 'vue-onsenui/esm/components/VOnsBackButton';
 import DotLoader from 'vue-spinner/src/DotLoader.vue';
 
-import {navigation, navigationMixin} from "./navigation";
-
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css'
 
@@ -32,8 +32,8 @@ import userDB from './db/userDB'
 Vue.config.productionTip = false
 
 Vue.use(VueOnsen)
+Vue.use(VueRouter)
 Vue.use(Vue2TouchEvents)
-Vue.mixin(navigationMixin)
 Vue.component(VOnsPage.name, VOnsPage);
 Vue.component(VOnsNavigator.name, VOnsNavigator);
 Vue.component(VOnsButton.name, VOnsButton);
@@ -47,7 +47,6 @@ Vue.component(VOnsProgressCircular.name, VOnsProgressCircular);
 Vue.component(VOnsSegment.name, VOnsSegment);
 Vue.component(VOnsBackButton.name, VOnsBackButton);
 Vue.component(DotLoader.name, DotLoader);
-Vue.component(navigation.name, navigation);
 
 Vue.prototype.$eventBus = new Vue();
 
@@ -65,6 +64,7 @@ document.addEventListener(typeof cordova !== "undefined" ? "deviceready" : "DOMC
 new Vue({
   store,
   i18n,
+  router,
   render: h => h(App),
   mounted () {
       console.log( 'mounted' )

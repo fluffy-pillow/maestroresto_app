@@ -79,7 +79,7 @@
             if (this.bError) this.bError = false
         },
         onSubmit (e) {
-            this.showGlobalPreloader()
+/*            this.showGlobalPreloader()
             let data = {email: this.email.inputText, password: this.password.inputText}
             AuthService.login(data, response => {
                 if (response.error) {
@@ -98,9 +98,11 @@
                         animation: 'lift',
                         animationOptions: {duration: 0.5},
                     })
+                    this.$router.push('Dashboard')
                 }
                 this.hideGlobalPreloader()
-            })
+            })*/
+            this.$router.push({name: 'Dashboard', animation: 'none'})
         },
         ...mapActions({
           systemMessage: 'systemMessage/systemMessage',

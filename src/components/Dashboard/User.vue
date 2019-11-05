@@ -54,7 +54,7 @@
             })
         },
         mounted () {
-            userDB.getToken().then(token => {
+/*            userDB.getToken().then(token => {
                 UserService.getUserData(token, response => {
                     if (response.error) {
                         this.systemMessage(
@@ -69,7 +69,7 @@
                         this.firstName = response.firstName
                     }
                 })
-            })
+            })*/
 
 
             this.page = document.querySelector('.dashboard.page')

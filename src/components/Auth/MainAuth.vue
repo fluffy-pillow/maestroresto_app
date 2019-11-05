@@ -18,13 +18,14 @@
       components: {AuthForm},
       methods: {
           openRestorePage () {
-              this.redir('Restore', {
+/*              this.redir('Restore', {
                       animation: 'slide',
                       animationOptions: {duration: 0.5},
                   },
                   true,
                   false
-              )
+              )*/
+              this.$router.push('Restore')
           }
       }
     }

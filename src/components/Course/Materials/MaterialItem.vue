@@ -73,13 +73,7 @@
         methods: {
             openMaterial () {
                 if (!this.data.locked) {
-                    this.redir('Material', {
-                            animation: 'slide',
-                            animationOptions: {duration: 0.5},
-                        },
-                        true,
-                        false
-                    )
+                    this.$router.push(this.$route.path + '/material')
                 }
             }
         }

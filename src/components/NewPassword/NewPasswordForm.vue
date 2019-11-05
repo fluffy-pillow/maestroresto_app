@@ -29,9 +29,9 @@
       </span>
     </label>
 
-    <v-ons-back-button @click="onSubmit" class="form-submit">
+    <button @click="onSubmit" class="form-submit">
       Изменить пароль
-    </v-ons-back-button>
+    </button>
   </form>
 </template>
 
@@ -63,7 +63,7 @@
         if (this.isValid()) {
           this.hideSystemMessage()
           this.bError = false
-          this.returnToRootPage()
+          this.$router.push('Auth')
         } else {
 
           e.preventDefault()

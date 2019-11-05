@@ -51,12 +51,7 @@
       onSubmit (e) {
         if (this.isValid()) {
           this.bError = false
-          this.redir('NewPassword', {
-              animation: 'slide',
-              animationOptions: {duration: 0.5},
-            },
-            true
-          )
+          this.$router.push('NewPassword')
         } else {
           this.systemMessage(
               {

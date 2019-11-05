@@ -62,14 +62,7 @@
                 this.activeLink = newLinkID
             },
             to (pageName) {
-                this.redir(pageName, {
-                        animation: 'none',
-                        animationOptions: {duration: 0.5},
-                    },
-                    false,
-                    true,
-                    true
-                )
+                this.$router.push(pageName)
             }
         },
         computed: {

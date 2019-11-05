@@ -4,7 +4,7 @@
       <GlobalPreloader></GlobalPreloader>
       <SystemMessage></SystemMessage>
       <Navigation class="navigation" :class="{iphonex: $ons.platform.isIPhoneX()}"></Navigation>
-      <Footer v-show="bLoggedIn && bFooterIsShow"></Footer>
+      <Footer></Footer>
     </v-ons-page>
   </div>
 </template>
@@ -15,10 +15,11 @@ import Footer from "./components/Footer";
 import SystemMessage from "./components/SystemMessage";
 import userDB from '@/db/userDB'
 import GlobalPreloader from "./components/GlobalPreloader";
+import Navigation from "./components/Navigation";
 
 export default {
   name: 'app',
-  components: {GlobalPreloader, SystemMessage, Footer},
+  components: {Navigation, GlobalPreloader, SystemMessage, Footer},
   computed: {
     ...mapGetters({
       bFooterIsShow: 'footer/isShow',
@@ -30,15 +31,15 @@ export default {
       }
   },
   mounted () {
-      this.redir('Dashboard')
+/*      this.redir('Dashboard')
       userDB.getToken().then(response => {
-          this.bLoggedIn = !!response[0]
+          this.bLoggedIn = !!response
          if (this.bLoggedIn) {
               this.redir('Dashboard')
           } else {
               this.redir('Auth')
           }
-      })
+      })*/
   },
 }
 </script>

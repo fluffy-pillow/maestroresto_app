@@ -1,6 +1,6 @@
 <template>
     <li class="search-results-item"
-        @click="openCourse"
+        @click="$router.push('/learning/course')"
     >
       <span class="left">
         <span class="image">
@@ -35,16 +35,6 @@
           data: Object
         },
         methods: {
-            openCourse () {
-                this.redir('Course', {
-                        animation: 'slide',
-                        animationOptions: {duration: 0.5},
-                    },
-                    true,
-                    false
-                )
-                this.showFooter()
-            },
             ...mapActions({
                 showFooter: 'footer/show',
             })
