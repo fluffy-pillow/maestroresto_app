@@ -1,7 +1,7 @@
 <template>
     <div class="position">
         <div class="number">
-            351
+            {{position}}
         </div>
         <div class="text">
             место в рейтинге
@@ -16,7 +16,13 @@
 
 <script>
     export default {
-        name: "Position"
+        name: "Position",
+        props: {
+            position: {
+                type: Number,
+                default: 0
+            }
+        }
     }
 </script>
 

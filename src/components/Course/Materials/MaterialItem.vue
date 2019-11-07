@@ -2,8 +2,10 @@
     <li class="material-item" :class="{locked: data.locked}" @click="openMaterial">
         <span class="head">
             <span class="icon-wrapper" :class="{empty: !data.icon}">
-                <span class="icon">
-                    <img v-if="data.icon" :src="require('@/assets/uploads/' + data.icon)">
+                <span class="icon" v-if="data.icon">
+                </span>
+                <span v-else class="icon" :class="{empty: data.icon}">
+
                 </span>
                 <span class="duration-wrapper">
                     <span class="duration">
@@ -134,6 +136,8 @@
     min-width: 100px;
     height: 64px;
     display: block;
+    background-size: cover;
+    background-image: url(../../../assets/uploads/material.jpeg);
 }
 
 .icon-wrapper.empty .icon {

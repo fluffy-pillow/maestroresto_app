@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import { sync } from 'vuex-router-sync'
 import router from './router'
 import store from '../store'
 import i18n from './i18n'
@@ -27,6 +28,7 @@ import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css'
 
 import userDB from './db/userDB'
+import dashboardDB from './db/dashboardDB'
 
 
 Vue.config.productionTip = false
@@ -52,14 +54,13 @@ Vue.prototype.$eventBus = new Vue();
 
 Vue.prototype.$http = Axios;
 
-const token = localStorage.getItem('user-token')
-if (token) {
-    Vue.prototype.$http.defaults.headers.common['Authorization'] = token
-}
 
 document.addEventListener(typeof cordova !== "undefined" ? "deviceready" : "DOMContentLoaded", () => {
     userDB.init()
+    dashboardDB.init()
 });
+
+sync(store, router)
 
 new Vue({
   store,

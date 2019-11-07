@@ -5,7 +5,7 @@
                 <svg class="chart--svg" width="100%" height="100%" viewBox="0 0 34 34">
                     <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" opacity="0.1"></circle>
 
-                    <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" :stroke-dasharray="percents + ' ' +  (100 - percents)" stroke-dashoffset="25"></circle>
+                    <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" :stroke-dasharray="percent + ' ' +  (100 - percent)" stroke-dashoffset="25"></circle>
                 </svg>
 
                 <svg class="giftbox--svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -24,7 +24,7 @@
             </div>
             <div class="info">
                 <div class="percents">
-                    {{percents}}%
+                    {{percent}}%
                 </div>
                 <div class="text">
                     Осталось
@@ -43,9 +43,10 @@
 <script>
     export default {
         name: "Progress",
-        data () {
-            return {
-                percents: 62
+        props: {
+            percent: {
+                type: Number,
+                default: 0
             }
         }
     }

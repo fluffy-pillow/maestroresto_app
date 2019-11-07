@@ -78,7 +78,10 @@
         onClickInput () {
             if (this.bError) this.bError = false
         },
-        onSubmit (e) {
+        openDashboard () {
+            this.$router.push({path: '/dashboard', animation: 'none'})
+        },
+        onSubmit () {
 /*            this.showGlobalPreloader()
             let data = {email: this.email.inputText, password: this.password.inputText}
             AuthService.login(data, response => {
@@ -90,24 +93,23 @@
                           duration: 5000
                       }
                   )
-                  this.showGlobalPreloader()
+                  this.hideGlobalPreloader()
                   this.bError = true
                 } else {
-                    userDB.insertData(response)
-                    this.redir('Dashboard', {
-                        animation: 'lift',
-                        animationOptions: {duration: 0.5},
+                    userDB.insertData(response).then(inserted => {
+                        this.setToken(response.token)
+                        if (inserted) this.openDashboard()
+                        this.hideGlobalPreloader()
                     })
-                    this.$router.push('Dashboard')
                 }
-                this.hideGlobalPreloader()
             })*/
-            this.$router.push({name: 'Dashboard', animation: 'none'})
+            this.openDashboard()
         },
         ...mapActions({
           systemMessage: 'systemMessage/systemMessage',
           showGlobalPreloader: 'globalPreloader/show',
           hideGlobalPreloader: 'globalPreloader/hide',
+          setToken: 'user/setToken'
         })
       },
       computed: {

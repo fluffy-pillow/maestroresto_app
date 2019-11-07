@@ -4,18 +4,16 @@ import systemMessage from './systemMessage'
 import footer from './footer'
 import search from './search'
 import globalPreloader from './globalPreloader'
+import user from './user'
 
 Vue.use(Vuex)
 
-const createStore = () => {
-  return new Vuex.Store({
+export default new Vuex.Store({
     modules: {
       systemMessage: systemMessage,
       footer: footer,
       search: search,
-      globalPreloader: globalPreloader
+      globalPreloader: globalPreloader,
+      user: user
     }
-  })
-}
-
-export default createStore
+})

@@ -37,22 +37,22 @@
                     {
                         label: 'Главный',
                         class: 'dashboard-tab',
-                        to: 'Dashboard'
+                        to: '/Dashboard'
                     },
                     {
                         label: 'Обучение',
                         class: 'learning-tab',
-                        to: 'Learning'
+                        to: '/Learning'
                     },
                     {
                         label: 'Аттестация',
                         class: 'certification-tab',
-                        to: 'Certification'
+                        to: '/Certification'
                     },
                     {
                         label: 'Меню',
                         class: 'menu-tab',
-                        to: 'Menu'
+                        to: '/Menu'
                     }
                 ]
             }
@@ -62,7 +62,7 @@
                 this.activeLink = newLinkID
             },
             to (pageName) {
-                this.$router.push(pageName)
+                if ('/' + this.$route.name !== pageName) this.$router.push(pageName)
             }
         },
         computed: {

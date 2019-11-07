@@ -2,13 +2,13 @@
     <section class="statistics">
         <div class="head">
             <h2 class="title">
-                Вы новичок
+                {{status.text}}
             </h2>
-            <Rating></Rating>
+            <Rating :data="status.rating"></Rating>
         </div>
         <div class="body">
-            <Position></Position>
-            <Progress></Progress>
+            <Position :position="leaderboard.position"></Position>
+            <Progress :percent="loyalty.percent"></Progress>
         </div>
     </section>
 </template>
@@ -19,7 +19,12 @@
     import Rating from "./Rating";
     export default {
         name: "Statistics",
-        components: {Rating, Progress, Position}
+        components: {Rating, Progress, Position},
+        props: {
+            status: Object,
+            leaderboard: Object,
+            loyalty: Object
+        }
     }
 </script>
 

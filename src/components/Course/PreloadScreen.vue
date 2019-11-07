@@ -1,7 +1,6 @@
 <template>
     <div class="preload-screen">
         <div class="preload-image-wrapper">
-            <img :src="require('@/assets/images/course-preload-screen.png')">
         </div>
     </div>
 </template>
@@ -18,6 +17,8 @@
         height: 100%;
         position: relative;
         top: calc(-44px + env(safe-area-inset-top));
+        background-image: url(../../assets/images/course-preload-screen.png);
+        background-size: cover;
     }
 
     .preload-image-wrapper img {
@@ -30,6 +31,8 @@
         opacity: 0;
         transition: opacity 0.5s ease-in-out;
         top: calc(0px + env(safe-area-inset-top) * 7) !important;
+        width: 100%;
+        height: 100%;
     }
 
     .preload-screen.show {

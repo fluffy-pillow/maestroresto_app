@@ -4,16 +4,16 @@
       <GlobalPreloader></GlobalPreloader>
       <SystemMessage></SystemMessage>
       <Navigation class="navigation" :class="{iphonex: $ons.platform.isIPhoneX()}"></Navigation>
-      <Footer></Footer>
+      <Footer v-show="bFooterIsShow"></Footer>
     </v-ons-page>
   </div>
 </template>
 <script>
+import userDB from '@/db/userDB'
 
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 import Footer from "./components/Footer";
 import SystemMessage from "./components/SystemMessage";
-import userDB from '@/db/userDB'
 import GlobalPreloader from "./components/GlobalPreloader";
 import Navigation from "./components/Navigation";
 
@@ -25,22 +25,17 @@ export default {
       bFooterIsShow: 'footer/isShow',
     })
   },
-  data () {
-      return {
-          bLoggedIn: false
-      }
+  methods: {
+      ...mapActions({
+          setToken: 'user/setToken'
+      })
   },
-  mounted () {
-/*      this.redir('Dashboard')
-      userDB.getToken().then(response => {
-          this.bLoggedIn = !!response
-         if (this.bLoggedIn) {
-              this.redir('Dashboard')
-          } else {
-              this.redir('Auth')
-          }
-      })*/
-  },
+  created () {
+/*    userDB.getToken().then(response => {
+        this.setToken(response)
+    })*/
+
+  }
 }
 </script>
 

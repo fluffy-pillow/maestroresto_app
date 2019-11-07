@@ -1,9 +1,15 @@
 <template>
     <v-ons-toolbar class="user" :class="{transformed: bTransformed}">
         <div class="left">
-            <div class="avatar">
-                <img :src="require('@/assets/images/avatar.jpeg')">
+            <div v-if="avatarUrl" class="avatar">
+                <img :src="avatarUrl">
             </div>
+            <div v-else class="no-avatar">
+                <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.8141 12.6611C16.6935 11.4447 17.9095 9.34375 17.9095 6.91106C17.9095 3.09615 14.8141 0 11 0C7.18593 0 4.09045 3.09615 4.09045 6.91106C4.09045 9.28846 5.30653 11.3894 7.18593 12.6611C2.98492 14.2091 0 18.2452 0 23H1.82412C1.82412 17.9135 5.91457 13.8221 11 13.8221C16.0854 13.8221 20.1759 17.9135 20.1759 23H22C22 18.2452 19.0151 14.2091 14.8141 12.6611ZM5.96985 6.91106C5.96985 4.14663 8.23618 1.87981 11 1.87981C13.7638 1.87981 16.0301 4.14663 16.0301 6.91106C16.0301 9.67548 13.7638 11.9976 11 11.9976C8.23618 11.9976 5.96985 9.73077 5.96985 6.91106Z" fill="#3DD498"/>
+                </svg>
+            </div>
+
             <div class="user-info">
                 <div class="user-name">
                     {{firstName}}
@@ -26,7 +32,7 @@
 <script>
     import UserService from '@/services/UserService'
     import userDB from '@/db/userDB'
-    import {mapActions} from 'vuex'
+    import {mapActions, mapGetters} from 'vuex'
 
     export default {
         name: "User",
@@ -35,8 +41,14 @@
                 bTransformed: false,
                 page: null,
                 pageContent: null,
-                firstName: ''
+                firstName: '',
+                avatarUrl: null
             }
+        },
+        computed: {
+            ...mapGetters({
+                token: 'user/getToken'
+            })
         },
         methods: {
             switchStyle () {
@@ -50,25 +62,31 @@
               }
             },
             ...mapActions({
-                systemMessage: 'systemMessage/systemMessage'
+                systemMessage: 'systemMessage/systemMessage',
+                setToken: 'user/setToken'
             })
         },
         mounted () {
-/*            userDB.getToken().then(token => {
-                UserService.getUserData(token, response => {
-                    if (response.error) {
-                        this.systemMessage(
-                            {
-                                type: 'error',
-                                message: response.error.message,
-                                duration: 5000
-                            }
-                        )
-                        this.redir('Auth')
-                    } else {
-                        this.firstName = response.firstName
-                    }
-                })
+/*            userDB.getUserData().then(userData => {
+                let decodedUserData = JSON.parse(userData)
+                let bAnswer = !!decodedUserData
+                if (!bAnswer) {
+                    this.firstName = decodedUserData.firstName
+                    this.avatarUrl = decodedUserData.avatarUrl
+                } else {
+                    UserService.getUserData(this.token, response => {
+                        if (response.error) {
+                            this.systemMessage({type: 'error', message: response.error.message, duration: 5000})
+                            userDB.logout()
+                            this.setToken('')
+                            this.$router.push('/auth')
+                        } else {
+                            this.firstName = response.firstName
+                            this.avatarUrl = response.avatarUrl
+                        }
+
+                    })
+                }
             })*/
 
 
@@ -138,6 +156,21 @@
     height: auto;
     margin-top: -25%;
 }
+
+.no-avatar {
+    margin-left: 32px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.no-avatar svg {
+    width: 100%;
+    height: auto;
+}
+
 
 .user-info {
     margin-left: 20px;

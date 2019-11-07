@@ -21,7 +21,7 @@
         components: {
             User,
             MainDashboard
-        }
+        },
     }
 </script>
 

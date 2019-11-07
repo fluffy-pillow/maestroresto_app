@@ -3,7 +3,6 @@
         <span class="head">
             <span class="icon-wrapper">
                 <span class="icon">
-                    <img :src="require('@/assets/uploads/material.jpeg')">
                 </span>
             </span>
             <span class="title">
@@ -63,6 +62,8 @@
         min-width: 100px;
         height: 64px;
         display: block;
+        background-size: cover;
+        background-image: url(../../../assets/uploads/material.jpeg);
     }
 
     .icon img {

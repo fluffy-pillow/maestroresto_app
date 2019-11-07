@@ -5,7 +5,7 @@
           {{$t("auth.desc")}}
       </p>
       <AuthForm></AuthForm>
-      <button class="forgot-password-button" @click="openRestorePage">
+      <button class="forgot-password-button" @click="$router.push('Restore')">
           {{$t("auth.forgot_password_button")}}
       </button>
     </main>
@@ -15,19 +15,7 @@
     import AuthForm from "./AuthForm";
     export default {
       name: "MainAuth",
-      components: {AuthForm},
-      methods: {
-          openRestorePage () {
-/*              this.redir('Restore', {
-                      animation: 'slide',
-                      animationOptions: {duration: 0.5},
-                  },
-                  true,
-                  false
-              )*/
-              this.$router.push('Restore')
-          }
-      }
+      components: {AuthForm}
     }
 </script>
 
