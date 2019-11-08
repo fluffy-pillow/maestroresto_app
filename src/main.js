@@ -22,6 +22,7 @@ import VOnsPullHook from 'vue-onsenui/esm/components/VOnsPullHook';
 import VOnsProgressCircular from 'vue-onsenui/esm/components/VOnsProgressCircular';
 import VOnsSegment from 'vue-onsenui/esm/components/VOnsSegment';
 import VOnsBackButton from 'vue-onsenui/esm/components/VOnsBackButton';
+import VOnsModal from 'vue-onsenui/esm/components/VOnsModal';
 import DotLoader from 'vue-spinner/src/DotLoader.vue';
 
 import 'onsenui/css/onsenui.css';
@@ -49,6 +50,7 @@ Vue.component(VOnsProgressCircular.name, VOnsProgressCircular);
 Vue.component(VOnsSegment.name, VOnsSegment);
 Vue.component(VOnsBackButton.name, VOnsBackButton);
 Vue.component(DotLoader.name, DotLoader);
+Vue.component(VOnsModal.name, VOnsModal);
 
 Vue.prototype.$eventBus = new Vue();
 

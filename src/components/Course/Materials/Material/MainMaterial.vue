@@ -84,11 +84,12 @@
                     </div>
                 </div>
 
-                <button class="submit">
+                <button class="submit" @click="handleClick">
                     Пройдено
                 </button>
             </div>
         </div>
+
     </main>
 </template>
 
@@ -96,6 +97,7 @@
     import Video from "../../../Video";
     import Audio from "../../../Audio";
     import DocFile from "../../../DocFile";
+    import MaterialPassed from "./MaterialPassed";
     export default {
         name: "MainMaterial",
         components: {DocFile, Audio, Video},
@@ -106,6 +108,11 @@
                 audio: "https://hpr.dogphilosophy.net/test/wav.wav",
                 audioName: 'audio №1',
                 docFileName: 'Управление рестараном.doc'
+            }
+        },
+        methods: {
+            handleClick () {
+                this.$eventBus.$emit('action-sheet', MaterialPassed)
             }
         }
     }

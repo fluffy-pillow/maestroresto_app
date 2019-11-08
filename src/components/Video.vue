@@ -75,12 +75,15 @@
 .play {
     display: flex;
     align-items: center;
-    margin-left: 17px;
     width: 48px;
     height: 48px;
     background: rgba(97,112,125, 0.2);
     border-radius: 50%;
     overflow: hidden;
+}
+
+.play svg {
+    margin-left: 17px;
 }
 
 .video-name {

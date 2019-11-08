@@ -10,6 +10,7 @@ import Learning from './pages/Learning';
 import Certification from './pages/Certification';
 import Menu from './pages/Menu';
 import Course from './pages/Course';
+import Splashscreen from './pages/Splashscreen';
 import Material from './pages/Course/Materials/Material';
 import userDB from '@/db/userDB'
 
@@ -39,6 +40,15 @@ let ifAuthenticated = (to, from, next) => {
 const router = new Router({
     mode: 'history',
     routes: [
+        {
+            path: '/',
+            name: 'Splashscreen',
+            component: {
+                extends: Splashscreen,
+                onsNavigatorOptions: {animation: 'none'}
+            },
+
+        },
         {
             path: '/auth',
             name: 'Auth',
@@ -79,7 +89,6 @@ const router = new Router({
         },
         {
             path: '/dashboard',
-            alias: '/',
             name: 'Dashboard',
             component: {
                 extends: Dashboard,

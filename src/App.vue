@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <v-ons-page class="main-page">
+      <ActionSheet></ActionSheet>
       <GlobalPreloader></GlobalPreloader>
       <SystemMessage></SystemMessage>
       <Navigation class="navigation" :class="{iphonex: $ons.platform.isIPhoneX()}"></Navigation>
@@ -16,10 +17,11 @@ import Footer from "./components/Footer";
 import SystemMessage from "./components/SystemMessage";
 import GlobalPreloader from "./components/GlobalPreloader";
 import Navigation from "./components/Navigation";
+import ActionSheet from "./components/ActionSheet";
 
 export default {
   name: 'app',
-  components: {Navigation, GlobalPreloader, SystemMessage, Footer},
+  components: {ActionSheet, Navigation, GlobalPreloader, SystemMessage, Footer},
   computed: {
     ...mapGetters({
       bFooterIsShow: 'footer/isShow',
@@ -31,9 +33,19 @@ export default {
       })
   },
   created () {
-/*    userDB.getToken().then(response => {
-        this.setToken(response)
-    })*/
+      let that = this
+      userDB.getToken().then(token => {
+          this.$store.dispatch('user/setToken', {
+              token: token, callback: function (response) {
+                  if (response.answer === 'ok') {
+                      console.log(111)
+                      that.$router.push('/dashboard')
+                  } else {
+                      that.$router.push('/auth')
+                  }
+              }
+          })
+      })
 
   }
 }
@@ -63,6 +75,11 @@ export default {
   font-style: normal;
   font-display: swap;
   src: url('fonts/Rubik-Light.ttf') format('truetype');
+}
+
+ons-action-sheet .action-sheet {
+  left: 0;
+  right: 0;
 }
 
 .course .page__content {

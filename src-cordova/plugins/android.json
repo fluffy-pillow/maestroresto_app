@@ -13,14 +13,15 @@
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "com.vue.example.app"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.vue.example.app"
-    },
     "cordova-plugin-wkwebview-engine": {
       "PACKAGE_NAME": "com.vue.example.app"
     },
     "cordova-plugin-globalization": {
       "PACKAGE_NAME": "com.kaerus.maestroresto"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
     }
-  }
+  },
+  "dependent_plugins": {}
 }
