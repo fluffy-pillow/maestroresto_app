@@ -3,7 +3,7 @@ module.exports = {
   lintOnSave: false,
   runtimeCompiler: true,
   devServer: {
-      proxy: 'http://api.maestroresto.kaerus.eu/',
+      proxy: 'https://api.maestroresto.kaerus.eu/',
   },
   pluginOptions: {
     cordovaPath: 'src-cordova'
