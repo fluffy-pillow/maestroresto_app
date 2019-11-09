@@ -38,7 +38,6 @@ let ifAuthenticated = (to, from, next) => {
 
 
 const router = new Router({
-    mode: 'history',
     routes: [
         {
             path: '/',

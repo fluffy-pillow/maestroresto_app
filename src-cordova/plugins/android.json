@@ -19,6 +19,12 @@
     "cordova-plugin-globalization": {
       "PACKAGE_NAME": "com.kaerus.maestroresto"
     },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
+    },
+    "cordova-plugin-wkwebviewxhrfix": {
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
+    }
   },
   "dependent_plugins": {}
 }

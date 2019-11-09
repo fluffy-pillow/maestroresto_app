@@ -3,7 +3,7 @@ import {timezoneOffset} from '@/helpers'
 
 
 let API = axios.create({
-    baseURL: process.env.VUE_APP_BASE_API,
+    baseURL: 'https://api.maestroresto.kaerus.eu/',
     crossdomain: true,
     headers: {
         'Accept': 'application/json; charset=utf-8',
