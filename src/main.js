@@ -57,11 +57,6 @@ Vue.prototype.$eventBus = new Vue();
 Vue.prototype.$http = Axios;
 
 
-document.addEventListener(typeof cordova !== "undefined" ? "deviceready" : "DOMContentLoaded", () => {
-    userDB.init()
-    dashboardDB.init()
-});
-
 sync(store, router)
 
 new Vue({
@@ -75,6 +70,8 @@ new Vue({
   },
   methods : {
       onDeviceReady () {
+          userDB.init()
+          dashboardDB.init()
           let that = this
           Keyboard.shrinkView(false);
           Keyboard.hideFormAccessoryBar(true);

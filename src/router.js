@@ -42,6 +42,11 @@ const router = new Router({
     routes: [
         {
             path: '/',
+            redirect: '/splashscreen'
+
+        },
+        {
+            path: '/splashscreen',
             name: 'Splashscreen',
             component: {
                 extends: Splashscreen,

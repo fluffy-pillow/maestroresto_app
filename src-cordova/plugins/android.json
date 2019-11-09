@@ -8,20 +8,17 @@
   },
   "installed_plugins": {
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.vue.example.app"
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
     },
     "cordova-plugin-keyboard": {
-      "PACKAGE_NAME": "com.vue.example.app"
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
     },
     "cordova-plugin-wkwebview-engine": {
-      "PACKAGE_NAME": "com.vue.example.app"
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
     },
     "cordova-plugin-globalization": {
       "PACKAGE_NAME": "com.kaerus.maestroresto"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.kaerus.maestroresto"
-    }
   },
   "dependent_plugins": {}
 }

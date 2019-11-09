@@ -31,10 +31,10 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-splashscreen": {
+  "cordova-labs-wkwebview-engine-localhost": {
     "source": {
       "type": "registry",
-      "id": "git+https://github.com/apache/cordova-plugin-splashscreen.git"
+      "id": "https://github.com/apache/cordova-plugins.git#wkwebview-engine-localhost"
     },
     "is_top_level": true,
     "variables": {}

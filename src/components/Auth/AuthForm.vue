@@ -80,9 +80,10 @@
         },
         openDashboard () {
             this.$router.push({path: '/dashboard', animation: 'none'})
+            this.hideGlobalPreloader()
         },
         onSubmit () {
-/*            this.showGlobalPreloader()
+            this.showGlobalPreloader()
             let data = {email: this.email.inputText, password: this.password.inputText}
             AuthService.login(data, response => {
                 if (response.error) {
@@ -96,14 +97,20 @@
                   this.hideGlobalPreloader()
                   this.bError = true
                 } else {
+                    let that = this
                     userDB.insertData(response).then(inserted => {
-                        this.setToken(response.token)
-                        if (inserted) this.openDashboard()
-                        this.hideGlobalPreloader()
+                        this.$store.dispatch('user/setToken', {
+                            token: response.token, callback: function (res) {
+                                if (res.answer === 'ok') {
+                                    if (inserted) that.openDashboard()
+                                }
+                            }
+                        })
+
                     })
                 }
-            })*/
-            this.openDashboard()
+            })
+//            this.openDashboard()
         },
         ...mapActions({
           systemMessage: 'systemMessage/systemMessage',

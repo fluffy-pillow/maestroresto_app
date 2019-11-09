@@ -10,10 +10,7 @@ const dashboardDB = {
                 { key: 'required', type: 'string' },
                 { key: 'unfinishedCourses', type: 'string' },
                 { key: 'unfinishedCourses', type: 'string' },
-            ])
-            .config({
-                mode: window.nSQLite.getMode() // required
-            }).connect()
+            ]).connect()
     },
 /*    getDashboardData: async () => {
         return await new Promise((resolve, reject) => {

@@ -8,10 +8,7 @@ const userDB = {
                 { key: 'id', type: 'int', props: ['pk', 'ai'] },
                 { key: 'token', type: 'string' },
                 { key: 'user', type: 'string' }
-            ])
-            .config({
-                mode: window.nSQLite.getMode() // required
-            }).connect()
+            ]).connect()
     },
     insertData: async (args) => {
         return await new Promise((resolve, reject) => {

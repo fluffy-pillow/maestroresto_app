@@ -6,8 +6,9 @@
 </template>
 
 <script>
-    import userDB from '@/db/userDB'
     import {mapActions} from 'vuex'
+
+    import userDB from '@/db/userDB'
 
     export default {
         name: "Navigation",
@@ -21,13 +22,34 @@
                 this.$router.push({ name: this.$route.matched[this.$route.matched.length - 2].name });
             },
             ...mapActions({
-                showFooter: 'footer/show'
+                showFooter: 'footer/show',
+                setToken: 'user/setToken'
             })
         },
         created() {
-            const mapRouteStack = route => this.pageStack = route.matched.map(m => m.components.default)
+            let that = this
+            userDB.getToken().then(token => {
+                this.$store.dispatch('user/setToken', {
+                    token: token, callback: function (response) {
+                        setTimeout(() => {
+                            if (response.answer === 'ok') {
+                                that.$router.replace('/dashboard').catch(err => {})
+                            } else {
+                                that.$router.replace('/auth').catch(err => {})
+                            }
+                        }, 0)
+
+                    }
+                })
+            })
+
+            const mapRouteStack = route => this.pageStack = route.matched.map(m => {
+                return m.components.default
+            })
             mapRouteStack(this.$route)
-            this.$router.beforeEach((to, from, next) => mapRouteStack(to) && next());
+            this.$router.beforeEach((to, from, next) => {
+                mapRouteStack(to) && next()
+            });
         }
     }
 </script>

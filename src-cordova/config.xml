@@ -10,12 +10,11 @@
     <hook src="../node_modules/vue-cli-plugin-cordova/serve-config-hook.js" type="after_prepare" />
     <content src="index.html" />
     <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
+    <feature name="CDVWKWebViewEngine">
+        <param name="ios-package" value="CDVWKWebViewEngine" />
+    </feature>
+    <allow-navigation href="*"/>
+    <allow-intent href="*" />
     <platform name="android">
         <allow-intent href="market:*" />
         <plugin name="org.apache.cordova.splashscreen" />
@@ -31,6 +30,7 @@
         <allow-intent href="itms-apps:*" />
         <splash src="res/screen/ios/Default@2x~iphone~anyany.png" />
     </platform>
+    <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" />
     <preference name="loadUrlTimeoutValue" value="700000" />
     <preference name="SplashScreenDelay" value="2000" />
     <preference name="AutoHideSplashScreen" value="true" />

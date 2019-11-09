@@ -10,9 +10,8 @@
   </div>
 </template>
 <script>
-import userDB from '@/db/userDB'
 
-import {mapGetters, mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 import Footer from "./components/Footer";
 import SystemMessage from "./components/SystemMessage";
 import GlobalPreloader from "./components/GlobalPreloader";
@@ -27,27 +26,6 @@ export default {
       bFooterIsShow: 'footer/isShow',
     })
   },
-  methods: {
-      ...mapActions({
-          setToken: 'user/setToken'
-      })
-  },
-  created () {
-      let that = this
-      userDB.getToken().then(token => {
-          this.$store.dispatch('user/setToken', {
-              token: token, callback: function (response) {
-                  if (response.answer === 'ok') {
-                      console.log(111)
-                      that.$router.push('/dashboard')
-                  } else {
-                      that.$router.push('/auth')
-                  }
-              }
-          })
-      })
-
-  }
 }
 </script>
 
