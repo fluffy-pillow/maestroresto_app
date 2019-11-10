@@ -36,7 +36,7 @@
       "cordova-plugin-wkwebview-engine": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-globalization": {},
-      "cordova-plugin-wkwebviewxhrfix": {},
+      "cordova-plugin-wkwebviewxhrfix": {}
     },
     "platforms": [
       "android",
