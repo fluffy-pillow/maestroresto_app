@@ -54,37 +54,5 @@
     },
     "is_top_level": true,
     "variables": {}
-  },
-  "cordova-labs-local-webserver": {
-    "source": {
-      "type": "registry",
-      "id": "git+https://github.com/apache/cordova-plugins.git#local-webserver"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-sqlite-storage": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-sqlite-storage@3.2.0"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-plugin-device": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-device@2.0.2"
-    },
-    "is_top_level": false,
-    "variables": {}
-  },
-  "adapter-sqlite-cordova": {
-    "source": {
-      "type": "registry",
-      "id": "@nano-sql/adapter-sqlite-cordova@2.1.2"
-    },
-    "is_top_level": true,
-    "variables": {}
   }
 }

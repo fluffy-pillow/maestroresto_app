@@ -57,8 +57,8 @@
       data () {
         return {
           email: {
-            inputText: 'test@test.test',
-            desiredText: 'test@test.test',
+            inputText: 'test@test.com',
+            desiredText: 'test@test.com',
           },
           password: {
             inputText: 'test',

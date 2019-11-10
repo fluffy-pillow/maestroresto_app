@@ -1,4 +1,3 @@
-import { getMode } from "@nano-sql/adapter-sqlite-cordova";
 import { nSQL } from '@nano-sql/core'
 
 const db = {
@@ -6,7 +5,7 @@ const db = {
         console.log(nSQL().listDatabases())
         nSQL().createDatabase({
             id: "maestroresto_db", // can be anything that's a string
-            mode: getMode(),
+            mode: "PERM",
             tables: [ // tables can be created as part of createDatabase or created later with create table queries
                 {
                     name: "user",

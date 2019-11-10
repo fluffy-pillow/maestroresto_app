@@ -21,17 +21,6 @@
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.maestroresto.app"
-    },
-    "adapter-sqlite-cordova": {
-      "PACKAGE_NAME": "com.kaerus.maestroresto"
-    }
-  },
-  "dependent_plugins": {
-    "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "com.kaerus.maestroresto"
-    },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.kaerus.maestroresto"
     }
   }
 }
