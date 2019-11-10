@@ -1,0 +1,125 @@
+{
+  "_from": "@nano-sql/adapter-sqlite-cordova@2.1.2",
+  "_id": "@nano-sql/adapter-sqlite-cordova@2.1.2",
+  "_inBundle": false,
+  "_integrity": "sha512-xuEacZbpJcsCoinZYGB0BLkbDyFR+aAHsOh2dhbC/Xr4PjFakMHVxEpFIJk5Vx9fj61wM/+X1ht5VlU8K/S9kw==",
+  "_location": "/@nano-sql/adapter-sqlite-cordova",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@nano-sql/adapter-sqlite-cordova@2.1.2",
+    "name": "@nano-sql/adapter-sqlite-cordova",
+    "escapedName": "@nano-sql%2fadapter-sqlite-cordova",
+    "scope": "@nano-sql",
+    "rawSpec": "2.1.2",
+    "saveSpec": null,
+    "fetchSpec": "2.1.2"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@nano-sql/adapter-sqlite-cordova/-/adapter-sqlite-cordova-2.1.2.tgz",
+  "_shasum": "86fdde217a663865a8f2d6361788df3d28be3c81",
+  "_spec": "@nano-sql/adapter-sqlite-cordova@2.1.2",
+  "_where": "/Users/macbookpro/WebstormProjects/maestroresto_app/src-cordova",
+  "author": {
+    "name": "Scott Lott",
+    "email": "Scott@ClickSimply.com"
+  },
+  "bugs": {
+    "url": "https://github.com/ClickSimply/Nano-SQL/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "@nano-sql/adapter-sqlite-cordova",
+    "platforms": [
+      "android",
+      "windows",
+      "ios",
+      "web",
+      "osx"
+    ]
+  },
+  "dependencies": {
+    "@nano-sql/core": "^2.2.4",
+    "cordova-plugin-device": "^2.0.2",
+    "cordova-sqlite-storage": "^3.2.0"
+  },
+  "deprecated": false,
+  "description": "Run SQLite on the device and IndexedDB in the browser with exactly the same API with nanoSQL 2!",
+  "devDependencies": {
+    "@types/node": "^11.12.2",
+    "ts-loader": "^5.3.3",
+    "tslint": "^5.14.0",
+    "typescript": "^3.4.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova-sqlite-storage": "<3.2.0"
+      }
+    }
+  },
+  "homepage": "https://nanosql.io/",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-osx",
+    "cordova-windows",
+    "cordova-browser",
+    "database",
+    "json",
+    "collection",
+    "records",
+    "sql",
+    "orm",
+    "nosql",
+    "DBMS",
+    "data",
+    "query",
+    "DOM-storage",
+    "SQLite",
+    "JSON",
+    "CSV",
+    "iteration",
+    "sequence",
+    "stateless",
+    "functional",
+    "datastructure",
+    "data",
+    "lazy",
+    "persistent",
+    "immutable",
+    "undo",
+    "redo",
+    "immutablejs",
+    "redux",
+    "sorting",
+    "filtering",
+    "filter",
+    "sort",
+    "somesql",
+    "nanosql",
+    "isomorphic",
+    "universal",
+    "trie",
+    "tree"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@nano-sql/adapter-sqlite-cordova",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClickSimply/Nano-SQL.git"
+  },
+  "scripts": {
+    "build": "tsc && webpack -p && rm -rf dist/lib"
+  },
+  "typings": "lib/index.d.ts",
+  "version": "2.1.2"
+}

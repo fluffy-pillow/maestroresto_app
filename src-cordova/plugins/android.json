@@ -24,7 +24,17 @@
     },
     "cordova-plugin-wkwebviewxhrfix": {
       "PACKAGE_NAME": "com.kaerus.maestroresto"
+    },
+    "adapter-sqlite-cordova": {
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.kaerus.maestroresto"
+    }
+  }
 }

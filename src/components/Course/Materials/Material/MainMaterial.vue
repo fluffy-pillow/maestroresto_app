@@ -111,7 +111,7 @@
         },
         methods: {
             handleClick () {
-                this.$eventBus.$emit('action-sheet', MaterialPassed)
+                this.$eventBus.$emit('open-action-sheet', MaterialPassed)
             }
         }
     }

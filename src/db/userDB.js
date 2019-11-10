@@ -1,30 +1,20 @@
-import { nSQL } from 'nano-sql'
+import { nSQL } from '@nano-sql/core'
 import {isset} from '@/helpers'
 
 const userDB = {
-    init: () => {
-        nSQL("user")
-            .model([
-                { key: 'id', type: 'int', props: ['pk', 'ai'] },
-                { key: 'token', type: 'string' },
-                { key: 'user', type: 'string' }
-            ]).connect()
-    },
     insertData: async (args) => {
         return await new Promise((resolve, reject) => {
-            nSQL().onConnected(() => {
-                nSQL("user").query('upsert', {
-                    token: args.token,
-                    user: JSON.stringify(args.user)
-                }).exec().then((result) => {
-                    resolve(true)
-                })
+            nSQL("user").useDatabase("maestroresto_db").query('upsert', {
+                token: args.token,
+                user: JSON.stringify(args.user)
+            }).exec().then((result) => {
+                resolve(true)
             })
         })
     },
     getToken: async () => {
         return await new Promise((resolve, reject) => {
-             nSQL("user").query("select", ["token"]).exec()
+             nSQL("user").useDatabase("maestroresto_db").query("select", ["token"]).exec()
                  .then(response => {
                      if (isset(response[0], 'token')) {
                          resolve(response[0].token)
@@ -42,7 +32,7 @@ const userDB = {
     },
     getUserData: async () => {
         return await new Promise((resolve, reject) => {
-            nSQL("user").query("select", ["user"]).exec()
+            nSQL("user").useDatabase("maestroresto_db").query("select", ["user"]).exec()
                 .then(response => {
                     if (isset(response[0], 'user')) {
                         resolve(response[0].user)
@@ -59,6 +49,7 @@ const userDB = {
     },
     logout: () => {
         nSQL('user')
+            .useDatabase("maestroresto_db")
             .query('delete')
             .exec()
             .then(rows => {

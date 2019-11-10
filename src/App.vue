@@ -100,7 +100,7 @@ ons-action-sheet .action-sheet {
   font-size: 16px;
 }
 
-.dashboard > .page__content, .learning > .page__content {
+.dashboard > .page__content, .learning > .page__content, .test > .page__content {
   top: 0 !important;
 }
 

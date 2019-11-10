@@ -26,16 +26,16 @@
                 setToken: 'user/setToken'
             })
         },
-        created() {
+        mounted() {
             let that = this
             userDB.getToken().then(token => {
                 this.$store.dispatch('user/setToken', {
                     token: token, callback: function (response) {
                         setTimeout(() => {
                             if (response.answer === 'ok') {
-                                that.$router.replace('/dashboard').catch(err => {})
+                                that.$router.push('/dashboard').catch(err => {})
                             } else {
-                                that.$router.replace('/auth').catch(err => {})
+                                that.$router.push('/auth').catch(err => {})
                             }
                         }, 0)
 

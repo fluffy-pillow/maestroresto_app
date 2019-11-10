@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import systemMessage from './systemMessage'
-import footer from './footer'
-import search from './search'
-import globalPreloader from './globalPreloader'
-import user from './user'
+import systemMessage from './systemMessage/index'
+import footer from './footer/index'
+import search from './search/index'
+import globalPreloader from './globalPreloader/index'
+import user from './user/index'
 
 Vue.use(Vuex)
 

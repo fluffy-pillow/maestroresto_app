@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import store from '../store'
+import store from './store';
 import Dashboard from './pages/Dashboard';
 import Auth from './pages/Auth';
 import Restore from './pages/Restore';
@@ -12,6 +12,7 @@ import Menu from './pages/Menu';
 import Course from './pages/Course';
 import Splashscreen from './pages/Splashscreen';
 import Material from './pages/Course/Materials/Material';
+import Test from './pages/Test';
 import userDB from '@/db/userDB'
 
 Vue.use(Router);
@@ -30,9 +31,9 @@ let ifNotAuthenticated = (to, from, next) => {
 let ifAuthenticated = (to, from, next) => {
     console.log(store.getters['user/isAuthenticated'])
     if (store.getters['user/isAuthenticated']) {
-        next()
+        next();
     } else {
-        next('/auth')
+        next('/auth');
     }
 }
 
@@ -106,7 +107,6 @@ const router = new Router({
                     component: {
                         extends: Course
                     },
-                    meta: { requiresAuth: true },
                     children: [
                         {
                             path: 'material',
@@ -114,7 +114,17 @@ const router = new Router({
                             component: {
                                 extends: Material
                             },
-                            meta: { requiresAuth: true },
+                            children: [
+                                {
+                                    path: 'test/:id',
+                                    name: 'Test',
+                                    component: {
+                                        extends: Test
+                                    },
+
+                                }
+                            ]
+
                         }
                     ]
                 },
@@ -128,7 +138,6 @@ const router = new Router({
                 extends: Learning,
                 onsNavigatorOptions: {animation: 'none'}
             },
-            meta: { requiresAuth: true },
             children: [
                 {
                     path: 'course',
@@ -136,7 +145,6 @@ const router = new Router({
                     component: {
                         extends: Course
                     },
-                    meta: { requiresAuth: true },
                     children: [
                         {
                             path: 'material',
@@ -144,8 +152,16 @@ const router = new Router({
                             component: {
                                 extends: Material
                             },
-                            meta: { requiresAuth: true }
+                            children: [
+                                {
+                                    path: 'test/:id',
+                                    name: 'Test',
+                                    component: {
+                                        extends: Test
+                                    },
 
+                                }
+                            ]
                         }
                     ]
                 },
@@ -158,8 +174,7 @@ const router = new Router({
             component: {
                 extends: Certification,
                 onsNavigatorOptions: {animation: 'none'}
-            },
-            meta: { requiresAuth: true },
+            }
         },
         {
             path: '/menu',
@@ -167,8 +182,7 @@ const router = new Router({
             component: {
                 extends: Menu,
                 onsNavigatorOptions: {animation: 'none'}
-            },
-            meta: { requiresAuth: true },
+            }
         },
     ]
 });

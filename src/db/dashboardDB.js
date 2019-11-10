@@ -1,8 +1,8 @@
-import { nSQL } from 'nano-sql'
+import { nSQL } from '@nano-sql/core'
 import {isset} from '@/helpers'
 
 const dashboardDB = {
-    init: () => {
+/*    init: () => {
         nSQL("dashboard")
             .model([
                 { key: 'id', type: 'int', props: ['pk', 'ai'] },
@@ -11,7 +11,7 @@ const dashboardDB = {
                 { key: 'unfinishedCourses', type: 'string' },
                 { key: 'unfinishedCourses', type: 'string' },
             ]).connect()
-    },
+    },*/
 /*    getDashboardData: async () => {
         return await new Promise((resolve, reject) => {
             nSQL("user").query("select", ["user"]).exec()

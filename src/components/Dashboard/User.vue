@@ -67,10 +67,10 @@
             })
         },
         mounted () {
-/*            userDB.getUserData().then(userData => {
+            userDB.getUserData().then(userData => {
                 let decodedUserData = JSON.parse(userData)
                 let bAnswer = !!decodedUserData
-                if (!bAnswer) {
+                if (bAnswer) {
                     this.firstName = decodedUserData.firstName
                     this.avatarUrl = decodedUserData.avatarUrl
                 } else {
@@ -78,8 +78,13 @@
                         if (response.error) {
                             this.systemMessage({type: 'error', message: response.error.message, duration: 5000})
                             userDB.logout()
-                            this.setToken('')
-                            this.$router.push('/auth')
+                            this.setToken({
+                                token: '', callback: function (response) {
+                                    if (response.answer === 'fail') {
+                                        this.$router.push('/auth')
+                                    }
+                                }
+                            })
                         } else {
                             this.firstName = response.firstName
                             this.avatarUrl = response.avatarUrl
@@ -87,7 +92,7 @@
 
                     })
                 }
-            })*/
+            })
 
 
             this.page = document.querySelector('.dashboard.page')

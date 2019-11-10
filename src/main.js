@@ -3,9 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'
+import db from './db/db'
 import { sync } from 'vuex-router-sync'
 import router from './router'
-import store from '../store'
+import store from './store'
 import i18n from './i18n'
 import Axios from 'axios'
 import Vue2TouchEvents from 'vue2-touch-events'
@@ -27,9 +28,6 @@ import DotLoader from 'vue-spinner/src/DotLoader.vue';
 
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css'
-
-import userDB from './db/userDB'
-import dashboardDB from './db/dashboardDB'
 
 
 Vue.config.productionTip = false
@@ -59,41 +57,51 @@ Vue.prototype.$http = Axios;
 
 sync(store, router)
 
-new Vue({
-  store,
-  i18n,
-  router,
-  render: h => h(App),
-  mounted () {
-      console.log( 'mounted' )
-      document.addEventListener( 'deviceReady', this.onDeviceReady, false )
-  },
-  methods : {
-      onDeviceReady () {
-          userDB.init()
-          dashboardDB.init()
-          let that = this
-          Keyboard.shrinkView(false);
-          Keyboard.hideFormAccessoryBar(true);
-          Keyboard.disableScrollingInShrinkView(true);
-          document.addEventListener( 'touchstart', this.onClick, false )
-          navigator.globalization.getPreferredLanguage(
-              function (language) {
-                  that.$i18n.locale = language.value.split('-')[0]
-              },
-              function () {alert('Error getting language\n');}
-          );
-      },
-      removeFocusFromAllInputs () {
-          let el = document.querySelector('input:focus')
-          if (el && Keyboard.isVisible)
-              el.blur()
-      },
-      onClick ( e ) {
-          if (!e.target.classList.contains('need-keyboard')) {
-              Keyboard.hide()
-              this.removeFocusFromAllInputs()
-          }
-      }
-  }
-} ).$mount( '#app' )
+const app = new Vue({
+    store,
+    i18n,
+    router,
+    render: h => h(App),
+    mounted() {
+        console.log('mounted')
+        document.addEventListener('deviceReady', this.onDeviceReady, false)
+    },
+    methods: {
+        onDeviceReady() {
+            let that = this
+            Keyboard.shrinkView(false);
+            Keyboard.hideFormAccessoryBar(true);
+            Keyboard.disableScrollingInShrinkView(true);
+            document.addEventListener('touchstart', this.onClick, false)
+            navigator.globalization.getPreferredLanguage(
+                function (language) {
+                    that.$i18n.locale = language.value.split('-')[0]
+                },
+                function () {
+                    alert('Error getting language\n');
+                }
+            );
+        },
+        removeFocusFromAllInputs() {
+            let el = document.querySelector('input:focus')
+            if (el && Keyboard.isVisible)
+                el.blur()
+        },
+        onClick(e) {
+            if (!e.target.classList.contains('need-keyboard')) {
+                Keyboard.hide()
+                this.removeFocusFromAllInputs()
+            }
+        }
+    }
+})
+
+document.addEventListener(typeof cordova !== "undefined" ? "deviceready" : "DOMContentLoaded", () => {
+    db.init((response) => {
+        if (response.ready) {
+            app.$mount('#app')
+        }
+    })
+});
+
+
