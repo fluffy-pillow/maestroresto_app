@@ -40,6 +40,14 @@ export default {
 }
 
 @font-face {
+  font-family: Lancelot;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Lancelot-Regular.ttf') format('truetype');
+}
+
+@font-face {
   font-family: Rubik;
   font-weight: 500;
   font-style: normal;

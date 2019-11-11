@@ -1,14 +1,22 @@
 <template>
     <div class="question">
         <div class="text">
-            Как правильно раскладывать приборы?
+            {{question}}
         </div>
+
+        <Video v-if="video" :video="video"></Video>
     </div>
 </template>
 
 <script>
+    import Video from "../Video";
     export default {
-        name: "Question"
+        name: "Question",
+        components: {Video},
+        props: {
+            question: String,
+            video: String
+        }
     }
 </script>
 
@@ -17,6 +25,8 @@
         padding-top: 16px;
         padding-bottom: 32px;
         background: #3DD498;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .text {
@@ -28,6 +38,10 @@
         font-feature-settings: 'case' on;
         white-space: initial;
         text-align: left;
-        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .video-outer {
+        margin-top: 32px;
     }
 </style>

@@ -13,7 +13,7 @@
                     </button>
                 </div>
             </div>
-            <div class="video-name">
+            <div class="video-name" v-if="videoName">
                 {{videoName}}
             </div>
         </div>
