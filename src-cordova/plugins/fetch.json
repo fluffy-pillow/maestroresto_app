@@ -39,14 +39,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-labs-wkwebview-engine-localhost": {
-    "source": {
-      "type": "registry",
-      "id": "https://github.com/apache/cordova-plugins.git#wkwebview-engine-localhost"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-wkwebviewxhrfix": {
     "source": {
       "type": "registry",
