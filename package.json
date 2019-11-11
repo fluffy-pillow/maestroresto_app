@@ -24,7 +24,6 @@
     "@nano-sql/core": "^2.3.7",
     "axios": "^0.19.0",
     "cordova-plugin-splashscreen": "^5.0.3",
-    "cordova-plugin-wkwebview-engine-localhost": "^1.0.1",
     "core-js": "^3.3.2",
     "onsenui": "^2.10.10",
     "save": "^2.4.0",
