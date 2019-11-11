@@ -21,6 +21,10 @@
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.maestroresto.app"
+    },
+    "cordova-plugin-wkwebviewxhrfix": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
-  }
+  },
+  "dependent_plugins": {}
 }
