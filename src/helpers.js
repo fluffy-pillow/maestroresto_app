@@ -14,6 +14,9 @@ const timezoneOffset = () =>  {
     return offset
 }
 
+const empty = (obj) => {
+    return obj.length === 0
+}
 
 const isset = (obj, path) => {
     let stone;
@@ -43,4 +46,4 @@ const isset = (obj, path) => {
     return true;
 }
 
-export {isset, timezoneOffset}
+export {isset, timezoneOffset, empty}

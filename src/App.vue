@@ -63,10 +63,6 @@ export default {
   src: url('fonts/Rubik-Light.ttf') format('truetype');
 }
 
-ons-action-sheet .action-sheet {
-  left: 0;
-  right: 0;
-}
 
 .course .page__content {
   top: calc(0px - env(safe-area-inset-top) * 7) !important;

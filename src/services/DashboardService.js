@@ -1,34 +1,9 @@
 import Api from './Api'
 import {isset} from '@/helpers'
 
-/*const dashboardService = {
-    getDashboardData(token, callback) {
-        Api.get('Dashboard/List', {headers: {
-                'Token': token
-            }}).then(
-            response => {
-                if (isset(response, 'data.result')) {
-                    callback({
-                        data: response.data.result
-                    })
-                    return
-                }
-
-            },
-            error => {
-                callback({
-                    error: {
-                        type: 'NETWORK_ERROR',
-                        message: error.message
-                    }
-                })
-            }
-        )
-    }
-}*/
 
 const dashboardService = {
-    getDashboardData(token, callback) {
+    getData(token, callback) {
         Api.get('Dashboard/List', {headers: {
                 'Token': token
             }}).then(

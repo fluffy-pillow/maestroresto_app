@@ -18,10 +18,11 @@ const db = {
                 {
                     name: "dashboard",
                     model: {
-                        "id:uuid": {pk: true},
+                        "id:uuid": {},
                         "rating:string": {},
                         "required:string": {},
-                        "unfinishedCourses:string": {}
+                        "unfinishedCourses:string": {},
+                        "unfinishedTests:string": {}
                     }
                 }
             ],
@@ -45,6 +46,8 @@ const db = {
             callback({
                 ready: true
             });
+
+
             // ready to query!
         }).catch(() => {
             callback({
@@ -54,6 +57,7 @@ const db = {
             // ran into a problem
         });
     }
+
 }
 
 export default db

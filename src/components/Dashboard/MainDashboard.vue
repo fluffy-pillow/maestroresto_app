@@ -1,20 +1,21 @@
 <template>
     <main class="main-dashboard">
         <Statistics :status="status" :leaderboard="leaderboard" :loyalty="loyalty"></Statistics>
-        <Tasks></Tasks>
-        <Courses></Courses>
-        <Tests></Tests>
+        <Tasks :required="required"></Tasks>
+        <Courses :unfinished-courses="unfinishedCourses"></Courses>
+        <Tests :unfinished-tests="unfinishedTests"></Tests>
     </main>
 </template>
 
 <script>
     import DashboardService from '@/services/DashboardService'
-    import {mapGetters} from 'vuex'
+    import {mapGetters, mapActions} from 'vuex'
 
     import Statistics from "./Statistics/Statistics";
     import Tasks from "./Tasks/Tasks";
     import Courses from "./Courses/Courses";
     import Tests from "./Tests/Tests";
+    import dashboardDB from "../../db/dashboardDB";
 
     export default {
         name: "MainDashboard",
@@ -28,19 +29,53 @@
             return {
                 status: {},
                 leaderboard: {},
-                loyalty: {}
+                loyalty: {},
+                required: [],
+                unfinishedCourses: [],
+                unfinishedTests: []
             }
         },
+        methods: {
+            ...mapActions({
+                systemMessage: 'systemMessage/systemMessage'
+            }),
+            localDBRequest () {
+                dashboardDB.getData(response => {
+                    console.log(response, 211)
+                    if (!response.error) {
+                        let decodedUserData = JSON.parse(response)
+                        this.status = decodedUserData.rating.status
+                        this.leaderboard = decodedUserData.rating.leaderboard
+                        this.loyalty = decodedUserData.rating.loyalty
+                        this.required = decodedUserData.required
+                        this.unfinishedCourses = decodedUserData.unfinishedCourses
+                        this.unfinishedTests = decodedUserData.unfinishedTests
+                    } else {
+                        this.serviceRequest()
+                    }
+                })
+            },
+            serviceRequest () {
+                DashboardService.getData(this.token, response => {
+                    if (response.error) {
+                        this.systemMessage({type: 'error', message: response.error.message, duration: 5000})
+                        this.logout()
+                    } else {
+                        this.status = response.data.rating.status
+                        this.leaderboard = response.data.rating.leaderboard
+                        this.loyalty = response.data.rating.loyalty
+                        this.required = response.data.required
+                        this.unfinishedCourses = response.data.unfinishedCourses
+                        this.unfinishedTests = response.data.unfinishedTests
+
+                        dashboardDB.insertData(response.data)
+                    }
+
+                })
+            },
+        },
         mounted () {
- /*         console.log(this.token)
-          DashboardService.getDashboardData(this.token, response => {
-              if (response.data) {
-                console.log(response.data)
-                this.status = response.data.rating.status
-                this.leaderboard = response.data.rating.leaderboard
-                this.loyalty = response.data.rating.loyalty
-              }
-          })*/
+            this.localDBRequest()
         }
     }
 </script>

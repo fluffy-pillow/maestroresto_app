@@ -65,7 +65,8 @@
             desiredText: 'test',
             inputType: 'password',
           },
-          bError: false
+          bError: false,
+          token: ''
         }
       },
       methods: {
@@ -82,35 +83,45 @@
             this.$router.push({path: '/dashboard', animation: 'none'})
             this.hideGlobalPreloader()
         },
+        serviceRequest (data) {
+            AuthService.login(data, response => {
+                if (response.error) {
+                    this.systemMessage(
+                        {
+                            type: 'error',
+                            message: response.error.message,
+                            duration: 5000
+                        }
+                    )
+                    this.hideGlobalPreloader()
+                    this.bError = true
+                } else {
+                    this.localDBRequest(response)
+                }
+            })
+        },
+        localDBRequest (serviceResponse) {
+            userDB.insertData(serviceResponse, response => {
+                if (response.inserted) {
+                    this.vuexRequest(serviceResponse)
+                }
+            })
+        },
+        vuexRequest (localDBResponse) {
+            let that = this
+            this.setToken({
+                token: localDBResponse.token,
+                callback: response => {
+                    if (response.ok) {
+                        that.openDashboard()
+                    }
+                }
+            })
+        },
         onSubmit () {
             this.showGlobalPreloader()
             let data = {email: this.email.inputText, password: this.password.inputText}
-            AuthService.login(data, response => {
-                if (response.error) {
-                  this.systemMessage(
-                      {
-                          type: 'error',
-                          message: response.error.message,
-                          duration: 5000
-                      }
-                  )
-                  this.hideGlobalPreloader()
-                  this.bError = true
-                } else {
-                    let that = this
-                    userDB.insertData(response).then(inserted => {
-                        this.$store.dispatch('user/setToken', {
-                            token: response.token, callback: function (res) {
-                                if (res.answer === 'ok') {
-                                    if (inserted) that.openDashboard()
-                                }
-                            }
-                        })
-
-                    })
-                }
-            })
-//            this.openDashboard()
+            this.serviceRequest(data)
         },
         ...mapActions({
           systemMessage: 'systemMessage/systemMessage',

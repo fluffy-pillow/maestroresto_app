@@ -61,39 +61,38 @@
                 }
               }
             },
+            serviceRequest () {
+                UserService.getData(this.token, response => {
+                    if (response.error) {
+                        this.systemMessage({type: 'error', message: response.error.message, duration: 5000})
+                        this.logout()
+                    } else {
+                        this.firstName = response.firstName
+                        this.avatarUrl = response.avatarUrl
+                    }
+
+                })
+            },
+            localDBRequest () {
+                userDB.getData(response => {
+                    if (!response.error) {
+                        let decodedUserData = JSON.parse(response.user)
+                        let bAnswer = !!decodedUserData
+                        if (bAnswer) {
+                            this.firstName = decodedUserData.firstName
+                            this.avatarUrl = decodedUserData.avatarUrl
+                        } else {
+                            this.serviceRequest()
+                        }
+                    }
+                })
+            },
             ...mapActions({
-                systemMessage: 'systemMessage/systemMessage',
-                setToken: 'user/setToken'
+                systemMessage: 'systemMessage/systemMessage'
             })
         },
         mounted () {
-            userDB.getUserData().then(userData => {
-                let decodedUserData = JSON.parse(userData)
-                let bAnswer = !!decodedUserData
-                if (bAnswer) {
-                    this.firstName = decodedUserData.firstName
-                    this.avatarUrl = decodedUserData.avatarUrl
-                } else {
-                    UserService.getUserData(this.token, response => {
-                        if (response.error) {
-                            this.systemMessage({type: 'error', message: response.error.message, duration: 5000})
-                            userDB.logout()
-                            this.setToken({
-                                token: '', callback: function (response) {
-                                    if (response.answer === 'fail') {
-                                        this.$router.push('/auth')
-                                    }
-                                }
-                            })
-                        } else {
-                            this.firstName = response.firstName
-                            this.avatarUrl = response.avatarUrl
-                        }
-
-                    })
-                }
-            })
-
+            this.localDBRequest()
 
             this.page = document.querySelector('.dashboard.page')
             this.pageContent = this.page.querySelector('.page__content')

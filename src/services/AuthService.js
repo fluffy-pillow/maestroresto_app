@@ -25,8 +25,10 @@ const AuthService = {
                 }
 
                 callback({
-                    type: 'UNDEFINED_ERROR',
-                    message: ''
+                    error: {
+                        type: 'UNDEFINED_ERROR',
+                        message: ''
+                    }
                 })
             },
             error => {

@@ -28,6 +28,9 @@
     export default {
         name: "Tests",
         components: {TestsList, TestItem},
+        props: {
+            unfinishedTests: Array
+        },
         data () {
             return {
                 tests: [

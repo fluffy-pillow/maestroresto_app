@@ -24,7 +24,7 @@ let ifNotAuthenticated = (to, from, next) => {
     if (!store.getters['user/isAuthenticated']) {
         next()
     } else {
-        next('/')
+        next('/dashboard')
     }
 }
 
@@ -61,7 +61,7 @@ const router = new Router({
                 extends: Auth,
                 onsNavigatorOptions: {animation: 'none'}
             },
-//            beforeEnter: ifNotAuthenticated,
+            beforeEnter: ifNotAuthenticated,
             children: [
                 {
                     path: '/restore',

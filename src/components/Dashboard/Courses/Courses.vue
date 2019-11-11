@@ -11,7 +11,7 @@
         <div class="body">
             <CoursesList>
                 <CourseItem
-                    v-for="(course, key) of courses"
+                    v-for="(course, key) of unfinishedCourses"
                     :key="key"
                     :data="course"
                 >
@@ -28,66 +28,8 @@
     export default {
         name: "Courses",
         components: {CoursesList, CourseItem},
-        data () {
-            return {
-                courses: [
-                    {
-                        name: 'Оборудование для организации обслуживания гостей',
-                        percents: 57,
-                        background: 'course_1.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    },
-                    {
-                        name: 'Техника активных и эффективных продаж',
-                        percents: 57,
-                        background: 'course_2.jpeg'
-                    }
-                ]
-            }
+        props: {
+            unfinishedCourses: Array
         }
     }
 </script>

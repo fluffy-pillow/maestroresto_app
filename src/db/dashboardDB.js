@@ -1,34 +1,67 @@
 import { nSQL } from '@nano-sql/core'
-import {isset} from '@/helpers'
+import {isset, empty} from '@/helpers'
 
 const dashboardDB = {
-/*    init: () => {
-        nSQL("dashboard")
-            .model([
-                { key: 'id', type: 'int', props: ['pk', 'ai'] },
-                { key: 'rating', type: 'string' },
-                { key: 'required', type: 'string' },
-                { key: 'unfinishedCourses', type: 'string' },
-                { key: 'unfinishedCourses', type: 'string' },
-            ]).connect()
-    },*/
-/*    getDashboardData: async () => {
-        return await new Promise((resolve, reject) => {
-            nSQL("user").query("select", ["user"]).exec()
-                .then(response => {
-                    if (isset(response[0], 'user')) {
-                        resolve(response[0].user)
-                        return
-                    }
-
-                    resolve('[]')
+    insertData: (args, callback = null) => {
+        nSQL("dashboard").useDatabase("maestroresto_db").query('upsert',
+            {
+                rating: JSON.stringify(args.rating),
+                required: JSON.stringify(args.required),
+                unfinishedCourses: JSON.stringify(args.unfinishedCourses),
+                unfinishedTests: JSON.stringify(args.unfinishedTests)
+            }
+        ).exec().then((result) => {
+            if (callback) {
+                callback({
+                    inserted: true
                 })
-                .catch(error => {
-                    resolve('[]')
-                })
+                return
+            }
 
+        }).catch(() => {
+            callback({
+                error: {
+                    type: 'NSQL_DASHBOARDDB_INSERT_DATA_ERROR',
+                    message: ''
+                }
+            })
         })
-    }*/
+    },
+    getData: (callback) => {
+        nSQL().query("show tables").exec().then((rows) => {
+            console.log(rows);
+            /*
+            [
+                {table: "users"},
+                {table: "posts"},
+                ...
+            ]
+            */
+        });
+        nSQL("dashboard").useDatabase("maestroresto_db").query("select").exec()
+            .then(response => {
+                if (!empty(response)) {
+                    callback(response[0])
+                    return
+                }
+
+                callback({
+                    error: {
+                        type: 'NSQL_DASHBOARDDB_DASHBOARD_DATA_NOT_FOUND',
+                        message: ''
+                    }
+                })
+            })
+            .catch(() => {
+                callback({
+                    error: {
+                        type: 'NSQL_DASHBOARDDB_CONNECTION_ERROR',
+                        message: ''
+                    }
+                })
+            })
+    }
+
 }
 
 export default dashboardDB

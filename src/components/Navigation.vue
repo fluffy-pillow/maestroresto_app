@@ -21,27 +21,33 @@
             goBack() {
                 this.$router.push({ name: this.$route.matched[this.$route.matched.length - 2].name });
             },
+            localDBRequest () {
+                userDB.getToken(response => {
+                    this.vuexRequest(response)
+                })
+            },
+            vuexRequest (localDBResponse) {
+                let that = this
+                this.setToken({
+                    token: localDBResponse.token,
+                    callback: response => {
+                        if (response.ok) {
+                            that.$router.push('/dashboard').catch(err => {})
+                        } else {
+                            that.$router.push('/auth').catch(err => {})
+                        }
+                    }
+                })
+            },
+
             ...mapActions({
                 showFooter: 'footer/show',
                 setToken: 'user/setToken'
             })
         },
-        mounted() {
-            let that = this
-            userDB.getToken().then(token => {
-                this.$store.dispatch('user/setToken', {
-                    token: token, callback: function (response) {
-                        setTimeout(() => {
-                            if (response.answer === 'ok') {
-                                that.$router.push('/dashboard').catch(err => {})
-                            } else {
-                                that.$router.push('/auth').catch(err => {})
-                            }
-                        }, 0)
 
-                    }
-                })
-            })
+        mounted() {
+            this.localDBRequest()
 
             const mapRouteStack = route => this.pageStack = route.matched.map(m => {
                 return m.components.default

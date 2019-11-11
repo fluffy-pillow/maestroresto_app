@@ -3,11 +3,11 @@
         <div class="container">
             <div class="label" :class="data.type">
                 <div class="label-inner">
-                    {{data.name}}
+                    {{data.type}}
                 </div>
             </div>
-            <div class="desc">
-                {{data.desc}}
+            <div class="title">
+                {{data.title}}
             </div>
         </div>
     </li>
@@ -77,7 +77,7 @@
     left: 50%;
 }
 
-.desc {
+.title {
     color: #4B4B4B;
     letter-spacing: 0.16px;
     font-size: 14px;

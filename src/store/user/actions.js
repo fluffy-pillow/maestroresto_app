@@ -2,8 +2,17 @@ export function setToken({commit}, args) {
     let bToken = !!args.token
     if (bToken) {
         commit('SET_TOKEN', args.token)
-        args.callback({answer: 'ok'})
+        args.callback(
+            {ok: true}
+        )
     } else {
-        args.callback({answer: 'fail'})
+        args.callback(
+            {
+                error: {
+                    type: 'VUEX_FAILED_TO_SET_TOKEN',
+                    message: ''
+                }
+            }
+        )
     }
 }

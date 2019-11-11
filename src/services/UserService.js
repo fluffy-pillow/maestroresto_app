@@ -3,7 +3,7 @@ import {isset} from '@/helpers'
 
 
 const userService = {
-    getUserData(token, callback) {
+    getData(token, callback) {
         Api.get('Profile/My', {headers: {
             'Token': token
             }}).then(

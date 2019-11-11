@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import mixin from './mixin';
 import VueRouter from 'vue-router'
 import db from './db/db'
 import { sync } from 'vuex-router-sync'
@@ -35,6 +36,7 @@ Vue.config.productionTip = false
 Vue.use(VueOnsen)
 Vue.use(VueRouter)
 Vue.use(Vue2TouchEvents)
+Vue.mixin(mixin)
 Vue.component(VOnsPage.name, VOnsPage);
 Vue.component(VOnsNavigator.name, VOnsNavigator);
 Vue.component(VOnsButton.name, VOnsButton);

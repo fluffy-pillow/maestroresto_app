@@ -11,7 +11,7 @@
         <div class="body">
             <TasksList>
                 <TaskItem
-                        v-for="(task, key) of tasks"
+                        v-for="(task, key) of required"
                         :key="key"
                         :data="task"
                 >
@@ -27,59 +27,8 @@
     export default {
         name: "Tasks",
         components: {TasksList, TaskItem},
-        data () {
-            return {
-                tasks: [
-                    {
-                        type: 'test',
-                        name: 'тест',
-                        desc: 'Правила принятия заказа. Значимость аперитива и диджестива.',
-                        active: true
-                    },
-                    {
-                        type: 'poll',
-                        name: 'опрос',
-                        desc: 'Формирование у персонала ориентация на гостя.',
-                        active: false
-                    },
-                    {
-                        type: 'poll',
-                        name: 'опрос',
-                        desc: 'Формирование у персонала ориентация на гостя.',
-                        active: false
-                    },
-                    {
-                        type: 'poll',
-                        name: 'опрос',
-                        desc: 'Формирование у персонала ориентация на гостя.',
-                        active: false
-                    },
-                    {
-                        type: 'poll',
-                        name: 'опрос',
-                        desc: 'Формирование у персонала ориентация на гостя.',
-                        active: false
-                    },
-                    {
-                        type: 'poll',
-                        name: 'опрос',
-                        desc: 'Формирование у персонала ориентация на гостя.',
-                        active: false
-                    },
-                    {
-                        type: 'poll',
-                        name: 'опрос',
-                        desc: 'Формирование у персонала ориентация на гостя.',
-                        active: false
-                    },
-                    {
-                        type: 'poll',
-                        name: 'опрос',
-                        desc: 'Формирование у персонала ориентация на гостя.',
-                        active: false
-                    }
-                ]
-            }
+        props: {
+            required: Array
         }
     }
 </script>
