@@ -54,13 +54,5 @@
     },
     "is_top_level": true,
     "variables": {}
-  },
-  "cordova-labs-local-webserver": {
-    "source": {
-      "type": "registry",
-      "id": "git+https://github.com/apache/cordova-plugins.git#local-webserver"
-    },
-    "is_top_level": false,
-    "variables": {}
   }
 }
