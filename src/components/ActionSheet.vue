@@ -52,6 +52,7 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    overflow: hidden;
 }
 
 .action-sheet-outer {
