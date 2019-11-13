@@ -1,6 +1,7 @@
 <template>
     <v-ons-toolbar static class="header">
         <div class="center">
+
                 <div class="back-button-wrapper header-item">
                     <v-ons-back-button>
 
@@ -31,7 +32,9 @@
         background: #3DD498 !important;
         z-index: 999999;
         box-shadow: none !important;
-        height: 44px !important;
+        height: calc(44px + env(safe-area-inset-top)) !important;
+        display: flex;
+        align-items: flex-end;
     }
 
     .center {

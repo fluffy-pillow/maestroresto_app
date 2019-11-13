@@ -13,6 +13,7 @@ import Course from './pages/Course';
 import Splashscreen from './pages/Splashscreen';
 import Material from './pages/Course/Materials/Material';
 import Test from './pages/Test';
+import TestResults from './pages/TestResults';
 import userDB from '@/db/userDB'
 
 Vue.use(Router);
@@ -122,6 +123,13 @@ const router = new Router({
                                         extends: Test
                                     },
 
+                                },
+                                {
+                                    path: 'results',
+                                    name: 'TestResults',
+                                    component: {
+                                        extends: TestResults
+                                    }
                                 }
                             ]
 
@@ -160,7 +168,15 @@ const router = new Router({
                                         extends: Test
                                     },
 
+                                },
+                                {
+                                    path: 'results',
+                                    name: 'TestResults',
+                                    component: {
+                                        extends: TestResults
+                                    }
                                 }
+
                             ]
                         }
                     ]

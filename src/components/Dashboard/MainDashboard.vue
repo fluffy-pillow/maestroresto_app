@@ -41,7 +41,6 @@
             }),
             localDBRequest () {
                 dashboardDB.getData(response => {
-                    console.log(response, 211)
                     if (!response.error) {
                         let decodedUserData = JSON.parse(response)
                         this.status = decodedUserData.rating.status
@@ -75,7 +74,7 @@
             },
         },
         mounted () {
-            this.localDBRequest()
+//            this.localDBRequest()
         }
     }
 </script>

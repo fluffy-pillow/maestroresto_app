@@ -104,14 +104,23 @@ export default {
   font-size: 16px;
 }
 
-.dashboard > .page__content, .learning > .page__content, .test > .page__content {
+.dashboard > .page__content, .learning > .page__content {
   top: 0 !important;
+}
+
+.test > .page__content {
+  top: calc(env(safe-area-inset-top) * -8) !important;
 }
 
 .navigation.iphonex > .dashboard > .page__content, .navigation.iphonex > .learning > .page__content {
   padding-top: calc(constant(safe-area-inset-top)*2) !important;
   padding-top: calc(env(safe-area-inset-top)*2) !important;
   top: 0;
+}
+
+.navigation > .material > .page__content {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
 }
 
 .auth .page__content, .restore .page__content, .code  .page__content, .new-password  .page__content {

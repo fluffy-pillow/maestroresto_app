@@ -5,6 +5,7 @@ import footer from './footer/index'
 import search from './search/index'
 import globalPreloader from './globalPreloader/index'
 import user from './user/index'
+import tests from './tests/index'
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
       footer: footer,
       search: search,
       globalPreloader: globalPreloader,
-      user: user
+      user: user,
+      tests: tests
     }
 })

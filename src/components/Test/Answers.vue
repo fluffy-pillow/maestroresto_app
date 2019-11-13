@@ -5,9 +5,9 @@
             :key="key"
             @click="handleClick(answer.id)"
             :class="{
-                selected: $parent.selectedAnswer === answer.id && !$parent.wrongAnswer,
-                wrong: $parent.selectedAnswer === answer.id && $parent.wrongAnswer,
-                correct: $parent.correctAnswer === answer.id && $parent.wrongAnswer
+                selected: isSelected(answer),
+                wrong: isWrong(answer),
+                correct: isCorrect(answer)
              }"
         >
             <span class="top">
@@ -17,7 +17,7 @@
                 <span class="answer-status">
                 </span>
             </span>
-            <span class="bottom" v-if="$parent.selectedAnswer === answer.id && $parent.wrongAnswer">
+            <span class="bottom" v-if="isWrong(answer)">
                 <span class="bottom-icon">
                     ,,
                 </span>
@@ -26,20 +26,140 @@
                 </span>
             </span>
         </li>
+        <li v-if="testType === 'another'">
+            <div class="answer-input-wrapper">
+                <span class="answer-input-title">
+                    свой вариант ответа
+                </span>
+                <span class="answer-variant">
+                    г.
+                </span>
+                <ContentEditable
+                        class="answer-input"
+                        :content="$parent.anotherAnswer"
+                        @update="$parent.anotherAnswer = $event"
+                >
+                </ContentEditable>
+            </div>
+        </li>
     </ul>
 </template>
 
 <script>
+    import {mapGetters, mapActions} from 'vuex'
+    import ContentEditable from "../ContentEditable";
+
     export default {
         name: "Answers",
+        components: {ContentEditable},
         props: {
-            answers: Array
+            answers: Array,
+            testType: String
         },
         methods: {
             handleClick (newValue) {
-                if (!this.$parent.bSubmit) {
-                    this.$parent.selectedAnswer = newValue
+              if (!this.$parent.bSubmit) {
+                  switch (this.testType) {
+                      case 'default': {
+                          this.currentTestSavedData.answer = newValue
+                          break
+                      }
+                      case 'multi': {
+                          let index = this.currentTestSavedData.answer.indexOf(newValue)
+                          if (index > -1) {
+                              this.currentTestSavedData.answer.splice(index, 1)
+                          } else {
+                              this.currentTestSavedData.answer.push(newValue)
+                          }
+                          break
+                      }
+                      case 'another': {
+                          let index = this.currentTestSavedData.answer.indexOf(newValue)
+                          if (index > -1) {
+                              this.currentTestSavedData.answer.splice(index, 1)
+                          } else {
+                              this.currentTestSavedData.answer.push(newValue)
+                          }
+                          break
+                      }
+                      default: {
+                          break
+                      }
+                  }
+
+              }
+            },
+            isWrong (answer) {
+                let ret
+                switch (this.testType) {
+                    case 'default': {
+                        ret = (this.currentTestSavedData.answer === answer.id && this.currentTestSavedData.bWrongAnswer)
+                        break
+                    }
+                    case 'multi': {
+                        ret = (this.currentTestSavedData.answer.includes(answer.id) && this.currentTestSavedData.bWrongAnswer)
+                        break
+                    }
+                    case 'another': {
+                        ret = (this.currentTestSavedData.answer.includes(answer.id) && this.currentTestSavedData.bWrongAnswer)
+                        break
+                    }
+                    default: {
+                        break
+                    }
                 }
+                return ret
+            },
+            isSelected (answer) {
+                let ret
+                switch (this.testType) {
+                    case 'default': {
+                        ret = (this.currentTestSavedData.answer === answer.id && !this.currentTestSavedData.bWrongAnswer)
+                        break
+                    }
+                    case 'multi': {
+                        ret = (this.currentTestSavedData.answer.includes(answer.id) && !this.currentTestSavedData.bWrongAnswer)
+                        break
+                    }
+                    case 'another': {
+                        ret = (this.currentTestSavedData.answer.includes(answer.id) && !this.currentTestSavedData.bWrongAnswer)
+                        break
+                    }
+                    default: {
+                        break
+                    }
+                }
+                return ret
+            },
+            isCorrect (answer) {
+                let ret
+                switch (this.testType) {
+                    case 'default': {
+                        ret = (this.currentTestSavedData.correctAnswer === answer.id && this.currentTestSavedData.bWrongAnswer)
+                        break
+                    }
+                    case 'multi': {
+                        if (this.currentTestSavedData.correctAnswer) {
+                            ret = (this.currentTestSavedData.correctAnswer.includes(answer.id) && this.currentTestSavedData.bWrongAnswer)
+                        }
+                        break
+                    }
+                    default: {
+                        break
+                    }
+                }
+                return ret
+            },
+            ...mapActions({
+                updateSavedData: 'tests/updateSavedData'
+            })
+        },
+        computed: {
+            ...mapGetters({
+                savedData: 'tests/getSavedData'
+            }),
+            currentTestSavedData () {
+                return this.savedData[this.$route.params.id - 1]
             }
         }
     }
@@ -48,6 +168,11 @@
 <style scoped>
     .answer.selected, .answer.correct {
         border: 1px solid #3DD498;
+    }
+
+    .answer-input-wrapper {
+        display: flex;
+        flex-direction: column;
     }
 
     .answer.wrong {
@@ -76,6 +201,23 @@
         position: relative;
         top: -22px;
         font-family: Lancelot;
+    }
+
+    .answer-input-title {
+        color: #4B4B4B;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 22px;
+    }
+
+    .answer-variant {
+        color: #61707D;
+        text-transform: uppercase;
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 24px;
+        margin-left: 16px;
     }
 
     .answer {

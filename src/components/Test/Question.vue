@@ -5,6 +5,10 @@
         </div>
 
         <Video v-if="video" :video="video"></Video>
+
+        <div class="picture" v-if="picture">
+            <img :src="picture">
+        </div>
     </div>
 </template>
 
@@ -15,7 +19,8 @@
         components: {Video},
         props: {
             question: String,
-            video: String
+            video: String,
+            picture: String
         }
     }
 </script>
@@ -43,5 +48,22 @@
 
     .video-outer {
         margin-top: 32px;
+    }
+
+    .video-middle {
+        background: none;
+    }
+
+    .picture {
+        width: 100%;
+        height: auto;
+        margin-top: 25px;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .picture img {
+        width: 100%;
+        height: auto;
     }
 </style>
