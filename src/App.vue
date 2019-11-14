@@ -96,6 +96,18 @@ export default {
   border-radius: 0px !important;
 }
 
+.toolbar--material__center:last-child, .toolbar--material__center:first-child {
+  margin: 0 !important;
+}
+
+.toolbar.toolbar--material+.page__background+.page__content, .toolbar+.page__background+.page__content {
+  top: 0 !important;
+}
+
+.toolbar.toolbar--material+.page__background {
+  top: 0 !important;
+}
+
 .segment__item input[type=radio]:not(:checked) + .segment__button {
 
 }

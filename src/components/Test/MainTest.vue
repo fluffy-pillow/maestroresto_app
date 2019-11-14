@@ -252,7 +252,7 @@
 
 <style scoped>
 .main-test {
-    padding-top: 44px;
+    padding-top: 43px;
     padding-bottom: 80px;
     margin-top: env(safe-area-inset-top);
 }

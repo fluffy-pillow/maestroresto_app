@@ -118,6 +118,10 @@
 </script>
 
 <style scoped>
+.main-material {
+    padding-top: 44px;
+}
+
 .material-status-info {
     padding-top: 19px;
     padding-bottom: 16px;
@@ -196,7 +200,6 @@
     margin-top: 10px;
     width: 100%;
     height: auto;
-    display: flex;
 }
 
 .image img {

@@ -32,6 +32,7 @@
 .statistics {
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 20px;
 }
 
 .head {
