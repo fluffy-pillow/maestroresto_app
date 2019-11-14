@@ -11,7 +11,7 @@ export default {
                     callback: response => {
                         if (response.logout) {
                             console.log(response)
-//                            that.$router.push('/auth')
+                            that.$router.push('/auth')
                         }
                     }
                 })
