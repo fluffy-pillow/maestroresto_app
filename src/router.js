@@ -75,14 +75,16 @@ const router = new Router({
                             path: '/code',
                             name: 'Code',
                             component: {
-                                extends: Code
+                                extends: Code,
+                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
                             children: [
                                 {
                                     path: '/newpassword',
                                     name: 'NewPassword',
                                     component: {
-                                        extends: NewPassword
+                                        extends: NewPassword,
+                                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
                                 }
                             ]
@@ -106,21 +108,24 @@ const router = new Router({
                     path: 'course',
                     name: 'Course',
                     component: {
-                        extends: Course
+                        extends: Course,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
                     children: [
                         {
                             path: 'material',
                             name: 'Material',
                             component: {
-                                extends: Material
+                                extends: Material,
+                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
                             children: [
                                 {
                                     path: 'test/:id',
                                     name: 'Test',
                                     component: {
-                                        extends: Test
+                                        extends: Test,
+                                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
 
                                 },
@@ -128,7 +133,8 @@ const router = new Router({
                                     path: 'results',
                                     name: 'TestResults',
                                     component: {
-                                        extends: TestResults
+                                        extends: TestResults,
+                                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     }
                                 }
                             ]
@@ -151,21 +157,24 @@ const router = new Router({
                     path: 'course',
                     name: 'Course',
                     component: {
-                        extends: Course
+                        extends: Course,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
                     children: [
                         {
                             path: 'material',
                             name: 'Material',
                             component: {
-                                extends: Material
+                                extends: Material,
+                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
                             children: [
                                 {
                                     path: 'test/:id',
                                     name: 'Test',
                                     component: {
-                                        extends: Test
+                                        extends: Test,
+                                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
 
                                 },
@@ -173,7 +182,8 @@ const router = new Router({
                                     path: 'results',
                                     name: 'TestResults',
                                     component: {
-                                        extends: TestResults
+                                        extends: TestResults,
+                                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     }
                                 }
 

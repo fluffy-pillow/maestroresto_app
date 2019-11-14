@@ -233,6 +233,7 @@
                 this.bSubmit = false
                 this.submitButtonText = 'Ответить'
                 this.buttonFunctionName = 'onSubmit'
+                window.scrollTo(0,0)
             }
         },
         created () {
