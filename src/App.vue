@@ -121,7 +121,7 @@ export default {
 }
 
 .test > .page__content {
-  top: calc(env(safe-area-inset-top) * -8) !important;
+  margin-top: calc(env(safe-area-inset-top) * -8) !important;
 }
 
 .navigation.iphonex > .dashboard > .page__content, .navigation.iphonex > .learning > .page__content {

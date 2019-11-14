@@ -103,7 +103,7 @@
         data () {
             return {
                 videoName: 'Название видео',
-                video: "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/7c/Caminandes_-_Gran_Dillama_-_Blender_Foundation's_new_Open_Movie.webm/Caminandes_-_Gran_Dillama_-_Blender_Foundation's_new_Open_Movie.webm.720p.vp9.webm",
+                video: "http://techslides.com/demos/sample-videos/small.mp4",
                 audio: "https://hpr.dogphilosophy.net/test/wav.wav",
                 audioName: 'audio №1',
                 docFileName: 'Управление рестараном.doc'

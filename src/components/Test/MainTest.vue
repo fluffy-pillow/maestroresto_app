@@ -75,7 +75,7 @@
                                 desc: 'Сюда же входят поведенческие паттерны, коммуникационные ответы на вопросы команды, и постоянная внутренняя связь с ней.'
                             }
                         ],
-                        video: "https://upload.wikimedia.org/wikipedia/commons/transcoded/7/7c/Caminandes_-_Gran_Dillama_-_Blender_Foundation's_new_Open_Movie.webm/Caminandes_-_Gran_Dillama_-_Blender_Foundation's_new_Open_Movie.webm.720p.vp9.webm",
+                        video: "http://techslides.com/demos/sample-videos/small.mp4",
                         correctAnswer: [0, 1]
                     },
                     {

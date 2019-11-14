@@ -142,6 +142,7 @@
     border-radius: 16px;
     margin-top: 28px;
     height: 50px;
+    width: 100%;
   }
 
   .form-submit:disabled {
