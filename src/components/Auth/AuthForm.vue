@@ -80,7 +80,7 @@
             if (this.bError) this.bError = false
         },
         openDashboard () {
-            this.$router.push({path: '/dashboard', animation: 'none'})
+            this.$router.push({path: '/dashboard', animation: 'lift'}, () => {})
             this.hideGlobalPreloader()
         },
         serviceRequest (data) {

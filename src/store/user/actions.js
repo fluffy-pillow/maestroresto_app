@@ -8,10 +8,7 @@ export function setToken({commit}, args) {
     } else {
         args.callback(
             {
-                error: {
-                    type: 'VUEX_FAILED_TO_SET_TOKEN',
-                    message: ''
-                }
+                logout: true
             }
         )
     }

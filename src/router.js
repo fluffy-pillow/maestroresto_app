@@ -21,23 +21,24 @@ Vue.use(Router);
 
 let onsNavigatorOptions = {animation: 'none', animationOptions: { duration: 0.5 }}
 
+
 let ifNotAuthenticated = (to, from, next) => {
     if (!store.getters['user/isAuthenticated']) {
-        next()
+        mapRouteStack(to) && next()
+        return
     } else {
-        next('/dashboard')
+        mapRouteStack(router.resolve({name: 'Dashboard'}).route) && next()
     }
 }
 
 let ifAuthenticated = (to, from, next) => {
-    console.log(store.getters['user/isAuthenticated'])
     if (store.getters['user/isAuthenticated']) {
-        next();
+        mapRouteStack(to) && next()
+        return
     } else {
-        next('/auth');
+        mapRouteStack(router.resolve({name: 'Auth'}).route) && next()
     }
 }
-
 
 const router = new Router({
     routes: [
@@ -70,6 +71,7 @@ const router = new Router({
                     component: {
                         extends: Restore
                     },
+                    beforeEnter: ifNotAuthenticated,
                     children: [
                         {
                             path: '/code',
@@ -78,6 +80,7 @@ const router = new Router({
                                 extends: Code,
                                 onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
+                            beforeEnter: ifNotAuthenticated,
                             children: [
                                 {
                                     path: '/newpassword',
@@ -86,6 +89,7 @@ const router = new Router({
                                         extends: NewPassword,
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
+                                    beforeEnter: ifNotAuthenticated,
                                 }
                             ]
 
@@ -102,7 +106,7 @@ const router = new Router({
                 extends: Dashboard,
                 onsNavigatorOptions: onsNavigatorOptions
             },
-//            beforeEnter: ifAuthenticated,
+            beforeEnter: ifAuthenticated,
             children: [
                 {
                     path: 'course',
@@ -111,6 +115,7 @@ const router = new Router({
                         extends: Course,
                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
+                    beforeEnter: ifAuthenticated,
                     children: [
                         {
                             path: 'material',
@@ -119,6 +124,7 @@ const router = new Router({
                                 extends: Material,
                                 onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
+                            beforeEnter: ifAuthenticated,
                             children: [
                                 {
                                     path: 'test/:id',
@@ -127,7 +133,7 @@ const router = new Router({
                                         extends: Test,
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
-
+                                    beforeEnter: ifAuthenticated,
                                 },
                                 {
                                     path: 'results',
@@ -135,7 +141,8 @@ const router = new Router({
                                     component: {
                                         extends: TestResults,
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
-                                    }
+                                    },
+                                    beforeEnter: ifAuthenticated,
                                 }
                             ]
 
@@ -152,6 +159,7 @@ const router = new Router({
                 extends: Learning,
                 onsNavigatorOptions: {animation: 'none'}
             },
+            beforeEnter: ifAuthenticated,
             children: [
                 {
                     path: 'course',
@@ -160,6 +168,7 @@ const router = new Router({
                         extends: Course,
                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
+                    beforeEnter: ifAuthenticated,
                     children: [
                         {
                             path: 'material',
@@ -168,6 +177,7 @@ const router = new Router({
                                 extends: Material,
                                 onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
+                            beforeEnter: ifAuthenticated,
                             children: [
                                 {
                                     path: 'test/:id',
@@ -176,6 +186,7 @@ const router = new Router({
                                         extends: Test,
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
+                                   beforeEnter: ifAuthenticated
 
                                 },
                                 {
@@ -184,7 +195,8 @@ const router = new Router({
                                     component: {
                                         extends: TestResults,
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
-                                    }
+                                    },
+                                    beforeEnter: ifAuthenticated
                                 }
 
                             ]
@@ -200,7 +212,8 @@ const router = new Router({
             component: {
                 extends: Certification,
                 onsNavigatorOptions: {animation: 'none'}
-            }
+            },
+            beforeEnter: ifAuthenticated
         },
         {
             path: '/menu',
@@ -208,9 +221,18 @@ const router = new Router({
             component: {
                 extends: Menu,
                 onsNavigatorOptions: {animation: 'none'}
-            }
+            },
+           beforeEnter: ifAuthenticated
         },
     ]
+});
+
+const mapRouteStack = route => store.state['router'].pageStack = route.matched.map(m => m.components.default)
+mapRouteStack(router.resolve({name: 'Splashscreen'}).route)
+router.beforeEach((to, from, next) => {
+    if (from.path !==to.path) {
+        mapRouteStack(to) && next()
+    }
 });
 
 

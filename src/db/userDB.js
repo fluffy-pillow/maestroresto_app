@@ -38,7 +38,8 @@ const userDB = {
                     }
                 })
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error)
                 callback({
                     error: {
                         type: 'NSQL_USERDB_CONNECTION_ERROR',

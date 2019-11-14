@@ -42,13 +42,12 @@
             localDBRequest () {
                 dashboardDB.getData(response => {
                     if (!response.error) {
-                        let decodedUserData = JSON.parse(response)
-                        this.status = decodedUserData.rating.status
-                        this.leaderboard = decodedUserData.rating.leaderboard
-                        this.loyalty = decodedUserData.rating.loyalty
-                        this.required = decodedUserData.required
-                        this.unfinishedCourses = decodedUserData.unfinishedCourses
-                        this.unfinishedTests = decodedUserData.unfinishedTests
+                        this.status = JSON.parse(response.rating).status
+                        this.leaderboard = JSON.parse(response.rating).leaderboard
+                        this.loyalty = JSON.parse(response.rating).loyalty
+                        this.required = JSON.parse(response.required)
+                        this.unfinishedCourses = JSON.parse(response.unfinishedCourses)
+                        this.unfinishedTests = JSON.parse(response.unfinishedTests)
                     } else {
                         this.serviceRequest()
                     }
@@ -74,7 +73,7 @@
             },
         },
         mounted () {
-//            this.localDBRequest()
+            this.localDBRequest()
         }
     }
 </script>

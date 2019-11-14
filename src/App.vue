@@ -25,7 +25,7 @@ export default {
     ...mapGetters({
       bFooterIsShow: 'footer/isShow',
     })
-  },
+  }
 }
 </script>
 

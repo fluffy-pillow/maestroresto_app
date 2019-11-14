@@ -2,7 +2,6 @@ import { nSQL } from '@nano-sql/core'
 
 const db = {
     init: (callback) => {
-        console.log(nSQL().listDatabases())
         nSQL().createDatabase({
             id: "maestroresto_db", // can be anything that's a string
             mode: "PERM",
@@ -10,7 +9,7 @@ const db = {
                 {
                     name: "user",
                     model: {
-                        "id:uuid": {pk: true},
+                        "id:uuid": {pk: true, ai: true},
                         "token:string": {},
                         "user:string": {}
                     }
@@ -18,7 +17,7 @@ const db = {
                 {
                     name: "dashboard",
                     model: {
-                        "id:uuid": {},
+                        "id:int": {pk: true, ai: true},
                         "rating:string": {},
                         "required:string": {},
                         "unfinishedCourses:string": {},

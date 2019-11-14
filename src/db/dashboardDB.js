@@ -28,16 +28,6 @@ const dashboardDB = {
         })
     },
     getData: (callback) => {
-        nSQL().query("show tables").exec().then((rows) => {
-            console.log(rows);
-            /*
-            [
-                {table: "users"},
-                {table: "posts"},
-                ...
-            ]
-            */
-        });
         nSQL("dashboard").useDatabase("maestroresto_db").query("select").exec()
             .then(response => {
                 if (!empty(response)) {

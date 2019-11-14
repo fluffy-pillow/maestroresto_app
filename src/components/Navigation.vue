@@ -6,20 +6,15 @@
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
+    import {mapActions, mapGetters} from 'vuex'
 
     import userDB from '@/db/userDB'
 
     export default {
         name: "Navigation",
-        data() {
-            return {
-                pageStack: [],
-            }
-        },
         methods: {
             goBack() {
-                this.$router.push({ name: this.$route.matched[this.$route.matched.length - 2].name });
+                this.$router.push(this.$route.matched[this.$route.matched.length - 2].path)
             },
             localDBRequest () {
                 userDB.getToken(response => {
@@ -42,20 +37,16 @@
 
             ...mapActions({
                 showFooter: 'footer/show',
-                setToken: 'user/setToken'
+                setToken: 'user/setToken',
             })
         },
-
-        mounted() {
-            this.localDBRequest()
-
-            const mapRouteStack = route => this.pageStack = route.matched.map(m => {
-                return m.components.default
+        computed: {
+            ...mapGetters({
+                pageStack: 'router/getPageStack'
             })
-            mapRouteStack(this.$route)
-            this.$router.beforeEach((to, from, next) => {
-                mapRouteStack(to) && next()
-            });
+        },
+        created() {
+            this.localDBRequest()
         }
     }
 </script>

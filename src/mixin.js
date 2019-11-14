@@ -4,13 +4,14 @@ import { mapActions} from 'vuex'
 export default {
     methods: {
         logout () {
+            let that = this
             userDB.logout(() => {
-                let that = this
                 this.setToken({
                     token: '',
                     callback: response => {
-                        if (response.ok) {
-                            that.$router.push('/auth')
+                        if (response.logout) {
+                            console.log(response)
+//                            that.$router.push('/auth')
                         }
                     }
                 })
