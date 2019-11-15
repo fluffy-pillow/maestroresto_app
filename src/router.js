@@ -22,22 +22,20 @@ Vue.use(Router);
 let onsNavigatorOptions = {animation: 'none', animationOptions: { duration: 0.5 }}
 
 
-let ifNotAuthenticated = (to, from, next) => {
+const ifNotAuthenticated = (to, from, next) => {
     if (!store.getters['user/isAuthenticated']) {
         mapRouteStack(to) && next()
         return
-    } else {
-        mapRouteStack(router.resolve({name: 'Dashboard'}).route) && next()
     }
+    mapRouteStack(router.resolve({name: 'Dashboard'}).route) && next()
 }
 
-let ifAuthenticated = (to, from, next) => {
+const ifAuthenticated = (to, from, next) => {
     if (store.getters['user/isAuthenticated']) {
         mapRouteStack(to) && next()
         return
-    } else {
-        mapRouteStack(router.resolve({name: 'Auth'}).route) && next()
     }
+    mapRouteStack(router.resolve({name: 'Auth'}).route) && next()
 }
 
 const router = new Router({

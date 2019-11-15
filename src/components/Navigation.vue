@@ -18,19 +18,11 @@
             },
             localDBRequest () {
                 userDB.getToken(response => {
-                    this.vuexRequest(response)
-                })
-            },
-            vuexRequest (localDBResponse) {
-                let that = this
-                this.setToken({
-                    token: localDBResponse.token,
-                    callback: response => {
-                        if (response.ok) {
-                            that.$router.push('/dashboard').catch(err => {})
-                        } else {
-                            that.$router.push('/auth').catch(err => {})
-                        }
+                    if (response.token) {
+                        this.setToken(response.token)
+                        this.$router.push('/dashboard').catch(err => {})
+                    } else {
+                        this.$router.push('/auth').catch(err => {})
                     }
                 })
             },

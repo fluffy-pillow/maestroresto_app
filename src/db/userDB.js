@@ -78,7 +78,7 @@ const userDB = {
     logout: (callback) => {
         nSQL().dropDatabase("maestroresto_db").then(() => {
             callback({
-                logout: true
+                success: true
             })
         }).catch(() => {
             callback({

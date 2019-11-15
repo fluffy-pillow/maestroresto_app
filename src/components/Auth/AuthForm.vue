@@ -103,18 +103,8 @@
         localDBRequest (serviceResponse) {
             userDB.insertData(serviceResponse, response => {
                 if (response.inserted) {
-                    this.vuexRequest(serviceResponse)
-                }
-            })
-        },
-        vuexRequest (localDBResponse) {
-            let that = this
-            this.setToken({
-                token: localDBResponse.token,
-                callback: response => {
-                    if (response.ok) {
-                        that.openDashboard()
-                    }
+                    this.setToken(serviceResponse.token)
+                    this.openDashboard()
                 }
             })
         },

@@ -4,21 +4,13 @@ import { mapActions} from 'vuex'
 export default {
     methods: {
         logout () {
-            let that = this
-            userDB.logout(() => {
-                this.setToken({
-                    token: '',
-                    callback: response => {
-                        if (response.logout) {
-                            console.log(response)
-                            that.$router.push('/auth')
-                        }
-                    }
-                })
+            userDB.logout(response => {
+                this.removeToken()
+                this.$router.push('/auth', () => {})
             })
         },
         ...mapActions({
-            setToken: 'user/setToken'
+            removeToken: 'user/removeToken'
         })
     }
 };
