@@ -2,15 +2,8 @@
     <div class="video-outer">
         <div class="video-middle">
             <div class="video-inner">
-                <video width="100%" height="100%" ref="videoRef" controls="controls" playsinline :src="video" type="video/mp4">
+                <video width="100%" height="100%" controls="controls" playsinline :src="video" type="video/mp4">
                 </video>
-<!--                <div class="controls" ref="playButtonRef" @click="toggle">
-                    <button class="play" :style="{display: (!bRun) ? 'flex' : 'none'}">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4.25471 0.440985C2.45159 -0.593307 0.989746 0.253997 0.989746 2.33198V17.6666C0.989746 19.7466 2.45159 20.5928 4.25471 19.5595L17.6579 11.8729C19.4616 10.8382 19.4616 9.16191 17.6579 8.1275L4.25471 0.440985Z" fill="white"/>
-                        </svg>
-                    </button>
-                </div>-->
             </div>
             <div class="video-name" v-if="videoName">
                 {{videoName}}
@@ -22,25 +15,9 @@
 <script>
     export default {
         name: "Video",
-        data () {
-            return {
-                bRun: false
-            }
-        },
         props: {
             video: String,
             videoName: String
-        },
-        methods: {
-            toggle () {
-                if (!this.bRun) {
-//                    this.$refs.videoRef.play()
-                    this.bRun = true
-                } else {
-//                    this.$refs.videoRef.pause()
-                    this.bRun = false
-                }
-            }
         }
     }
 </script>

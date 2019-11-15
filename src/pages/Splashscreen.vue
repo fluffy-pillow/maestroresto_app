@@ -1,10 +1,20 @@
 <template>
-    <v-ons-page class="splashscreen"></v-ons-page>
+    <v-ons-page class="splashscreen" @show="onShowPage"></v-ons-page>
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
+
     export default {
-        name: "Splashscreen"
+        name: "Splashscreen",
+        methods: {
+            onShowPage () {
+                this.hideFooter()
+            },
+            ...mapActions({
+                hideFooter: 'footer/hide'
+            })
+        }
     }
 </script>
 

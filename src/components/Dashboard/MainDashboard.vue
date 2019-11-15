@@ -40,7 +40,7 @@
                 systemMessage: 'systemMessage/systemMessage'
             }),
             localDBRequest () {
-                dashboardDB.getData(response => {
+/*                dashboardDB.getData(response => {
                     if (!response.error) {
                         this.status = JSON.parse(response.rating).status
                         this.leaderboard = JSON.parse(response.rating).leaderboard
@@ -48,10 +48,10 @@
                         this.required = JSON.parse(response.required)
                         this.unfinishedCourses = JSON.parse(response.unfinishedCourses)
                         this.unfinishedTests = JSON.parse(response.unfinishedTests)
-                    } else {
+                    } else {*/
                         this.serviceRequest()
-                    }
-                })
+//                    }
+//                })
             },
             serviceRequest () {
                 DashboardService.getData(this.token, response => {

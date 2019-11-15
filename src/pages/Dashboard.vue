@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="dashboard" id="dashboard">
+    <v-ons-page class="dashboard" id="dashboard" @show="onShowPage">
         <div class="bg-circles">
           <svg width="293" height="303" viewBox="0 0 293 303" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="146.5" cy="146.5" r="146" stroke="#F2F4F5"/>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     import MainDashboard from "@/components/Dashboard/MainDashboard";
     import User from "@/components/Dashboard/User";
 
@@ -22,6 +23,14 @@
             User,
             MainDashboard
         },
+        methods: {
+            onShowPage () {
+                this.showFooter()
+            },
+            ...mapActions({
+                showFooter: 'footer/show'
+            })
+        }
     }
 </script>
 

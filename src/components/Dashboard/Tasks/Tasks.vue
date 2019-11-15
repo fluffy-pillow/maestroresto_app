@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="body">
-            <TasksList>
+            <TasksList v-if="required.length > 0">
                 <TaskItem
                         v-for="(task, key) of required"
                         :key="key"
@@ -17,6 +17,9 @@
                 >
                 </TaskItem>
             </TasksList>
+            <NoTasks v-else>
+
+            </NoTasks>
         </div>
     </section>
 </template>
@@ -24,9 +27,10 @@
 <script>
     import TaskItem from "./TaskItem";
     import TasksList from "./TasksList";
+    import NoTasks from "./NoTasks";
     export default {
         name: "Tasks",
-        components: {TasksList, TaskItem},
+        components: {NoTasks, TasksList, TaskItem},
         props: {
             required: Array
         }

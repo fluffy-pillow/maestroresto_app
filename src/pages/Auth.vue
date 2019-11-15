@@ -1,16 +1,26 @@
 <template>
-  <v-ons-page class="auth">
+  <v-ons-page class="auth" @show="onShowPage">
     <Header></Header>
     <MainAuth></MainAuth>
   </v-ons-page>
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     import MainAuth from "@/components/Auth/MainAuth";
     import Header from "@/components/Auth/Header";
+
     export default {
       name: "Auth",
-      components: {Header, MainAuth}
+      components: {Header, MainAuth},
+      methods: {
+          onShowPage () {
+              this.hideFooter()
+          },
+          ...mapActions({
+              hideFooter: 'footer/hide'
+          })
+      }
     }
 </script>
 

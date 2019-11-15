@@ -9,6 +9,7 @@
 </template>
 
 <script>
+    import {mapActions} from 'vuex'
     import StickyHeader from "@/components/Course/StickyHeader";
     import LoadedScreen from "@/components/Course/LoadedScreen";
     import PreloadScreen from "@/components/Course/PreloadScreen";
@@ -27,8 +28,12 @@
                 this.bShowStickyHeader = (this.$refs.pageContent.scrollTop > 0)
             },
             onShowPage () {
+                this.showFooter()
                 this.bShowPreloadScreen = false
-            }
+            },
+            ...mapActions({
+                showFooter: 'footer/show'
+            })
         }
     }
 </script>
