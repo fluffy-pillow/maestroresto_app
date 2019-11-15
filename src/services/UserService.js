@@ -33,10 +33,20 @@ const userService = {
 
             },
             error => {
+                if (isset(error, 'response.status') && error.response.status === 401) {
+                    callback({
+                        error: {
+                            type: 'USER_NOT_AUTHORIZED',
+                            message: 'Вы не авторизованы'
+                        }
+                    })
+                    return
+                }
+
                 callback({
                     error: {
                         type: 'NETWORK_ERROR',
-                        message: error.message
+                        message: 'Ошибка соединения'
                     }
                 })
             }

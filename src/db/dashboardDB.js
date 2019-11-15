@@ -12,7 +12,6 @@ const dashboardDB = {
                 unfinishedTests: JSON.stringify(args.unfinishedTests)
             }
         ).exec().then((result) => {
-            console.log('insert data:', result)
             if (isset(result) && callback) {
                 callback({
                     inserted: true
@@ -38,7 +37,6 @@ const dashboardDB = {
                 unfinishedTests: JSON.stringify(args.unfinishedTests)
             }
         ).where(["id", "=", 1]).exec().then((result) => {
-            console.log('updated data:', result)
             if (isset(result) && callback) {
                 callback({
                     updated: true

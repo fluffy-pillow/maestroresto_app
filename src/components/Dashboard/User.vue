@@ -42,7 +42,8 @@
                 page: null,
                 pageContent: null,
                 firstName: '',
-                avatarUrl: null
+                avatarUrl: null,
+                localDBerror: false
             }
         },
         computed: {
@@ -65,10 +66,18 @@
                 UserService.getData(this.token, response => {
                     if (response.error) {
                         this.systemMessage({type: 'error', message: response.error.message, duration: 5000})
-                        this.logout()
+                        if (response.error.type === 'USER_NOT_AUTHORIZED') {
+                            this.logout()
+                        }
                     } else {
                         this.firstName = response.firstName
                         this.avatarUrl = response.avatarUrl
+
+                        if (this.localDBerror) {
+                            userDB.insertData(response)
+                        } else {
+                            userDB.updateData(response)
+                        }
                     }
 
                 })
@@ -82,8 +91,10 @@
                             this.firstName = decodedUserData.firstName
                             this.avatarUrl = decodedUserData.avatarUrl
                         } else {
-                            this.serviceRequest()
+                            this.localDBerror = true
+                            // TODO: preloader
                         }
+                        this.serviceRequest()
                     }
                 })
             },

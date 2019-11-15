@@ -2,20 +2,44 @@ import { nSQL } from '@nano-sql/core'
 import {isset} from '@/helpers'
 
 const userDB = {
-    insertData: (args, callback) => {
+    insertData: (args, callback = null) => {
+        nSQL("user").useDatabase("maestroresto_db").query("delete").exec()
         nSQL("user").useDatabase("maestroresto_db").query('upsert', {
             token: args.token,
             user: JSON.stringify(args.user)
         }).exec().then((result) => {
-            callback({
-                inserted: true
-            })
-            return
+            if (callback) {
+                callback({
+                    inserted: true
+                })
+                return
+            }
 
         }).catch(() => {
             callback({
                 error: {
                     type: 'NSQL_USERDB_INSERT_DATA_ERROR',
+                    message: ''
+                }
+            })
+        })
+    },
+    updateData: (args, callback = null) => {
+        nSQL("user").useDatabase("maestroresto_db").query('upsert', {
+            token: args.token,
+            user: JSON.stringify(args.user)
+        }).where(["id", "=", 1]).exec().then((result) => {
+            if (callback) {
+                callback({
+                    updated: true
+                })
+                return
+            }
+
+        }).catch(() => {
+            callback({
+                error: {
+                    type: 'NSQL_DASHBOARDDB_UPDATE_DATA_ERROR',
                     message: ''
                 }
             })
@@ -38,8 +62,7 @@ const userDB = {
                     }
                 })
             })
-            .catch((error) => {
-                console.log(error)
+            .catch(() => {
                 callback({
                     error: {
                         type: 'NSQL_USERDB_CONNECTION_ERROR',
