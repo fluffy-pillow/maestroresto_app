@@ -32,7 +32,8 @@
                 loyalty: {},
                 required: [],
                 unfinishedCourses: [],
-                unfinishedTests: []
+                unfinishedTests: [],
+                localDBerror: false
             }
         },
         methods: {
@@ -40,7 +41,7 @@
                 systemMessage: 'systemMessage/systemMessage'
             }),
             localDBRequest () {
-/*                dashboardDB.getData(response => {
+                dashboardDB.getData(response => {
                     if (!response.error) {
                         this.status = JSON.parse(response.rating).status
                         this.leaderboard = JSON.parse(response.rating).leaderboard
@@ -48,16 +49,20 @@
                         this.required = JSON.parse(response.required)
                         this.unfinishedCourses = JSON.parse(response.unfinishedCourses)
                         this.unfinishedTests = JSON.parse(response.unfinishedTests)
-                    } else {*/
-                        this.serviceRequest()
-//                    }
-//                })
+                    } else {
+                        this.localDBerror = true
+                        // TODO: preloader
+                    }
+                    this.serviceRequest()
+                })
             },
             serviceRequest () {
                 DashboardService.getData(this.token, response => {
                     if (response.error) {
                         this.systemMessage({type: 'error', message: response.error.message, duration: 5000})
-                        this.logout()
+                         if (response.error.type === 'USER_NOT_AUTHORIZED') {
+                             this.logout()
+                         }
                     } else {
                         this.status = response.data.rating.status
                         this.leaderboard = response.data.rating.leaderboard
@@ -66,7 +71,11 @@
                         this.unfinishedCourses = response.data.unfinishedCourses
                         this.unfinishedTests = response.data.unfinishedTests
 
-                        dashboardDB.insertData(response.data)
+                        if (this.localDBerror) {
+                            dashboardDB.insertData(response.data)
+                        } else {
+                            dashboardDB.updateData(response.data)
+                        }
                     }
 
                 })

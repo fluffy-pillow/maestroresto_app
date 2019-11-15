@@ -75,19 +75,8 @@ const userDB = {
                 })
             })
     },
-    logout: (callback) => {
-        nSQL().dropDatabase("maestroresto_db").then(() => {
-            callback({
-                success: true
-            })
-        }).catch(() => {
-            callback({
-                error: {
-                    type: 'NSQL_DROP_DATABASE_ERROR',
-                    message: ''
-                }
-            })
-        })
+    deleteData: () => {
+        nSQL("user").useDatabase("maestroresto_db").query("delete").exec()
     }
 }
 

@@ -17,7 +17,7 @@ const db = {
                 {
                     name: "dashboard",
                     model: {
-                        "id:int": {pk: true, ai: true},
+                        "id:int": {pk: true},
                         "rating:string": {},
                         "required:string": {},
                         "unfinishedCourses:string": {},
