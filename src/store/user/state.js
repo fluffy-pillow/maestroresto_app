@@ -1,3 +1,5 @@
 export default () => ({
-  token: localStorage.getItem('token') || ''
+  token: localStorage.getItem('token') || '',
+  tempToken: '',
+  restoreCode: ''
 })

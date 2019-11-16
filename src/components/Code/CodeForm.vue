@@ -20,7 +20,8 @@
 </template>
 
 <script>
-  import {mapActions} from 'vuex'
+  import {mapActions, mapGetters} from 'vuex'
+  import AuthService from '@/services/AuthService'
 
   export default {
     name: "CodeForm",
@@ -48,26 +49,48 @@
       isValid () {
         return (this.code.inputText === this.code.desiredText)
       },
+      serviceRequest (data) {
+        AuthService.validate(data, response => {
+            this.hideGlobalPreloader()
+            if (response.error) {
+                this.systemMessage(
+                    {
+                        type: 'error',
+                        message: response.error.message,
+                        duration: 5000
+                    }
+                )
+
+                this.bError = true
+                this.removeTempToken()
+                this.removeRestoreCode()
+                this.$router.push('/restore')
+            } else {
+                this.bError = false
+                this.setRestoreCode(this.code.inputText)
+                this.$router.push('/newpassword')
+            }
+        })
+      },
       onSubmit (e) {
-        if (this.isValid()) {
-          this.bError = false
-          this.$router.push('NewPassword')
-        } else {
-          this.systemMessage(
-              {
-                  type: 'error',
-                  message: 'Неверный код!',
-                  duration: 5000
-              }
-          )
-          this.bError = true
-        }
+          this.showGlobalPreloader()
+          let data = {key: this.code.inputText, token: this.tempToken}
+          this.serviceRequest(data)
       },
       ...mapActions({
-        systemMessage: 'systemMessage/systemMessage'
+        systemMessage: 'systemMessage/systemMessage',
+        showGlobalPreloader: 'globalPreloader/show',
+        hideGlobalPreloader: 'globalPreloader/hide',
+        setRestoreCode: 'user/setRestoreCode',
+        removeRestoreCode: 'user/removeRestoreCode',
+        removeTempToken: 'user/removeTempToken'
+
       })
     },
     computed: {
+      ...mapGetters({
+          tempToken: 'user/getTempToken'
+      }),
       bComplete () {
         return (this.code.inputText.length === 4)
       }

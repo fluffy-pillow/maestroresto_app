@@ -19,6 +19,7 @@
 
 <script>
     import {mapActions} from 'vuex'
+    import AuthService from '@/services/AuthService'
 
     export default {
       name: "RestoreForm",
@@ -38,34 +39,46 @@
         onClickInput () {
           if (this.bError) this.bError = false
         },
-        onSubmit (e) {
-          if (this.isValid()) {
-            this.bError = false
+        serviceRequest (data) {
+          AuthService.forgetMyPassword(data, response => {
+              this.hideGlobalPreloader()
+              if (response.error) {
+                  this.systemMessage(
+                      {
+                          type: 'error',
+                          message: response.error.message,
+                          duration: 5000
+                      }
+                  )
 
-            this.systemMessage(
-              {
-                type: 'success',
-                message: 'Письмо с кодом восстановления успешно отправлено',
-                duration: 5000
+                  this.bError = true
+              } else {
+                  this.setTempToken(response.token)
+                  this.bError = false
+
+                  this.systemMessage(
+                      {
+                          type: 'success',
+                          message: 'Письмо с кодом восстановления успешно отправлено',
+                          duration: 5000
+                      }
+                  )
+
+                  this.$router.push('/code')
               }
-            )
-
-            this.$router.push('Code')
-
-          } else {
-            this.systemMessage(
-              {
-                type: 'error',
-                message: 'Такой e-mail не зарегистрирован в системе!',
-                duration: 5000
-              }
-            )
-            this.bError = true
-          }
+          })
         },
-        ...mapActions({
-          systemMessage: 'systemMessage/systemMessage'
-        })
+        onSubmit (e) {
+            this.showGlobalPreloader()
+            let data = {email: this.email.inputText}
+            this.serviceRequest(data)
+          },
+          ...mapActions({
+              systemMessage: 'systemMessage/systemMessage',
+              showGlobalPreloader: 'globalPreloader/show',
+              hideGlobalPreloader: 'globalPreloader/hide',
+              setTempToken: 'user/setTempToken'
+          })
       },
       computed: {
         bComplete () {

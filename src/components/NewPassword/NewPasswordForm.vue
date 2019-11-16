@@ -36,6 +36,7 @@
 </template>
 
 <script>
+  import AuthService from '@/services/AuthService'
   import {mapActions, mapGetters} from 'vuex'
 
   export default {
@@ -54,34 +55,73 @@
           if (this.bError) this.bError = false
       },
       isValid () {
-        return (this.password.inputText.length >= 8)
+        return /^[0-9a-zA-Z]{8,}$/.test(this.password.inputText)
       },
       togglePasswordInputType () {
         this.password.inputType = (this.password.inputType === 'password') ? 'text' : 'password'
       },
+      serviceRequest (data) {
+          AuthService.changePasswordByToken(data, response => {
+              this.hideGlobalPreloader()
+              if (response.error) {
+                  this.systemMessage(
+                      {
+                          type: 'error',
+                          message: response.error.message,
+                          duration: 5000
+                      }
+                  )
+
+                  this.bError = true
+                  this.$router.push('/restore')
+              } else {
+                  this.removeTempToken()
+                  this.removeRestoreCode()
+                  this.bError = false
+
+                  this.systemMessage(
+                      {
+                          type: 'success',
+                          message: 'Пароль успешно изменен',
+                          duration: 5000
+                      }
+                  )
+
+                  this.$router.push('/auth')
+              }
+          })
+      },
+
       onSubmit (e) {
-        if (this.isValid()) {
-          this.hideSystemMessage()
-          this.bError = false
-          this.$router.push('Auth')
-        } else {
-
-          e.preventDefault()
-          this.systemMessage(
-            {
-              type: 'error',
-              message: 'Пароль должен содержать минимум 8 символов',
-              duration: 5000
-            }
-          )
-
-          this.bError = true
-        }
+          if (this.isValid()) {
+              this.showGlobalPreloader()
+              let data = {key: this.restoreCode, token: this.tempToken, newPassword: this.password.inputText}
+              this.serviceRequest(data)
+          } else {
+              e.preventDefault()
+              this.systemMessage(
+                  {
+                      type: 'error',
+                      message: 'Пароль должен содержать минимум 8 символов, состоять из букв латинского алфавита и/или цифр',
+                      duration: 5000
+                  }
+              )
+          }
       },
       ...mapActions({
+        showGlobalPreloader: 'globalPreloader/show',
+        hideGlobalPreloader: 'globalPreloader/hide',
         hideSystemMessage: 'systemMessage/hide',
         systemMessage: 'systemMessage/systemMessage',
+        removeTempToken: 'user/removeTempToken',
+        removeRestoreCode: 'user/removeRestoreCode'
       })
+    },
+    computed: {
+        ...mapGetters({
+            restoreCode: 'user/getRestoreCode',
+            tempToken: 'user/getTempToken'
+        })
     }
   }
 </script>
