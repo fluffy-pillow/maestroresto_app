@@ -24,4 +24,8 @@
 .courses-list::-webkit-scrollbar {
     display: none;
 }
+
+.courses-list::-webkit-scrollbar-track {
+    background-color: transparent;
+}
 </style>

@@ -1,25 +1,28 @@
 <template>
-    <div class="no-tasks">
+    <div class="no-courses">
         <div class="content">
             <div class="icon">
 
         </div>
             <div class="text">
-                У вас нет доступных
-                к прохождению тестов или опросов. Они появятся позже
+                Начните обучение прямо сейчас!
             </div>
         </div>
+
+        <button class="begin-button">
+            Начать обучение
+        </button>
     </div>
 </template>
 
 <script>
     export default {
-        name: "NoTasks"
+            name: "NoCourses"
     }
 </script>
 
 <style scoped>
-.no-tasks {
+.no-courses {
     margin-top: 16px;
     padding-left: 20px;
     padding-right: 12px;
@@ -31,7 +34,7 @@
     border-radius: 20px;
     padding-bottom: 15px;
     padding-left: 23px;
-    padding-right: 54px;
+    padding-right: 31px;
     padding-top: 15px;
     display: flex;
     align-items: center;
@@ -51,9 +54,21 @@
     min-width: 30px;
     height: 32px;
     display: flex;
-    background-image: url(../../../assets/images/checklist.svg);
+    background-image: url(../../../assets/images/learning.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+.begin-button {
+    background: #3DD498;
+    border-radius: 16px;
+    height: 50px;
+    color: #FFFFFF;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 16px;
+    width: 100%;
 }
 </style>

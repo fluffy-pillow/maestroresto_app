@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="body">
-            <CoursesList>
+            <CoursesList v-if="unfinishedCourses.length > 0">
                 <CourseItem
                     v-for="(course, key) of unfinishedCourses"
                     :key="key"
@@ -18,6 +18,9 @@
 
                 </CourseItem>
             </CoursesList>
+            <NoCourses v-else>
+
+            </NoCourses>
         </div>
     </section>
 </template>
@@ -25,9 +28,10 @@
 <script>
     import CourseItem from "./CourseItem";
     import CoursesList from "./CoursesList";
+    import NoCourses from "./NoCourses";
     export default {
         name: "Courses",
-        components: {CoursesList, CourseItem},
+        components: {NoCourses, CoursesList, CourseItem},
         props: {
             unfinishedCourses: Array
         }

@@ -24,4 +24,8 @@
 .tasks-list::-webkit-scrollbar {
     display: none;
 }
+
+.tasks-list::-webkit-scrollbar-track {
+    background-color: transparent;
+}
 </style>

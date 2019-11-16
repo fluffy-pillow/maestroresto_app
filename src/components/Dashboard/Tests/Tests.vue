@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="body">
-            <TestsList>
+            <TestsList v-if="unfinishedTests.length > 0">
                 <TestItem
                     v-for="(test, key) of tests"
                     :key="key"
@@ -17,6 +17,9 @@
                 >
                 </TestItem>
             </TestsList>
+            <NoTests v-else>
+
+            </NoTests>
         </div>
 
     </section>
@@ -25,9 +28,10 @@
 <script>
     import TestItem from "./TestItem";
     import TestsList from "./TestsList";
+    import NoTests from "./NoTests";
     export default {
         name: "Tests",
-        components: {TestsList, TestItem},
+        components: {NoTests, TestsList, TestItem},
         props: {
             unfinishedTests: Array
         },

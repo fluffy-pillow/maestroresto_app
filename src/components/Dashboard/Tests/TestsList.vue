@@ -24,4 +24,8 @@
 .tests-list::-webkit-scrollbar {
     display: none;
 }
+
+.tests-list::-webkit-scrollbar-track {
+    background-color: transparent;
+}
 </style>

@@ -1,12 +1,11 @@
 <template>
-    <div class="no-tasks">
+    <div class="no-tests">
         <div class="content">
             <div class="icon">
 
         </div>
             <div class="text">
-                У вас нет доступных
-                к прохождению тестов или опросов. Они появятся позже
+                Тесты станут доступными после прохождения материалов
             </div>
         </div>
     </div>
@@ -14,12 +13,12 @@
 
 <script>
     export default {
-        name: "NoTasks"
+        name: "NoTests"
     }
 </script>
 
 <style scoped>
-.no-tasks {
+.no-tests {
     margin-top: 16px;
     padding-left: 20px;
     padding-right: 12px;
@@ -31,7 +30,7 @@
     border-radius: 20px;
     padding-bottom: 15px;
     padding-left: 23px;
-    padding-right: 54px;
+    padding-right: 31px;
     padding-top: 15px;
     display: flex;
     align-items: center;
@@ -51,7 +50,7 @@
     min-width: 30px;
     height: 32px;
     display: flex;
-    background-image: url(../../../assets/images/checklist.svg);
+    background-image: url(../../../assets/images/certification.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;

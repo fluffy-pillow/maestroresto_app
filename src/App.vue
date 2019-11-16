@@ -124,9 +124,9 @@ export default {
   margin-top: calc(env(safe-area-inset-top) * -8) !important;
 }
 
-.navigation.iphonex > .dashboard > .page__content, .navigation.iphonex > .learning > .page__content {
-  padding-top: calc(constant(safe-area-inset-top)*2) !important;
-  padding-top: calc(env(safe-area-inset-top)*2) !important;
+.navigation > .dashboard > .page__content, .navigation > .learning > .page__content {
+  padding-top: constant(safe-area-inset-top) !important;
+  padding-top: env(safe-area-inset-top) !important;
   top: 0;
 }
 
@@ -241,6 +241,10 @@ h3 {
 
 .page .page__content::-webkit-scrollbar {
   display: none;
+}
+
+.page .page__content::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .page .page__content {

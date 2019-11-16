@@ -24,4 +24,8 @@
 .favorite-list::-webkit-scrollbar {
     display: none;
 }
+
+.favorite-list::-webkit-scrollbar-track {
+    background-color: transparent;
+}
 </style>
