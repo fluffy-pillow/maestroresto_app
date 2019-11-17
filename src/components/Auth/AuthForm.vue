@@ -102,7 +102,6 @@
         },
         localDBRequest (serviceResponse) {
             userDB.insertData(serviceResponse, response => {
-                console.log(response)
                 if (response.inserted) {
                     this.setToken(serviceResponse.token)
                     this.openDashboard()

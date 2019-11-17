@@ -58,7 +58,12 @@ const dashboardDB = {
         nSQL("dashboard").useDatabase("maestroresto_db").query("select").exec()
             .then(response => {
                 if (!empty(response[0])) {
-                    callback(response[0])
+                    callback({
+                        rating: JSON.parse(response[0].rating),
+                        required: JSON.parse(response[0].required),
+                        unfinishedCourses: JSON.parse(response[0].unfinishedCourses),
+                        unfinishedTests: JSON.parse(response[0].unfinishedTests)
+                    })
                     return
                 }
 

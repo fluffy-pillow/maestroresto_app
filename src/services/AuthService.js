@@ -114,7 +114,6 @@ const AuthService = {
     changePasswordByToken(data, callback) {
         Api.post('Authorization/ChangePasswordByToken', data).then(
             response => {
-                console.log(response)
                 if (isset(response, 'data.result.success')) {
                     callback({
                         success: true

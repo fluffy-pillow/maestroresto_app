@@ -195,9 +195,10 @@ ul {
 }
 
 h1, h2, h3, h4 {
-  margin: 0;
+  margin: 0 !important;
   color: #4B4B4B;
   white-space: initial;
+  padding: 0 !important;
 }
 
 h1 {

@@ -1,51 +1,57 @@
 <template>
     <section class="statistics">
-        <div class="head">
-            <h2 class="title">
-                {{status.text}}
-            </h2>
-            <Rating :data="status.rating"></Rating>
-        </div>
-        <div class="body">
-            <Position :position="leaderboard.position"></Position>
-            <Progress :percent="loyalty.percent"></Progress>
-        </div>
+        <PreloadBlock :class="{show: !bShow}"></PreloadBlock>
+        <LoadedBlock
+                v-if="bShow"
+                :class="{show: bShow}"
+                :status="status"
+                :leaderboard="leaderboard"
+                :loyalty="loyalty"
+        ></LoadedBlock>
     </section>
 </template>
 
 <script>
-    import Position from "./Position";
-    import Progress from "./Progress";
-    import Rating from "./Rating";
+    import PreloadBlock from "./PreloadBlock";
+    import LoadedBlock from "./LoadedBlock";
     export default {
         name: "Statistics",
-        components: {Rating, Progress, Position},
+        components: {LoadedBlock, PreloadBlock},
         props: {
             status: Object,
             leaderboard: Object,
             loyalty: Object
+        },
+        computed: {
+            bShow () {
+                return (this.status && this.leaderboard && this.loyalty)
+            }
         }
     }
 </script>
 
 <style scoped>
 .statistics {
-    padding-left: 20px;
-    padding-right: 20px;
     margin-top: 20px;
-}
-
-.head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.body {
-    margin-top: 20px;
+    position: relative;
+    min-height: 138px;
     display: flex;
 }
 
-.title {
+.preload-block.show, .loaded-block.show {
+    opacity: 1;
+    visibility: visible;
 }
+
+.preload-block, .loaded-block {
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.preload-block {
+    position: absolute;
+}
+
 </style>

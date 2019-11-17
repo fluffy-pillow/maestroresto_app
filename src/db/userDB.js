@@ -76,9 +76,7 @@ const userDB = {
         nSQL("user").useDatabase("maestroresto_db").query("select", ["user"]).exec()
             .then(response => {
                 if (isset(response[0], 'user')) {
-                    callback({
-                        user: response[0].user
-                    })
+                    callback(JSON.parse(response[0].user))
                     return
                 }
 
