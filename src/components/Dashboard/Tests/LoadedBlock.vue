@@ -45,6 +45,7 @@
 <style scoped>
     .loaded-block {
         width: 100%;
+        padding-top: 20px;
         margin-bottom: 80px;
     }
 

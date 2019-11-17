@@ -61,7 +61,7 @@
             desiredText: 'test@test.com',
           },
           password: {
-            inputText: 'test',
+            inputText: '12345678',
             desiredText: 'test',
             inputType: 'password',
           },

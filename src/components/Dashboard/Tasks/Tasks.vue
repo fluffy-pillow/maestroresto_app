@@ -23,24 +23,23 @@
 
 <style scoped>
 .tasks {
-    margin-top: 20px;
     display: flex;
-    min-height: 154px;
 }
 
 .preload-block.show, .loaded-block.show {
     opacity: 1;
     visibility: visible;
+    position: relative;
 }
 
 .preload-block, .loaded-block {
-
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, position 0.2s ease-in-out 0.2s;
 }
 
 .preload-block {
+    z-index: 3;
     position: absolute;
 }
 

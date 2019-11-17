@@ -11,9 +11,19 @@
             </vue-content-loading>
 
         </div>
-        <vue-content-loading class="body" :height="180" preserveAspectRatio="none">
-            <rect rx="20" height="180" fill="#EFF1F2"/>
-        </vue-content-loading>
+        <div class="body">
+            <div class="items">
+                <vue-content-loading
+                        class="item"
+                        v-for="i in 4"
+                        :key="i"
+                        :width="215"
+                        :height="180"
+                >
+                        <rect width="215" height="180" rx="20" fill="#EFF1F2"/>
+                </vue-content-loading>
+            </div>
+        </div>
 
     </div>
 </template>
@@ -30,9 +40,8 @@
 
 <style scoped>
     .preload-block {
-        margin-top: 20px;
-        width: 100%;
-        margin-bottom: 80px;
+        padding-top: 20px;
+        background: #ffffff;
     }
 
     .title {
@@ -53,14 +62,20 @@
         height: 13px;
     }
 
-    .body {
+
+    .item {
+        width: 215px;
         height: 180px;
-        width: calc(100% - 16px);
-        margin-top: 16px;
-        margin-left: 16px;
+        margin-left: 10px;
     }
 
-    .body rect {
-        width: 100%;
+    .body {
+        overflow: hidden;
+        margin-top: 16px;
+        margin-left: 10px;
     }
-</style>
+
+    .items {
+        display: flex;
+        width: min-content;
+    }</style>

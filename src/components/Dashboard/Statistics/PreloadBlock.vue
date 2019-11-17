@@ -14,8 +14,8 @@
                 <rect rx="20" height="100" fill="#EFF1F2"/>
             </vue-content-loading>
 
-            <vue-content-loading class="progress" :height="100" preserveAspectRatio="none">
-                <rect rx="20" height="100" fill="#EFF1F2"/>
+            <vue-content-loading class="progress" :height="108" preserveAspectRatio="none">
+                <rect rx="20" height="108" fill="#EFF1F2"/>
             </vue-content-loading>
         </div>
 
@@ -36,6 +36,9 @@
     .preload-block {
         padding-left: 20px;
         padding-right: 20px;
+        padding-top: 25px;
+        background: #ffffff;
+        padding-bottom: 5px;
     }
 
     .head {
@@ -60,7 +63,7 @@
     }
 
     .position {
-        height: 100px;
+        height: 108px;
         min-width: 42%;
         width: 42%;
     }
@@ -68,17 +71,17 @@
 
     .position rect {
         width: 100%;
-        height: 100px;
+        height: 108px;
     }
 
     .progress {
-        height: 100px;
+        height: 108px;
         width: 100%;
         margin-left: 10px;
     }
 
     .progress rect {
         width: 100%;
-        height: 100px;
+        height: 108px;
     }
 </style>

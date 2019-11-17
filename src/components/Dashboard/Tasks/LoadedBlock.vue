@@ -40,6 +40,7 @@
 <style scoped>
     .loaded-block {
         width: 100%;
+        padding-top: 20px;
     }
 
     .head {
