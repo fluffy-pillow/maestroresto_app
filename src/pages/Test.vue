@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="test" @show="onShowPage">
+    <v-ons-page class="test" @show="onShowPage" ref="test">
         <Header></Header>
         <MainTest></MainTest>
     </v-ons-page>
