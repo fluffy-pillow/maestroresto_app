@@ -14,7 +14,9 @@ import Splashscreen from './pages/Splashscreen';
 import Material from './pages/Course/Materials/Material';
 import Test from './pages/Test';
 import TestResults from './pages/TestResults';
-import userDB from '@/db/userDB'
+import Favorite from './pages/Favorite';
+import MainMenu from './pages/Favorite/MainMenu';
+import MainMenuSlug from './pages/Favorite/MainMenu/MainMenuSlug';
 
 Vue.use(Router);
 
@@ -159,6 +161,58 @@ const router = new Router({
             },
             beforeEnter: ifAuthenticated,
             children: [
+                {
+                    path: 'mainmenu',
+                    name: 'MainMenu',
+                    component: {
+                        extends: MainMenu,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                    },
+                    beforeEnter: ifAuthenticated,
+                    children: [
+                        {
+                            path: ':slug',
+                            name: 'MainMenuSlug',
+                            component: {
+                                extends: MainMenuSlug,
+                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                            },
+                            beforeEnter: ifAuthenticated,
+                        }
+                    ]
+                },
+                {
+                    path: 'favorite',
+                    name: 'Favorite',
+                    component: {
+                        extends: Favorite,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                    },
+                    beforeEnter: ifAuthenticated,
+                    children: [
+                        {
+                            path: 'mainmenu',
+                            name: 'MainMenu',
+                            component: {
+                                extends: MainMenu,
+                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                            },
+                            beforeEnter: ifAuthenticated,
+                            children: [
+                                {
+                                    path: ':slug',
+                                    name: 'MainMenuSlug',
+                                    component: {
+                                        extends: MainMenuSlug,
+                                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                                    },
+                                    beforeEnter: ifAuthenticated,
+                                }
+                            ]
+
+                        }
+                    ]
+                },
                 {
                     path: 'course',
                     name: 'Course',

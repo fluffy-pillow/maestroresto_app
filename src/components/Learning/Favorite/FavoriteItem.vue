@@ -1,5 +1,5 @@
 <template>
-    <li class="favorite-item" :class="data.type">
+    <li class="favorite-item" :class="data.type" @click="openFavoriteItemPage">
         <div class="container" :style="{
             background:
             (!data.background) ? 'none' : 'linear-gradient(rgba(60, 60, 59, 0.5), rgba(0, 60, 59, 0.5)),' +
@@ -17,6 +17,19 @@
         name: "FavoriteItem",
         props: {
             data: Object
+        },
+        methods: {
+            openFavoriteItemPage () {
+                switch (this.data.type) {
+                    case 'mainMenu': {
+                        this.$router.push(this.$route.path + '/mainmenu')
+                        break
+                    }
+                    default: {
+                        break
+                    }
+                }
+            }
         }
     }
 </script>

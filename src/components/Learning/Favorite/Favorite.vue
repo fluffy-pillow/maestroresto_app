@@ -1,6 +1,6 @@
 <template>
     <section class="favorite">
-        <div class="head">
+        <div class="head" @click="openFavoritePage">
             <h3>Избранное</h3>
             <div class="arrow">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,6 +49,11 @@
                         name: 'Кто такой barback?'
                     }
                 ]
+            }
+        },
+        methods: {
+            openFavoritePage () {
+                this.$router.push(this.$route.path + '/favorite')
             }
         }
     }

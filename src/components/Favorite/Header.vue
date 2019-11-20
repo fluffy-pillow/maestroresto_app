@@ -2,33 +2,36 @@
     <v-ons-toolbar static class="header">
         <div class="center">
 
-                <div class="back-button-wrapper header-item">
-                    <v-ons-back-button>
+            <div class="back-button-wrapper header-item">
+                <v-ons-back-button>
 
-                    </v-ons-back-button>
-                </div>
-                <div class="count header-item">
-                  вопрос {{$route.params.id}} из 3
-                </div>
-                <div class="header-item"></div>
+                </v-ons-back-button>
             </div>
+            <div class="title header-item">
+                {{title}}
+            </div>
+            <div class="header-item"></div>
+        </div>
     </v-ons-toolbar>
 </template>
 
 <script>
     export default {
-        name: "Header"
+        name: "Header",
+        props: {
+            title: String
+        }
     }
 </script>
 
 <style scoped>
     .header {
-        background: #3DD498 !important;
         z-index: 999999;
         box-shadow: none !important;
         height: calc(44px + env(safe-area-inset-top)) !important;
         display: flex;
         align-items: flex-end;
+        background-color: #ffffff !important;
     }
 
     .center {
@@ -42,10 +45,6 @@
         justify-content: space-between;
     }
 
-    .header-bottom {
-        padding-top: 16px;
-        padding-bottom: 21px;
-    }
 
 
     .back-button {
@@ -59,15 +58,15 @@
         border-radius: 50%;
     }
 
-    .count {
-        color: #FFFFFF;
-        font-size: 14px;
-        line-height: 22px;
-        font-weight: normal;
-        text-transform: uppercase;
-    }
-
     .header-item {
         flex: 1;
+    }
+
+    .title {
+        letter-spacing: 0.16px;
+        color: #4B4B4B;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 16px;
     }
 </style>
