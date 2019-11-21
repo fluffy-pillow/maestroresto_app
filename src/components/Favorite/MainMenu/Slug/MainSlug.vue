@@ -33,14 +33,38 @@
                         Время приготовления 60 минут
                     </div>
                 </div>
+                <p>
+                    Лодочки из картофеля с мясной начинкой – оригинальный вариант фаршированного картофеля, который украсит даже праздничный стол. При этом рецепт простой и требуется только набор самых доступных продуктов без «экзотики». Ориентировочное время приготовления в духовке – 60 минут.
+                </p>
+
+                <Audio :audio="audio" :audio-name="audioName"></Audio>
+
+                <Video :video="video"></Video>
+
+                <Composition></Composition>
+                <Allergens></Allergens>
+                <Characteristics></Characteristics>
             </div>
         </div>
     </main>
 </template>
 
 <script>
+    import Audio from "../../../Audio";
+    import Video from "../../../Video";
+    import Composition from "./Composition";
+    import Allergens from "./Allergens";
+    import Characteristics from "./Characteristics";
     export default {
-        name: "MainSlug"
+        name: "MainSlug",
+        components: {Characteristics, Allergens, Video, Audio, Composition},
+        data () {
+            return {
+                audio: "https://hpr.dogphilosophy.net/test/wav.wav",
+                audioName: 'audio №1',
+                video: "http://techslides.com/demos/sample-videos/small.mp4"
+            }
+        },
     }
 </script>
 
@@ -70,6 +94,10 @@
     align-items: center;
     padding-left: 16px;
     padding-right: 16px;
+}
+
+.video-outer {
+    margin-top: 16px;
 }
 
 .body {
@@ -159,5 +187,19 @@
     line-height: 16px;
     margin-left: 16px;
     color: #61707D;
+}
+
+
+p {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.078px;
+    color: #4B4B4B;
+}
+
+.main-slug {
+    padding-bottom: 81px;
 }
 </style>
