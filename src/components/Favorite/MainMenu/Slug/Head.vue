@@ -34,13 +34,18 @@
 <style scoped>
     .slide {
         width: 100%;
-        display: flex;
-        justify-content: center;
         overflow: hidden;
     }
 
+    .slide img {
+        width: auto;
+        height: 100%;
+        margin-left: -25%;
+    }
+
     .carousel {
-        height: 331px;
+        height: inherit;
+        justify-content: flex-end;
     }
 
     .VueCarousel-wrapper {
@@ -48,7 +53,7 @@
     }
 
     .head {
-        height: 331px;
+        height: calc(331px + env(safe-area-inset-top) * 8);
         position: relative;
     }
 
@@ -58,6 +63,7 @@
         width: 100%;
         z-index: 1;
         display: flex;
+        margin-top: calc(9 * env(safe-area-inset-top));
     }
 
     .container {

@@ -120,7 +120,7 @@ export default {
   top: 0 !important;
 }
 
-.test > .page__content {
+.test > .page__content, .main-menu-slug  > .page__content {
   margin-top: calc(env(safe-area-inset-top) * -8) !important;
 }
 
@@ -250,6 +250,11 @@ h3 {
 
 .VueCarousel-wrapper {
   overflow: unset !important;
+  height: inherit !important;
+}
+
+.VueCarousel-inner {
+  height: inherit !important;
 }
 
 .VueCarousel-pagination {
