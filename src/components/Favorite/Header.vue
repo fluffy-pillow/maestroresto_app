@@ -32,6 +32,7 @@
         display: flex;
         align-items: flex-end;
         background-color: #ffffff !important;
+        background-image: none !important;
     }
 
     .center {
