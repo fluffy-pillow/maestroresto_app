@@ -6,7 +6,7 @@
 
 
 <script>
-    import MainMaterials from "@/components/Course/Materials/MainMaterials";
+    import MainMaterials from "@/components/CoursePage/Materials/MainMaterials";
     export default {
         name: "Materials",
         components: {MainMaterials}

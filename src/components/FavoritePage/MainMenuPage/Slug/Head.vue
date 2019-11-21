@@ -53,7 +53,7 @@
     }
 
     .head {
-        height: calc(331px + env(safe-area-inset-top) * 8);
+        height: calc(331px + env(safe-area-inset-top) * 7);
         position: relative;
     }
 
@@ -63,7 +63,7 @@
         width: 100%;
         z-index: 1;
         display: flex;
-        margin-top: calc(9 * env(safe-area-inset-top));
+        margin-top: calc(8 * env(safe-area-inset-top));
     }
 
     .container {

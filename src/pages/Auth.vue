@@ -7,8 +7,8 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import MainAuth from "@/components/Auth/MainAuth";
-    import Header from "@/components/Auth/Header";
+    import MainAuth from "@/components/AuthPage/MainAuth";
+    import Header from "@/components/AuthPage/Header";
 
     export default {
       name: "Auth",

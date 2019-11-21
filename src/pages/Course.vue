@@ -10,9 +10,9 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import StickyHeader from "@/components/Course/StickyHeader";
-    import LoadedScreen from "@/components/Course/LoadedScreen";
-    import PreloadScreen from "@/components/Course/PreloadScreen";
+    import StickyHeader from "@/components/CoursePage/StickyHeader";
+    import LoadedScreen from "@/components/CoursePage/LoadedScreen";
+    import PreloadScreen from "@/components/CoursePage/PreloadScreen";
 
     export default {
         name: "MainCourse",

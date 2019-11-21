@@ -23,10 +23,10 @@
 </template>
 
 <script>
-    import SearchResultsBlock from "@/components/Learning/Search/SearchResultsBlock";
-    import SearchResultsList from "@/components/Learning/Search/SearchResultsList";
-    import SearchResultsItem from "@/components/Learning/Search/Learning/SearchResultsItem";
-    import SearchNotFound from "@/components/Learning/Search/SearchNotFound";
+    import SearchResultsBlock from "@/components/LearningPage/Search/SearchResultsBlock";
+    import SearchResultsList from "@/components/LearningPage/Search/SearchResultsList";
+    import SearchResultsItem from "@/components/LearningPage/Search/Learning/SearchResultsItem";
+    import SearchNotFound from "@/components/LearningPage/Search/SearchNotFound";
 
     import {mapGetters} from 'vuex'
 

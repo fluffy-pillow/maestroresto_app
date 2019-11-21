@@ -13,10 +13,10 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
-    import User from "@/components/Dashboard/User/User";
+    import User from "@/components/DashboardPage/User/User";
     import dashboardDB from "@/db/dashboardDB";
     import DashboardService from '@/services/DashboardService'
-    import MainDashboard from "../components/Dashboard/MainDashboard";
+    import MainDashboard from "../components/DashboardPage/MainDashboard";
 
 
     export default {

@@ -9,8 +9,8 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import MainSlug from "../../../components/Favorite/MainMenu/Slug/MainSlug";
-    import StickyHeader from "../../../components/Favorite/MainMenu/Slug/StickyHeader";
+    import MainSlug from "../../../components/FavoritePage/MainMenuPage/Slug/MainSlug";
+    import StickyHeader from "../../../components/FavoritePage/MainMenuPage/Slug/StickyHeader";
     export default {
         name: "Slug",
         components: {StickyHeader, MainSlug},

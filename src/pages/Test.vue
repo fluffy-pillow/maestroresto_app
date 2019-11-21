@@ -7,8 +7,8 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import Header from "../components/Test/Header";
-    import MainTest from "../components/Test/MainTest";
+    import Header from "../components/TestPage/Header";
+    import MainTest from "../components/TestPage/MainTest";
     export default {
         name: "Test",
         components: {MainTest, Header},

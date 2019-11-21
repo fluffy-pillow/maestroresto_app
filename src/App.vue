@@ -120,8 +120,12 @@ export default {
   top: 0 !important;
 }
 
-.test > .page__content, .main-menu-slug  > .page__content {
+.test > .page__content {
   margin-top: calc(env(safe-area-inset-top) * -8) !important;
+}
+
+.main-menu-slug  > .page__content {
+  margin-top: calc(env(safe-area-inset-top) * -7) !important;
 }
 
 .navigation > .dashboard > .page__content, .navigation > .learning > .page__content {

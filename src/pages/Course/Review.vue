@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import MainReview from "@/components/Course/Review/MainReview";
+    import MainReview from "@/components/CoursePage/Review/MainReview";
     export default {
         name: "Review",
         components: {MainReview}

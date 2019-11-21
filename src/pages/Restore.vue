@@ -7,8 +7,8 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import Header from "@/components/Restore/Header";
-    import MainRestore from "@/components/Restore/MainRestore";
+    import Header from "@/components/RestorePage/Header";
+    import MainRestore from "@/components/RestorePage/MainRestore";
     export default {
       name: "Restore",
       components: {MainRestore, Header},

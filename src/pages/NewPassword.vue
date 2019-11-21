@@ -6,7 +6,7 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import MainNewPassword from "@/components/NewPassword/MainNewPassword";
+    import MainNewPassword from "@/components/NewPasswordPage/MainNewPassword";
     export default {
       name: "NewPassword",
       components: {MainNewPassword},

@@ -17,6 +17,7 @@ import TestResults from './pages/TestResults';
 import Favorite from './pages/Favorite';
 import MainMenu from './pages/Favorite/MainMenu';
 import MainMenuSlug from './pages/Favorite/MainMenu/MainMenuSlug';
+import Structure from './pages/Structure';
 
 Vue.use(Router);
 
@@ -212,6 +213,16 @@ const router = new Router({
 
                         }
                     ]
+                },
+                {
+                    path: 'structure',
+                    name: 'Structure',
+                    component: {
+                        extends: Structure,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                    },
+                    beforeEnter: ifAuthenticated,
+
                 },
                 {
                     path: 'course',

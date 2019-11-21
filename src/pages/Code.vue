@@ -7,8 +7,8 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import Header from "@/components/Code/Header";
-    import MainCode from "@/components/Code/MainCode";
+    import Header from "@/components/CodePage/Header";
+    import MainCode from "@/components/CodePage/MainCode";
 
 
     export default {

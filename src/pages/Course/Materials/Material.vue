@@ -7,8 +7,8 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import StickyHeader from "@/components/Course/StickyHeader";
-    import MainMaterial from "@/components/Course/Materials/Material/MainMaterial";
+    import StickyHeader from "@/components/CoursePage/StickyHeader";
+    import MainMaterial from "@/components/CoursePage/Materials/Material/MainMaterial";
     export default {
         name: "Material",
         components: {MainMaterial, StickyHeader},

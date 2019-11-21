@@ -13,8 +13,8 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import MainLearning from "@/components/Learning/MainLearning";
-    import Search from "@/components/Learning/Search/Search";
+    import MainLearning from "@/components/LearningPage/MainLearning";
+    import Search from "@/components/LearningPage/Search/Search";
     export default {
         name: "Learning",
         components: {Search, MainLearning},

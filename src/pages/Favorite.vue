@@ -7,8 +7,8 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import Header from "../components/Favorite/Header";
-    import MainFavorite from "../components/Favorite/MainFavorite";
+    import Header from "../components/FavoritePage/Header";
+    import MainFavorite from "../components/FavoritePage/MainFavorite";
 
     export default {
         name: "Favorite",

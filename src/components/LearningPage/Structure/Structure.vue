@@ -1,6 +1,6 @@
 <template>
     <section class="structure">
-        <div class="head">
+        <div class="head" @click="openStructurePage">
             <h3>Структура работы ресторана</h3>
             <div class="arrow">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,6 +58,11 @@
                         time: 28
                     }
                 ]
+            }
+        },
+        methods: {
+            openStructurePage () {
+                this.$router.push(this.$route.path + '/structure')
             }
         }
     }
