@@ -10,6 +10,7 @@ import router from './router'
 import store from './store'
 import i18n from './i18n'
 import Axios from 'axios'
+import VueCarousel from 'vue-carousel';
 import Vue2TouchEvents from 'vue2-touch-events'
 import VueOnsen from 'vue-onsenui/esm';
 import VOnsPage from 'vue-onsenui/esm/components/VOnsPage';
@@ -35,6 +36,7 @@ Vue.config.productionTip = false
 
 Vue.use(VueOnsen)
 Vue.use(VueRouter)
+Vue.use(VueCarousel);
 Vue.use(Vue2TouchEvents)
 Vue.mixin(mixin)
 Vue.component(VOnsPage.name, VOnsPage);

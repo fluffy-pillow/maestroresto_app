@@ -248,6 +248,18 @@ h3 {
   background-color: transparent;
 }
 
+.VueCarousel-wrapper {
+  overflow: unset !important;
+}
+
+.VueCarousel-pagination {
+  bottom: 32px !important;
+}
+
+.VueCarousel-dot {
+  padding: 4px !important;
+}
+
 .page .page__content {
   scrollbar-width: none;
 }

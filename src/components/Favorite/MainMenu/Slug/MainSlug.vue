@@ -1,11 +1,6 @@
 <template>
     <main class="main-slug">
-        <div class="head">
-            <div class="container">
-                <v-ons-back-button>
-                </v-ons-back-button>
-            </div>
-        </div>
+        <Head></Head>
         <div class="body">
             <div class="short-desc">
                 <div class="type">
@@ -55,38 +50,21 @@
     import Composition from "./Composition";
     import Allergens from "./Allergens";
     import Characteristics from "./Characteristics";
+    import Head from "./Head";
     export default {
         name: "MainSlug",
-        components: {Characteristics, Allergens, Video, Audio, Composition},
+        components: {Head, Characteristics, Allergens, Video, Audio, Composition},
         data () {
             return {
                 audio: "https://hpr.dogphilosophy.net/test/wav.wav",
                 audioName: 'audio №1',
                 video: "http://techslides.com/demos/sample-videos/small.mp4"
             }
-        },
+        }
     }
 </script>
 
 <style scoped>
-.head {
-    background-image: url(https://s2.eda.ru/StaticContent/Photos/120131090202/120726192046/p_O.jpg);
-    height: 331px;
-    background-size: cover;
-    background-position: center center;
-}
-
-.back-button {
-    background-color: rgba(255, 255, 255, 0.1);
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    background-image: url(../../../../assets/images/arrow-left-white.svg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    border-radius: 50%;
-
-}
 
 .container {
     height: 44px;
@@ -201,5 +179,8 @@ p {
 
 .main-slug {
     padding-bottom: 81px;
+    overflow: hidden;
 }
+
+
 </style>
