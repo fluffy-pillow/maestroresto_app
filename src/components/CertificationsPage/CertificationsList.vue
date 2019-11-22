@@ -1,12 +1,12 @@
 <template>
-    <ul class="certification-list">
+    <ul class="certifications-list">
         <slot></slot>
     </ul>
 </template>
 
 <script>
     export default {
-        name: "CertificationList"
+        name: "CertificationsList"
     }
 </script>
 

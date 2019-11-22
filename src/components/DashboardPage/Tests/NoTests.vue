@@ -50,7 +50,7 @@
     min-width: 30px;
     height: 32px;
     display: flex;
-    background-image: url(../../../assets/images/certification.svg);
+    background-image: url(../../../assets/images/certifications.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;

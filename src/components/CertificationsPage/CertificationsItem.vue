@@ -1,5 +1,5 @@
 <template>
-    <li class="certification-item" :style="{background: bg}">
+    <li class="certifications-item" :style="{background: bg}">
         <span class="left">
             <span class="title">
                 {{data.title}}
@@ -30,7 +30,7 @@
 
 <script>
     export default {
-        name: "CertificationItem",
+        name: "CertificationsItem",
         props: {
             data: Object
         },
@@ -51,7 +51,7 @@
 </script>
 
 <style scoped>
-.certification-item {
+.certifications-item {
     height: 114px;
     background-size: cover !important;
     border-radius: 16px;
@@ -62,7 +62,7 @@
     padding-left: 16px;
 }
 
-.certification-item-item:first-child {
+.certifications-item:first-child {
     margin-top: 0;
 }
 

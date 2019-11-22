@@ -45,9 +45,9 @@
                         to: '/learning'
                     },
                     {
-                        label: 'Аттестация',
-                        class: 'certification-tab',
-                        to: '/certification'
+                        label: 'Аттестации',
+                        class: 'certifications-tab',
+                        to: '/certifications'
                     },
                     {
                         label: 'Меню',
@@ -158,8 +158,8 @@ li.active .button-inner-wrapper {
     background-image: url(../assets/images/learning.svg);
 }
 
-.certification-tab .button-icon {
-    background-image: url(../assets/images/certification.svg);
+.certifications-tab .button-icon {
+    background-image: url(../assets/images/certifications.svg);
 }
 
 .menu-tab .button-icon {
@@ -174,8 +174,8 @@ li.active .button-inner-wrapper {
     background-image: url(../assets/images/learning-active.svg);
 }
 
-.certification-tab.active .button-icon {
-    background-image: url(../assets/images/certification.svg);
+.certifications-tab.active .button-icon {
+    background-image: url(../assets/images/certifications.svg);
 }
 
 .menu-tab.active .button-icon {

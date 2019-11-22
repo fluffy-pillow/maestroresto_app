@@ -29,6 +29,7 @@
         align-items: flex-end;
         background-color: #ffffff !important;
         background-image: none !important;
+        padding-top: 0 !important;
     }
 
     .center {

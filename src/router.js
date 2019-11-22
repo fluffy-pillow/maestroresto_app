@@ -7,7 +7,7 @@ import Restore from './pages/Restore';
 import Code from './pages/Code';
 import NewPassword from './pages/NewPassword';
 import Learning from './pages/Learning';
-import Certification from './pages/Certification';
+import Certifications from './pages/Certifications';
 import Menu from './pages/Menu';
 import Course from './pages/Course';
 import Splashscreen from './pages/Splashscreen';
@@ -270,10 +270,10 @@ const router = new Router({
             ]
         },
         {
-            path: '/certification',
-            name: 'Certification',
+            path: '/certifications',
+            name: 'Certifications',
             component: {
-                extends: Certification,
+                extends: Certifications,
                 onsNavigatorOptions: {animation: 'none'}
             },
             beforeEnter: ifAuthenticated

@@ -1,20 +1,21 @@
 <template>
-    <v-ons-page class="certification" @show="onShowPage">
+    <v-ons-page class="certifications" @show="onShowPage">
         <Header :title="'Аттестации'"></Header>
-        <MainCertification :data="response"></MainCertification>
+        <MainCertifications :data="response"></MainCertifications>
     </v-ons-page>
 </template>
 
 <script>
     import {mapActions} from 'vuex'
-    import Header from "../components/CertificationPage/Header";
-    import MainCertification from "../components/CertificationPage/MainCertification";
+    import Header from "../components/CertificationsPage/Header";
+    import MainCertifications from "../components/CertificationsPage/MainCertifications";
 
     export default {
-        name: "Certification",
-        components: {MainCertification, Header},
+        name: "Certifications",
+        components: {MainCertifications, Header},
         data () {
             return {
+//                response: []
                 response: [
                     {
                         title: 'Ассортиментный минимум блюд предприятий общественного\n' +
