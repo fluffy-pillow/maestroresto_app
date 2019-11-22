@@ -1,5 +1,5 @@
 <template>
-    <li class="certifications-item" :style="{background: bg}">
+    <li class="certifications-item" :style="{background: bg}" @click="openCertificationPage">
         <span class="left">
             <span class="title">
                 {{data.title}}
@@ -33,6 +33,11 @@
         name: "CertificationsItem",
         props: {
             data: Object
+        },
+        methods: {
+            openCertificationPage () {
+                this.$router.push(this.$route.path + '/slug/1')
+            }
         },
         computed: {
             bg () {

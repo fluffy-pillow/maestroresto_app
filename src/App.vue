@@ -116,7 +116,8 @@ export default {
   font-size: 16px;
 }
 
-.dashboard > .page__content, .learning > .page__content, .main-menu-slug  > .page__content, .main-menu  > .page__background {
+.dashboard > .page__content, .learning > .page__content, .main-menu-slug  > .page__content, .main-menu  > .page__background
+, .certifications  > .page__background{
   top: 0 !important;
 }
 

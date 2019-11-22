@@ -8,6 +8,8 @@ import Code from './pages/Code';
 import NewPassword from './pages/NewPassword';
 import Learning from './pages/Learning';
 import Certifications from './pages/Certifications';
+import Certification from './pages/Certifications/Certification';
+import CertificationResults from './pages/Certifications/CertificationResults';
 import Menu from './pages/Menu';
 import Course from './pages/Course';
 import Splashscreen from './pages/Splashscreen';
@@ -276,7 +278,28 @@ const router = new Router({
                 extends: Certifications,
                 onsNavigatorOptions: {animation: 'none'}
             },
-            beforeEnter: ifAuthenticated
+            beforeEnter: ifAuthenticated,
+            children: [
+                {
+                    path: ':slug/results',
+                    name: 'CertificationResults',
+                    component: {
+                        extends: CertificationResults,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                    },
+                    beforeEnter: ifAuthenticated
+
+                },
+                {
+                    path: ':slug/:id',
+                    name: 'Certification',
+                    component: {
+                        extends: Certification,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                    },
+                    beforeEnter: ifAuthenticated
+                },
+            ]
         },
         {
             path: '/menu',
