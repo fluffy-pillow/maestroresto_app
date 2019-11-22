@@ -121,7 +121,7 @@ export default {
   top: 0 !important;
 }
 
-.test > .page__content {
+.test > .page__content, .certification > .page__content {
   margin-top: calc(env(safe-area-inset-top) * -8) !important;
 }
 
