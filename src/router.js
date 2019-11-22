@@ -20,6 +20,7 @@ import Favorite from './pages/Favorite';
 import MainMenu from './pages/Favorite/MainMenu';
 import MainMenuSlug from './pages/Favorite/MainMenu/MainMenuSlug';
 import Structure from './pages/Structure';
+import Chat from './pages/Chat';
 
 Vue.use(Router);
 
@@ -310,6 +311,15 @@ const router = new Router({
             },
            beforeEnter: ifAuthenticated
         },
+        {
+            path: '/chat',
+            name: 'Chat',
+            component: {
+                extends: Chat,
+                onsNavigatorOptions: {animation: 'none'}
+            },
+           beforeEnter: ifAuthenticated
+        }
     ]
 });
 

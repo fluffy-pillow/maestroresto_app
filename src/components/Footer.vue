@@ -45,6 +45,11 @@
                         to: '/learning'
                     },
                     {
+                        label: 'Чат',
+                        class: 'chat-tab',
+                        to: '/chat'
+                    },
+                    {
                         label: 'Аттестации',
                         class: 'certifications-tab',
                         to: '/certifications'
@@ -107,13 +112,9 @@ li {
     flex: 1;
 }
 
-li.active {
-    flex: unset;
-    width: 140px;
-}
 
 li.active .button-text {
-    display: flex;
+    color: #3DD498;
 }
 
 button {
@@ -126,28 +127,19 @@ button {
 
 .button-inner-wrapper {
     display: flex;
-    width: 22px;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 30px;
 }
 
 li.active .button-inner-wrapper {
-    width: auto;
-    background: #3DD498;
-    border-radius: 20px;
-    padding-left: 12px;
-    padding-right: 12px;
-    display: flex;
+
 }
 
 .button-text {
-    display: none;
-    margin-left: 10px;
-    letter-spacing: 0.16px;
-    font-size: 12px;
-    line-height: 16px;
-    color: #FFFFFF;
+    font-size: 10px;
+    line-height: 12px;
+    color: #61707D;
+    margin-top: 6px;
 }
 
 .dashboard-tab .button-icon {
@@ -166,20 +158,16 @@ li.active .button-inner-wrapper {
     background-image: url(../assets/images/menu.svg);
 }
 
-.dashboard-tab.active .button-icon {
-    background-image: url(../assets/images/dashboard-active.svg);
-}
-
-.learning-tab.active .button-icon {
-    background-image: url(../assets/images/learning-active.svg);
-}
-
-.certifications-tab.active .button-icon {
-    background-image: url(../assets/images/certifications.svg);
-}
-
 .menu-tab.active .button-icon {
-    background-image: url(../assets/images/menu.svg);
+    background-image: url(../assets/images/menu-active.svg);
+}
+
+.chat-tab .button-icon {
+    background-image: url(../assets/images/chat.svg);
+}
+
+.chat-tab.active .button-icon {
+    background-image: url(../assets/images/chat-active.svg);
 }
 
 .button-icon {
