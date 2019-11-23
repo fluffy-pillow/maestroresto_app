@@ -1,12 +1,11 @@
 <template>
-    <v-ons-page class="favorite" @show="onShowPage">
+    <v-ons-page class="favorite">
         <Header :title="'Избранное'"></Header>
         <MainFavorite :favorite="favorite"></MainFavorite>
     </v-ons-page>
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
     import Header from "../components/FavoritePage/Header";
     import MainFavorite from "../components/FavoritePage/MainFavorite";
 
@@ -61,14 +60,6 @@
                     },
                 ]
             }
-        },
-        methods: {
-            onShowPage () {
-                this.showFooter()
-            },
-            ...mapActions({
-                showFooter: 'footer/show'
-            })
         }
     }
 </script>

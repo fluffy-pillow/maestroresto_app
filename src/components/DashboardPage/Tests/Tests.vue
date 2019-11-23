@@ -1,6 +1,6 @@
 <template>
     <section class="tests">
-        <PreloadBlock :class="{show: !unfinishedTests}"></PreloadBlock>
+        <PreloadBlock :class="{show: !unfinishedTests}" v-if="!$parent.bLoaded"></PreloadBlock>
         <LoadedBlock
                 v-if="unfinishedTests"
                 :unfinished-tests="unfinishedTests"

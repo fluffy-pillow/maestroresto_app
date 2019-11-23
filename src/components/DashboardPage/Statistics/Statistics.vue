@@ -1,6 +1,6 @@
 <template>
     <section class="statistics">
-        <PreloadBlock :class="{show: !bShow}"></PreloadBlock>
+        <PreloadBlock :class="{show: !bShow}"  v-if="!$parent.bLoaded"></PreloadBlock>
         <LoadedBlock
                 v-if="bShow"
                 :class="{show: bShow}"

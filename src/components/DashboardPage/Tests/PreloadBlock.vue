@@ -42,6 +42,7 @@
     .preload-block {
         padding-top: 20px;
         background: #ffffff;
+        width: 100%;
     }
 
     .title {

@@ -21,6 +21,7 @@ import MainMenu from './pages/Favorite/MainMenu';
 import MainMenuSlug from './pages/Favorite/MainMenu/MainMenuSlug';
 import Structure from './pages/Structure';
 import Chat from './pages/Chat';
+import Edit from './pages/Menu/Edit';
 
 Vue.use(Router);
 
@@ -68,6 +69,9 @@ const router = new Router({
                 onsNavigatorOptions: {animation: 'none'}
             },
             beforeEnter: ifNotAuthenticated,
+            meta: {
+                hideFooter: true
+            },
             children: [
                 {
                     path: '/restore',
@@ -76,6 +80,10 @@ const router = new Router({
                         extends: Restore
                     },
                     beforeEnter: ifNotAuthenticated,
+                    meta: {
+                        hideFooter: true
+                    },
+
                     children: [
                         {
                             path: '/code',
@@ -85,6 +93,9 @@ const router = new Router({
                                 onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
                             beforeEnter: ifNotAuthenticated,
+                            meta: {
+                                hideFooter: true
+                            },
                             children: [
                                 {
                                     path: '/newpassword',
@@ -94,6 +105,10 @@ const router = new Router({
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
                                     beforeEnter: ifNotAuthenticated,
+                                    meta: {
+                                        hideFooter: true
+                                    },
+
                                 }
                             ]
 
@@ -138,6 +153,10 @@ const router = new Router({
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
                                     beforeEnter: ifAuthenticated,
+                                    meta: {
+                                        hideFooter: true
+                                    },
+
                                 },
                                 {
                                     path: 'results',
@@ -147,6 +166,9 @@ const router = new Router({
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
                                     beforeEnter: ifAuthenticated,
+                                    meta: {
+                                        hideFooter: true
+                                    },
                                 }
                             ]
 
@@ -173,6 +195,9 @@ const router = new Router({
                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
                     beforeEnter: ifAuthenticated,
+                    meta: {
+                        hideFooter: true
+                    },
                     children: [
                         {
                             path: ':slug',
@@ -182,6 +207,9 @@ const router = new Router({
                                 onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
                             beforeEnter: ifAuthenticated,
+                            meta: {
+                                hideFooter: true
+                            },
                         }
                     ]
                 },
@@ -202,6 +230,9 @@ const router = new Router({
                                 onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
                             beforeEnter: ifAuthenticated,
+                            meta: {
+                                hideFooter: true
+                            },
                             children: [
                                 {
                                     path: ':slug',
@@ -211,6 +242,10 @@ const router = new Router({
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
                                     beforeEnter: ifAuthenticated,
+                                    meta: {
+                                        hideFooter: true
+                                    },
+
                                 }
                             ]
 
@@ -225,7 +260,6 @@ const router = new Router({
                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
                     beforeEnter: ifAuthenticated,
-
                 },
                 {
                     path: 'course',
@@ -244,6 +278,9 @@ const router = new Router({
                                 onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                             },
                             beforeEnter: ifAuthenticated,
+                            meta: {
+                                hideFooter: true
+                            },
                             children: [
                                 {
                                     path: 'test/:id',
@@ -252,8 +289,10 @@ const router = new Router({
                                         extends: Test,
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
-                                   beforeEnter: ifAuthenticated
-
+                                   beforeEnter: ifAuthenticated,
+                                    meta: {
+                                        hideFooter: true
+                                    },
                                 },
                                 {
                                     path: 'results',
@@ -262,7 +301,10 @@ const router = new Router({
                                         extends: TestResults,
                                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                                     },
-                                    beforeEnter: ifAuthenticated
+                                    beforeEnter: ifAuthenticated,
+                                    meta: {
+                                        hideFooter: true
+                                    }
                                 }
 
                             ]
@@ -288,7 +330,10 @@ const router = new Router({
                         extends: CertificationResults,
                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
-                    beforeEnter: ifAuthenticated
+                    beforeEnter: ifAuthenticated,
+                    meta: {
+                        hideFooter: true
+                    },
 
                 },
                 {
@@ -298,7 +343,10 @@ const router = new Router({
                         extends: Certification,
                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
-                    beforeEnter: ifAuthenticated
+                    beforeEnter: ifAuthenticated,
+                    meta: {
+                        hideFooter: true
+                    }
                 },
             ]
         },
@@ -309,7 +357,21 @@ const router = new Router({
                 extends: Menu,
                 onsNavigatorOptions: {animation: 'none'}
             },
-           beforeEnter: ifAuthenticated
+           beforeEnter: ifAuthenticated,
+           children: [
+               {
+                   path: '/edit',
+                   name: 'Edit',
+                   component: {
+                       extends: Edit,
+                       onsNavigatorOptions: {animation: 'none'}
+                   },
+                   beforeEnter: ifAuthenticated,
+                   meta: {
+                       hideFooter: true
+                   }
+               }
+           ]
         },
         {
             path: '/chat',
@@ -326,6 +388,8 @@ const router = new Router({
 const mapRouteStack = route => store.state['router'].pageStack = route.matched.map(m => m.components.default)
 mapRouteStack(router.resolve({name: 'Splashscreen'}).route)
 router.beforeEach((to, from, next) => {
+    store.state['footer'].bShow = !to.meta.hideFooter
+//    console.log(to)
     if (from.path !==to.path) {
         mapRouteStack(to) && next()
     }

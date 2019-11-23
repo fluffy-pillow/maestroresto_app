@@ -28,6 +28,7 @@
                 required: null,
                 unfinishedCourses: null,
                 unfinishedTests: null,
+                bLoaded: false
             }
         },
         watch: {
@@ -39,6 +40,11 @@
                 this.unfinishedCourses = newValue.unfinishedCourses
                 this.unfinishedTests = newValue.unfinishedTests
             }
+        },
+        mounted () {
+            setTimeout(() => {
+                this.bLoaded = true
+            }, 200)
         }
     }
 </script>

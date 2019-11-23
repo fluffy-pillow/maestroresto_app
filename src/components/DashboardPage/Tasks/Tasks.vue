@@ -1,6 +1,6 @@
 <template>
     <section class="tasks">
-        <PreloadBlock :class="{show: !required}"></PreloadBlock>
+        <PreloadBlock :class="{show: !required}"  v-if="!$parent.bLoaded"></PreloadBlock>
         <LoadedBlock
                 v-if="required"
                 :class="{show: required}"

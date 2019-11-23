@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="material" @show="onShowPage">
+    <v-ons-page class="material">
         <StickyHeader></StickyHeader>
         <MainMaterial></MainMaterial>
     </v-ons-page>
@@ -11,15 +11,7 @@
     import MainMaterial from "@/components/CoursePage/Materials/Material/MainMaterial";
     export default {
         name: "Material",
-        components: {MainMaterial, StickyHeader},
-        methods: {
-            onShowPage () {
-                this.showFooter()
-            },
-            ...mapActions({
-                showFooter: 'footer/show'
-            })
-        }
+        components: {MainMaterial, StickyHeader}
     }
 </script>
 

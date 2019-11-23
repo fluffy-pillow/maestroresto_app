@@ -46,7 +46,7 @@
         background-image: none;
         display: flex;
         align-items: flex-end;
-        padding-top: 0 !important; 
+        padding-top: 0 !important;
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06) !important;
         border-bottom-left-radius: 16px;
         border-bottom-right-radius: 16px;

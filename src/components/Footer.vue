@@ -13,6 +13,8 @@
                     >
                         <span class="button-inner-wrapper">
                             <span class="button-icon">
+                                <span class="event" v-if="link.bEvent">
+                                </span>
                             </span>
                             <span class="button-text">
                                 {{link.label}}
@@ -37,27 +39,32 @@
                     {
                         label: 'Главный',
                         class: 'dashboard-tab',
-                        to: '/dashboard'
+                        to: '/dashboard',
+                        bEvent: false
                     },
                     {
                         label: 'Обучение',
                         class: 'learning-tab',
-                        to: '/learning'
+                        to: '/learning',
+                        bEvent: false
                     },
                     {
                         label: 'Чат',
                         class: 'chat-tab',
-                        to: '/chat'
+                        to: '/chat',
+                        bEvent: true
                     },
                     {
                         label: 'Аттестации',
                         class: 'certifications-tab',
-                        to: '/certifications'
+                        to: '/certifications',
+                        bEvent: false
                     },
                     {
                         label: 'Меню',
                         class: 'menu-tab',
-                        to: '/menu'
+                        to: '/menu',
+                        bEvent: false
                     }
                 ]
             }
@@ -131,6 +138,17 @@ button {
     align-items: center;
 }
 
+.event {
+    position: absolute;
+    height: 9px;
+    background: #3DD498;
+    border: 3px solid #FFFFFF;
+    width: 9px;
+    border-radius: 50%;
+    right: -5px;
+    bottom: -1px;
+}
+
 li.active .button-inner-wrapper {
 
 }
@@ -146,12 +164,24 @@ li.active .button-inner-wrapper {
     background-image: url(../assets/images/dashboard.svg);
 }
 
+.dashboard-tab.active .button-icon {
+    background-image: url(../assets/images/dashboard-active.svg);
+}
+
 .learning-tab .button-icon {
     background-image: url(../assets/images/learning.svg);
 }
 
+.learning-tab.active .button-icon {
+    background-image: url(../assets/images/learning-active.svg);
+}
+
 .certifications-tab .button-icon {
     background-image: url(../assets/images/certifications.svg);
+}
+
+.certifications-tab.active .button-icon {
+    background-image: url(../assets/images/certifications-active.svg);
 }
 
 .menu-tab .button-icon {
@@ -176,5 +206,6 @@ li.active .button-inner-wrapper {
     width: 22px;
     height: 22px;
     min-width: 22px;
+    position: relative;
 }
 </style>

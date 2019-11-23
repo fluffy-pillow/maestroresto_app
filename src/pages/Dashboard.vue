@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="dashboard" id="dashboard" @show="onShowPage">
+    <v-ons-page class="dashboard" id="dashboard">
         <User></User>
         <div class="bg-circles">
             <svg width="293" height="303" viewBox="0 0 293 303" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,11 +32,7 @@
             }
         },
         methods: {
-            onShowPage () {
-                this.showFooter()
-            },
             ...mapActions({
-                showFooter: 'footer/show',
                 systemMessage: 'systemMessage/systemMessage'
             }),
             localDBRequest () {

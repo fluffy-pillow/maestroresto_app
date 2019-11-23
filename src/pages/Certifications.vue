@@ -1,12 +1,11 @@
 <template>
-    <v-ons-page class="certifications" @show="onShowPage">
+    <v-ons-page class="certifications">
         <Header :title="'Аттестации'"></Header>
         <MainCertifications :data="response"></MainCertifications>
     </v-ons-page>
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
     import Header from "../components/CertificationsPage/Header";
     import MainCertifications from "../components/CertificationsPage/MainCertifications";
 
@@ -42,14 +41,6 @@
                     }
                 ]
             }
-        },
-        methods: {
-            onShowPage () {
-                this.showFooter()
-            },
-            ...mapActions({
-                showFooter: 'footer/show'
-            })
         }
     }
 </script>

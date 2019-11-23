@@ -1,23 +1,14 @@
 <template>
-  <v-ons-page class="new-password" @show="onShowPage">
+  <v-ons-page class="new-password">
     <MainNewPassword></MainNewPassword>
   </v-ons-page>
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
     import MainNewPassword from "@/components/NewPasswordPage/MainNewPassword";
     export default {
       name: "NewPassword",
-      components: {MainNewPassword},
-      methods: {
-        onShowPage () {
-            this.hideFooter()
-        },
-        ...mapActions({
-            hideFooter: 'footer/hide'
-        })
-      }
+      components: {MainNewPassword}
     }
 </script>
 

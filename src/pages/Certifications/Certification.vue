@@ -1,13 +1,11 @@
 <template>
-    <v-ons-page class="certification" ref="certification" @show="onShowPage">
+    <v-ons-page class="certification" ref="certification">
         <Header :duration="response.duration"></Header>
         <MainCertification :tests="response.tests"></MainCertification>
     </v-ons-page>
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
-
     import Header from "../../components/CertificationsPage/CertificationPage/Header";
     import MainCertification from "../../components/CertificationsPage/CertificationPage/MainCertification";
     export default {
@@ -90,14 +88,6 @@
                     ]
                 }
             }
-        },
-        methods: {
-            onShowPage () {
-                this.hideFooter()
-            },
-            ...mapActions({
-                hideFooter: 'footer/hide'
-            })
         }
 
     }
