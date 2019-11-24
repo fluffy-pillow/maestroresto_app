@@ -360,11 +360,11 @@ const router = new Router({
            beforeEnter: ifAuthenticated,
            children: [
                {
-                   path: '/edit',
+                   path: 'edit',
                    name: 'Edit',
                    component: {
                        extends: Edit,
-                       onsNavigatorOptions: {animation: 'none'}
+                       onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                    },
                    beforeEnter: ifAuthenticated,
                    meta: {

@@ -73,6 +73,7 @@ export default {
   border-color: #3DD498 !important;
 }
 
+
 .search-dropdown-outer .segment__button {
   line-height: 45px;
   height: 45px;
