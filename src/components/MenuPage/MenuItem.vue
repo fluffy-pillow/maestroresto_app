@@ -1,6 +1,6 @@
 <template>
     <li class="menu-item">
-        <span class="container">
+        <span class="container" @click="openPage(data.path)">
             <span class="icon" :class="data.class">
 
             </span>
@@ -24,6 +24,12 @@
         name: "MenuItem",
         props: {
             data: Object
+        },
+        methods: {
+            openPage (path) {
+                if (path)
+                    this.$router.push(this.$route.path + '/' + path)
+            }
         }
     }
 </script>

@@ -22,6 +22,7 @@ import MainMenuSlug from './pages/Favorite/MainMenu/MainMenuSlug';
 import Structure from './pages/Structure';
 import Chat from './pages/Chat';
 import Edit from './pages/Menu/Edit';
+import Help from './pages/Menu/Help';
 
 Vue.use(Router);
 
@@ -364,6 +365,18 @@ const router = new Router({
                    name: 'Edit',
                    component: {
                        extends: Edit,
+                       onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                   },
+                   beforeEnter: ifAuthenticated,
+                   meta: {
+                       hideFooter: true
+                   }
+               },
+               {
+                   path: 'help',
+                   name: 'Help',
+                   component: {
+                       extends: Help,
                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                    },
                    beforeEnter: ifAuthenticated,

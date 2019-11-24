@@ -40,6 +40,7 @@
                         type: 'default',
                         title: 'Помощь',
                         class: ' help',
+                        path: 'help'
                     },
                     {
                         type: 'default',
