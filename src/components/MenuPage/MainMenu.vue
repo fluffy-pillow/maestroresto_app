@@ -23,7 +23,8 @@
                     {
                         type: 'default',
                         title: 'Написать владельцу',
-                        class: 'write'
+                        class: 'write',
+                        path: 'support'
                     },
                     {
                         type: 'notifications',

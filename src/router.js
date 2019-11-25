@@ -23,6 +23,7 @@ import Structure from './pages/Structure';
 import Chat from './pages/Chat';
 import Edit from './pages/Menu/Edit';
 import Help from './pages/Menu/Help';
+import Support from './pages/Menu/Support';
 
 Vue.use(Router);
 
@@ -377,6 +378,18 @@ const router = new Router({
                    name: 'Help',
                    component: {
                        extends: Help,
+                       onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                   },
+                   beforeEnter: ifAuthenticated,
+                   meta: {
+                       hideFooter: true
+                   }
+               },
+               {
+                   path: 'support',
+                   name: 'Support',
+                   component: {
+                       extends: Support,
                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                    },
                    beforeEnter: ifAuthenticated,

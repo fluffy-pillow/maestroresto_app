@@ -288,4 +288,14 @@ input {
   background: none;
   padding: 0;
 }
+
+.chat-input-contententeditable {
+  font-family: 'Rubik', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 18px !important;
+  letter-spacing: -0.02px;
+  color: #000000;
+  mix-blend-mode: normal;
+}
+
 </style>

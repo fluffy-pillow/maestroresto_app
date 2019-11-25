@@ -2,12 +2,16 @@
     <label class="contenteditable" @click="focus">
         <span class="contenteditable__input"
               ref="contentEditable"
+              :class="inputClass"
+              :style="{border: border}"
+              :placeholder="placeholderText"
               contenteditable="true"
               @input="update"
               @paste="onPaste"
+              @focus="$emit('focus')"
+              @blur="$emit('blur')"
         >
         </span>
-        <slot></slot>
     </label>
 </template>
 
@@ -15,7 +19,16 @@
     export default {
         name: "ContentEditable",
         props: {
-            content: String
+            content: String,
+            border: {
+                type: String,
+                default: '1px solid #EAECEC',
+            },
+            placeholderText: {
+                type: String,
+                default: ''
+            },
+            inputClass: String
         },
         methods: {
             update:function(event){
@@ -58,11 +71,8 @@
 }
 
 .contenteditable__input {
-    background: #FFFFFF;
-    border: 1px solid #EAECEC;
     border-radius: 16px;
     min-height: 18px;
-    margin-top: 2px;
     color: #61707D;
     font-size: 14px;
     line-height: 22px;
@@ -78,5 +88,18 @@
 
 .contenteditable__input:focus {
     outline: none;
+}
+
+.contenteditable__input:empty:before{
+    content: attr(placeholder);
+    display: block; /* For Firefox */
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    /* identical to box height */
+    letter-spacing: -0.02px;
+    color: #61707D;
+    mix-blend-mode: normal;
+    opacity: 0.5;
 }
 </style>
