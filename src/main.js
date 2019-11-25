@@ -73,8 +73,8 @@ const app = new Vue({
     methods: {
         onDeviceReady() {
             let that = this
-//            Keyboard.shrinkView(true);
             Keyboard.shrinkView(false);
+//            Keyboard.shrinkView(false);
             Keyboard.hideFormAccessoryBar(true);
             Keyboard.disableScrollingInShrinkView(true);
             document.addEventListener('touchstart', this.onClick, false)

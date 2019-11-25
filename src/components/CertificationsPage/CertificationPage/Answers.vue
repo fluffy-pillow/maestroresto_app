@@ -38,6 +38,9 @@
                         class="answer-input"
                         :content="$parent.anotherAnswer"
                         @update="$parent.anotherAnswer = $event"
+                        :placeholder-text="'Напишите сообщение…'"
+                        @onFocus="handleFocus"
+                        @onBlur="handleBlur"
                 >
                 </ContentEditable>
             </div>
@@ -60,6 +63,13 @@
             testType: String,
         },
         methods: {
+            handleFocus () {
+                this.$parent.bFocus = true
+            },
+            handleBlur () {
+                this.$parent.bFocus = false
+            },
+
             handleClick (newValue) {
               if (!this.$parent.bSubmit) {
                   switch (this.testType) {
@@ -171,6 +181,10 @@
 <style scoped>
     .answer.selected, .answer.correct {
         border: 1px solid #415393;
+    }
+
+    .answer-input {
+        height: 50px;
     }
 
     .answer-input-wrapper {

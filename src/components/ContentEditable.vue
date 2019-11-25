@@ -1,6 +1,6 @@
 <template>
     <label class="contenteditable" @click="focus">
-        <span class="contenteditable__input"
+        <span class="contenteditable__input need-keyboard"
               ref="contentEditable"
               :class="inputClass"
               :style="{border: border}"
@@ -8,14 +8,16 @@
               contenteditable="true"
               @input="update"
               @paste="onPaste"
-              @focus="$emit('focus')"
-              @blur="$emit('blur')"
+              @click="$emit('onFocus')"
+              v-click-outside="handleBlur"
         >
         </span>
     </label>
 </template>
 
 <script>
+    import vClickOutside from 'v-click-outside'
+
     export default {
         name: "ContentEditable",
         props: {
@@ -31,6 +33,9 @@
             inputClass: String
         },
         methods: {
+            handleBlur () {
+                this.$emit('onBlur')
+            },
             update:function(event){
                 event.preventDefault()
                 this.$emit('update',event.target.innerText.trim())
@@ -55,6 +60,9 @@
                 sel.removeAllRanges()
                 sel.addRange(range)
             }
+        },
+        directives: {
+            clickOutside: vClickOutside.directive
         },
         mounted:function(){
             this.$refs.contentEditable.innerText = this.content
@@ -81,9 +89,8 @@
     box-sizing: border-box;
     padding: 16px;
     width: 100%;
-    user-select: none;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 .contenteditable__input:focus {

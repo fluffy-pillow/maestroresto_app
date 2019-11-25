@@ -24,6 +24,7 @@
 .search-result-block {
   padding-left: 16px;
   padding-right: 16px;
+  padding-top: 72px !important;
 }
 
 .search-result-block:last-child {

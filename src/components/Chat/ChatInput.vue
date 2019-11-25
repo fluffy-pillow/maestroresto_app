@@ -1,5 +1,5 @@
 <template>
-    <div class="chat-input" :class="{empty: message === ''}">
+    <div class="chat-input" :class="{empty: message === '', focus: bFocus}">
         <div class="container">
             <label class="input-label">
                 <ContentEditable
@@ -9,8 +9,8 @@
                         @update="message = $event"
                         :placeholder-text="'Напишите сообщение…'"
                         :input-class="'chat-input-contententeditable'"
-                        @focus="handleFocus"
-                        @blur="handleBlur"
+                        @onFocus="handleFocus"
+                        @onBlur="handleBlur"
                 >
                 </ContentEditable>
             </label>
@@ -30,7 +30,18 @@
         components: {ContentEditable},
         data () {
             return {
-                message: ''
+                message: '',
+                bFocus: false
+            }
+        },
+        methods: {
+            handleFocus () {
+                this.bFocus = true
+                Keyboard.shrinkView(true)
+            },
+            handleBlur () {
+                this.bFocus = false
+                Keyboard.shrinkView(false)
             }
         }
     }
@@ -38,6 +49,14 @@
 
 <style scoped>
 .chat-input {
+    height: 50px;
+    padding-top: 8px;
+    padding-bottom: calc(8px + env(safe-area-inset-top));
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.chat-input.focus {
     height: 50px;
     padding-top: 8px;
     padding-bottom: 8px;

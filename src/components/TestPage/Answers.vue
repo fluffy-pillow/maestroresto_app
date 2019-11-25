@@ -38,6 +38,8 @@
                         class="answer-input"
                         :content="$parent.anotherAnswer"
                         @update="$parent.anotherAnswer = $event"
+                        @onFocus="handleFocus"
+                        @onBlur="handleBlur"
                 >
                 </ContentEditable>
             </div>
@@ -57,6 +59,12 @@
             testType: String
         },
         methods: {
+            handleFocus () {
+                this.$parent.bFocus = true
+            },
+            handleBlur () {
+                this.$parent.bFocus = false
+            },
             handleClick (newValue) {
               if (!this.$parent.bSubmit) {
                   switch (this.testType) {
@@ -259,5 +267,9 @@
 
     .answer.wrong .answer-status {
         background-image: url(../../assets/images/wrong.svg);
+    }
+
+    .answer-input {
+        height: 50px;
     }
 </style>

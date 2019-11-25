@@ -95,7 +95,7 @@
 
 .segment-container {
   background-image: none;
-  background-color: transparent;
+  background-color: #ffffff;
   box-shadow: none;
   height: 46px !important;
 }

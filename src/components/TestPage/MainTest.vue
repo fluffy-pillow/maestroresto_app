@@ -2,7 +2,7 @@
     <main class="main-test">
         <div class="special-space"></div>
         <Question :question="currentTest.question" :video="currentTest.video" :picture="currentTest.picture"></Question>
-        <div class="content">
+        <div class="content" :class="{inputFocus: bFocus}">
             <Answers :answers="currentTest.answers" :test-type="currentTest.type">
 
             </Answers>
@@ -28,6 +28,7 @@
         data () {
             return {
                 answer: [],
+                bFocus: false,
                 bSubmit: false,
                 anotherAnswer: '',
                 buttonFunctionName: 'onSubmit',
@@ -256,6 +257,10 @@
     padding-top: 43px;
     padding-bottom: 80px;
     margin-top: env(safe-area-inset-top);
+}
+
+.content.inputFocus {
+    transform: translateY(-150px);
 }
 
 .content {

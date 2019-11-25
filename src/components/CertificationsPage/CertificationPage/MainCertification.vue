@@ -2,7 +2,7 @@
     <main class="main-cerification">
         <div class="special-space"></div>
         <Question :question="currentTest.question" :video="currentTest.video" :picture="currentTest.picture"></Question>
-        <div class="content">
+        <div class="content" :class="{inputFocus: bFocus}">
             <Answers :answers="currentTest.answers" :test-type="currentTest.type">
 
             </Answers>
@@ -28,6 +28,7 @@
         data () {
             return {
                 answer: [],
+                bFocus: false,
                 bSubmit: false,
                 anotherAnswer: '',
                 buttonFunctionName: 'onSubmit',
@@ -205,6 +206,10 @@
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 16px;
+}
+
+.content.inputFocus {
+    transform: translateY(-150px);
 }
 
 .submit {
