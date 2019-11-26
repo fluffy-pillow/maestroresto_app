@@ -2,12 +2,7 @@
     <div class="preload-block head-inner">
         <div class="container">
             <div class="head-left">
-                <div v-if="avatarUrl" class="avatar">
-                    <img :src="avatarUrl">
-                </div>
-                <div v-else class="no-avatar">
-
-                </div>
+                <Avatar :size="32" :src="avatarUrl" class="avatar"></Avatar>
 
                 <div class="user-info">
                     <div class="user-name">
@@ -30,8 +25,10 @@
 </template>
 
 <script>
+    import Avatar from "../../Avatar";
     export default {
         name: "User",
+        components: {Avatar},
         props: {
            response: Object
         },
@@ -72,31 +69,8 @@
     }
 
     .avatar {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        overflow: hidden;
-        border-radius: 50%;
         box-shadow: 0px -1px 13px rgba(0, 0, 0, 0.4);
     }
-
-
-    .avatar img {
-        width: 100%;
-        height: auto;
-        margin-top: -25%;
-    }
-
-    .no-avatar {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        overflow: hidden;
-        border-radius: 50%;
-        background-image: url(../../../assets/images/no-avatar.svg);
-        background-size: cover;
-    }
-
 
     .user-info {
         margin-left: 20px;

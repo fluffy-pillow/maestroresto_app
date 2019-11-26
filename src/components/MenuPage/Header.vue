@@ -3,9 +3,7 @@
         <div class="center">
             <div class="container">
                 <div class="head-left">
-                    <div class="avatar">
-                        <img :src="require('@/assets/images/avatar.jpeg')">
-                    </div>
+                    <Avatar :size="44" :src="require('@/assets/images/avatar.jpeg')" class="avatar"></Avatar>
                     <div class="user-info">
                         <div class="user-name">
                             Константин
@@ -28,8 +26,10 @@
 </template>
 
 <script>
+    import Avatar from "../Avatar";
     export default {
         name: "Header",
+        components: {Avatar},
         methods: {
             openEditPage () {
                 this.$router.push(this.$route.path + '/edit')
@@ -73,19 +73,7 @@
 
 
     .avatar {
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        overflow: hidden;
-        border-radius: 50%;
         box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.26);
-    }
-
-
-    .avatar img {
-        width: 100%;
-        height: auto;
-        margin-top: -25%;
     }
 
     .user-info {
