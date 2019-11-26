@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import Header from "../components/FavoritePage/Header";
+    import Header from "../components/Header";
     import MainFavorite from "../components/FavoritePage/MainFavorite";
 
     export default {

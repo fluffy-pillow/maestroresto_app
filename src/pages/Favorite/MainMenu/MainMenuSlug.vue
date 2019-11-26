@@ -1,6 +1,8 @@
 <template>
     <v-ons-page class="main-menu-slug">
-        <StickyHeader v-if="bShowStickyHeader"></StickyHeader>
+        <Header :color="(bShowStickyHeader) ? 'white' : 'transparent'"
+        >
+        </Header>
         <div class="page__content" @scroll="handleScroll" ref="pageContent">
             <MainSlug></MainSlug>
         </div>
@@ -9,10 +11,10 @@
 
 <script>
     import MainSlug from "../../../components/FavoritePage/MainMenuPage/Slug/MainSlug";
-    import StickyHeader from "../../../components/FavoritePage/MainMenuPage/Slug/StickyHeader";
+    import Header from "../../../components/Header";
     export default {
         name: "Slug",
-        components: {StickyHeader, MainSlug},
+        components: {Header, MainSlug},
         data () {
             return {
                 bShowStickyHeader: false

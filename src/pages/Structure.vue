@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import Header from "../components/StructurePage/Header";
+    import Header from "../components/Header";
     import MainStructure from "../components/StructurePage/MainStructure";
     export default {
         name: "Structure",

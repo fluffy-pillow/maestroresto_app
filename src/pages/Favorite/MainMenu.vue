@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import Header from "@/components/FavoritePage/Header";
+    import Header from "@/components/Header";
     import MainMainMenu from "../../components/FavoritePage/MainMenuPage/MainMainMenu";
     export default {
         name: "MainMenu",

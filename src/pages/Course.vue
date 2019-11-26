@@ -1,6 +1,13 @@
 <template>
     <v-ons-page class="course" @show="onShowPage">
-        <StickyHeader v-if="bShowStickyHeader"></StickyHeader>
+        <Header :color="(bShowStickyHeader) ? 'white' : 'transparent'"
+        >
+            <FavoriteButton class="favorite-button"
+                            :color="(bShowStickyHeader) ? 'black' : 'white'"
+                            slot="rightSideContent">
+
+            </FavoriteButton>
+        </Header>
         <div class="page__content" @scroll="handleScroll" ref="pageContent">
             <PreloadScreen :class="{show: bShowPreloadScreen}"></PreloadScreen>
             <LoadedScreen :class="{show: !bShowPreloadScreen}"></LoadedScreen>
@@ -9,13 +16,14 @@
 </template>
 
 <script>
-    import StickyHeader from "@/components/CoursePage/StickyHeader";
+    import Header from "@/components/Header";
     import LoadedScreen from "@/components/CoursePage/LoadedScreen";
     import PreloadScreen from "@/components/CoursePage/PreloadScreen";
+    import FavoriteButton from "../components/FavoriteButton";
 
     export default {
-        name: "MainCourse",
-        components: {LoadedScreen, PreloadScreen, StickyHeader},
+        name: "Course",
+        components: {FavoriteButton, LoadedScreen, PreloadScreen, Header},
         data () {
             return {
                 bShowStickyHeader: false,
@@ -38,5 +46,7 @@
     -webkit-overflow-scrolling: touch
 }
 
-
+.favorite-button {
+    margin-left: auto;
+}
 </style>

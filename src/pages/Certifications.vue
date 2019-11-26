@@ -1,12 +1,12 @@
 <template>
     <v-ons-page class="certifications">
-        <Header :title="'Аттестации'"></Header>
+        <Header :title="'Аттестации'" :show-back-button="false"></Header>
         <MainCertifications :data="response"></MainCertifications>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "../components/CertificationsPage/Header";
+    import Header from "../components/Header";
     import MainCertifications from "../components/CertificationsPage/MainCertifications";
 
     export default {

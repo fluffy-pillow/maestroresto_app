@@ -1,20 +1,26 @@
 <template>
     <v-ons-page class="certification" ref="certification">
-        <Header :duration="response.duration"></Header>
+        <Header :title="'вопрос ' + $route.params.id + ' из 3'"
+                :color="'dark-purple'"
+                :title-uppercase="true"
+        >
+            <Timer :duration="response.duration" slot="rightSideContent"></Timer>
+        </Header>
         <MainCertification :tests="response.tests"></MainCertification>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "../components/CertificationsPage/CertificationPage/Header";
+    import Header from "../components/Header";
     import MainCertification from "../components/CertificationsPage/CertificationPage/MainCertification";
+    import Timer from "../components/Timer";
     export default {
         name: "Certification",
-        components: {MainCertification, Header},
+        components: {Timer, MainCertification, Header},
         data () {
             return {
                 response: {
-                    duration: 40,
+                    duration: '39:37',
                     tests: [
                         {
                             type: 'default',
