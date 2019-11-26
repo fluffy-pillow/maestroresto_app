@@ -4,7 +4,7 @@
             <h2 class="title">
                 {{status.text}}
             </h2>
-            <Rating :data="status.rating"></Rating>
+            <Stars class="stars" :offset="4" :size="18" :level="status.rating"></Stars>
         </div>
         <div class="body">
             <Position :position="leaderboard.position"></Position>
@@ -16,10 +16,10 @@
 <script>
     import Position from "./Position";
     import Progress from "./Progress";
-    import Rating from "./Rating";
+    import Stars from "../../Stars";
     export default {
         name: "Statistics",
-        components: {Rating, Progress, Position},
+        components: {Stars, Progress, Position},
         props: {
             status: Object,
             leaderboard: Object,

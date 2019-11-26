@@ -170,12 +170,7 @@
                 </svg>
             </div>
             <div class="rating">
-                <ul class="stars">
-                    <li v-for="loopLevel in 3" :key="loopLevel">
-                        <i class="star" :class="{burning: loopLevel <= 1}">
-                        </i>
-                    </li>
-                </ul>
+                <Stars class="stars" :offset="6.4" :size="22" :level="2.5"></Stars>
                 <div class="rating-details">
                     Результат 2.5 из 3
                 </div>
@@ -196,8 +191,10 @@
 </template>
 
 <script>
+    import Stars from "../../Stars";
     export default {
         name: "MainCertificationResults",
+        components: {Stars},
         methods: {
             openCertificationsPage () {
                 this.$router.push('/certifications')
@@ -228,7 +225,6 @@
 
 .stars {
     margin-top: 16px;
-    display: flex;
     justify-content: center;
 }
 
@@ -246,23 +242,6 @@
     line-height: 26px;
 }
 
-.stars .star {
-    width: 22px;
-    height: 22px;
-    background: url(../../../assets/images/star.svg);
-}
-
-.stars .star.burning  {
-    background: url(../../../assets/images/burning-star.svg);
-}
-
-.stars li {
-    margin-left: 6.4px;
-}
-
-.stars i {
-    display: block;
-}
 
 .full-info {
     margin-top: 32px;

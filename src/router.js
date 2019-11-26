@@ -8,8 +8,8 @@ import Code from './pages/Code';
 import NewPassword from './pages/NewPassword';
 import Learning from './pages/Learning';
 import Certifications from './pages/Certifications';
-import Certification from './pages/Certifications/Certification';
-import CertificationResults from './pages/Certifications/CertificationResults';
+import Certification from './pages/Certification';
+import CertificationResults from './pages/CertificationResults';
 import Menu from './pages/Menu';
 import Course from './pages/Course';
 import Splashscreen from './pages/Splashscreen';
@@ -21,9 +21,9 @@ import MainMenu from './pages/Favorite/MainMenu';
 import MainMenuSlug from './pages/Favorite/MainMenu/MainMenuSlug';
 import Structure from './pages/Structure';
 import Chat from './pages/Chat';
-import Edit from './pages/Menu/Edit';
-import Help from './pages/Menu/Help';
-import Support from './pages/Menu/Support';
+import Edit from './pages/Edit';
+import Help from './pages/Help';
+import Support from './pages/Support';
 
 Vue.use(Router);
 

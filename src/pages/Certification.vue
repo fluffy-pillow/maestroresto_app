@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import Header from "../../components/CertificationsPage/CertificationPage/Header";
-    import MainCertification from "../../components/CertificationsPage/CertificationPage/MainCertification";
+    import Header from "../components/CertificationsPage/CertificationPage/Header";
+    import MainCertification from "../components/CertificationsPage/CertificationPage/MainCertification";
     export default {
         name: "Certification",
         components: {MainCertification, Header},

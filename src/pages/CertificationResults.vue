@@ -7,9 +7,9 @@
 
 <script>
     import {mapActions} from 'vuex'
-    import Header from "../../components/CertificationsPage/CertificationResultsPage/Header";
+    import Header from "../components/CertificationsPage/CertificationResultsPage/Header";
     import MainCertificationResults
-        from "../../components/CertificationsPage/CertificationResultsPage/MainCertificationResults";
+        from "../components/CertificationsPage/CertificationResultsPage/MainCertificationResults";
 
     export default {
         name: "CertificationResult",

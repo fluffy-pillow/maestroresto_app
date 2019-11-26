@@ -54,6 +54,7 @@
     padding-bottom: calc(8px + env(safe-area-inset-top));
     padding-left: 16px;
     padding-right: 16px;
+    background: #F9FBFD;
 }
 
 .chat-input.focus {

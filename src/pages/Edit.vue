@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import Header from "../../components/MenuPage/EditPage/Header";
-    import MainEditPage from "../../components/MenuPage/EditPage/MainEditPage";
+    import Header from "../components/MenuPage/EditPage/Header";
+    import MainEditPage from "../components/MenuPage/EditPage/MainEditPage";
     export default {
         name: "Edit",
         components: {MainEditPage, Header}

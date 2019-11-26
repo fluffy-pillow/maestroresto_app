@@ -6,7 +6,6 @@
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
     import StickyHeader from "@/components/CoursePage/StickyHeader";
     import MainMaterial from "@/components/CoursePage/Materials/Material/MainMaterial";
     export default {

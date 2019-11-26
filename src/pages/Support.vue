@@ -6,8 +6,8 @@
 </template>
 
 <script>
-    import Header from "../../components/MenuPage/SupportPage/Header";
-    import MainSupport from "../../components/MenuPage/SupportPage/MainSupport";
+    import Header from "../components/MenuPage/SupportPage/Header";
+    import MainSupport from "../components/MenuPage/SupportPage/MainSupport";
     export default {
         name: "Support",
         components: {MainSupport, Header}
