@@ -17,9 +17,15 @@
 </script>
 
 <style scoped>
+  .main-new-password {
+    padding-top: calc(44px + constant(safe-area-inset-top));
+    padding-top: calc(44px + env(safe-area-inset-top));
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .title {
-    margin-top: calc(60px + constant(safe-area-inset-top));
-    margin-top: calc(60px + env(safe-area-inset-top));
+    margin-top: 16px !important;
   }
 
   .desc {

@@ -1,17 +1,17 @@
 <template>
     <v-ons-page class="certifications">
-        <Header :title="'Аттестации'" :show-back-button="false"></Header>
+        <StickyHeader :title="'Аттестации'" :show-back-button="false"></StickyHeader>
         <MainCertifications :data="response"></MainCertifications>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "../components/Header";
+    import StickyHeader from "../components/StickyHeader";
     import MainCertifications from "../components/CertificationsPage/MainCertifications";
 
     export default {
         name: "Certifications",
-        components: {MainCertifications, Header},
+        components: {MainCertifications, StickyHeader},
         data () {
             return {
 //                response: []

@@ -1,27 +1,18 @@
 <template>
     <v-ons-page class="certification-results">
-        <Header></Header>
+        <DefaultHeader :close-button-variant="'cross'"></DefaultHeader>
         <MainCertificationResults></MainCertificationResults>
     </v-ons-page>
 </template>
 
 <script>
-    import {mapActions} from 'vuex'
-    import Header from "../components/CertificationsPage/CertificationResultsPage/Header";
     import MainCertificationResults
         from "../components/CertificationsPage/CertificationResultsPage/MainCertificationResults";
+    import DefaultHeader from "../components/DefaultHeader";
 
     export default {
         name: "CertificationResult",
-        components: {MainCertificationResults, Header},
-        methods: {
-            onShowPage () {
-                this.hideFooter()
-            },
-            ...mapActions({
-                hideFooter: 'footer/hide'
-            })
-        }
+        components: {DefaultHeader, MainCertificationResults},
 
     }
 </script>

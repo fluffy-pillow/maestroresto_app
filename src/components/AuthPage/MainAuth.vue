@@ -20,6 +20,11 @@
 </script>
 
 <style scoped>
+.main-auth {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
 .title {
   margin-top: 24px;
 }

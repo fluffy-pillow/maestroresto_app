@@ -1,22 +1,22 @@
 <template>
     <v-ons-page class="edit">
-        <Header :title="'Профиль'">
+        <StickyHeader :title="'Профиль'">
             <div class="save-button-wrapper" slot="rightSideContent">
                 <button class="save-button">
                     Сохранить
                 </button>
             </div>
-        </Header>
+        </StickyHeader>
         <MainEditPage></MainEditPage>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "../components/Header";
+    import StickyHeader from "../components/StickyHeader";
     import MainEditPage from "../components/MenuPage/EditPage/MainEditPage";
     export default {
         name: "Edit",
-        components: {MainEditPage, Header}
+        components: {MainEditPage, StickyHeader}
     }
 </script>
 

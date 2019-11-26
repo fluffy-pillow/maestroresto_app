@@ -1,17 +1,17 @@
 <template>
   <v-ons-page class="auth">
-    <Header></Header>
+    <Logo></Logo>
     <MainAuth></MainAuth>
   </v-ons-page>
 </template>
 
 <script>
     import MainAuth from "@/components/AuthPage/MainAuth";
-    import Header from "@/components/AuthPage/Header";
+    import Logo from "./Logo";
 
     export default {
       name: "Auth",
-      components: {Header, MainAuth}
+      components: {Logo, MainAuth}
     }
 </script>
 

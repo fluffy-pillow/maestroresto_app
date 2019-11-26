@@ -39,13 +39,14 @@
                 this.required = newValue.required
                 this.unfinishedCourses = newValue.unfinishedCourses
                 this.unfinishedTests = newValue.unfinishedTests
+
+                if (!this.bLoaded) {
+                    setTimeout(() => {
+                        this.bLoaded = true
+                    }, 200)
+                }
             }
         },
-        mounted () {
-            setTimeout(() => {
-                this.bLoaded = true
-            }, 200)
-        }
     }
 </script>
 

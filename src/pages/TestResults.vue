@@ -1,16 +1,16 @@
 <template>
     <v-ons-page class="test-results">
-        <Header></Header>
+        <DefaultHeader :close-button-variant="'cross'"></DefaultHeader>
         <MainTestResults></MainTestResults>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "../components/TestResultsPage/Header";
     import MainTestResults from "../components/TestResultsPage/MainTestResults";
+    import DefaultHeader from "../components/DefaultHeader";
     export default {
         name: "TestResults",
-        components: {MainTestResults, Header}
+        components: {DefaultHeader, MainTestResults}
     }
 </script>
 

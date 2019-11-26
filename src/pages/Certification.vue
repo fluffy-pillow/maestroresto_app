@@ -1,22 +1,22 @@
 <template>
     <v-ons-page class="certification" ref="certification">
-        <Header :title="'вопрос ' + $route.params.id + ' из 3'"
+        <StickyHeader :title="'вопрос ' + $route.params.id + ' из 3'"
                 :color="'dark-purple'"
                 :title-uppercase="true"
         >
             <Timer :duration="response.duration" slot="rightSideContent"></Timer>
-        </Header>
+        </StickyHeader>
         <MainCertification :tests="response.tests"></MainCertification>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "../components/Header";
+    import StickyHeader from "../components/StickyHeader";
     import MainCertification from "../components/CertificationsPage/CertificationPage/MainCertification";
     import Timer from "../components/Timer";
     export default {
         name: "Certification",
-        components: {Timer, MainCertification, Header},
+        components: {Timer, MainCertification, StickyHeader},
         data () {
             return {
                 response: {

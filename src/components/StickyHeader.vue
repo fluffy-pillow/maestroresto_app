@@ -28,7 +28,7 @@
 
 <script>
     export default {
-        name: "Header",
+        name: "StickyHeader",
         props: {
             title: String,
             showBackButton: {

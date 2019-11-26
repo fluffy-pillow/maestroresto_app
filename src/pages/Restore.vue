@@ -1,16 +1,16 @@
 <template>
     <v-ons-page class="restore">
-        <Header></Header>
+        <DefaultHeader :close-button-variant="'cross'"></DefaultHeader>
         <MainRestore></MainRestore>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "@/components/RestorePage/Header";
     import MainRestore from "@/components/RestorePage/MainRestore";
+    import DefaultHeader from "../components/DefaultHeader";
     export default {
       name: "Restore",
-      components: {MainRestore, Header},
+      components: {DefaultHeader, MainRestore},
     }
 </script>
 

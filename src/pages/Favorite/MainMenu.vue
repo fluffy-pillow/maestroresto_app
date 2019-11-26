@@ -1,16 +1,16 @@
 <template>
     <v-ons-page class="main-menu">
-        <Header :title="'Основное меню'"></Header>
+        <StickyHeader :title="'Основное меню'"></StickyHeader>
         <MainMainMenu></MainMainMenu>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "@/components/Header";
+    import StickyHeader from "@/components/StickyHeader";
     import MainMainMenu from "../../components/FavoritePage/MainMenuPage/MainMainMenu";
     export default {
         name: "MainMenu",
-        components: {MainMainMenu, Header}
+        components: {MainMainMenu, StickyHeader}
     }
 </script>
 

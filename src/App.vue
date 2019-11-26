@@ -142,8 +142,7 @@ export default {
 }
 
 .auth .page__content, .restore .page__content, .code  .page__content, .new-password  .page__content {
-  padding-left: 16px;
-  padding-right: 16px;
+
 }
 
 button:focus {

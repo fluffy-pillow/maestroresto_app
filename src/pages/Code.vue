@@ -1,21 +1,20 @@
 <template>
   <v-ons-page class="code">
-    <Header></Header>
+    <DefaultHeader></DefaultHeader>
     <MainCode></MainCode>
   </v-ons-page>
 </template>
 
 <script>
-    import Header from "@/components/CodePage/Header";
     import MainCode from "@/components/CodePage/MainCode";
+    import DefaultHeader from "../components/DefaultHeader";
 
 
     export default {
       name: "Code",
-      components: {MainCode, Header}
+      components: {DefaultHeader, MainCode}
     }
 </script>
 
 <style scoped>
-
 </style>

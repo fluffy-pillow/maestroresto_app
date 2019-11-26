@@ -17,6 +17,11 @@
 </script>
 
 <style scoped>
+  .main-restore {
+      padding-left: 16px;
+      padding-right: 16px;
+  }
+
   .title {
     margin-top: 16px;
   }

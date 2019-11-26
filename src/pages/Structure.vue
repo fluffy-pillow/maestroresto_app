@@ -1,16 +1,16 @@
 <template>
     <v-ons-page class="structure">
-        <Header :title="'Структура работы ресторана'"></Header>
+        <StickyHeader :title="'Структура работы ресторана'"></StickyHeader>
         <MainStructure></MainStructure>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "../components/Header";
+    import StickyHeader from "../components/StickyHeader";
     import MainStructure from "../components/StructurePage/MainStructure";
     export default {
         name: "Structure",
-        components: {MainStructure, Header}
+        components: {MainStructure, StickyHeader}
     }
 </script>
 

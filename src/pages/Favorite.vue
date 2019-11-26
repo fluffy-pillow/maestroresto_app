@@ -1,17 +1,17 @@
 <template>
     <v-ons-page class="favorite">
-        <Header :title="'Избранное'"></Header>
+        <StickyHeader :title="'Избранное'"></StickyHeader>
         <MainFavorite :favorite="favorite"></MainFavorite>
     </v-ons-page>
 </template>
 
 <script>
-    import Header from "../components/Header";
+    import StickyHeader from "../components/StickyHeader";
     import MainFavorite from "../components/FavoritePage/MainFavorite";
 
     export default {
         name: "Favorite",
-        components: {MainFavorite, Header},
+        components: {MainFavorite, StickyHeader},
         data () {
             return {
                 favorite: [

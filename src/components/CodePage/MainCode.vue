@@ -64,6 +64,11 @@
 </script>
 
 <style scoped>
+  .main-code {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .title {
     margin-top: 16px;
   }
