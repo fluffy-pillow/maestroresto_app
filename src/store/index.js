@@ -6,7 +6,6 @@ import search from './search/index'
 import globalPreloader from './globalPreloader/index'
 import user from './user/index'
 import tests from './tests/index'
-import certifications from './certifications/index'
 import router from './router/index'
 
 Vue.use(Vuex)
@@ -19,7 +18,6 @@ export default new Vuex.Store({
       globalPreloader: globalPreloader,
       user: user,
       tests: tests,
-      router: router,
-      certifications: certifications
+      router: router
     }
 })

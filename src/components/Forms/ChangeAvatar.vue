@@ -1,5 +1,5 @@
 <template>
-    <section class="edit-avatar">
+    <section class="change-avatar">
         <div class="content">
             <div class="avatar">
                 <img  :src="require('@/assets/images/avatar.jpeg')">
@@ -15,12 +15,12 @@
 
 <script>
     export default {
-        name: "EditAvatar"
+        name: "ChangeAvatar"
     }
 </script>
 
 <style scoped>
-    .edit-avatar {
+    .change-avatar {
         height: 270px;
         display: flex;
         align-items: center;

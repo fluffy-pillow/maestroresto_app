@@ -1,5 +1,5 @@
 <template>
-    <section class="main-info">
+    <section class="edit-form">
         <div class="title">
             Основная информация
         </div>
@@ -64,7 +64,7 @@
     import {IMaskDirective} from 'vue-imask';
 
     export default {
-        name: "MainInfo",
+        name: "EditForm",
         data () {
             return {
                 form: {

@@ -1,5 +1,5 @@
 <template>
-    <ul class="answers">
+    <ul class="answers" :class="$parent.color">
         <li class="answer"
             v-for="(answer, key) of answers"
             :key="key"
@@ -174,8 +174,21 @@
 </script>
 
 <style scoped>
+
+    .answers {
+        margin-top: 32px;
+    }
+
     .answer.selected, .answer.correct {
         border: 1px solid #3DD498;
+    }
+
+    .answers.dark-purple .answer.selected .answer-status {
+        background-image: url(../../assets/images/selected-purple.svg);
+    }
+
+    .answers.dark-purple .answer.selected, .answers.dark-purple .answer.correct {
+        border: 1px solid #415393;
     }
 
     .answer-input-wrapper {

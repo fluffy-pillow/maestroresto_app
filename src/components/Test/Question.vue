@@ -1,5 +1,5 @@
 <template>
-    <div class="question">
+    <div class="question" :class="$parent.color">
         <div class="text">
             {{question}}
         </div>
@@ -13,15 +13,12 @@
 </template>
 
 <script>
-    import Video from "@/components/Video";
+    import Video from "../Video";
     export default {
         name: "Question",
         components: {Video},
         props: {
-            question: {
-                type: String,
-                default: ''
-            },
+            question: String,
             video: String,
             picture: String
         }
@@ -32,9 +29,13 @@
     .question {
         padding-top: 16px;
         padding-bottom: 32px;
-        background: #415393;
+        background: #3DD498;
         padding-left: 16px;
         padding-right: 16px;
+    }
+
+    .question.dark-purple {
+        background: #415393;
     }
 
     .text {

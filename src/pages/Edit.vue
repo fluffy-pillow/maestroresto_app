@@ -7,16 +7,20 @@
                 </button>
             </div>
         </StickyHeader>
-        <MainEditPage></MainEditPage>
+        <main>
+            <ChangeAvatar></ChangeAvatar>
+            <EditForm></EditForm>
+        </main>
     </v-ons-page>
 </template>
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import MainEditPage from "../components/MenuPage/EditPage/MainEditPage";
+    import EditForm from "../components/Forms/EditForm";
+    import ChangeAvatar from "../components/Forms/ChangeAvatar";
     export default {
         name: "Edit",
-        components: {MainEditPage, StickyHeader}
+        components: {ChangeAvatar, EditForm, StickyHeader}
     }
 </script>
 
@@ -34,4 +38,9 @@
         color: #3DD498;
     }
 
+    main {
+        padding-top: 81px;
+        margin-top: env(safe-area-inset-top);
+        padding-bottom: 81px;
+    }
 </style>

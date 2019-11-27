@@ -1,5 +1,5 @@
 <template>
-    <main class="main-cerification">
+    <div class="main-test" :class="color">
         <div class="special-space"></div>
         <Question :question="currentTest.question" :video="currentTest.video" :picture="currentTest.picture"></Question>
         <div class="content" :class="{inputFocus: bFocus}">
@@ -14,7 +14,7 @@
                 Предыдущий вопрос
             </button>
         </div>
-    </main>
+    </div>
 </template>
 
 <script>
@@ -23,7 +23,7 @@
     import {mapActions, mapGetters} from 'vuex'
 
     export default {
-        name: "MainCertification",
+        name: "MainTest",
         components: {Answers, Question},
         data () {
             return {
@@ -36,11 +36,12 @@
             }
         },
         props: {
-            tests: Array
+            tests: Array,
+            color: String
         },
         methods: {
             ...mapActions({
-                updateSavedData: 'certifications/updateSavedData'
+                updateSavedData: 'tests/updateSavedData'
             }),
             handleFunctionCall (functionName) {
                 this[functionName]()
@@ -104,23 +105,27 @@
                 }
             },
             openResultsPage () {
-                this.$router.push(
-                    this.$route.matched[this.$route.matched.length - 2].path + '/' + this.$route.params.slug + '/results'
-                )
-                return
+                if (this.$route.params.slug) {
+                    this.$router.push(
+                        this.$route.matched[this.$route.matched.length - 2].path + '/' + this.$route.params.slug + '/results'
+                    )
+                } else {
+                    this.$router.push(
+                        this.$route.matched[this.$route.matched.length - 2].path + '/results'
+                    )
+                }
+
             },
             openNextQuestion () {
                 let id = Number(this.$route.params.id) + 1
-                let slug = this.$route.params.slug
                 this.$router.push(
-                    this.$route.matched[this.$route.matched.length - 2].path + '/' + slug + '/' + id
+                    this.$route.matched[this.$route.matched.length - 2].path + '/test/' + id
                 )
             },
             openPreviousQuestion () {
                 let id = Number(this.$route.params.id) - 1
-                let slug = this.$route.params.slug
                 this.$router.push(
-                    this.$route.matched[this.$route.matched.length - 2].path + '/' + slug + '/' + id
+                    this.$route.matched[this.$route.matched.length - 2].path + '/test/' + id
                 )
             },
         },
@@ -148,19 +153,18 @@
                 return ret
             },
             currentTest () {
-                return (typeof this.tests[this.$route.params.id - 1] === 'undefined') ? {} : this.tests[this.$route.params.id - 1]
+                return this.tests[this.$route.params.id - 1]
             },
             currentTestSavedData () {
                 return this.savedData[this.$route.params.id - 1]
             },
             ...mapGetters({
-                savedData: 'certifications/getSavedData'
+                savedData: 'tests/getSavedData'
             })
         },
         watch: {
             '$route.params.id': function (newValue) {
                 if (!isNaN(Number(newValue))) {
-                    console.log(11111)
                     this.changeAnswerVariableType()
                     if (!this.savedData[this.$route.params.id - 1]) {
                         this.savedData.push({
@@ -172,9 +176,8 @@
                     this.bSubmit = false
                     this.submitButtonText = 'Ответить'
                     this.buttonFunctionName = 'onSubmit'
-                    this.$parent.$parent.$refs.certification.$el.scrollTop = 0
+                    this.$parent.$parent.$refs.test.$el.scrollTop = 0
                 }
-//                window.scrollTo(0,0)
             }
         },
         created () {
@@ -192,53 +195,59 @@
 </script>
 
 <style scoped>
-.main-cerification {
-    padding-top: 43px;
-    padding-bottom: 80px;
-    margin-top: env(safe-area-inset-top);
-}
+    .content.inputFocus {
+        transform: translateY(-150px);
+    }
 
-.content {
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    margin-top: -16px;
-    background: #ffffff;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 16px;
-}
+    .content {
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        margin-top: -16px;
+        background: #ffffff;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 16px;
+    }
 
-.content.inputFocus {
-    transform: translateY(-150px);
-}
+    .submit {
+        color: #FFFFFF;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 22px;
+        background: #3DD498;
+        border-radius: 16px;
+        width: 100%;
+        margin-top: 32px;
+        height: 50px;
+    }
 
-.submit {
-    color: #FFFFFF;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 22px;
-    background: #415393;
-    border-radius: 16px;
-    width: 100%;
-    margin-top: 32px;
-    height: 50px;
-}
+    .main-test.dark-purple .submit {
+        background: #415393;
+    }
 
-.submit:disabled {
-    background: rgba(116, 130, 141, 0.2);
-}
+    .main-test.dark-purple .special-space {
+        background: #415393;
+    }
 
-.special-space {
-    height: calc(env(safe-area-inset-top) * 8);
-    background: #415393;
-}
+    .main-test.dark-purple .last-question-button {
+        color: #415393;
+    }
 
-.last-question-button {
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 20px;
-    margin-top: 22px;
-    color: #415393;
-    width: 100%;
-}
+    .submit:disabled {
+        background: rgba(116, 130, 141, 0.2);
+    }
+
+    .special-space {
+        height: calc(env(safe-area-inset-top) * 8);
+        background: #3DD498;
+    }
+
+    .last-question-button {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 20px;
+        margin-top: 22px;
+        color: #3DD498;
+        width: 100%;
+    }
 </style>

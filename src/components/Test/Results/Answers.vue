@@ -38,7 +38,6 @@
                         class="answer-input"
                         :content="$parent.anotherAnswer"
                         @update="$parent.anotherAnswer = $event"
-                        :placeholder-text="'Напишите сообщение…'"
                         @onFocus="handleFocus"
                         @onBlur="handleBlur"
                 >
@@ -50,17 +49,14 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
-    import ContentEditable from "@/components/ContentEditable";
+    import ContentEditable from "../../ContentEditable";
 
     export default {
         name: "Answers",
         components: {ContentEditable},
         props: {
-            answers: {
-                type: Array,
-                default: () => []
-            },
-            testType: String,
+            answers: Array,
+            testType: String
         },
         methods: {
             handleFocus () {
@@ -69,7 +65,6 @@
             handleBlur () {
                 this.$parent.bFocus = false
             },
-
             handleClick (newValue) {
               if (!this.$parent.bSubmit) {
                   switch (this.testType) {
@@ -164,12 +159,12 @@
                 return ret
             },
             ...mapActions({
-                updateSavedData: 'certifications/updateSavedData'
+                updateSavedData: 'tests/updateSavedData'
             })
         },
         computed: {
             ...mapGetters({
-                savedData: 'certifications/getSavedData'
+                savedData: 'tests/getSavedData'
             }),
             currentTestSavedData () {
                 return this.savedData[this.$route.params.id - 1]
@@ -179,12 +174,13 @@
 </script>
 
 <style scoped>
-    .answer.selected, .answer.correct {
-        border: 1px solid #415393;
+
+    .answers {
+        margin-top: 32px;
     }
 
-    .answer-input {
-        height: 50px;
+    .answer.selected, .answer.correct {
+        border: 1px solid #3DD498;
     }
 
     .answer-input-wrapper {
@@ -271,10 +267,14 @@
     }
 
     .answer.selected .answer-status {
-        background-image: url(../../../assets/images/selected-purple.svg);
+        background-image: url(../../../assets/images/selected.svg);
     }
 
     .answer.wrong .answer-status {
         background-image: url(../../../assets/images/wrong.svg);
+    }
+
+    .answer-input {
+        height: 50px;
     }
 </style>
