@@ -25,53 +25,38 @@
                     </div>
                 </div>
             </div>
-<!--            <div class="tabs">
-                <button class="tab"
-                        v-for="(tab, key) of tabs"
-                        :key="key"
-                        :class="{active: key === activeTab}"
-                        @click="changeActiveTab(key)"
-                >
-                            <span class="tab-text">
-                                {{tab.name}}
-                            </span>
-                </button>
-            </div>-->
         </div>
         <Tabbar
                 :active-index.sync="activeIndex"
                 :tabs="tabs"
                 class="tabbar-list-wrapper"
                 :tab-class="'tab'"
+                :button-class="'tab-button'"
         >
         </Tabbar>
-<!--        <div class="pages-outer">
-            <div class="pages-inner" :class="animationType">
-                <Review></Review>
-                <Materials></Materials>
-            </div>
-        </div>-->
+        <TabsContent :active-index="activeIndex" :tabs="tabs"></TabsContent>
     </div>
 </template>
 
 <script>
-    import Review from "@/pages/Course/Review";
-    import Materials from "@/pages/Course/Materials";
     import Tabbar from "../Tabbar";
+    import TabsContent from "../TabsContent";
+    import Materials from "./Materials/Materials";
+    import Review from "./Review/Review";
     export default {
         name: "LoadedScreen",
-        components: {Tabbar, Materials, Review},
+        components: {TabsContent, Tabbar},
         data () {
             return {
                 activeIndex: 0,
                 tabs: [
                     {
                         title: 'Обзор курса',
-                        component: null
+                        component: Review
                     },
                     {
                         title: 'Материалы',
-                        component: null
+                        component: Materials
                     },
                 ]
             }
@@ -81,56 +66,11 @@
 </script>
 
 <style scoped>
-    .tabs {
-        height: 52px;
-        width: 100%;
-        background: #ffffff;
-        display: flex;
-        justify-content: space-between;
+    .tabbar-list-wrapper {
         border-bottom: 1px solid #EFF1F2;
     }
 
-    .tab {
-        width: 50%;
-        height: 51px;
-        font-size: 16px;
-        color: #4B4B4B;
-        display: flex;
-        justify-content: center;
-    }
 
-    .tab-text {
-        border-bottom: 3px solid transparent;
-        height: 48px;
-        line-height: 48px
-    }
-
-    .tab.active .tab-text {
-        border-bottom: 3px solid #3DD498 !important;
-    }
-
-
-    .segment-container {
-        height: 50px !important;
-        flex-direction: column !important;
-        background-color: transparent !important;
-        display: flex;
-        justify-content: flex-end;
-        background-image: unset !important;
-        opacity: 1;
-        visibility: visible;
-        top: env(safe-area-inset-top) !important;
-        box-shadow: none !important;
-    }
-
-    .segment {
-        min-width: 100%;
-        display: flex;
-        box-shadow: none;
-        min-height: 50px;
-        border-bottom: 1px solid #EFF1F2 !important;
-        background-color: #ffffff;
-    }
     .head {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../../assets/images/courses-bg.jpg) !important;
         background-size: cover !important;

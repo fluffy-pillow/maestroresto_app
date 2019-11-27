@@ -1,16 +1,16 @@
 <template>
     <div class="tabbar-list-wrapper">
         <ul class="tabbar-list">
-            <li class="tabbar-item"
+            <li class="tab-item"
                 v-for="(tab, key) of tabs"
                 :key="key"
                 :class="[tabClass, {active: activeIndex === key}]"
                 :style="{marginLeft: offset + 'px'}"
             >
-                <button class="tabbar-button"
+                <button class="tab-button" :class="buttonClass"
                         @click="handleClick(key)"
                 >
-                    <span class="title-wrapper">
+                    <span class="title">
                         {{tab.title}}
                     </span>
                 </button>
@@ -26,7 +26,8 @@
             activeIndex: Number,
             tabs: Array,
             tabClass: String,
-            offset: Number
+            offset: Number,
+            buttonClass: String
         },
         methods: {
             handleClick (key) {
@@ -52,10 +53,15 @@
         padding-bottom: 1px;
     }
 
-    .tabbar-item {
+    .tab-item {
         display: flex;
-        font-family: 'Rubik', sans-serif !important;
         align-items: center;
         justify-content: center;
+    }
+
+    .title {
+        display: block;
+        line-height: 50px;
+        font-family: 'Rubik', sans-serif !important;
     }
 </style>

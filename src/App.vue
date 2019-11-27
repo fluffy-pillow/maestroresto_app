@@ -158,7 +158,7 @@ body {
   background: linear-gradient(0deg, #FFC542, #FFC542) !important;
 }
 
-.main-main-menu .tabbar-list-wrapper .tab.active .tabbar-button {
+.main-main-menu .tabbar-list-wrapper .tab.active .tab-button {
   color: #ffffff !important;
 }
 
@@ -172,12 +172,33 @@ body {
   border-radius: 16px;
 }
 
+.main-main-menu .tabbar-list-wrapper .tab-button {
+  color: #61707D;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+}
+
 .course .tabbar-list-wrapper .tab {
   width: 50%;
   height: 50px;
+}
+
+.course .tabbar-list-wrapper .tab-button {
+  color: #61707D;
   font-size: 16px;
   line-height: 22px;
-  color: #61707D;
+  height: 50px;
+}
+
+.course .tabbar-list-wrapper  .tab.active .tab-button .title {
+  border-bottom: 3px solid #3DD498;
+  color: #4B4B4B;
+}
+
+.course .tabbar-list-wrapper  .tab .tab-button .title {
+  border-bottom: 3px solid transparent;
+  height: 47px;
 }
 
 

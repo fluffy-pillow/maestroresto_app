@@ -33,10 +33,12 @@
         top: calc(0px + env(safe-area-inset-top) * 7) !important;
         width: 100%;
         height: 100%;
+        visibility: hidden;
     }
 
     .preload-screen.show {
         opacity: 1;
+        visibility: visible;
     }
 
 

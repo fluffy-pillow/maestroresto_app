@@ -5,6 +5,7 @@
                 :tabs="tabs"
                 :tab-class="'tab'"
                 class="tabbar-list-wrapper"
+                :button-class="'tab-button'"
                 :offset="9.75"
         >
         </Tabbar>
