@@ -17,7 +17,7 @@
 
 <script>
     import DefaultHeader from "../components/DefaultHeader";
-    import CodeForm from "../components/CodePage/CodeForm";
+    import CodeForm from "../components/Forms/CodeForm";
 
 
     export default {

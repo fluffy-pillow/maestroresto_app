@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import NewPasswordForm from "../components/NewPasswordPage/NewPasswordForm";
+    import NewPasswordForm from "../components/Forms/NewPasswordForm";
     export default {
       name: "NewPassword",
       components: {NewPasswordForm}

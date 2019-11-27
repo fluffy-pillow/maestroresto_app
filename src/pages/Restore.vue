@@ -13,7 +13,7 @@
 
 <script>
     import DefaultHeader from "../components/DefaultHeader";
-    import RestoreForm from "../components/RestorePage/RestoreForm";
+    import RestoreForm from "../components/Forms/RestoreForm";
     export default {
       name: "Restore",
       components: {RestoreForm, DefaultHeader},

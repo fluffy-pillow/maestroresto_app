@@ -16,7 +16,7 @@
 
 <script>
     import Logo from "./Logo";
-    import AuthForm from "../components/AuthPage/AuthForm";
+    import AuthForm from "../components/Forms/AuthForm";
 
     export default {
       name: "Auth",
