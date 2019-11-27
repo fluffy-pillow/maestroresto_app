@@ -1,5 +1,5 @@
 <template>
-    <div class="search-dropdown" :class="{show: bShow}"  v-if="bShow">
+    <div class="search-dropdown" :class="{show: bShow}">
         <Tabbar
                 :active-index.sync="activeIndex"
                 :tabs="tabs"
@@ -201,10 +201,11 @@
     transform-origin: top;
     opacity: 0;
     transform: scaleY(0);
-    transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     right: 0;
     display: flex;
     flex-direction: column;
+    height: 0;
 }
 
 .search-dropdown.show {
