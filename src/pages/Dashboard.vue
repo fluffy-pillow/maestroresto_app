@@ -7,7 +7,12 @@
                 <circle cx="156.5" cy="176.5" r="126" stroke="#F2F4F5"/>
             </svg>
         </div>
-        <MainDashboard :data="response"></MainDashboard>
+        <main>
+            <Statistics :status="status" :leaderboard="leaderboard" :loyalty="loyalty"></Statistics>
+            <Tasks :required="required"></Tasks>
+            <Courses :unfinished-courses="unfinishedCourses"></Courses>
+            <Tests :unfinished-tests="unfinishedTests"></Tests>
+        </main>
     </v-ons-page>
 </template>
 
@@ -16,29 +21,56 @@
     import User from "@/components/DashboardPage/User/User";
     import dashboardDB from "@/db/dashboardDB";
     import DashboardService from '@/services/DashboardService'
-    import MainDashboard from "../components/DashboardPage/MainDashboard";
+    import Statistics from "../components/DashboardPage/Statistics/Statistics";
+    import Tasks from "../components/DashboardPage/Tasks/Tasks";
+    import Courses from "../components/DashboardPage/Courses/Courses";
+    import Tests from "../components/DashboardPage/Tests/Tests";
 
 
     export default {
         name: "Dashboard",
         components: {
-            MainDashboard,
+            Tests,
+            Courses,
+            Tasks,
+            Statistics,
             User,
         },
         data () {
             return {
-                response: null,
-                localDBerror: false,
+                status: null,
+                leaderboard: null,
+                loyalty: null,
+                required: null,
+                unfinishedCourses: null,
+                unfinishedTests: null,
+                bLoaded: false
             }
         },
         methods: {
             ...mapActions({
                 systemMessage: 'systemMessage/systemMessage'
             }),
+            writeData (response) {
+                this.status = response.rating.status
+                this.leaderboard = response.rating.leaderboard
+                this.loyalty = response.rating.loyalty
+                this.required = response.required
+                this.unfinishedCourses = response.unfinishedCourses
+                this.unfinishedTests = response.unfinishedTests
+            },
+            hidePreloaders () {
+                if (!this.bLoaded) {
+                    setTimeout(() => {
+                        this.bLoaded = true
+                    }, 200)
+                }
+            },
             localDBRequest () {
                 dashboardDB.getData(response => {
                     if (!response.error) {
-                        this.response = response
+                        this.writeData(response)
+                        this.hidePreloaders()
                     } else {
                         this.localDBerror = true
                     }
@@ -53,7 +85,8 @@
                             this.logout()
                         }
                     } else {
-                        this.response = response.data
+                        this.writeData(response.data)
+                        this.hidePreloaders()
 
                         if (this.localDBerror) {
                             dashboardDB.insertData(response.data)
@@ -82,6 +115,11 @@
   top: -88px;
   left: -75px;
   z-index: -1;
+}
+
+main {
+    padding-bottom: 64px;
+    padding-top: 44px;
 }
 
 .dashboard {

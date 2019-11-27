@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="body">
-            <TasksList v-if="required.length > 0">
+            <TasksList v-if="required && required.length > 0">
                 <TaskItem
                         v-for="(task, key) of required"
                         :key="key"
@@ -32,7 +32,10 @@
         name: "Tasks",
         components: {NoTasks, TasksList, TaskItem},
         props: {
-            required: Array
+            required: {
+                type: Array,
+                default: () => []
+            }
         }
     }
 </script>

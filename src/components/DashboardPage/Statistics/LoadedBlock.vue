@@ -21,9 +21,18 @@
         name: "Statistics",
         components: {Stars, Progress, Position},
         props: {
-            status: Object,
-            leaderboard: Object,
-            loyalty: Object
+            status: {
+                type: Object,
+                default: () => {}
+            },
+            leaderboard: {
+                type: Object,
+                default: () => {}
+            },
+            loyalty: {
+                type: Object,
+                default: () => {}
+            }
         }
     }
 </script>

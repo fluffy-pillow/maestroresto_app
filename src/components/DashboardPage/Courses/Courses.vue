@@ -1,9 +1,9 @@
 <template>
     <section class="courses">
-        <PreloadBlock :class="{show: !unfinishedCourses}" v-if="!$parent.bLoaded"></PreloadBlock>
+        <PreloadBlock :class="{show: !bShow}" v-if="!$parent.bLoaded"></PreloadBlock>
         <LoadedBlock
-                v-if="unfinishedCourses"
-                :class="{show: unfinishedCourses}"
+                v-if="bShow"
+                :class="{show: bShow}"
                 :unfinished-courses="unfinishedCourses"
         >
 
@@ -18,7 +18,14 @@
         name: "Courses",
         components: {LoadedBlock, PreloadBlock},
         props: {
-            unfinishedCourses: Array
+            unfinishedCourses: {
+                type: Array
+            }
+        },
+        computed: {
+            bShow () {
+                return this.unfinishedCourses !== null
+            }
         }
     }
 </script>

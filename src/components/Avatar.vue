@@ -1,5 +1,7 @@
 <template>
-    <div class="avatar" :style="{backgroundImage: bg, width: size + 'px', height: size + 'px', minWidth: size + 'px'}">
+    <div class="avatar"
+         :style="{backgroundImage: bg, width: size + 'px', height: size + 'px', minWidth: size + 'px'}"
+    >
     </div>
 </template>
 
@@ -12,7 +14,7 @@
         },
         computed: {
             bg () {
-                return (this.src) ? 'url(' + this.src + ')' : 'url(../assets/images/no-avatar.svg)'
+                return (this.src) ? 'url(' + this.src + ')' : 'url('+ require(`@/assets/images/no-avatar.svg`) + ')'
             }
         }
     }

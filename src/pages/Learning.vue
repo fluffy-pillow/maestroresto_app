@@ -7,16 +7,24 @@
           </svg>
         </div>
         <Search></Search>
-        <MainLearning></MainLearning>
+        <main class="main-learning">
+            <Favorite></Favorite>
+            <Courses></Courses>
+            <Structure></Structure>
+            <SalesTechnique></SalesTechnique>
+        </main>
     </v-ons-page>
 </template>
 
 <script>
-    import MainLearning from "@/components/LearningPage/MainLearning";
     import Search from "@/components/LearningPage/Search/Search";
+    import Favorite from "../components/LearningPage/Favorite/Favorite";
+    import Courses from "../components/LearningPage/Courses/Courses";
+    import Structure from "../components/LearningPage/Structure/Structure";
+    import SalesTechnique from "../components/LearningPage/SalesTechnique/SalesTechnique";
     export default {
         name: "Learning",
-        components: {Search, MainLearning}
+        components: {SalesTechnique, Structure, Courses, Favorite, Search}
     }
 </script>
 
@@ -26,6 +34,11 @@
   top: -88px;
   left: -75px;
   z-index: -1;
+}
+
+main {
+    padding-bottom: 64px;
+    padding-top: 44px;
 }
 
 .learning {

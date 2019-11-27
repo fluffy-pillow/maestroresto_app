@@ -56,13 +56,6 @@
             }),
             filteredResponse: function () {
                 let that = this
-                console.log(
-                    this.data.data.filter(function (element) {
-                        return element.response.some( function (subElement) {
-                            return subElement.keyword.includes(that.query)
-                        })
-                    })
-                )
                 return this.data.data.filter(function (element) {
                     return element.response.some( function (subElement) {
                         return subElement.keyword.includes(that.query)

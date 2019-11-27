@@ -1,9 +1,9 @@
 <template>
     <section class="tasks">
-        <PreloadBlock :class="{show: !required}"  v-if="!$parent.bLoaded"></PreloadBlock>
+        <PreloadBlock :class="{show: !bShow}"  v-if="!$parent.bLoaded"></PreloadBlock>
         <LoadedBlock
-                v-if="required"
-                :class="{show: required}"
+                v-if="bShow"
+                :class="{show: bShow}"
                 :required="required">
         </LoadedBlock>
     </section>
@@ -16,7 +16,15 @@
         name: "Tasks",
         components: {LoadedBlock, PreloadBlock},
         props: {
-            required: Array
+            required: {
+                type: Array,
+                default: () => []
+            }
+        },
+        computed: {
+            bShow () {
+                return this.required !== null
+            }
         }
     }
 </script>

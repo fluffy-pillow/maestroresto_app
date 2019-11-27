@@ -1,17 +1,30 @@
 <template>
     <v-ons-page class="certifications">
         <StickyHeader :title="'Аттестации'" :show-back-button="false"></StickyHeader>
-        <MainCertifications :data="response"></MainCertifications>
+        <main :class="{empty: !response || response.length === 0}">
+            <CertificationsList v-if="response && response.length > 0">
+                <CertificationsItem
+                        v-for="(item, key) of response"
+                        :key="key"
+                        :data="item"
+                >
+
+                </CertificationsItem>
+            </CertificationsList>
+            <CertificationsNotFound v-else></CertificationsNotFound>
+        </main>
     </v-ons-page>
 </template>
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import MainCertifications from "../components/CertificationsPage/MainCertifications";
+    import CertificationsList from "../components/CertificationsPage/CertificationsList";
+    import CertificationsItem from "../components/CertificationsPage/CertificationsItem";
+    import CertificationsNotFound from "../components/CertificationsPage/CertificationsNotFound";
 
     export default {
         name: "Certifications",
-        components: {MainCertifications, StickyHeader},
+        components: {CertificationsNotFound, CertificationsItem, CertificationsList, StickyHeader},
         data () {
             return {
 //                response: []
@@ -46,5 +59,15 @@
 </script>
 
 <style scoped>
+main {
+    padding-top: 44px;
+    margin-top: env(safe-area-inset-top);
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 81px;
+}
 
+main.empty {
+    height: calc(100% - 44px - 81px - env(safe-area-inset-top));
+}
 </style>

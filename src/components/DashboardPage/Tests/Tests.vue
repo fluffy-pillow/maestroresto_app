@@ -1,10 +1,10 @@
 <template>
     <section class="tests">
-        <PreloadBlock :class="{show: !unfinishedTests}" v-if="!$parent.bLoaded"></PreloadBlock>
+        <PreloadBlock :class="{show: !bShow}" v-if="!$parent.bLoaded"></PreloadBlock>
         <LoadedBlock
-                v-if="unfinishedTests"
+                v-if="bShow"
                 :unfinished-tests="unfinishedTests"
-                :class="{show: unfinishedTests}"
+                :class="{show: bShow}"
         >
         </LoadedBlock>
     </section>
@@ -19,8 +19,16 @@
         name: "Tests",
         components: {PreloadBlock, LoadedBlock},
         props: {
-            unfinishedTests: Array
+            unfinishedTests: {
+                type: Array,
+                default: () => []
+            }
         },
+        computed: {
+            bShow () {
+                return this.unfinishedTests !== null
+            }
+        }
     }
 </script>
 
