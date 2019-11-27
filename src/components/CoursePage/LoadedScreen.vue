@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tabs">
+<!--            <div class="tabs">
                 <button class="tab"
                         v-for="(tab, key) of tabs"
                         :key="key"
@@ -36,45 +36,44 @@
                                 {{tab.name}}
                             </span>
                 </button>
-            </div>
+            </div>-->
         </div>
-        <div class="pages-outer">
+        <Tabbar
+                :active-index.sync="activeIndex"
+                :tabs="tabs"
+                class="tabbar-list-wrapper"
+                :tab-class="'tab'"
+        >
+        </Tabbar>
+<!--        <div class="pages-outer">
             <div class="pages-inner" :class="animationType">
                 <Review></Review>
                 <Materials></Materials>
             </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
 <script>
     import Review from "@/pages/Course/Review";
     import Materials from "@/pages/Course/Materials";
+    import Tabbar from "../Tabbar";
     export default {
         name: "LoadedScreen",
-        components: {Materials, Review},
+        components: {Tabbar, Materials, Review},
         data () {
             return {
-                activeTab: 0,
-                animationType: 'scrollLeft',
+                activeIndex: 0,
                 tabs: [
                     {
-                        name: 'Обзор курса'
+                        title: 'Обзор курса',
+                        component: null
                     },
                     {
-                        name: 'Материалы'
-                    }
+                        title: 'Материалы',
+                        component: null
+                    },
                 ]
-            }
-        },
-        methods: {
-            changeActiveTab (newValue) {
-                this.activeTab = newValue
-            }
-        },
-        watch: {
-            activeTab (newValue) {
-                this.animationType = (newValue === 1) ?'scrollRight' : 'scrollLeft'
             }
         }
 
@@ -141,7 +140,7 @@
         overflow: hidden;
         z-index: 4;
         padding-top: env(safe-area-inset-top);
-        height: calc(446px + env(safe-area-inset-top) * 7) !important;
+        height: calc(396px + env(safe-area-inset-top) * 7) !important;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;

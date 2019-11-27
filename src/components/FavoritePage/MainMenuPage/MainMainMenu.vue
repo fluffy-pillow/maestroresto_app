@@ -1,108 +1,99 @@
 <template>
     <main class="main-main-menu">
-        <Tabbar :active-index.sync="activeIndex"></Tabbar>
-        <SectionContainer>
-            <Section
-                v-for="(item, key) of items"
-                :key="key"
-                :content="item.content"
-                :active="activeIndex === key"
-            >
-            </Section>
-        </SectionContainer>
+        <Tabbar
+                :active-index.sync="activeIndex"
+                :tabs="tabs"
+                :tab-class="'tab'"
+                class="tabbar-list-wrapper"
+                :offset="9.75"
+        >
+        </Tabbar>
+        <TabsContent :active-index="activeIndex" :tabs="tabs"></TabsContent>
     </main>
 </template>
 
 <script>
-    import Tabbar from "./Tabbar";
-    import Section from "./Section";
-    import SectionContainer from "./SectionContainer";
+    import Tabbar from "@/components/Tabbar";
+    import FoodList from "./FoodList";
+    import TabsContent from "@/components/TabsContent";
     export default {
         name: "MainMainMenu",
-        components: {SectionContainer, Section, Tabbar},
+        components: {TabsContent, Tabbar},
         data () {
             return {
                 activeIndex: 0,
-                items: [
+                tabs: [
                     {
                         title: 'Горячее',
-                        content: [
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            },
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            },
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            },
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            },
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            },
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            },
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            },
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            },
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            }
-                        ]
+                        component: FoodList,
+                        props: {
+                            list: [
+                                {
+                                    title: 'Отбивные по-французски',
+                                    weight: '250 гр.',
+                                    image: 'french-meat.png'
+                                },
+                                {
+                                    title: 'Отбивные по-французски',
+                                    weight: '250 гр.',
+                                    image: 'french-meat.png'
+                                }
+                            ]
+                        }
                     },
                     {
                         title: 'Салаты',
-                        content: [
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            }
-                        ]
+                        component: FoodList,
+                        props: {
+                            list: [
+                                {
+                                    title: 'Отбивные по-французски',
+                                    weight: '250 гр.',
+                                    image: 'french-meat.png'
+                                },
+                                {
+                                    title: 'Отбивные по-французски',
+                                    weight: '250 гр.',
+                                    image: 'french-meat.png'
+                                }
+                            ]
+                        }
                     },
                     {
                         title: 'Напитки',
-                        content: [
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            }
-                        ]
+                        component: FoodList,
+                        props: {
+                            list: [
+                                {
+                                    title: 'Отбивные по-французски',
+                                    weight: '250 гр.',
+                                    image: 'french-meat.png'
+                                },
+                                {
+                                    title: 'Отбивные по-французски',
+                                    weight: '250 гр.',
+                                    image: 'french-meat.png'
+                                }
+                            ]
+                        }
                     },
                     {
                         title: 'Десерты',
-                        content: [
-                            {
-                                title: 'Отбивные по-французски',
-                                weight: '250 гр.',
-                                image: 'french-meat.png'
-                            }
-                        ]
+                        component: FoodList,
+                        props: {
+                            list: [
+                                {
+                                    title: 'Отбивные по-французски',
+                                    weight: '250 гр.',
+                                    image: 'french-meat.png'
+                                },
+                                {
+                                    title: 'Отбивные по-французски',
+                                    weight: '250 гр.',
+                                    image: 'french-meat.png'
+                                }
+                            ]
+                        }
                     }
                 ]
             }
@@ -116,4 +107,10 @@
     margin-top: env(safe-area-inset-top);
     padding-bottom: 81px;
 }
+
+.tabbar-list-wrapper {
+    margin-top: 18px;
+}
+
+
 </style>

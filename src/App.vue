@@ -154,6 +154,37 @@ body {
   height: 100vh;
 }
 
+.main-main-menu .tabbar-list-wrapper .tab.active {
+  background: linear-gradient(0deg, #FFC542, #FFC542) !important;
+}
+
+.main-main-menu .tabbar-list-wrapper .tab.active .tabbar-button {
+  color: #ffffff !important;
+}
+
+
+.main-main-menu .tabbar-list-wrapper .tab {
+  height: 54px;
+  min-width: 94.25px;
+  background: #FFFFFF;
+  border: 1px solid #FFC542;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.course .tabbar-list-wrapper .tab {
+  width: 50%;
+  height: 50px;
+  font-size: 16px;
+  line-height: 22px;
+  color: #61707D;
+}
+
+
+.main-main-menu .tabbar-list-wrapper .tabbar-item:first-child {
+  margin-left: 16px;
+}
+
 
 .main-course .page__content {
   top: 0 !important;
