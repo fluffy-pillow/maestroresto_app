@@ -11,7 +11,7 @@
 <script>
     import StickyHeader from "@/components/StickyHeader";
     import MainMaterial from "@/components/CoursePage/Materials/Material/MainMaterial";
-    import FavoriteButton from "../../../components/FavoriteButton";
+    import FavoriteButton from "../components/FavoriteButton";
     export default {
         name: "Material",
         components: {FavoriteButton, MainMaterial, StickyHeader}

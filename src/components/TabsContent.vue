@@ -46,10 +46,19 @@
         overflow: hidden;
     }
 
+    .component-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .component-wrapper::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
     .content {
         display: flex;
         width: max-content;
         transition: transform 0.2s ease-in-out;
+        height: 100%;
     }
 
     .component-wrapper {

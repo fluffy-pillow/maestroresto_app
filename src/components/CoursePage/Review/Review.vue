@@ -1,29 +1,26 @@
 <template>
     <section class="review">
-        <main class="main-review">
-            <ReviewDesc
-                    :title="'Описание курса'"
-                    :text="'В процессе обучения вы получите знания и навыки, необходимые официанту в общении с гостем — правила поведения, этикет, встреча и приветствие гостя, психотипы гостей. Научитесь разбираться в меню, а так же в классификации и\n'+
-    'видах алкогольных напитков, в правилах их подачи и употребления.'"
-            >
-            </ReviewDesc>
-            <ReviewDesc :title="'Что тебя ждет?'">
-                <ReviewParamsList>
-                    <ReviewParamsItem
-                            v-for="(item, key) of items"
-                            :key="key"
-                            :data="item"
-                    >
-                    </ReviewParamsItem>
-                </ReviewParamsList>
-            </ReviewDesc>
-            <ReviewDesc
-                    :title="'Результат итоговой аттестацииа'"
-                    :text="'Пройдите успешно обучение и сдайте итоговую аттестацию, чтобы увидеть результат'"
-            >
-            </ReviewDesc>
-
-        </main>
+        <ReviewDesc
+                :title="'Описание курса'"
+                :text="'В процессе обучения вы получите знания и навыки, необходимые официанту в общении с гостем — правила поведения, этикет, встреча и приветствие гостя, психотипы гостей. Научитесь разбираться в меню, а так же в классификации и\n'+
+'видах алкогольных напитков, в правилах их подачи и употребления.'"
+        >
+        </ReviewDesc>
+        <ReviewDesc :title="'Что тебя ждет?'">
+            <ReviewParamsList>
+                <ReviewParamsItem
+                        v-for="(item, key) of items"
+                        :key="key"
+                        :data="item"
+                >
+                </ReviewParamsItem>
+            </ReviewParamsList>
+        </ReviewDesc>
+        <ReviewDesc
+                :title="'Результат итоговой аттестацииа'"
+                :text="'Пройдите успешно обучение и сдайте итоговую аттестацию, чтобы увидеть результат'"
+        >
+        </ReviewDesc>
     </section>
 </template>
 
@@ -66,7 +63,7 @@
 </script>
 
 <style scoped>
-.main-review {
+.review {
     padding-left: 16px;
     padding-right: 16px;
     background: #ffffff;

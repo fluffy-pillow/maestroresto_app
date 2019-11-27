@@ -3,9 +3,8 @@
         <Tabbar
                 :active-index.sync="activeIndex"
                 :tabs="tabs"
-                :tab-class="'tab'"
                 class="tabbar-list-wrapper"
-                :button-class="'tab-button'"
+                :type="'pills'"
                 :offset="9.75"
         >
         </Tabbar>

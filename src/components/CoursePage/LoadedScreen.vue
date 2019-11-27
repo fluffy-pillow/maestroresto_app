@@ -30,8 +30,6 @@
                 :active-index.sync="activeIndex"
                 :tabs="tabs"
                 class="tabbar-list-wrapper"
-                :tab-class="'tab'"
-                :button-class="'tab-button'"
         >
         </Tabbar>
         <TabsContent :active-index="activeIndex" :tabs="tabs"></TabsContent>
@@ -66,9 +64,6 @@
 </script>
 
 <style scoped>
-    .tabbar-list-wrapper {
-        border-bottom: 1px solid #EFF1F2;
-    }
 
 
     .head {

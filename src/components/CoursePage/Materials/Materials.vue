@@ -1,16 +1,14 @@
 <template>
     <section class="materials">
-        <main class="main-materials">
-            <MaterialsList>
-                <MaterialItem
-                        v-for="(item, key) of items"
-                        :key="key"
-                        :data="item"
-                >
-                </MaterialItem>
-                <FinalMaterialItem></FinalMaterialItem>
-            </MaterialsList>
-        </main>
+        <MaterialsList>
+            <MaterialItem
+                    v-for="(item, key) of items"
+                    :key="key"
+                    :data="item"
+            >
+            </MaterialItem>
+            <FinalMaterialItem></FinalMaterialItem>
+        </MaterialsList>
     </section>
 </template>
 
@@ -67,7 +65,7 @@
 </script>
 
 <style scoped>
-.main-materials {
+.materials {
     padding-left: 16px;
     padding-right: 16px;
     background: #ffffff;

@@ -1,44 +1,176 @@
 <template>
-    <div class="search-dropdown-outer" :class="{show: bShow}"  v-if="bShow">
-      <div class="search-dropdown-middle">
-        <v-ons-page class="search-dropdown-inner">
-          <v-ons-toolbar class="segment-container">
-            <v-ons-segment class="segment" tabbar-id="tabbar" :index.sync="segmentIndex">
-              <button>Меню</button>
-              <button>Обучение</button>
-            </v-ons-segment>
-          </v-ons-toolbar>
-          <v-ons-tabbar id="tabbar"
-                        :tabs="tabs"
-                        :index.sync="tabbarIndex"
-          >
-          </v-ons-tabbar>
-        </v-ons-page>
-      </div>
+    <div class="search-dropdown" :class="{show: bShow}"  v-if="bShow">
+        <Tabbar
+                :active-index.sync="activeIndex"
+                :tabs="tabs"
+                class="tabbar-list-wrapper"
+        >
+        </Tabbar>
+      <TabsContent :active-index="activeIndex" :tabs="tabs"></TabsContent>
     </div>
 </template>
 
 <script>
-    import Learning from '@/pages/Learning/Search/Learning'
-    import Menu from '@/pages/Learning/Search/Menu'
     import {mapGetters} from 'vuex'
+    import Tabbar from "../../Tabbar";
+    import TabsContent from "../../TabsContent";
+    import SearchResultMenu from "./SearchResultMenu";
+    import SearchResultLearning from "./SearchResultLearning";
 
     export default {
         name: "SearchDropdown",
+        components: {TabsContent, Tabbar},
         data () {
             return {
                 bShow: false,
-                segmentIndex: 0,
-                tabbarIndex: 0,
+                activeIndex: 0,
                 tabs: [
-                  {
-                    page: Menu,
-                    key: "Menu"
-                  },
-                  {
-                    page: Learning,
-                    key: "Learning"
-                  }
+                    {
+                        title: 'Меню',
+                        component: SearchResultMenu,
+                        key: 'menu',
+                        props: {
+                            data: [
+                                {
+                                    category: 'Красные вина',
+                                    response: [
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                        {
+                                            name: 'Винья Темпрана Олд Вайнс Гарнача',
+                                            desc1: 'красное сухое',
+                                            desc2: 'Испания, Кампо де Борха',
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                    ],
+                                },
+                                {
+                                    category: 'Горячие блюда',
+                                    response: [
+                                        {
+                                            name: 'Филе миньон с соусом борделез и картофелем конфи',
+                                            desc1: 'очень вкусно',
+                                            desc2: 'и аппетитно',
+                                            image: 'dish.png',
+                                            keyword: 'Филе'
+                                        },
+                                        {
+                                            name: 'Филе миньон с соусом борделез и картофелем конфи',
+                                            desc1: 'очень вкусно',
+                                            desc2: 'и аппетитно',
+                                            image: 'dish.png',
+                                            keyword: 'Филе'
+                                        },
+                                        {
+                                            name: 'Филе миньон с соусом борделез и картофелем конфи',
+                                            desc1: 'очень вкусно',
+                                            desc2: 'и аппетитно',
+                                            image: 'dish.png',
+                                            keyword: 'Филе'
+                                        },
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        title: 'Обучение',
+                        key: 'learning',
+                        component: SearchResultLearning,
+                        props: {
+                            data: [
+                                {
+                                    category: 'Техника активных и эффективных \n' +
+                                    'продаж',
+                                    response: [
+                                        {
+                                            name: 'Алкогольные напитки на основе винограда (коньяк, бренди, арманьяк...)',
+                                            exercises: 14,
+                                            time: 15,
+                                            image: 'dish.png',
+                                            keyword: 'вино'
+                                        },
+                                    ]
+                                }
+                            ],
+                        }
+                    },
                 ]
             }
         },
@@ -54,51 +186,32 @@
                 } else {
                     this.bShow = false
                 }
-
             }
         }
     }
 </script>
 
 <style scoped>
-.search-dropdown-middle {
-  position: relative;
-  height: 100%;
-}
 
-.search-dropdown-outer {
+.search-dropdown {
     visibility: hidden;
-    height: 100vh;
     position: absolute;
     width: 100%;
-    margin-top: 8px;
+    margin-top: 4px;
     transform-origin: top;
     opacity: 0;
     transform: scaleY(0);
     transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
     right: 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.search-dropdown-outer.show {
+.search-dropdown.show {
     opacity: 1;
     visibility: visible;
     transform: scaleY(1);
+    height: calc(100vh - 48px);
 }
-
-.segment {
-  min-width: 100%;
-  display: flex;
-  box-shadow: none;
-  min-height: 45px;
-  border-bottom: 1px solid #EFF1F2 !important;
-}
-
-.segment-container {
-  background-image: none;
-  background-color: #ffffff;
-  box-shadow: none;
-  height: 46px !important;
-}
-
 
 </style>

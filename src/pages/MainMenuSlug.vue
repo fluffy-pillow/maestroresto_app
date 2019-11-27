@@ -10,8 +10,8 @@
 </template>
 
 <script>
-    import MainSlug from "../../../components/FavoritePage/MainMenuPage/Slug/MainSlug";
-    import Header from "../../../components/StickyHeader";
+    import MainSlug from "../components/FavoritePage/MainMenuPage/Slug/MainSlug";
+    import Header from "../components/StickyHeader";
     export default {
         name: "Slug",
         components: {Header, MainSlug},
