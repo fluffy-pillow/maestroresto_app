@@ -2,7 +2,7 @@
     <div class="preload-block head-inner">
         <div class="container">
             <div class="head-left">
-                <Avatar :size="32" :src="avatarUrl" class="avatar"></Avatar>
+                <Avatar :size="32" :src="avatarUrl" class="avatar" :box-shadow="true"></Avatar>
 
                 <div class="user-info">
                     <div class="user-name">
@@ -68,9 +68,6 @@
         justify-content: space-between;
     }
 
-    .avatar {
-        box-shadow: 0px -1px 13px rgba(0, 0, 0, 0.4);
-    }
 
     .user-info {
         margin-left: 20px;

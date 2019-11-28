@@ -3,7 +3,12 @@
         <div class="center">
             <div class="container">
                 <div class="head-left">
-                    <Avatar :size="44" :src="require('@/assets/images/avatar.jpeg')" class="avatar"></Avatar>
+                    <Avatar
+                            :size="44"
+                            :src="require('@/assets/images/avatar.jpeg')"
+                            class="avatar"
+                            :box-shadow="true"
+                    ></Avatar>
                     <div class="user-info">
                         <div class="user-name">
                             Константин
@@ -72,9 +77,6 @@
     }
 
 
-    .avatar {
-        box-shadow: 0px 2px 30px rgba(0, 0, 0, 0.26);
-    }
 
     .user-info {
         margin-left: 16px;

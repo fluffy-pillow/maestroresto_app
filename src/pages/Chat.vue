@@ -25,7 +25,7 @@
         components: {ContactsNotFound, Contacts, SearchInput, StickyHeader},
         data () {
             return {
-                bResponse: false
+                bResponse: true
             }
         }
     }
