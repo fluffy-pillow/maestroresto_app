@@ -2,7 +2,8 @@
     <div class="search-input-outer">
         <div class="search-input-inner">
             <div class="search-input-label">
-                <input type="text" placeholder="Поиск по материалам"
+                <input type="text"
+                       :placeholder="placeholderText"
                        :value="query"
                        @input="onChangeQuery"
                        ref="searchInput"
@@ -38,6 +39,12 @@
             return {
                 bEmpty: true
             }
+        },
+        props: {
+            placeholderText: {
+                type: String,
+                default: ''
+            },
         },
         methods: {
             handleFocus () {
@@ -102,6 +109,19 @@ input {
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
+}
+
+input:empty:before{
+    content: attr(placeholder);
+    display: block; /* For Firefox */
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    /* identical to box height */
+    letter-spacing: -0.02px;
+    color: #61707D;
+    mix-blend-mode: normal;
+    opacity: 0.5;
 }
 
 .search-icon {

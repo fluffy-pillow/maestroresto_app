@@ -12,8 +12,8 @@
 
 <script>
     import {mapGetters} from 'vuex'
-    import Tabbar from "../../Tabbar";
-    import TabsContent from "../../TabsContent";
+    import Tabbar from "../Tabbar";
+    import TabsContent from "../TabsContent";
     import SearchResultMenu from "./SearchResultMenu";
     import SearchResultLearning from "./SearchResultLearning";
 
