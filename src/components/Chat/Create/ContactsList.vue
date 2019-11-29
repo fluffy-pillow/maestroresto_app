@@ -14,7 +14,7 @@
                         :key="key"
                         class="contact-item"
                 >
-                    <label class="checkbox-label">
+                    <label class="checkbox-label" @click="openChat">
                         <span class="checkbox-wrapper" v-if="$parent.bGroup">
                             <input type="checkbox">
                             <span class="checkmark"></span>
@@ -96,6 +96,14 @@
                         ]
                     }
                 ]
+            }
+        },
+        methods: {
+            openChat () {
+                if (!this.$parent.bGroup) {
+                    this.$eventBus.$emit('close-action-sheet')
+                    this.$router.push(this.$route.path + '/correspondence/1')
+                }
             }
         }
     }

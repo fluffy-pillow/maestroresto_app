@@ -5,7 +5,7 @@
         <div class="title">
             Новый чат
         </div>
-        <button class="next-button">
+        <button class="next-button" @click="openGroupChat">
             Далее
         </button>
     </div>
@@ -13,7 +13,13 @@
 
 <script>
     export default {
-        name: "CreateGroupChatHead"
+        name: "CreateGroupChatHead",
+        methods: {
+            openGroupChat () {
+                this.$eventBus.$emit('close-action-sheet')
+                this.$router.push(this.$route.path + '/conference/1')
+            }
+        }
     }
 </script>
 

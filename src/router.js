@@ -411,7 +411,7 @@ const router = new Router({
             beforeEnter: ifAuthenticated,
             children: [
                 {
-                    path: ':user_id',
+                    path: 'correspondence/:id',
                     name: 'Correspondence',
                     component: {
                         extends: Correspondence,
@@ -423,7 +423,7 @@ const router = new Router({
                     }
                 },
                 {
-                    path: ':conference_id',
+                    path: 'conference/:id',
                     name: 'Conference',
                     component: {
                         extends: Conference,

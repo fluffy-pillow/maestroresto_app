@@ -1,5 +1,13 @@
 <template>
     <div class="chat-input" :class="{empty: message === '', focus: bFocus}">
+        <div class="typing" v-if="showInterlocutorTyping">
+            <div class="typing-icon">
+
+            </div>
+            <div class="typing-text">
+                Марина печатает ..
+            </div>
+        </div>
         <div class="container">
             <label class="input-label">
                 <ContentEditable
@@ -34,6 +42,12 @@
                 bFocus: false
             }
         },
+        props: {
+            showInterlocutorTyping: {
+                type: Boolean,
+                default: false
+            }
+        },
         methods: {
             handleFocus () {
                 this.bFocus = true
@@ -49,18 +63,13 @@
 
 <style scoped>
 .chat-input {
-    height: 50px;
-    padding-top: 8px;
-    padding-bottom: calc(8px + env(safe-area-inset-top));
+    padding-bottom: env(safe-area-inset-top);
     padding-left: 16px;
     padding-right: 16px;
     background: #F9FBFD;
 }
 
 .chat-input.focus {
-    height: 50px;
-    padding-top: 8px;
-    padding-bottom: 8px;
     padding-left: 16px;
     padding-right: 16px;
 }
@@ -68,7 +77,9 @@
 .container {
     border-radius: 16px;
     width: 100%;
-    height: 100%;
+    height: 50px;
+    margin-bottom: 8px;
+    margin-top: 8px;
     display: flex;
     background-color: #ffffff;
 }
@@ -91,4 +102,29 @@
     margin-right: 16px;
     margin-left: 16px;
 }
+
+.typing {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.typing-text {
+    font-size: 10px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.16px;
+    color: #61707D;
+    margin-left: 6px;
+}
+
+.typing-icon {
+    width: 10px;
+    height: 10px;
+    background-image: url(../../assets/images/writing-icon.svg);
+    background-size: cover;
+    margin-left: 5px;
+}
+
 </style>
