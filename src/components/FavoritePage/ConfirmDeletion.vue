@@ -28,6 +28,8 @@
 <style scoped>
 .confirm-deletion {
     margin-top: 39px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .title {

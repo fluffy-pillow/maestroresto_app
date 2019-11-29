@@ -128,6 +128,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .title {

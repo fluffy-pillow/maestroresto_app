@@ -75,8 +75,6 @@
 }
 
 .action-sheet-inner {
-   padding-left: 16px;
-   padding-right: 16px;
    width: 100%;
 }
 

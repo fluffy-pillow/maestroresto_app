@@ -16,8 +16,8 @@
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import FavoriteList from "../components/LearningPage/Favorite/FavoriteList";
-    import FavoriteItem from "../components/LearningPage/Favorite/FavoriteItem";
+    import FavoriteList from "../components/FavoritePage/FavoriteList";
+    import FavoriteItem from "../components/FavoritePage/FavoriteItem";
 
     export default {
         name: "Favorite",

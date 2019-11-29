@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="bottom">
-            <button class="default-button">
+            <button class="default-button" @click="handleClick">
                  Написать
             </button>
         </div>
@@ -26,8 +26,14 @@
 </template>
 
 <script>
+    import CreateChat from "./CreateChat";
     export default {
-        name: "ContactsNotFound"
+        name: "ContactsNotFound",
+        methods: {
+            handleClick () {
+                this.$eventBus.$emit('open-action-sheet', CreateChat)
+            }
+        }
     }
 </script>
 
