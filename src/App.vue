@@ -40,6 +40,22 @@ export default {
 }
 
 @font-face {
+  font-family: SFProText;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/SFProText-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Gilroy;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('fonts/Gilroy-Regular.ttf') format('truetype');
+}
+
+@font-face {
   font-family: Futura;
   font-weight: 500;
   font-style: normal;
