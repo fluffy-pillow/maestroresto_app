@@ -24,6 +24,8 @@ import Chat from './pages/Chat';
 import Edit from './pages/Edit';
 import Help from './pages/Help';
 import Support from './pages/Support';
+import Conference from './pages/Conference';
+import Correspondence from './pages/Correspondence';
 
 Vue.use(Router);
 
@@ -406,7 +408,34 @@ const router = new Router({
                 extends: Chat,
                 onsNavigatorOptions: {animation: 'none'}
             },
-           beforeEnter: ifAuthenticated
+            beforeEnter: ifAuthenticated,
+            children: [
+                {
+                    path: ':user_id',
+                    name: 'Correspondence',
+                    component: {
+                        extends: Correspondence,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                    },
+                    beforeEnter: ifAuthenticated,
+                    meta: {
+                        hideFooter: true
+                    }
+                },
+                {
+                    path: ':conference_id',
+                    name: 'Conference',
+                    component: {
+                        extends: Conference,
+                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                    },
+                    beforeEnter: ifAuthenticated,
+                    meta: {
+                        hideFooter: true
+                    }
+                }
+
+            ]
         }
     ]
 });
