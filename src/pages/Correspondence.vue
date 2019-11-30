@@ -13,7 +13,6 @@
         <main>
             <Room
                     :response="response"
-                    :show-avatars="true"
                     :show-time-sent="true"
                     :show-interlocutor-typing="true"
                     :show-add-files-interface="true"

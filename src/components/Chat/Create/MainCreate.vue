@@ -12,7 +12,7 @@
 </template>
 
 <script>
-    import ContactsList from "./ContactsList";
+    import ContactsList from "../UsersList";
     import CreateChatHead from "./CreateChatHead";
     import CreateGroupChatHead from "./CreateGroupChatHead";
     import SelectedContacts from "./SelectedContacts";
@@ -22,6 +22,11 @@
         data () {
             return {
                 bGroup: false,
+            }
+        },
+        watch: {
+            '$route' () {
+                this.bGroup = false
             }
         }
     }

@@ -2,7 +2,7 @@
     <v-ons-page class="chat">
         <StickyHeader :show-back-button="false" :title="'Чат'">
             <div class="write-button-wrapper" slot="rightSideContent">
-                <button class="write-button">
+                <button class="write-button" @click="handleClick">
                 </button>
             </div>
         </StickyHeader>
@@ -20,12 +20,18 @@
     import SearchInput from "../components/Search/SearchInput";
     import Contacts from "../components/Chat/Contacts";
     import ContactsNotFound from "../components/Chat/ContactsNotFound";
+    import MainCreate from "../components/Chat/Create/MainCreate";
     export default {
         name: "Chat",
         components: {ContactsNotFound, Contacts, SearchInput, StickyHeader},
         data () {
             return {
-                bResponse: false
+                bResponse: true
+            }
+        },
+        methods: {
+            handleClick () {
+                this.$eventBus.$emit('open-action-sheet', MainCreate)
             }
         }
     }

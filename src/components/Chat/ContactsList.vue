@@ -6,7 +6,7 @@
                 :key="key"
                 @opened="opened"
             >
-               <div class="content">
+               <div class="content" @click="handleClick">
                 <div class="left-content">
                     <Avatar
                             class="avatar"
@@ -100,6 +100,9 @@
             }
         },
         methods: {
+            handleClick () {
+                this.$router.push(this.$route.path + '/correspondence/1')
+            },
             opened (e) {
                 if (e.status === true) {
                     e.target.querySelector('.time').style.display = 'none'

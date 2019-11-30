@@ -26,6 +26,7 @@ import Help from './pages/Help';
 import Support from './pages/Support';
 import Conference from './pages/Conference';
 import Correspondence from './pages/Correspondence';
+import AddMember from './pages/AddMember';
 
 Vue.use(Router);
 
@@ -432,7 +433,21 @@ const router = new Router({
                     beforeEnter: ifAuthenticated,
                     meta: {
                         hideFooter: true
-                    }
+                    },
+                    children: [
+                        {
+                            path: 'add',
+                            name: 'AddMember',
+                            component: {
+                                extends: AddMember,
+                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                            },
+                            beforeEnter: ifAuthenticated,
+                            meta: {
+                                hideFooter: true
+                            },
+                        }
+                    ]
                 }
 
             ]

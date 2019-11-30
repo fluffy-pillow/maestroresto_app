@@ -1,6 +1,9 @@
 <template>
     <v-ons-page class="conference">
-        <StickyHeader class="sticky-header" :title="'Новый чат'"
+        <StickyHeader class="sticky-header"
+                      :title="'Новый чат'"
+                      :sub-title="'3 учасника'"
+                      @onTitleClick="handleTitleClick"
         >
             <Avatar
                     class="avatar"
@@ -42,9 +45,13 @@
                     }
                 ]
             }
+        },
+        methods: {
+            handleTitleClick () {
+                console.log()
+                this.$router.push(this.$route.path + '/add')
+            }
         }
-
-
     }
 </script>
 

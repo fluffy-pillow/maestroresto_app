@@ -10,13 +10,18 @@
                 </div>
             </div>
             <div class="header-item">
-                <div class="title"
-                     v-if="title"
-                     :class="{
-                        uppercase: titleUppercase
-                      }"
-                >
-                    {{title}}
+                <div class="title-wrapper" @click="$emit('onTitleClick')">
+                    <div class="title"
+                         v-if="title"
+                         :class="{
+                            uppercase: titleUppercase,
+                          }"
+                    >
+                        {{title}}
+                    </div>
+                    <div class="subtitle" v-if="subTitle">
+                        {{subTitle}}
+                    </div>
                 </div>
             </div>
             <div class="header-item">
@@ -46,6 +51,10 @@
             titleUppercase: {
                 type: Boolean,
                 default: false
+            },
+            subTitle: {
+                type: String,
+                default: null
             }
         }
     }
@@ -127,4 +136,13 @@
         letter-spacing: unset;
     }
 
+    .subtitle {
+        font-size: 12px;
+        line-height: 14px;
+        /* identical to box height, or 117% */
+
+        letter-spacing: -0.14px;
+
+        color: #7C7C7C;
+    }
 </style>

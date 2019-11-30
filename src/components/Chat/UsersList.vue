@@ -1,14 +1,14 @@
 <template>
-    <ul class="contacts-list">
+    <ul class="users-list">
         <li
                 v-for="(item, key) of items"
                 :key="key"
-                class="contacts-block"
+                class="users-block"
         >
-                    <span class="contacts-block-head">
+                    <span class="users-block-head" v-if="alphabeticalOrdered">
                         {{item.letter}}
                     </span>
-            <ul class="contacts-part-list">
+            <ul class="users-part-list">
                 <li
                         v-for="(user, key) of item.users"
                         :key="key"
@@ -42,10 +42,16 @@
 </template>
 
 <script>
-    import Avatar from "../../Avatar";
+    import Avatar from "../Avatar";
     export default {
-        name: "ContactsList",
+        name: "UsersList",
         components: {Avatar},
+        props: {
+            alphabeticalOrdered: {
+                type: Boolean,
+                default: true
+            }
+        },
         data () {
             return {
                 items: [
@@ -110,15 +116,14 @@
 </script>
 
 <style scoped>
-    .contacts-list {
+    .users-list {
         padding-bottom: 81px;
     }
 
-    .contacts-block-head {
+    .users-block-head {
         background: #F4F6F9;
         height: 30px;
         line-height: 30px;
-        border-top: 1px solid #E6E6E6;
         display: block;
         padding-left: 15px;
         padding-right: 15px;
@@ -129,7 +134,7 @@
     }
 
     .contact-item {
-
+        border-bottom: 1px solid #E6E6E6;
     }
 
     .contact-info {
