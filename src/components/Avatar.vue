@@ -2,8 +2,8 @@
     <div class="avatar"
          :style="{width: size + 'px', height: size + 'px', minWidth: size + 'px'}"
     >
-        <div class="avatar-inner" :style="{backgroundImage: bg}" :class="{boxShadow: boxShadow}">
-
+        <div class="avatar-inner" :class="{boxShadow: boxShadow}">
+            <img :src="datasrc" @error="handleError">
         </div>
         <div class="status" v-if="online || messages"
              :class="{online: online && !messages}"
@@ -18,6 +18,11 @@
 <script>
     export default {
         name: "Avatar",
+        data () {
+            return {
+                datasrc: ''
+            }
+        },
         props: {
             src: String,
             size: Number,
@@ -34,10 +39,15 @@
                 default: false
             }
         },
-        computed: {
-            bg () {
-                return (this.src) ? 'url(' + this.src + ')' : 'url('+ require(`@/assets/images/no-avatar.svg`) + ')'
+        methods: {
+            handleError () {
+                this.datasrc = require(`@/assets/images/no-avatar.svg`)
             }
+        },
+        mounted () {
+            this.$nextTick(() => {
+                this.datasrc = this.src
+            })
         }
     }
 </script>
@@ -52,9 +62,16 @@
     height: inherit;
     overflow: hidden;
     border-radius: 50%;
-    background-size: cover;
-    background-position: center center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.avatar-inner img {
+    width: 100%;
+    height: auto;
+}
+
 .avatar-inner.boxShadow {
     box-shadow: 0px -1px 13px rgba(0, 0, 0, 0.4);
 }
