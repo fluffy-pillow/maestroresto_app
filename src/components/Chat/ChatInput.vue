@@ -76,11 +76,11 @@
     padding-left: 16px;
     padding-right: 16px;
     background: #F9FBFD;
+    padding-top: 8px;
 }
 
 .chat-input.focus {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-bottom: 0;
 }
 
 .container {

@@ -194,6 +194,7 @@
 }
 
 .time-separator {
+    margin-top: 35px;
     background: #DDDDDD;
     position: relative;
     height: 1px;
@@ -207,7 +208,7 @@
     top: 50%;
     padding-left: 8px;
     padding-right: 8px;
-    background-color: #ffffff;
+    background-color: #f9fbfd;
 }
 
 .time-separator-content {
@@ -224,5 +225,6 @@
     color: #000000;
     padding-top: 2px;
     padding-bottom: 2px;
+    background-color: #ffffff;
 }
 </style>

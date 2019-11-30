@@ -2,7 +2,7 @@
     <v-ons-page class="conference">
         <StickyHeader class="sticky-header"
                       :title="'Новый чат'"
-                      :sub-title="'3 учасника'"
+                      :sub-title="'3 участника'"
                       @onTitleClick="handleTitleClick"
         >
             <Avatar

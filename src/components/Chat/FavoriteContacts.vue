@@ -4,6 +4,7 @@
             <li class="favorite-contacts-item"
                 v-for="(item, key) of items"
                 :key="key"
+                @click="handleClick"
             >
                 <span class="content">
                     <Avatar
@@ -51,6 +52,11 @@
                         online: false,
                     }
                 ]
+            }
+        },
+        methods: {
+            handleClick () {
+                this.$router.push(this.$route.path + '/correspondence/1')
             }
         }
     }

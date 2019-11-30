@@ -124,6 +124,10 @@
     height: 48px
 }
 
+.audio-outer.dark-bg .track, .audio-outer.light-bg .track {
+    margin-top: 2px;
+}
+
 .audio-outer.light-bg .audio-inner {
     height: 48px
 }
