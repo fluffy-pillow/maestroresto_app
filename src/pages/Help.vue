@@ -2,25 +2,17 @@
     <v-ons-page class="help">
         <StickyHeader :title="'Помощь'"></StickyHeader>
         <main>
-            <HelpList>
-                <HelpItem
-                        v-for="(item, key) of items"
-                        :key="key"
-                        :data="item"
-                >
-                </HelpItem>
-            </HelpList>
+            <List class="list" :items="items" :item-height="44"></List>
         </main>
     </v-ons-page>
 </template>
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import HelpList from "../components/MenuPage/HelpPage/HelpList";
-    import HelpItem from "../components/MenuPage/HelpPage/HelpItem";
+    import List from "../components/List";
     export default {
         name: "Help",
-        components: {HelpItem, HelpList, StickyHeader},
+        components: {List, StickyHeader},
         data () {
             return {
                 items: [
@@ -39,5 +31,9 @@
         padding-top: 44px;
         margin-top: env(safe-area-inset-top);
         padding-bottom: 81px;
+    }
+
+    .list {
+        margin-top: 64px;
     }
 </style>

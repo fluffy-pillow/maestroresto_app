@@ -2,56 +2,51 @@
     <v-ons-page class="menu">
         <Header></Header>
         <main>
-            <MenuList>
-                <MenuItem
-                        v-for="(item, key) of items"
-                        :key="key"
-                        :data="item"
-                >
-                </MenuItem>
-            </MenuList>
+            <List :items="items" :attach-last-element-down="true" :content-offset="36"></List>
         </main>
     </v-ons-page>
 </template>
 
 <script>
     import Header from "../components/MenuPage/Header";
-    import MenuList from "../components/MenuPage/MenuList";
-    import MenuItem from "../components/MenuPage/MenuItem";
+    import List from "../components/List";
 
     export default {
         name: "Menu",
-        components: {MenuItem, MenuList, Header},
+        components: {List, Header},
         data () {
             return {
                 items: [
                     {
                         type: 'default',
                         title: 'Написать владельцу',
-                        class: 'write',
+                        icon: require('@/assets/images/write.svg'),
                         path: 'support'
                     },
                     {
                         type: 'notifications',
                         title: 'Уведомления',
-                        class: 'notifications',
+                        icon: require('@/assets/images/notifications.svg'),
+                        notifications: 3
 
                     },
                     {
                         type: 'default',
                         title: 'Настройки',
-                        class: 'settings',
+                        icon: require('@/assets/images/tuner.svg'),
+
                     },
                     {
                         type: 'default',
                         title: 'Помощь',
-                        class: ' help',
+                        icon: require('@/assets/images/help.svg'),
                         path: 'help'
                     },
                     {
                         type: 'default',
                         title: 'Выход',
-                        class: ' exit',
+                        icon: require('@/assets/images/exit.svg'),
+
                     }
                 ]
             }
