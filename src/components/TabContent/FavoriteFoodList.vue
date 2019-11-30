@@ -30,7 +30,7 @@
 
 <script>
     export default {
-        name: "Section",
+        name: "FavoriteFoodList",
         props: {
             data: Object
         },

@@ -39,8 +39,8 @@
 <script>
     import Tabbar from "../Tabbar";
     import TabsContent from "../TabsContent";
-    import Materials from "./Materials/Materials";
-    import Review from "./Review/Review";
+    import CourseMaterials from "../TabContent/CouseMaterials";
+    import CourseReview from "../TabContent/CourseReview";
     export default {
         name: "LoadedScreen",
         components: {TabsContent, Tabbar},
@@ -50,11 +50,11 @@
                 tabs: [
                     {
                         title: 'Обзор курса',
-                        component: Review
+                        component: CourseReview
                     },
                     {
                         title: 'Материалы',
-                        component: Materials
+                        component: CourseMaterials
                     },
                 ]
             }

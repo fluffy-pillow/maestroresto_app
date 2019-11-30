@@ -13,12 +13,12 @@
 </template>
 
 <script>
-    import MaterialsList from "./MaterialsList";
-    import MaterialItem from "./MaterialItem";
-    import FinalMaterialItem from "./FinalMaterialItem";
+    import MaterialsList from "../CoursePage/Materials/MaterialsList";
+    import MaterialItem from "../CoursePage/Materials/MaterialItem";
+    import FinalMaterialItem from "../CoursePage/Materials/FinalMaterialItem";
 
     export default {
-        name: "Materials",
+        name: "CourseMaterials",
         components: {FinalMaterialItem, MaterialItem, MaterialsList},
         data () {
             return {

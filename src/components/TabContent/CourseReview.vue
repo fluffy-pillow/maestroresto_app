@@ -25,9 +25,9 @@
 </template>
 
 <script>
-    import ReviewDesc from "./ReviewDesc";
-    import ReviewParamsList from "./ReviewParamsList";
-    import ReviewParamsItem from "./ReviewParamsItem";
+    import ReviewDesc from "../CoursePage/Review/ReviewDesc";
+    import ReviewParamsList from "../CoursePage/Review/ReviewParamsList";
+    import ReviewParamsItem from "../CoursePage/Review/ReviewParamsItem";
     export default {
         name: "Review",
         components: {ReviewParamsItem, ReviewParamsList, ReviewDesc},

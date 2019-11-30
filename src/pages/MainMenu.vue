@@ -19,7 +19,7 @@
     import StickyHeader from "@/components/StickyHeader";
     import Tabbar from "../components/Tabbar";
     import TabsContent from "../components/TabsContent";
-    import FoodList from "@/components/FavoritePage/MainMenuPage/FoodList";
+    import FavoriteFoodList from "@/components/TabContent/FavoriteFoodList";
     export default {
         name: "MainMenu",
         components: {TabsContent, Tabbar, StickyHeader},
@@ -29,7 +29,7 @@
                 tabs: [
                     {
                         title: 'Горячее',
-                        component: FoodList,
+                        component: FavoriteFoodList,
                         props: {
                             list: [
                                 {
@@ -47,7 +47,7 @@
                     },
                     {
                         title: 'Салаты',
-                        component: FoodList,
+                        component: FavoriteFoodList,
                         props: {
                             list: [
                                 {
@@ -65,7 +65,7 @@
                     },
                     {
                         title: 'Напитки',
-                        component: FoodList,
+                        component: FavoriteFoodList,
                         props: {
                             list: [
                                 {
@@ -83,7 +83,7 @@
                     },
                     {
                         title: 'Десерты',
-                        component: FoodList,
+                        component: FavoriteFoodList,
                         props: {
                             list: [
                                 {

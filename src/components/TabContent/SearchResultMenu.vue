@@ -42,7 +42,7 @@
 
 <script>
     import {mapGetters} from 'vuex'
-    import SearchNotFound from "./SearchNotFound";
+    import SearchNotFound from "../Search/SearchNotFound";
 
     export default {
         name: "SearchResultMenu",
