@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import ConfirmDeletion from './ConfirmDeletion'
+    import ConfirmDeletionFavorite from '../ActionSheetContent/ConfirmDeletionFavorite'
 
     export default {
         name: "FavoriteItem",
@@ -31,7 +31,7 @@
         },
         methods: {
             openConfirmDeletionWindow () {
-                this.$eventBus.$emit('open-action-sheet', ConfirmDeletion)
+                this.$eventBus.$emit('open-action-sheet', ConfirmDeletionFavorite)
             },
             openFavoriteItemPage () {
                 switch (this.data.type) {

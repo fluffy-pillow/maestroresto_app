@@ -81,7 +81,7 @@
     import Video from "../../../Video";
     import Audio from "../../../Audio";
     import DocFile from "../../../DocFile";
-    import MaterialPassed from "./MaterialPassed";
+    import MaterialPassed from "../../../ActionSheetContent/MaterialPassed";
     import Stars from "../../../Stars";
     export default {
         name: "MainMaterial",

@@ -8,7 +8,7 @@
         </StickyHeader>
         <main>
             <SearchInput :placeholder-text="'Поиск по контактам'"></SearchInput>
-            <Contacts v-if="bResponse"></Contacts>
+            <ChatContacts v-if="bResponse"></ChatContacts>
             <ContactsNotFound v-else></ContactsNotFound>
         </main>
     </v-ons-page>
@@ -18,12 +18,12 @@
 
     import StickyHeader from "../components/StickyHeader";
     import SearchInput from "../components/Search/SearchInput";
-    import Contacts from "../components/Chat/Contacts";
+    import ChatContacts from "../components/Chat/Contacts";
     import ContactsNotFound from "../components/Chat/ContactsNotFound";
-    import MainCreate from "../components/Chat/Create/MainCreate";
+    import CreateChat from "../components/ActionSheetContent/CreateChat";
     export default {
         name: "Chat",
-        components: {ContactsNotFound, Contacts, SearchInput, StickyHeader},
+        components: {ContactsNotFound, ChatContacts, SearchInput, StickyHeader},
         data () {
             return {
                 bResponse: true
@@ -31,7 +31,7 @@
         },
         methods: {
             handleClick () {
-                this.$eventBus.$emit('open-action-sheet', MainCreate)
+                this.$eventBus.$emit('open-action-sheet', CreateChat)
             }
         }
     }

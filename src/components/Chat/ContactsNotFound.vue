@@ -26,12 +26,12 @@
 </template>
 
 <script>
-    import MainCreate from "./Create/MainCreate";
+    import CreateChat from "../ActionSheetContent/CreateChat";
     export default {
         name: "ContactsNotFound",
         methods: {
             handleClick () {
-                this.$eventBus.$emit('open-action-sheet', MainCreate)
+                this.$eventBus.$emit('open-action-sheet', CreateChat)
             }
         }
     }

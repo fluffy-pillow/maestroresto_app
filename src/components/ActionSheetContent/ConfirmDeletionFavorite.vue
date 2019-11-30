@@ -1,5 +1,5 @@
 <template>
-    <div class="confirm-deletion">
+    <div class="confirm-deletion-favorite">
         <div class="title">
             Вы действительно хотите удалить из избранного?
         </div>
@@ -16,7 +16,7 @@
 
 <script>
     export default {
-        name: "ConfirmDeletion",
+        name: "ConfirmDeletionFavorite",
         methods: {
             removeItem () {
                 this.$eventBus.$emit('close-action-sheet')
@@ -26,7 +26,7 @@
 </script>
 
 <style scoped>
-.confirm-deletion {
+.confirm-deletion-favorite {
     margin-top: 39px;
     padding-left: 16px;
     padding-right: 16px;

@@ -12,12 +12,12 @@
 </template>
 
 <script>
-    import ContactsList from "../UsersList";
-    import CreateChatHead from "./CreateChatHead";
-    import CreateGroupChatHead from "./CreateGroupChatHead";
-    import SelectedContacts from "./SelectedContacts";
+    import ContactsList from "../Chat/UsersList";
+    import CreateChatHead from "../Chat/Create/CreateChatHead";
+    import CreateGroupChatHead from "../Chat/Create/CreateGroupChatHead";
+    import SelectedContacts from "../Chat/Create/SelectedContacts";
     export default {
-        name: "MainCreate",
+        name: "CreateChat",
         components: {SelectedContacts, CreateGroupChatHead, CreateChatHead, ContactsList},
         data () {
             return {
