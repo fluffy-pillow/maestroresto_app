@@ -9,6 +9,8 @@
             </div>
         </div>
         <div class="container">
+            <openAddFileInterfaceButton  v-if="showAddFilesInterface"></openAddFileInterfaceButton>
+            <AddFileInterface v-if="showAddFilesInterface"></AddFileInterface>
             <label class="input-label">
                 <ContentEditable
                         class="input-wrapper"
@@ -33,17 +35,24 @@
 
 <script>
     import ContentEditable from "../ContentEditable";
+    import openAddFileInterfaceButton from "./addFile/openAddFileInterfaceButton";
+    import AddFileInterface from "./addFile/AddFileInterface";
     export default {
         name: "ChatInput",
-        components: {ContentEditable},
+        components: {AddFileInterface, openAddFileInterfaceButton, ContentEditable},
         data () {
             return {
                 message: '',
-                bFocus: false
+                bFocus: false,
+                bOpenAddFileInterface: false
             }
         },
         props: {
             showInterlocutorTyping: {
+                type: Boolean,
+                default: false
+            },
+            showAddFilesInterface: {
                 type: Boolean,
                 default: false
             }
@@ -82,6 +91,7 @@
     margin-top: 8px;
     display: flex;
     background-color: #ffffff;
+    position: relative;
 }
 
 .chat-input.empty .container {

@@ -5,7 +5,12 @@
                      :show-time-sent="showTimeSent"
         >
         </MessageList>
-        <ChatInput :show-interlocutor-typing="showInterlocutorTyping"></ChatInput>
+        <ChatInput
+                :show-interlocutor-typing="showInterlocutorTyping"
+                :show-add-files-interface="showAddFilesInterface"
+        >
+
+        </ChatInput>
     </div>
 </template>
 
@@ -28,7 +33,12 @@
             showInterlocutorTyping: {
                 type: Boolean,
                 default: false
+            },
+            showAddFilesInterface: {
+                type: Boolean,
+                default: false
             }
+
         }
     }
 </script>

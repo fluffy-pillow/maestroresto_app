@@ -16,6 +16,7 @@
                     :show-avatars="true"
                     :show-time-sent="true"
                     :show-interlocutor-typing="true"
+                    :show-add-files-interface="true"
             ></Room>
         </main>
     </v-ons-page>
