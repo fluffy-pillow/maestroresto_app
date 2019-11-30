@@ -1,5 +1,5 @@
 <template>
-    <div class="audio-outer">
+    <div class="audio-outer" :class="styleVariant">
         <div class="audio-middle">
             <audio controls :src="audio" ref="audioRef" type="audio/wav">
            </audio>
@@ -19,7 +19,7 @@
                     <div class="audio-name">
                         {{audioName}}
                     </div>
-                    <div class="track" @click="rewind">
+                    <div class="track" @click="rewind" v-if="currentTime > 0">
                         <div class="current-time-track" :style="{width: currentTimePercent + '%'}">
 
                         </div>
@@ -47,7 +47,11 @@
         },
         props: {
             audio: String,
-            audioName: String
+            audioName: String,
+            styleVariant: {
+                type: String,
+                default: ''
+            }
         },
         methods: {
             play () {
@@ -107,6 +111,36 @@
     align-items: center;
 }
 
+
+.audio-outer.dark-bg .audio-name {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.16px;
+    color: #FFFFFF;
+}
+
+.audio-outer.dark-bg .audio-inner {
+    background: transparent;
+    height: 48px
+}
+
+.audio-outer.light-bg .audio-inner {
+    height: 48px
+}
+
+.audio-outer.dark-bg .play svg path {
+    stroke: #ffffff;
+    fill: #ffffff;
+}
+
+.audio-outer.dark-bg .time {
+    color: #ffffff;
+}
+
+.audio-outer.dark-bg .current-time-track:after {
+    background-color: #ffffff;
+}
+
 .audio-middle {
     display: flex;
 }
@@ -161,6 +195,7 @@ audio {
     margin-left: 16px;
     margin-right: 22px;
     flex: 1;
+    min-width: 100px;
 }
 
 .audio-name {

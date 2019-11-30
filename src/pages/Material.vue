@@ -45,7 +45,6 @@
                     </p>
 
                     <Audio :audio="audio" :audio-name="audioName"></Audio>
-
                     <p class="desc-text">
                         Открывая ресторанный бизнес, Вы можете идти по пути инвестиции денег в проект, создаваемый «с нуля», а можете купить уже кем-то сделанный, налаженный ресторан. В мировой практике – сначала создать идею, а потом уже подыскать для неё помещение.
                     </p>
@@ -91,9 +90,10 @@
     import Stars from "../components/Stars";
     import Video from "../components/Video";
     import MaterialPassed from "../components/ActionSheetContent/MaterialPassed";
+    import Audio from "../components/Audio";
     export default {
         name: "Material",
-        components: {Video, Stars, DocFile, FavoriteButton, StickyHeader},
+        components: {Audio, Video, Stars, DocFile, FavoriteButton, StickyHeader},
         data () {
             return {
                 videoName: 'Название видео',

@@ -1,5 +1,5 @@
 <template>
-    <a class="doc-file-outer" href="">
+    <a class="doc-file-outer" href="" :class="styleVariant">
         <span class="doc-file-middle">
             <span class="doc-file-inner">
                 <span class="icon">
@@ -22,7 +22,11 @@
         name: "DocFile",
         props: {
             doc: String,
-            name: String
+            name: String,
+            styleVariant: {
+                type: String,
+                default: ''
+            }
         }
     }
 </script>
@@ -34,6 +38,26 @@
         width: 100%;
         height: 100%;
         border-radius: 16px;
+    }
+
+    .doc-file-outer.dark-bg {
+        height: 48px;
+    }
+
+    .doc-file-outer.light-bg {
+        height: 48px;
+    }
+
+    .doc-file-outer.dark-bg .doc-file-middle {
+        background: transparent;
+    }
+
+    .doc-file-outer.dark-bg .icon svg path {
+        fill: #ffffff;
+    }
+
+    .doc-file-outer.dark-bg .name {
+        color: #ffffff;
     }
 
     .doc-file-outer {

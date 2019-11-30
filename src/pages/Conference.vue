@@ -42,13 +42,39 @@
                     {
                         from: 'interlocutor',
                         text: 'Уверен, что вы слышали выражение «Пойдем посидим». В нем заключается вся суть хождения по кафе, ресторанам и барам. В первую очередь люди ходят туда не вкусно и дешево поесть, а пообщаться – на других посмотреть и себя показать. Но при этом кухня всегда должна быть на уровне.'
+                    },
+                    {
+                        from: 'interlocutor',
+                        audio: "https://hpr.dogphilosophy.net/test/wav.wav",
+                        audioName: 'audio №1',
+                    },
+                    {
+                        from: 'me',
+                        audio: "https://hpr.dogphilosophy.net/test/wav.wav",
+                        audioName: 'audio №1',
+                    },
+                    {
+                        from: 'me',
+                        text: 'Спасибо'
+                    },
+                    {
+                        from: 'interlocutor',
+                        docName: 'Управление рестараном.doc'
+                    },
+                    {
+                        from: 'me',
+                        docName: 'Управление рестараном.doc'
+                    },
+                    {
+                        from: 'interlocutor',
+                        videoName: 'Название видео',
+                        video: "http://techslides.com/demos/sample-videos/small.mp4",
                     }
                 ]
             }
         },
         methods: {
             handleTitleClick () {
-                console.log()
                 this.$router.push(this.$route.path + '/add')
             }
         }
