@@ -89,8 +89,17 @@
     flex: 1;
     background: #F9FBFD;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.message-list::-webkit-scrollbar {
+    display: none;
+}
+
+.message-list::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
 .container {
