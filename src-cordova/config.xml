@@ -24,11 +24,18 @@
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:usesCleartextTraffic="true" />
         </edit-config>
+        <icon src="res/icon/android/ldpi.png" density="ldpi" />
+        <icon src="res/icon/android/mdpi.png" density="mdpi" />
+        <icon src="res/icon/android/hdpi.png" density="hdpi" />
+        <icon src="res/icon/android/xhdpi.png" density="xhdpi" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <splash src="res/screen/ios/Default@2x~iphone~anyany.png" />
+        <icon src="res/icon/ios/icon-60.png" width="60" height="60" />
+        <icon src="res/icon/ios/icon-60@2x.png" width="120" height="120" />
+        <icon src="res/icon/ios/icon-60@3x.png" width="180" height="180" />
     </platform>
     <preference name="fullscreen" value="false" />
     <preference name="loadUrlTimeoutValue" value="700000" />

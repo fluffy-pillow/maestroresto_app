@@ -61,6 +61,8 @@ Vue.prototype.$http = Axios;
 
 sync(store, router)
 
+let pushNotification
+
 const app = new Vue({
     store,
     i18n,
@@ -74,6 +76,7 @@ const app = new Vue({
         onDeviceReady() {
             let that = this
             Keyboard.shrinkView(false);
+            pushNotification = window.plugins.pushNotification;
 //            Keyboard.shrinkView(false);
             Keyboard.hideFormAccessoryBar(true);
             Keyboard.disableScrollingInShrinkView(true);
