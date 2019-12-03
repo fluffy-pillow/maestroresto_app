@@ -57,7 +57,7 @@
 
                         <DishComposition></DishComposition>
                         <Allergens></Allergens>
-                        <Characteristics></Characteristics>
+                        <DishCharacteristics></DishCharacteristics>
                     </div>
                 </div>
             </main>
@@ -69,10 +69,10 @@
     import StickyHeader from "../components/StickyHeader";
     import DishComposition from "../components/Lists/DishComposition/DishComposition";
     import Allergens from "../components/Lists/Allergens";
-    import Characteristics from "../components/Lists/DishCharacteristics/DishCharacteristics";
+    import DishCharacteristics from "../components/Lists/DishCharacteristics/DishCharacteristics";
     export default {
         name: "Slug",
-        components: {Characteristics, Allergens, DishComposition, StickyHeader},
+        components: {DishCharacteristics, Allergens, DishComposition, StickyHeader},
         data () {
             return {
                 bShowStickyHeader: false,
@@ -100,7 +100,7 @@
         display: flex;
         align-items: center;
         padding-left: 16px;
-        padding-right: 16px;
+        padding-right: 16px
     }
 
     .video-outer {

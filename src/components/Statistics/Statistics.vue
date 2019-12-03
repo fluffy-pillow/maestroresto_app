@@ -1,6 +1,6 @@
 <template>
     <section class="statistics">
-        <PreloadBlock :class="{show: !bShow}"  v-if="!$parent.bLoaded"></PreloadBlock>
+        <PreloadBlock :class="{show: !bShow}"  v-if="!bLoaded"></PreloadBlock>
         <LoadedBlock
                 v-if="bShow"
                 :class="{show: bShow}"
@@ -26,7 +26,16 @@
             bShow () {
                 return (this.status && this.leaderboard && this.loyalty)
             }
+        },
+        asyncComputed: {
+            bLoaded () {
+                if (this.status && this.leaderboard && this.loyalty) {
+                    return new Promise(resolve =>
+                        setTimeout(() => resolve(true), 200))
+                }
+            }
         }
+
     }
 </script>
 

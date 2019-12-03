@@ -37,7 +37,6 @@
         <icon src="res/icon/ios/icon-60@2x.png" width="120" height="120" />
         <icon src="res/icon/ios/icon-60@3x.png" width="180" height="180" />
     </platform>
-    <preference name="fullscreen" value="false" />
     <preference name="loadUrlTimeoutValue" value="700000" />
     <preference name="SplashScreenDelay" value="2000" />
     <preference name="AutoHideSplashScreen" value="true" />

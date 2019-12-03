@@ -1,6 +1,6 @@
 <template>
     <section class="tests">
-        <PreloadBlock :class="{show: !bShow}" v-if="!$parent.bLoaded"></PreloadBlock>
+        <PreloadBlock :class="{show: !bShow}" v-if="!bLoaded"></PreloadBlock>
         <LoadedBlock
                 v-if="bShow"
                 :unfinished-tests="unfinishedTests"
@@ -27,6 +27,14 @@
         computed: {
             bShow () {
                 return this.unfinishedTests !== null
+            }
+        },
+        asyncComputed: {
+            bLoaded () {
+                if (this.unfinishedTests !== null) {
+                    return new Promise(resolve =>
+                        setTimeout(() => resolve(true), 200))
+                }
             }
         }
     }

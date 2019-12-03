@@ -10,6 +10,7 @@ import router from './router'
 import store from './store'
 import i18n from './i18n'
 import Axios from 'axios'
+import AsyncComputed from 'vue-async-computed'
 import VueCarousel from 'vue-carousel';
 import Vue2TouchEvents from 'vue2-touch-events'
 import VueOnsen from 'vue-onsenui/esm';
@@ -38,6 +39,7 @@ Vue.use(VueOnsen)
 Vue.use(VueRouter)
 Vue.use(VueCarousel);
 Vue.use(Vue2TouchEvents)
+Vue.use(AsyncComputed)
 Vue.mixin(mixin)
 Vue.component(VOnsPage.name, VOnsPage);
 Vue.component(VOnsNavigator.name, VOnsNavigator);

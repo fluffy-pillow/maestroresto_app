@@ -125,6 +125,10 @@ export default {
   margin: 0 !important;
 }
 
+.toolbar+.page__background {
+  top: 0 !important;
+}
+
 .toolbar.toolbar--material+.page__background+.page__content, .toolbar+.page__background+.page__content {
   top: 0 !important;
 }

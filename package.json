@@ -29,6 +29,7 @@
     "save": "^2.4.0",
     "v-click-outside": "^2.1.5",
     "vue": "^2.6.10",
+    "vue-async-computed": "^3.7.0",
     "vue-axios": "^2.1.5",
     "vue-carousel": "^0.18.0",
     "vue-content-loading": "^1.6.0",

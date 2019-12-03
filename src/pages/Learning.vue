@@ -40,6 +40,7 @@
         components: {SearchDropdown, SearchInput, SalesTechnique, Structure, Courses, Favorite},
         data () {
             return {
+                bLoaded: false,
                 bTransformed: false,
                 pageContent: null,
                 unfinishedCourses: [

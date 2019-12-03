@@ -59,18 +59,10 @@
                 this.unfinishedCourses = response.unfinishedCourses
                 this.unfinishedTests = response.unfinishedTests
             },
-            hidePreloaders () {
-                if (!this.bLoaded) {
-                    setTimeout(() => {
-                        this.bLoaded = true
-                    }, 200)
-                }
-            },
             localDBRequest () {
                 dashboardDB.getData(response => {
                     if (!response.error) {
                         this.writeData(response)
-                        this.hidePreloaders()
                     } else {
                         this.localDBerror = true
                     }

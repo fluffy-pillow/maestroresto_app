@@ -79,6 +79,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        margin-top: calc(env(safe-area-inset-top)*-7)!important;
     }
 
 
