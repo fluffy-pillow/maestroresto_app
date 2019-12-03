@@ -50,7 +50,7 @@
 </template>
 
 <script>
-    import Stars from "../Stars";
+    import Stars from "../../Stars";
     export default {
         name: "StructureItem",
         components: {Stars},

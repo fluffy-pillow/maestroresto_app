@@ -60,11 +60,11 @@
 }
 
 .favorite-item.barMenu .container {
-    background-image: url("../../../assets/images/bar-menu.svg") !important;
+    background-image: url("../../../../assets/images/bar-menu.svg") !important;
 }
 
 .favorite-item.mainMenu .container {
-    background-image: url("../../../assets/images/main-menu.svg") !important;
+    background-image: url("../../../../assets/images/main-menu.svg") !important;
 }
 
 .container {

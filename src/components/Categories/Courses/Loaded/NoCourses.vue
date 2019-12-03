@@ -54,7 +54,7 @@
     min-width: 30px;
     height: 32px;
     display: flex;
-    background-image: url(../../../assets/images/learning.svg);
+    background-image: url(../../../../assets/images/learning.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;

@@ -9,7 +9,7 @@
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import Structure from "../components/Structure/Structure";
+    import Structure from "../components/Categories/Structure/Structure";
     export default {
         name: "Structure",
         components: {StickyHeader, Structure}

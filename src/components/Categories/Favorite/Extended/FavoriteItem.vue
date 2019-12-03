@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import ConfirmDeletionFavorite from '../ActionSheetContent/ConfirmDeletionFavorite'
+    import ConfirmDeletionFavorite from '../../../ActionSheetContent/ConfirmDeletionFavorite'
 
     export default {
         name: "FavoriteItem",
@@ -93,11 +93,11 @@
 }
 
 .favorite-item.barMenu .icon {
-    background-image: url(../../assets/images/brandy.svg);
+    background-image: url(../../../../assets/images/brandy.svg);
 }
 
 .favorite-item.mainMenu .icon {
-    background-image: url(../../assets/images/food.svg);
+    background-image: url(../../../../assets/images/food.svg);
 }
 
 .favorite-item.mainMenu .icon {
