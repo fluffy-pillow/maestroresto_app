@@ -9,7 +9,7 @@
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import Favorite from "../components/Categories/Favorite/Extended/Favorite";
+    import Favorite from "../components/Lists/Favorite/Extended/Favorite";
 
     export default {
         name: "Favorite",

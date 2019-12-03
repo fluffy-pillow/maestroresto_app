@@ -22,9 +22,9 @@
     import dashboardDB from "@/db/dashboardDB";
     import DashboardService from '@/services/DashboardService'
     import Statistics from "../components/Statistics/Statistics";
-    import Tasks from "../components/Categories/Tasks/Tasks";
-    import Courses from "../components/Categories/Courses/Courses";
-    import Tests from "../components/Categories/Tests/Tests";
+    import Tasks from "../components/Lists/Tasks/Tasks";
+    import Courses from "../components/Lists/Courses/Courses";
+    import Tests from "../components/Lists/Tests/Tests";
 
 
     export default {

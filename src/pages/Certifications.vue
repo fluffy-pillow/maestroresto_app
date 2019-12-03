@@ -10,8 +10,8 @@
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import Certifications from "../components/Categories/Certifications/Certifications";
-    import CertificationsNotFound from "../components/Categories/Certifications/CertificationsNotFound";
+    import Certifications from "@/components/Lists/Certifications/Certifications";
+    import CertificationsNotFound from "../components/Lists/Certifications/CertificationsNotFound";
 
     export default {
         name: "Certifications",

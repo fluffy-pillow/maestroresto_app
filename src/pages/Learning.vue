@@ -28,10 +28,10 @@
 
 <script>
     import {mapGetters} from 'vuex'
-    import Favorite from "../components/Categories/Favorite/Default/Favorite";
-    import Courses from "../components/Categories/Courses/Courses";
-    import Structure from "../components/Categories/Structure/Structure";
-    import SalesTechnique from "../components/Categories/SalesTechnique/SalesTechnique";
+    import Favorite from "../components/Lists/Favorite/Default/Favorite";
+    import Courses from "../components/Lists/Courses/Courses";
+    import Structure from "../components/Lists/Structure/Structure";
+    import SalesTechnique from "../components/Lists/SalesTechnique/SalesTechnique";
     import SearchInput from "../components/Search/SearchInput";
     import SearchDropdown from "../components/Search/SearchDropdown";
 
