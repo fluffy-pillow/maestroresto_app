@@ -16,7 +16,7 @@
 <script>
     import Position from "./Position";
     import Progress from "./Progress";
-    import Stars from "../../Stars";
+    import Stars from "../Stars";
     export default {
         name: "Statistics",
         components: {Stars, Progress, Position},

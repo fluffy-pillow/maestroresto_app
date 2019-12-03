@@ -2,15 +2,7 @@
     <v-ons-page class="certifications">
         <StickyHeader :title="'Аттестации'" :show-back-button="false"></StickyHeader>
         <main :class="{empty: !response || response.length === 0}">
-            <CertificationsList v-if="response && response.length > 0">
-                <CertificationsItem
-                        v-for="(item, key) of response"
-                        :key="key"
-                        :data="item"
-                >
-
-                </CertificationsItem>
-            </CertificationsList>
+            <Certifications v-if="response && response.length > 0" :data="response"></Certifications>
             <CertificationsNotFound v-else></CertificationsNotFound>
         </main>
     </v-ons-page>
@@ -18,13 +10,12 @@
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import CertificationsList from "../components/CertificationsPage/CertificationsList";
-    import CertificationsItem from "../components/CertificationsPage/CertificationsItem";
-    import CertificationsNotFound from "../components/CertificationsPage/CertificationsNotFound";
+    import Certifications from "../components/Categories/Certifications/Certifications";
+    import CertificationsNotFound from "../components/Categories/Certifications/CertificationsNotFound";
 
     export default {
         name: "Certifications",
-        components: {CertificationsNotFound, CertificationsItem, CertificationsList, StickyHeader},
+        components: {CertificationsNotFound, StickyHeader, Certifications},
         data () {
             return {
 //                response: []

@@ -1,36 +1,32 @@
 <template>
     <section class="review">
-        <ReviewDesc
-                :title="'Описание курса'"
-                :text="'В процессе обучения вы получите знания и навыки, необходимые официанту в общении с гостем — правила поведения, этикет, встреча и приветствие гостя, психотипы гостей. Научитесь разбираться в меню, а так же в классификации и\n'+
-'видах алкогольных напитков, в правилах их подачи и употребления.'"
-        >
-        </ReviewDesc>
-        <ReviewDesc :title="'Что тебя ждет?'">
-            <ReviewParamsList>
-                <ReviewParamsItem
-                        v-for="(item, key) of items"
-                        :key="key"
-                        :data="item"
-                >
-                </ReviewParamsItem>
-            </ReviewParamsList>
-        </ReviewDesc>
-        <ReviewDesc
-                :title="'Результат итоговой аттестацииа'"
-                :text="'Пройдите успешно обучение и сдайте итоговую аттестацию, чтобы увидеть результат'"
-        >
-        </ReviewDesc>
+        <div class="review-desc">
+            <h4 class="title">Описание курса</h4>
+            <p class="text">
+                В процессе обучения вы получите знания и навыки, необходимые официанту в общении с гостем — правила поведения, этикет, встреча и приветствие гостя, психотипы гостей. Научитесь разбираться в меню, а так же в классификации и
+                видах алкогольных напитков, в правилах их подачи и употребления
+            </p>
+        </div>
+
+        <div class="review-desc">
+            <h4 class="title">Что тебя ждет</h4>
+            <ReviewInfo :items="items"></ReviewInfo>
+        </div>
+
+        <div class="review-desc">
+            <h4 class="title">Результат итоговой аттестации</h4>
+            <p class="text">
+                Пройдите успешно обучение и сдайте итоговую аттестацию, чтобы увидеть результат
+            </p>
+        </div>
     </section>
 </template>
 
 <script>
-    import ReviewDesc from "../CoursePage/Review/ReviewDesc";
-    import ReviewParamsList from "../CoursePage/Review/ReviewParamsList";
-    import ReviewParamsItem from "../CoursePage/Review/ReviewParamsItem";
+    import ReviewInfo from "../Lists/ReviewInfo/ReviewInfo";
     export default {
         name: "Review",
-        components: {ReviewParamsItem, ReviewParamsList, ReviewDesc},
+        components: {ReviewInfo},
         data () {
             return {
                 items: [
@@ -72,4 +68,20 @@
     padding-bottom: 250px;
 }
 
+.review-desc {
+    padding-top: 24px;
+}
+
+
+.title {
+    text-transform: uppercase;
+}
+
+.text {
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: -0.078px;
+    color: #4B4B4B;
+    margin-top: 8px;
+}
 </style>

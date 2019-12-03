@@ -1,25 +1,15 @@
 <template>
     <section class="materials">
-        <MaterialsList>
-            <MaterialItem
-                    v-for="(item, key) of items"
-                    :key="key"
-                    :data="item"
-            >
-            </MaterialItem>
-            <FinalMaterialItem></FinalMaterialItem>
-        </MaterialsList>
+        <Materials :items="items"></Materials>
     </section>
 </template>
 
 <script>
-    import MaterialsList from "../CoursePage/Materials/MaterialsList";
-    import MaterialItem from "../CoursePage/Materials/MaterialItem";
-    import FinalMaterialItem from "../CoursePage/Materials/FinalMaterialItem";
+    import Materials from "../Lists/Materials/Materials";
 
     export default {
         name: "CourseMaterials",
-        components: {FinalMaterialItem, MaterialItem, MaterialsList},
+        components: {Materials},
         data () {
             return {
                 items: [

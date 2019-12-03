@@ -55,7 +55,7 @@
 
                         <Video :video="video"></Video>
 
-                        <Composition></Composition>
+                        <DishComposition></DishComposition>
                         <Allergens></Allergens>
                         <Characteristics></Characteristics>
                     </div>
@@ -67,12 +67,12 @@
 
 <script>
     import StickyHeader from "../components/StickyHeader";
-    import Composition from "../components/FavoritePage/MainMenuPage/Slug/Composition";
-    import Allergens from "../components/FavoritePage/MainMenuPage/Slug/Allergens";
-    import Characteristics from "../components/FavoritePage/MainMenuPage/Slug/Characteristics";
+    import DishComposition from "../components/Lists/DishComposition/DishComposition";
+    import Allergens from "../components/Lists/Allergens";
+    import Characteristics from "../components/Lists/DishCharacteristics/DishCharacteristics";
     export default {
         name: "Slug",
-        components: {Characteristics, Allergens, Composition, StickyHeader},
+        components: {Characteristics, Allergens, DishComposition, StickyHeader},
         data () {
             return {
                 bShowStickyHeader: false,

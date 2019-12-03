@@ -31,7 +31,7 @@
     import Favorite from "../components/Categories/Favorite/Default/Favorite";
     import Courses from "../components/Categories/Courses/Courses";
     import Structure from "../components/Categories/Structure/Structure";
-    import SalesTechnique from "../components/LearningPage/SalesTechnique/SalesTechnique";
+    import SalesTechnique from "../components/Categories/SalesTechnique/SalesTechnique";
     import SearchInput from "../components/Search/SearchInput";
     import SearchDropdown from "../components/Search/SearchDropdown";
 

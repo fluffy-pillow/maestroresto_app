@@ -21,10 +21,10 @@
     import User from "@/components/DashboardPage/User/User";
     import dashboardDB from "@/db/dashboardDB";
     import DashboardService from '@/services/DashboardService'
-    import Statistics from "../components/DashboardPage/Statistics/Statistics";
-    import Tasks from "../components/DashboardPage/Tasks/Tasks";
+    import Statistics from "../components/Categories/Statistics/Statistics";
+    import Tasks from "../components/Categories/Tasks/Tasks";
     import Courses from "../components/Categories/Courses/Courses";
-    import Tests from "../components/DashboardPage/Tests/Tests";
+    import Tests from "../components/Categories/Tests/Tests";
 
 
     export default {
