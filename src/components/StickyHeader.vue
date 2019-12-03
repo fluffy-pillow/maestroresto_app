@@ -129,6 +129,7 @@
         font-weight: 500;
         font-size: 16px;
         line-height: 16px;
+        text-align: center;
     }
 
     .title.uppercase {
@@ -142,7 +143,7 @@
         /* identical to box height, or 117% */
 
         letter-spacing: -0.14px;
-
+        text-align: center;
         color: #7C7C7C;
     }
 </style>
