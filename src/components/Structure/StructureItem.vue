@@ -1,6 +1,6 @@
 <template>
     <li class="structure-item" :style="{background: bg}"
-        @click="$router.push('learning/course')">
+        @click="openCourse">
         <div class="pic" v-if="data.image && this.data.progress === 100">
             <img :src="require(`@/assets/uploads/${this.data.image}`)">
         </div>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-    import Stars from "../../Stars";
+    import Stars from "../Stars";
     export default {
         name: "StructureItem",
         components: {Stars},
@@ -68,6 +68,11 @@
                     return 'linear-gradient(rgba(75, 75, 75, 0.6), rgba(75, 75, 75, 0.6)),' +
                     'url(' + image + ') no-repeat scroll 50% 50%'
                 }
+            }
+        },
+        methods: {
+            openCourse () {
+                this.$router.push(this.$route.path + '/course')
             }
         }
     }

@@ -30,7 +30,7 @@
     import {mapGetters} from 'vuex'
     import Favorite from "../components/LearningPage/Favorite/Favorite";
     import Courses from "../components/Courses/Courses";
-    import Structure from "../components/LearningPage/Structure/Structure";
+    import Structure from "../components/Structure/Structure";
     import SalesTechnique from "../components/LearningPage/SalesTechnique/SalesTechnique";
     import SearchInput from "../components/Search/SearchInput";
     import SearchDropdown from "../components/Search/SearchDropdown";

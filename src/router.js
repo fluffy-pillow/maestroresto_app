@@ -265,6 +265,58 @@ const router = new Router({
                         onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
                     },
                     beforeEnter: ifAuthenticated,
+                    children: [
+                        {
+                            path: 'course',
+                            name: 'Course',
+                            component: {
+                                extends: Course,
+                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                            },
+                            beforeEnter: ifAuthenticated,
+                            children: [
+                                {
+                                    path: 'material',
+                                    name: 'Material',
+                                    component: {
+                                        extends: Material,
+                                        onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                                    },
+                                    beforeEnter: ifAuthenticated,
+                                    meta: {
+                                        hideFooter: true
+                                    },
+                                    children: [
+                                        {
+                                            path: 'test/:id',
+                                            name: 'Test',
+                                            component: {
+                                                extends: Test,
+                                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                                            },
+                                            beforeEnter: ifAuthenticated,
+                                            meta: {
+                                                hideFooter: true
+                                            },
+                                        },
+                                        {
+                                            path: 'results',
+                                            name: 'TestResults',
+                                            component: {
+                                                extends: TestResults,
+                                                onsNavigatorOptions: {animation: 'slide', animationOptions: { duration: 0.5 }}
+                                            },
+                                            beforeEnter: ifAuthenticated,
+                                            meta: {
+                                                hideFooter: true
+                                            }
+                                        }
+
+                                    ]
+                                }
+                            ]
+                        },
+                    ]
                 },
                 {
                     path: 'course',

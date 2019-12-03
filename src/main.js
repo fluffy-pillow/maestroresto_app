@@ -76,7 +76,7 @@ const app = new Vue({
         onDeviceReady() {
             let that = this
             Keyboard.shrinkView(false);
-            pushNotification = window.plugins.pushNotification;
+//            pushNotification = window.plugins.pushNotification;
 //            Keyboard.shrinkView(false);
             Keyboard.hideFormAccessoryBar(true);
             Keyboard.disableScrollingInShrinkView(true);
