@@ -1,5 +1,5 @@
 <template>
-    <li class="review-params-item">
+    <li class="review-info-item">
         <span class="icon" :class="data.type">
 
         </span>
@@ -11,7 +11,7 @@
 
 <script>
     export default {
-        name: "ReviewParamsItem",
+        name: "ReviewInfoItem",
         props: {
             data: Object
         }
@@ -19,7 +19,7 @@
 </script>
 
 <style scoped>
-.review-params-item {
+.review-info-item {
     width: 50%;
     display: flex;
     align-items: center;
