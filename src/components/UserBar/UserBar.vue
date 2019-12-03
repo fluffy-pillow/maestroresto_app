@@ -15,7 +15,7 @@
     import LoadedBlock from "./LoadedBlock";
 
     export default {
-        name: "User",
+        name: "UserBar",
         components: {LoadedBlock, PreloadBlock},
         data () {
             return {

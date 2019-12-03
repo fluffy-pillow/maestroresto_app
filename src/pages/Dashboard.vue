@@ -1,6 +1,6 @@
 <template>
     <v-ons-page class="dashboard" id="dashboard">
-        <User></User>
+        <UserBar></UserBar>
         <div class="bg-circles">
             <svg width="293" height="303" viewBox="0 0 293 303" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="146.5" cy="146.5" r="146" stroke="#F2F4F5"/>
@@ -18,10 +18,10 @@
 
 <script>
     import {mapGetters, mapActions} from 'vuex'
-    import User from "@/components/DashboardPage/User/User";
+    import UserBar from "@/components/UserBar/UserBar";
     import dashboardDB from "@/db/dashboardDB";
     import DashboardService from '@/services/DashboardService'
-    import Statistics from "../components/Categories/Statistics/Statistics";
+    import Statistics from "../components/Statistics/Statistics";
     import Tasks from "../components/Categories/Tasks/Tasks";
     import Courses from "../components/Categories/Courses/Courses";
     import Tests from "../components/Categories/Tests/Tests";
@@ -34,7 +34,7 @@
             Courses,
             Tasks,
             Statistics,
-            User,
+            UserBar,
         },
         data () {
             return {
