@@ -1,25 +1,29 @@
 <template>
     <section class="courses">
         <PreloadBlock :class="{show: !bShow}" v-if="!$parent.bLoaded"></PreloadBlock>
-        <LoadedBlock
+        <CoursesLoadedBlock
                 v-if="bShow"
                 :class="{show: bShow}"
                 :unfinished-courses="unfinishedCourses"
         >
 
-        </LoadedBlock>
+        </CoursesLoadedBlock>
     </section>
 </template>
 
 <script>
-    import PreloadBlock from "./PreloadBlock";
-    import LoadedBlock from "./LoadedBlock";
+    import PreloadBlock from "./Preload/CoursesPreloadBlock";
+    import CoursesLoadedBlock from "./Loaded/CoursesLoadedBlock";
     export default {
         name: "Courses",
-        components: {LoadedBlock, PreloadBlock},
+        components: {CoursesLoadedBlock, PreloadBlock},
         props: {
             unfinishedCourses: {
                 type: Array
+            },
+            showHead: {
+                type: Boolean,
+                default: true
             }
         },
         computed: {

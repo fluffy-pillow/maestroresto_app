@@ -23,7 +23,7 @@
     import DashboardService from '@/services/DashboardService'
     import Statistics from "../components/DashboardPage/Statistics/Statistics";
     import Tasks from "../components/DashboardPage/Tasks/Tasks";
-    import Courses from "../components/DashboardPage/Courses/Courses";
+    import Courses from "../components/Courses/Courses";
     import Tests from "../components/DashboardPage/Tests/Tests";
 
 

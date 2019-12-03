@@ -1,16 +1,6 @@
 <template>
     <div class="preload-block">
-        <div class="head">
-            <vue-content-loading class="title" :width="150" :height="13">
-                <rect width="150" height="13" rx="3" fill="#EFF1F2"/>
-            </vue-content-loading>
-
-
-            <vue-content-loading class="arrow" :width="17" :height="13">
-                <rect width="17" height="13" rx="3" fill="#EFF1F2"/>
-            </vue-content-loading>
-
-        </div>
+        <CoursesPreloadHead  v-if="$parent.showHead"></CoursesPreloadHead>
         <div class="body">
             <div class="items">
                 <vue-content-loading
@@ -30,11 +20,12 @@
 
 <script>
     import VueContentLoading from 'vue-content-loading';
+    import CoursesPreloadHead from "./CoursesPreloadHead";
 
 
     export default {
-        name: "PreloadBlock",
-        components: {VueContentLoading},
+        name: "CoursesPreloadBlock",
+        components: {CoursesPreloadHead, VueContentLoading},
     }
 </script>
 
@@ -43,24 +34,6 @@
         padding-top: 20px;
         width: 100%;
         background: #ffffff;
-    }
-
-    .title {
-        width: 150px;
-        height: 13px;
-    }
-    .head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .arrow {
-        display: flex;
-        width: 17px;
-        height: 13px;
     }
 
 

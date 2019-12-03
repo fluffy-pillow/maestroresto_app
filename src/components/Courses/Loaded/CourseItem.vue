@@ -1,20 +1,21 @@
 <template>
     <li class="course-item" :style="{background: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),' +
-    'url(' + require('@/assets/uploads/' + data.background) + ') no-repeat scroll 50% 0'}"
-        @click="$router.push('/learning/course')">
+    'url(' + data.pictureUrl + ') no-repeat scroll 50% 0'}"
+        @click="openCourse"
+    >
         <div class="container">
             <div class="head">
                 <svg class="chart--svg" width="100%" height="100%" viewBox="0 0 34 34">
                     <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" opacity="0.1"></circle>
 
-                    <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" :stroke-dasharray="data.percents + ' ' +  (100 - data.percents)" stroke-dashoffset="25"></circle>
+                    <circle cx="17" cy="17" r="15.91549430918954" fill="transparent" stroke="#FFFFFF" stroke-width="2" :stroke-dasharray="data.percent + ' ' +  (100 - data.percent)" stroke-dashoffset="25"></circle>
                 </svg>
                 <div class="chart--text">
-                    {{data.percents}}%
+                    {{data.percent}}%
                 </div>
             </div>
             <div class="body">
-                {{data.name}}
+                {{data.title}}
             </div>
             <div class="footer">
                 <div class="next--text">
@@ -35,6 +36,11 @@
         name: "CourseItem",
         props: {
             data: Object
+        },
+        methods: {
+            openCourse () {
+                this.$router.push(this.$route.path + '/course')
+            }
         }
     }
 </script>

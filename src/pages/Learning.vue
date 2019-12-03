@@ -19,7 +19,7 @@
 
         <main class="main-learning">
             <Favorite></Favorite>
-            <Courses></Courses>
+            <Courses :unfinished-courses="unfinishedCourses"></Courses>
             <Structure></Structure>
             <SalesTechnique></SalesTechnique>
         </main>
@@ -29,7 +29,7 @@
 <script>
     import {mapGetters} from 'vuex'
     import Favorite from "../components/LearningPage/Favorite/Favorite";
-    import Courses from "../components/LearningPage/Courses/Courses";
+    import Courses from "../components/Courses/Courses";
     import Structure from "../components/LearningPage/Structure/Structure";
     import SalesTechnique from "../components/LearningPage/SalesTechnique/SalesTechnique";
     import SearchInput from "../components/Search/SearchInput";
@@ -41,7 +41,29 @@
         data () {
             return {
                 bTransformed: false,
-                pageContent: null
+                pageContent: null,
+                unfinishedCourses: [
+                    {
+                        percent: 67,
+                        pictureUrl: '',
+                        title: 'Оборудование для организации обслуживания гостей"'
+                    },
+                    {
+                        percent: 67,
+                        pictureUrl: '',
+                        title: 'Оборудование для организации обслуживания гостей"'
+                    },
+                    {
+                        percent: 67,
+                        pictureUrl: '',
+                        title: 'Оборудование для организации обслуживания гостей"'
+                    },
+                    {
+                        percent: 67,
+                        pictureUrl: '',
+                        title: 'Оборудование для организации обслуживания гостей"'
+                    }
+                ]
             }
         },
         methods: {
