@@ -78,7 +78,6 @@
                         }
                     } else {
                         this.writeData(response.data)
-                        this.hidePreloaders()
 
                         if (this.localDBerror) {
                             dashboardDB.insertData(response.data)

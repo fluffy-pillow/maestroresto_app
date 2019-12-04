@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="conference">
+    <v-ons-page class="conference" :class="{iphone: $ons.platform.isIPhone()}">
         <StickyHeader class="sticky-header"
                       :title="'Новый чат'"
                       :sub-title="'3 участника'"
@@ -88,9 +88,13 @@
 
     main {
         padding-top: 44px;
-        margin-top: env(safe-area-inset-top);
-        height: calc(100% - 44px - env(safe-area-inset-top));
+        height: calc(100vh - 44px);
     }
+
+    .conference.iphone main {
+        height: 100vh;
+    }
+
 
     .sticky-header {
         border-bottom: 1px solid rgba(97, 112, 125, 0.1);

@@ -103,6 +103,9 @@ const app = new Vue({
                 this.removeFocusFromAllInputs()
             }
         }
+    },
+    beforeCreate() {
+        this.$ons.disableAutoStyling();
     }
 })
 

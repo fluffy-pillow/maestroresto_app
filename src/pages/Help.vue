@@ -2,7 +2,7 @@
     <v-ons-page class="help">
         <StickyHeader :title="'Помощь'"></StickyHeader>
         <main>
-            <List class="list" :items="items" :item-height="44"></List>
+            <List class="list" :items="items" :item-height="44" :border-class="'border-bottom'"></List>
         </main>
     </v-ons-page>
 </template>

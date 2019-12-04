@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="correspondence">
+    <v-ons-page class="correspondence"  :class="{iphone: $ons.platform.isIPhone()}">
         <StickyHeader class="sticky-header" :title="'Марина Терехова'"
         >
             <Avatar
@@ -53,8 +53,11 @@
 
 main {
     padding-top: 44px;
-    margin-top: env(safe-area-inset-top);
-    height: calc(100% - 44px - env(safe-area-inset-top));
+    height: calc(100vh - 44px);
+}
+
+.correspondence.iphone main {
+    height: 100vh;
 }
 
 .sticky-header {

@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="support">
+    <v-ons-page class="support" :class="{iphone: $ons.platform.isIPhone()}">
         <StickyHeader :title="'Написать в техподдержку'"></StickyHeader>
         <main>
             <Room :response="response"></Room>
@@ -34,7 +34,11 @@
 <style scoped>
     main {
         padding-top: 44px;
-        margin-top: env(safe-area-inset-top);
-        height: calc(100% - 44px - env(safe-area-inset-top));
+        height: calc(100vh - 44px);
+        box-sizing: border-box;
+    }
+
+    .support.iphone main {
+        height: 100vh;
     }
 </style>

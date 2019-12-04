@@ -68,7 +68,7 @@
     }
 
     .container {
-        height: inherit;
+        height: 81px;
         display: flex;
         align-items: center;
         padding-left: 32px;

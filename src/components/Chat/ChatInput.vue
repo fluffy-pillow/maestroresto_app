@@ -72,7 +72,7 @@
 
 <style scoped>
 .chat-input {
-    padding-bottom: env(safe-area-inset-top);
+    padding-bottom: calc(env(safe-area-inset-top) * 2);
     padding-left: 16px;
     padding-right: 16px;
     background: #F9FBFD;
@@ -80,7 +80,7 @@
 }
 
 .chat-input.focus {
-    padding-bottom: 0;
+    padding-bottom: env(safe-area-inset-top);
 }
 
 .container {

@@ -5,17 +5,13 @@
             :key="key"
             :style="{
                 height: itemHeight + 'px',
-                marginTop: (key === items.length - 1) ? 'auto' : '0',
-
-
+                marginTop: (key === items.length - 1) ? 'auto' : '0'
             }"
             @click="openPage(item.path)"
         >
         <span class="container" :style="{
-                borderBottom: ((key === items.length - 1 || key === items.length - 2) && items.length > 1) ?
-                'unset' : ' 1px solid rgba(205,206,211, 0.5)',
                 marginLeft: contentOffset + 'px'
-            }">
+            }" :class="borderClass">
             <span class="icon" v-if="item.icon" :style="{backgroundImage: 'url(' + item.icon +')'}">
 
             </span>
@@ -51,7 +47,12 @@
             contentOffset: {
                 type: Number,
                 default: 0
+            },
+            borderClass: {
+                type: String,
+                default: 'border-top'
             }
+
         },
         methods: {
             openPage (path) {
@@ -67,6 +68,7 @@
         height: 100%;
         display: flex;
         flex-direction: column;
+        background-image: none !important;
     }
 
     .item {
@@ -77,6 +79,18 @@
         width: 100%;
         display: flex;
         align-items: center;
+    }
+
+    .item:first-child .container.border-top {
+        border: none;
+    }
+
+    .container.border-top {
+        border-top: 1px solid rgba(205,206,211, 0.5);
+    }
+
+    .container.border-bottom {
+        border-bottom: 1px solid rgba(205,206,211, 0.5);
     }
 
     .item:nth-child(2) {

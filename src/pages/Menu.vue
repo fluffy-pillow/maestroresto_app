@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="menu">
+    <v-ons-page class="menu" :class="{iphone: $ons.platform.isIPhone()}">
         <Header></Header>
         <main>
             <List :items="items" :attach-last-element-down="true" :content-offset="36"></List>
@@ -58,8 +58,11 @@
 <style scoped>
 main {
     padding-top: 81px;
-    margin-top: env(safe-area-inset-top);
-    padding-bottom: 81px;
-    height: calc(100% - 81px - 81px - env(safe-area-inset-top));
+    height: calc(100vh - 49px);
+    box-sizing: border-box;
+}
+
+.menu.iphone main {
+    height: calc(100vh - 49px - env(safe-area-inset-top) * 2);
 }
 </style>

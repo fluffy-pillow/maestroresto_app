@@ -164,7 +164,7 @@ export default {
   top: 0;
 }
 
-.navigation > .material > .page__content {
+.navigation > .material > .page__content, .navigation > .menu > .page__content {
   padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top);
 }
