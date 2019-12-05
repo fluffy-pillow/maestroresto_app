@@ -35,7 +35,6 @@
     main {
         padding-top: 44px;
         height: calc(100vh - 44px);
-        box-sizing: border-box;
     }
 
     .support.iphone main {

@@ -1,210 +1,91 @@
 <template>
-    <ul class="answers">
-        <li class="answer"
-            v-for="(answer, key) of answers"
-            :key="key"
-            @click="handleClick(answer.id)"
-            :class="{
-                selected: isSelected(answer),
-                wrong: isWrong(answer),
-                correct: isCorrect(answer)
-             }"
+    <section class="answers">
+        <article class="answer"
+                 v-for="(test, key) of response"
+                 :key="key"
+                 :class="{wrong: !test.correct}"
         >
-            <span class="top">
-                <span class="text">
-                    {{answer.text}}
-                </span>
-                <span class="answer-status">
-                </span>
-            </span>
-            <span class="bottom" v-if="isWrong(answer)">
-                <span class="bottom-icon">
-                    ,,
-                </span>
-                <span class="desc">
-                    {{answer.desc}}
-                </span>
-            </span>
-        </li>
-        <li v-if="testType === 'another'">
-            <div class="answer-input-wrapper">
-                <span class="answer-input-title">
-                    свой вариант ответа
-                </span>
-                <span class="answer-variant">
-                    г.
-                </span>
-                <ContentEditable
-                        class="answer-input"
-                        :content="$parent.anotherAnswer"
-                        @update="$parent.anotherAnswer = $event"
-                        @onFocus="handleFocus"
-                        @onBlur="handleBlur"
-                >
-                </ContentEditable>
+            <div class="answer-title">
+                {{key + 1}}. {{test.question}}
             </div>
-        </li>
-    </ul>
+            <div class="answer-content">
+                <div class="answer-status">
+
+                </div>
+                <div class="answer-text">
+                    {{test.answers[0].text}}
+                </div>
+            </div>
+            <div class="answer-description-wrapper">
+                <div class="desc-icon">
+                    ,,
+                </div>
+                <div class="desc-text">
+                    {{test.answers[0].desc}}
+                </div>
+            </div>
+            <div class="correct-answers" v-if="!test.correct">
+                <ul class="correct-answers-list">
+                    <li
+                            v-for="(answer, key) of test.correctAnswers"
+                            :key="key"
+                            class="correct-answer"
+                    >
+                        <span class="correct-answer-icon">
+
+                        </span>
+                        <span class="correct-answer-text">
+                            {{answer.text}}
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </section>
 </template>
 
 <script>
-    import {mapGetters, mapActions} from 'vuex'
-    import ContentEditable from "../../ContentEditable";
-
     export default {
         name: "Answers",
-        components: {ContentEditable},
         props: {
-            answers: Array,
-            testType: String
-        },
-        methods: {
-            handleFocus () {
-                this.$parent.bFocus = true
-            },
-            handleBlur () {
-                this.$parent.bFocus = false
-            },
-            handleClick (newValue) {
-              if (!this.$parent.bSubmit) {
-                  switch (this.testType) {
-                      case 'default': {
-                          this.currentTestSavedData.answer = newValue
-                          break
-                      }
-                      case 'multi': {
-                          let index = this.currentTestSavedData.answer.indexOf(newValue)
-                          if (index > -1) {
-                              this.currentTestSavedData.answer.splice(index, 1)
-                          } else {
-                              this.currentTestSavedData.answer.push(newValue)
-                          }
-                          break
-                      }
-                      case 'another': {
-                          let index = this.currentTestSavedData.answer.indexOf(newValue)
-                          if (index > -1) {
-                              this.currentTestSavedData.answer.splice(index, 1)
-                          } else {
-                              this.currentTestSavedData.answer.push(newValue)
-                          }
-                          break
-                      }
-                      default: {
-                          break
-                      }
-                  }
-
-              }
-            },
-            isWrong (answer) {
-                let ret
-                switch (this.testType) {
-                    case 'default': {
-                        ret = (this.currentTestSavedData.answer === answer.id && this.currentTestSavedData.bWrongAnswer)
-                        break
-                    }
-                    case 'multi': {
-                        ret = (this.currentTestSavedData.answer.includes(answer.id) && this.currentTestSavedData.bWrongAnswer)
-                        break
-                    }
-                    case 'another': {
-                        ret = (this.currentTestSavedData.answer.includes(answer.id) && this.currentTestSavedData.bWrongAnswer)
-                        break
-                    }
-                    default: {
-                        break
-                    }
-                }
-                return ret
-            },
-            isSelected (answer) {
-                let ret
-                switch (this.testType) {
-                    case 'default': {
-                        ret = (this.currentTestSavedData.answer === answer.id && !this.currentTestSavedData.bWrongAnswer)
-                        break
-                    }
-                    case 'multi': {
-                        ret = (this.currentTestSavedData.answer.includes(answer.id) && !this.currentTestSavedData.bWrongAnswer)
-                        break
-                    }
-                    case 'another': {
-                        ret = (this.currentTestSavedData.answer.includes(answer.id) && !this.currentTestSavedData.bWrongAnswer)
-                        break
-                    }
-                    default: {
-                        break
-                    }
-                }
-                return ret
-            },
-            isCorrect (answer) {
-                let ret
-                switch (this.testType) {
-                    case 'default': {
-                        ret = (this.currentTestSavedData.correctAnswer === answer.id && this.currentTestSavedData.bWrongAnswer)
-                        break
-                    }
-                    case 'multi': {
-                        if (this.currentTestSavedData.correctAnswer) {
-                            ret = (this.currentTestSavedData.correctAnswer.includes(answer.id) && this.currentTestSavedData.bWrongAnswer)
-                        }
-                        break
-                    }
-                    default: {
-                        break
-                    }
-                }
-                return ret
-            },
-            ...mapActions({
-                updateSavedData: 'tests/updateSavedData'
-            })
-        },
-        computed: {
-            ...mapGetters({
-                savedData: 'tests/getSavedData'
-            }),
-            currentTestSavedData () {
-                return this.savedData[this.$route.params.id - 1]
-            }
+            response: Array
         }
     }
 </script>
 
 <style scoped>
-
-    .answers {
-        margin-top: 32px;
+    .correct-answer-text {
+        letter-spacing: -0.078px;
+        font-size: 14px;
+        line-height: 22px;
+        color: #14B072;
+        margin-left: 8px;
     }
-
-    .answer.selected, .answer.correct {
-        border: 1px solid #3DD498;
+    .correct-answers-list {
+        margin-top: 24px;
     }
-
-    .answer-input-wrapper {
+    .correct-answer {
         display: flex;
-        flex-direction: column;
+        margin-top: 16px;
     }
-
-    .answer.wrong {
-        border: 1px solid #FC5A5A;
+    .answer {
+        margin-top: 16px;
+        border: 1px solid #EAECEC;
+        border-radius: 16px;
+        padding: 16px;
     }
-
-    .top {
-        align-items: center;
-        justify-content: space-between;
-        display: flex;
-    }
-
-    .bottom {
-        margin-top: 21px;
-        justify-content: space-between;
+    .answer-description-wrapper {
+        margin-top: 16px;
         display: flex;
     }
-
-    .bottom-icon {
+    .desc-text {
+        margin-left: 8px;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: -0.078px;
+        color: #ADB3BC;
+    }
+    .desc-icon {
         letter-spacing: -0.078px;
         font-style: normal;
         font-weight: normal;
@@ -215,66 +96,36 @@
         top: -22px;
         font-family: Lancelot;
     }
-
-    .answer-input-title {
-        color: #4B4B4B;
+    .answer .answer-status, .correct-answer-icon {
+        width: 22px;
+        min-width: 22px;
+        height: 22px;
+        background-image: url(../../../assets/images/selected.svg);
+    }
+    .answer.wrong .answer-status {
+        background-image: url(../../../assets/images/wrong.svg);
+    }
+    .answer.wrong .answer-text {
+        color: #FC5A5A;
+    }
+    .answer-content {
+        display: flex;
+    }
+    .answer-title {
+        color: #61707D;
         text-transform: uppercase;
         font-weight: 500;
         font-size: 13px;
         line-height: 22px;
     }
-
-    .answer-variant {
-        color: #61707D;
-        text-transform: uppercase;
+    .answer-content {
+        margin-top: 16px;
+    }
+    .answer-text {
+        color: #14B072;
         font-size: 14px;
         line-height: 22px;
-        margin-top: 24px;
-        margin-left: 16px;
-    }
-
-    .answer {
-        border: 1px solid #EAECEC;
-        border-radius: 16px;
-        padding: 16px;
-        margin-bottom: 16px;
-    }
-
-    .desc {
         letter-spacing: -0.078px;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 22px;
-        color: #ADB3BC;
-        margin-left: 4px;
-    }
-
-    .text {
-        color: #61707D;
-        text-transform: uppercase;
-        font-size: 14px;
-        line-height: 22px;
-    }
-
-
-    .answer-status {
-        min-width: 22px;
-        margin-left: 21px;
-        width: 22px;
-        height: 22px;
-        background-image: url(../../../assets/images/select.svg);
-        background-size: cover;
-    }
-
-    .answer.selected .answer-status {
-        background-image: url(../../../assets/images/selected.svg);
-    }
-
-    .answer.wrong .answer-status {
-        background-image: url(../../../assets/images/wrong.svg);
-    }
-
-    .answer-input {
-        height: 50px;
+        margin-left: 8px;
     }
 </style>

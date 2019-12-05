@@ -7,7 +7,7 @@
           </svg>
         </div>
         <v-ons-toolbar class="search"
-                       :class="{transformed: bTransformed, notEmpty: query !== ''}"
+                       :class="{transformed: bTransformed, notEmpty: query !== '', iphone: $ons.platform.isIPhone()}"
         >
             <div class="center">
                 <div class="content">
@@ -112,11 +112,16 @@ main {
 }
 
 .search {
-    height: calc(52px + constant(safe-area-inset-top));
-    height: calc(52px + env(safe-area-inset-top));
+    height: 52px;
     background-image: none;
     background-color: transparent;
     box-shadow: none;
+    padding: 0 !important;
+}
+
+.search.iphone {
+    height: calc(52px + constant(safe-area-inset-top));
+    height: calc(52px + env(safe-area-inset-top));
 }
 
 .search.notEmpty {
@@ -125,12 +130,16 @@ main {
 }
 
 .center {
-    height: calc(52px + constant(safe-area-inset-top));
-    height: calc(52px + env(safe-area-inset-top));
+    height: 52px;
     line-height: unset !important;
     margin: 0;
     display: flex;
     align-items: flex-end;
+}
+
+.search.iphone .center {
+    height: calc(52px + constant(safe-area-inset-top));
+    height: calc(52px + env(safe-area-inset-top));
 }
 
 .content {

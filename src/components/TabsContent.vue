@@ -2,7 +2,7 @@
     <div class="tabs-content" ref="tabsContent">
         <div class="content" ref="content"
              :style="{transform: 'translateX(-' +
-            ((totalWidth/sectionsCount) * (activeIndex))
+            ((totalWidth * activeIndex))
           + 'px)'}"
         >
             <div class="component-wrapper"
@@ -43,26 +43,25 @@
 
 <style scoped>
     .tabs-content {
-        overflow: hidden;
+        overflow: scroll;
     }
 
-    .component-wrapper::-webkit-scrollbar {
+    .tabs-content::-webkit-scrollbar {
         display: none;
     }
 
-    .component-wrapper::-webkit-scrollbar-track {
+    .tabs-content::-webkit-scrollbar-track {
         background-color: transparent;
     }
 
     .content {
         display: flex;
-        width: max-content;
         transition: transform 0.2s ease-in-out;
         height: 100%;
     }
 
     .component-wrapper {
-        width: 100vw;
+        min-width: 100vw;
         display: flex;
         height: 0;
         overflow: hidden;

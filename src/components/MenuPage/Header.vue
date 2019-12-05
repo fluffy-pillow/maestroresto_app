@@ -1,5 +1,5 @@
 <template>
-    <v-ons-toolbar static class="header">
+    <v-ons-toolbar static class="header" :class="{iphone: $ons.platform.isIPhone()}">
         <div class="center">
             <div class="container">
                 <div class="head-left">
@@ -51,8 +51,7 @@
 
     .header {
         background-color: #FFFFFF;
-        height: calc(81px + constant(safe-area-inset-top));
-        height: calc(81px + env(safe-area-inset-top));
+        height: 81px !important;
         background-image: none;
         display: flex;
         align-items: flex-end;
@@ -62,9 +61,15 @@
         border-bottom-right-radius: 16px;
     }
 
+    .header.iphone {
+      height: calc(81px + constant(safe-area-inset-top)) !important;
+      height: calc(81px + env(safe-area-inset-top)) !important;
+    }
+
     .center {
         height: 81px !important;
         position: relative;
+        line-height: 81px !important;
     }
 
     .container {

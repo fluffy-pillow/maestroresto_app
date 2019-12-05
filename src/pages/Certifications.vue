@@ -1,5 +1,5 @@
 <template>
-    <v-ons-page class="certifications">
+    <v-ons-page class="certifications" ref="test">
         <StickyHeader :title="'Аттестации'" :show-back-button="false"></StickyHeader>
         <main :class="{empty: !response || response.length === 0}">
             <Certifications v-if="response && response.length > 0" :data="response"></Certifications>

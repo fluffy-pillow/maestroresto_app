@@ -61,6 +61,7 @@
         methods: {
             handleFocus () {
                 this.$parent.bFocus = true
+                this.$parent.$parent.$parent.$refs.test.$el.querySelector('.page__content').scrollTop = 10000000
             },
             handleBlur () {
                 this.$parent.bFocus = false
