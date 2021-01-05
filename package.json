@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@nano-sql/core": "^2.3.7",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "cordova-plugin-splashscreen": "^5.0.3",
     "core-js": "^3.3.2",
     "onsenui": "^2.10.10",
